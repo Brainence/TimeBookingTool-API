@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Data Access Layer", "1 - Data Access Layer", "{4F08FFCD-D891-40D4-AFCC-D5EF838D8D88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Business Layer", "2 - Business Layer", "{BBEB0326-9E79-46D3-BA50-B6AAB730B812}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Api", "3 - Api", "{056CFE99-4F4A-4041-B01C-2AF9A1538BA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructute Components", "4 - Infrastructute Components", "{05C869A5-101E-4DF8-9A1E-2A701576B0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBT.DAL", "TBT.DAL\TBT.DAL.csproj", "{F86F803E-5A25-4949-B259-473377F3A74E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBT.Business", "TBT.Business\TBT.Business.csproj", "{1422C64D-A3B9-4410-AF06-38FEF1BBAF01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBT.Components", "TBT.Components\TBT.Components.csproj", "{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBT.WebApi", "TBT.Api\TBT.WebApi.csproj", "{2C21353E-9C4A-43AA-90B6-21AC44897720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBT.Business.EmailService", "TBT.Business.EmailService\TBT.Business.EmailService.csproj", "{F5FDE425-8D1A-4840-BB21-0F4400EDA403}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F86F803E-5A25-4949-B259-473377F3A74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86F803E-5A25-4949-B259-473377F3A74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86F803E-5A25-4949-B259-473377F3A74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86F803E-5A25-4949-B259-473377F3A74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1422C64D-A3B9-4410-AF06-38FEF1BBAF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1422C64D-A3B9-4410-AF06-38FEF1BBAF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1422C64D-A3B9-4410-AF06-38FEF1BBAF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1422C64D-A3B9-4410-AF06-38FEF1BBAF01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C21353E-9C4A-43AA-90B6-21AC44897720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C21353E-9C4A-43AA-90B6-21AC44897720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C21353E-9C4A-43AA-90B6-21AC44897720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C21353E-9C4A-43AA-90B6-21AC44897720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FDE425-8D1A-4840-BB21-0F4400EDA403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FDE425-8D1A-4840-BB21-0F4400EDA403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FDE425-8D1A-4840-BB21-0F4400EDA403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FDE425-8D1A-4840-BB21-0F4400EDA403}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F86F803E-5A25-4949-B259-473377F3A74E} = {4F08FFCD-D891-40D4-AFCC-D5EF838D8D88}
+		{1422C64D-A3B9-4410-AF06-38FEF1BBAF01} = {BBEB0326-9E79-46D3-BA50-B6AAB730B812}
+		{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7} = {05C869A5-101E-4DF8-9A1E-2A701576B0F9}
+		{2C21353E-9C4A-43AA-90B6-21AC44897720} = {056CFE99-4F4A-4041-B01C-2AF9A1538BA9}
+		{F5FDE425-8D1A-4840-BB21-0F4400EDA403} = {BBEB0326-9E79-46D3-BA50-B6AAB730B812}
+	EndGlobalSection
+EndGlobal

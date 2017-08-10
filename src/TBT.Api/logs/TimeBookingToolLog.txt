@@ -1,0 +1,1000 @@
+A task was canceled.
+Log Time: 2016-12-23 14:01:21.0791
+User Agent: 
+ProcessTime: 00:00:00.888
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-23 14:32:27.6289
+User Agent: 
+ProcessTime: 00:02:39.384
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-23 14:32:53.7089
+User Agent: 
+ProcessTime: 00:03:05.464
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-23 14:33:27.5497
+User Agent: 
+ProcessTime: 00:00:18.273
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-23 14:34:11.7491
+User Agent: 
+ProcessTime: 00:01:02.472
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-23 14:34:14.2709
+User Agent: 
+ProcessTime: 00:01:04.994
+ 
+
+
+
+Mapping types:
+IQueryable`1 -> List`1
+System.Linq.IQueryable`1[[TBT.DAL.Entities.User, TBT.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[TBT.Business.Models.BusinessModels.UserModel, TBT.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+Destination path:
+List`1
+
+Source value:
+SELECT 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FirstName] AS [FirstName], 
+    [Project1].[LastName] AS [LastName], 
+    [Project1].[Username] AS [Username], 
+    [Project1].[Password] AS [Password], 
+    [Project1].[IsAdmin] AS [IsAdmin], 
+    [Project1].[IsActive] AS [IsActive], 
+    [Project1].[C2] AS [C1], 
+    [Project1].[ProjectId] AS [ProjectId], 
+    [Project1].[UserId] AS [UserId], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[IsActive1] AS [IsActive1], 
+    [Project1].[CustomerId] AS [CustomerId], 
+    [Project1].[C1] AS [C2], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[IsActive2] AS [IsActive2], 
+    [Project1].[ProjectId1] AS [ProjectId1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FirstName] AS [FirstName], 
+        [Extent1].[LastName] AS [LastName], 
+        [Extent1].[Username] AS [Username], 
+        [Extent1].[Password] AS [Password], 
+        [Extent1].[IsAdmin] AS [IsAdmin], 
+        [Extent1].[IsActive] AS [IsActive], 
+        [Join2].[ProjectId1] AS [ProjectId], 
+        [Join2].[UserId] AS [UserId], 
+        [Join2].[Id1] AS [Id1], 
+        [Join2].[Name1] AS [Name], 
+        [Join2].[IsActive1] AS [IsActive1], 
+        [Join2].[CustomerId] AS [CustomerId], 
+        [Join2].[Id2] AS [Id2], 
+        [Join2].[Name2] AS [Name1], 
+        [Join2].[IsActive2] AS [IsActive2], 
+        [Join2].[ProjectId2] AS [ProjectId1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) WHEN ([Join2].[Id2] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C2]
+        FROM  [dbo].[Users] AS [Extent1]
+        LEFT OUTER JOIN  (SELECT [Extent2].[ProjectId] AS [ProjectId1], [Extent2].[UserId] AS [UserId], [Extent3].[Id] AS [Id1], [Extent3].[Name] AS [Name1], [Extent3].[IsActive] AS [IsActive1], [Extent3].[CustomerId] AS [CustomerId], [Extent4].[Id] AS [Id2], [Extent4].[Name] AS [Name2], [Extent4].[IsActive] AS [IsActive2], [Extent4].[ProjectId] AS [ProjectId2]
+            FROM   [dbo].[UserProject] AS [Extent2]
+            INNER JOIN [dbo].[Projects] AS [Extent3] ON [Extent3].[Id] = [Extent2].[ProjectId]
+            LEFT OUTER JOIN [dbo].[Activities] AS [Extent4] ON [Extent3].[Id] = [Extent4].[ProjectId] ) AS [Join2] ON [Extent1].[Id] = [Join2].[UserId]
+        WHERE [Extent1].[IsActive] = 1
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[C2] ASC, [Project1].[ProjectId] ASC, [Project1].[UserId] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+Log Time: 2016-12-23 14:34:27.4928
+User Agent: 
+ProcessTime: 00:01:18.216
+ 
+
+
+
+Mapping types:
+IQueryable`1 -> List`1
+System.Linq.IQueryable`1[[TBT.DAL.Entities.User, TBT.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[TBT.Business.Models.BusinessModels.UserModel, TBT.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+Destination path:
+List`1
+
+Source value:
+SELECT 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FirstName] AS [FirstName], 
+    [Project1].[LastName] AS [LastName], 
+    [Project1].[Username] AS [Username], 
+    [Project1].[Password] AS [Password], 
+    [Project1].[IsAdmin] AS [IsAdmin], 
+    [Project1].[IsActive] AS [IsActive], 
+    [Project1].[C2] AS [C1], 
+    [Project1].[ProjectId] AS [ProjectId], 
+    [Project1].[UserId] AS [UserId], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[IsActive1] AS [IsActive1], 
+    [Project1].[CustomerId] AS [CustomerId], 
+    [Project1].[C1] AS [C2], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[IsActive2] AS [IsActive2], 
+    [Project1].[ProjectId1] AS [ProjectId1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FirstName] AS [FirstName], 
+        [Extent1].[LastName] AS [LastName], 
+        [Extent1].[Username] AS [Username], 
+        [Extent1].[Password] AS [Password], 
+        [Extent1].[IsAdmin] AS [IsAdmin], 
+        [Extent1].[IsActive] AS [IsActive], 
+        [Join2].[ProjectId1] AS [ProjectId], 
+        [Join2].[UserId] AS [UserId], 
+        [Join2].[Id1] AS [Id1], 
+        [Join2].[Name1] AS [Name], 
+        [Join2].[IsActive1] AS [IsActive1], 
+        [Join2].[CustomerId] AS [CustomerId], 
+        [Join2].[Id2] AS [Id2], 
+        [Join2].[Name2] AS [Name1], 
+        [Join2].[IsActive2] AS [IsActive2], 
+        [Join2].[ProjectId2] AS [ProjectId1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) WHEN ([Join2].[Id2] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C2]
+        FROM  [dbo].[Users] AS [Extent1]
+        LEFT OUTER JOIN  (SELECT [Extent2].[ProjectId] AS [ProjectId1], [Extent2].[UserId] AS [UserId], [Extent3].[Id] AS [Id1], [Extent3].[Name] AS [Name1], [Extent3].[IsActive] AS [IsActive1], [Extent3].[CustomerId] AS [CustomerId], [Extent4].[Id] AS [Id2], [Extent4].[Name] AS [Name2], [Extent4].[IsActive] AS [IsActive2], [Extent4].[ProjectId] AS [ProjectId2]
+            FROM   [dbo].[UserProject] AS [Extent2]
+            INNER JOIN [dbo].[Projects] AS [Extent3] ON [Extent3].[Id] = [Extent2].[ProjectId]
+            LEFT OUTER JOIN [dbo].[Activities] AS [Extent4] ON [Extent3].[Id] = [Extent4].[ProjectId] ) AS [Join2] ON [Extent1].[Id] = [Join2].[UserId]
+        WHERE [Extent1].[IsActive] = 1
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[C2] ASC, [Project1].[ProjectId] ASC, [Project1].[UserId] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+Log Time: 2016-12-23 14:34:31.2095
+User Agent: 
+ProcessTime: 00:01:21.933
+ 
+
+
+
+Mapping types:
+IQueryable`1 -> List`1
+System.Linq.IQueryable`1[[TBT.DAL.Entities.User, TBT.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[TBT.Business.Models.BusinessModels.UserModel, TBT.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+Destination path:
+List`1
+
+Source value:
+SELECT 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FirstName] AS [FirstName], 
+    [Project1].[LastName] AS [LastName], 
+    [Project1].[Username] AS [Username], 
+    [Project1].[Password] AS [Password], 
+    [Project1].[IsAdmin] AS [IsAdmin], 
+    [Project1].[IsActive] AS [IsActive], 
+    [Project1].[C2] AS [C1], 
+    [Project1].[ProjectId] AS [ProjectId], 
+    [Project1].[UserId] AS [UserId], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[IsActive1] AS [IsActive1], 
+    [Project1].[CustomerId] AS [CustomerId], 
+    [Project1].[C1] AS [C2], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[IsActive2] AS [IsActive2], 
+    [Project1].[ProjectId1] AS [ProjectId1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FirstName] AS [FirstName], 
+        [Extent1].[LastName] AS [LastName], 
+        [Extent1].[Username] AS [Username], 
+        [Extent1].[Password] AS [Password], 
+        [Extent1].[IsAdmin] AS [IsAdmin], 
+        [Extent1].[IsActive] AS [IsActive], 
+        [Join2].[ProjectId1] AS [ProjectId], 
+        [Join2].[UserId] AS [UserId], 
+        [Join2].[Id1] AS [Id1], 
+        [Join2].[Name1] AS [Name], 
+        [Join2].[IsActive1] AS [IsActive1], 
+        [Join2].[CustomerId] AS [CustomerId], 
+        [Join2].[Id2] AS [Id2], 
+        [Join2].[Name2] AS [Name1], 
+        [Join2].[IsActive2] AS [IsActive2], 
+        [Join2].[ProjectId2] AS [ProjectId1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) WHEN ([Join2].[Id2] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C2]
+        FROM  [dbo].[Users] AS [Extent1]
+        LEFT OUTER JOIN  (SELECT [Extent2].[ProjectId] AS [ProjectId1], [Extent2].[UserId] AS [UserId], [Extent3].[Id] AS [Id1], [Extent3].[Name] AS [Name1], [Extent3].[IsActive] AS [IsActive1], [Extent3].[CustomerId] AS [CustomerId], [Extent4].[Id] AS [Id2], [Extent4].[Name] AS [Name2], [Extent4].[IsActive] AS [IsActive2], [Extent4].[ProjectId] AS [ProjectId2]
+            FROM   [dbo].[UserProject] AS [Extent2]
+            INNER JOIN [dbo].[Projects] AS [Extent3] ON [Extent3].[Id] = [Extent2].[ProjectId]
+            LEFT OUTER JOIN [dbo].[Activities] AS [Extent4] ON [Extent3].[Id] = [Extent4].[ProjectId] ) AS [Join2] ON [Extent1].[Id] = [Join2].[UserId]
+        WHERE [Extent1].[IsActive] = 1
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[C2] ASC, [Project1].[ProjectId] ASC, [Project1].[UserId] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+Log Time: 2016-12-23 14:35:45.3217
+User Agent: 
+ProcessTime: 00:02:36.045
+ 
+
+
+
+Mapping types:
+IQueryable`1 -> List`1
+System.Linq.IQueryable`1[[TBT.DAL.Entities.User, TBT.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[TBT.Business.Models.BusinessModels.UserModel, TBT.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+Destination path:
+List`1
+
+Source value:
+SELECT 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FirstName] AS [FirstName], 
+    [Project1].[LastName] AS [LastName], 
+    [Project1].[Username] AS [Username], 
+    [Project1].[Password] AS [Password], 
+    [Project1].[IsAdmin] AS [IsAdmin], 
+    [Project1].[IsActive] AS [IsActive], 
+    [Project1].[C2] AS [C1], 
+    [Project1].[ProjectId] AS [ProjectId], 
+    [Project1].[UserId] AS [UserId], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[IsActive1] AS [IsActive1], 
+    [Project1].[CustomerId] AS [CustomerId], 
+    [Project1].[C1] AS [C2], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[IsActive2] AS [IsActive2], 
+    [Project1].[ProjectId1] AS [ProjectId1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FirstName] AS [FirstName], 
+        [Extent1].[LastName] AS [LastName], 
+        [Extent1].[Username] AS [Username], 
+        [Extent1].[Password] AS [Password], 
+        [Extent1].[IsAdmin] AS [IsAdmin], 
+        [Extent1].[IsActive] AS [IsActive], 
+        [Join2].[ProjectId1] AS [ProjectId], 
+        [Join2].[UserId] AS [UserId], 
+        [Join2].[Id1] AS [Id1], 
+        [Join2].[Name1] AS [Name], 
+        [Join2].[IsActive1] AS [IsActive1], 
+        [Join2].[CustomerId] AS [CustomerId], 
+        [Join2].[Id2] AS [Id2], 
+        [Join2].[Name2] AS [Name1], 
+        [Join2].[IsActive2] AS [IsActive2], 
+        [Join2].[ProjectId2] AS [ProjectId1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) WHEN ([Join2].[Id2] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C2]
+        FROM  [dbo].[Users] AS [Extent1]
+        LEFT OUTER JOIN  (SELECT [Extent2].[ProjectId] AS [ProjectId1], [Extent2].[UserId] AS [UserId], [Extent3].[Id] AS [Id1], [Extent3].[Name] AS [Name1], [Extent3].[IsActive] AS [IsActive1], [Extent3].[CustomerId] AS [CustomerId], [Extent4].[Id] AS [Id2], [Extent4].[Name] AS [Name2], [Extent4].[IsActive] AS [IsActive2], [Extent4].[ProjectId] AS [ProjectId2]
+            FROM   [dbo].[UserProject] AS [Extent2]
+            INNER JOIN [dbo].[Projects] AS [Extent3] ON [Extent3].[Id] = [Extent2].[ProjectId]
+            LEFT OUTER JOIN [dbo].[Activities] AS [Extent4] ON [Extent3].[Id] = [Extent4].[ProjectId] ) AS [Join2] ON [Extent1].[Id] = [Join2].[UserId]
+        WHERE [Extent1].[IsActive] = 1
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[C2] ASC, [Project1].[ProjectId] ASC, [Project1].[UserId] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+Log Time: 2016-12-23 14:37:39.0596
+User Agent: 
+ProcessTime: 00:04:29.783
+ 
+
+
+
+Mapping types:
+IQueryable`1 -> List`1
+System.Linq.IQueryable`1[[TBT.DAL.Entities.User, TBT.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[TBT.Business.Models.BusinessModels.UserModel, TBT.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+Destination path:
+List`1
+
+Source value:
+SELECT 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FirstName] AS [FirstName], 
+    [Project1].[LastName] AS [LastName], 
+    [Project1].[Username] AS [Username], 
+    [Project1].[Password] AS [Password], 
+    [Project1].[IsAdmin] AS [IsAdmin], 
+    [Project1].[IsActive] AS [IsActive], 
+    [Project1].[C2] AS [C1], 
+    [Project1].[ProjectId] AS [ProjectId], 
+    [Project1].[UserId] AS [UserId], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[IsActive1] AS [IsActive1], 
+    [Project1].[CustomerId] AS [CustomerId], 
+    [Project1].[C1] AS [C2], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[IsActive2] AS [IsActive2], 
+    [Project1].[ProjectId1] AS [ProjectId1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FirstName] AS [FirstName], 
+        [Extent1].[LastName] AS [LastName], 
+        [Extent1].[Username] AS [Username], 
+        [Extent1].[Password] AS [Password], 
+        [Extent1].[IsAdmin] AS [IsAdmin], 
+        [Extent1].[IsActive] AS [IsActive], 
+        [Join2].[ProjectId1] AS [ProjectId], 
+        [Join2].[UserId] AS [UserId], 
+        [Join2].[Id1] AS [Id1], 
+        [Join2].[Name1] AS [Name], 
+        [Join2].[IsActive1] AS [IsActive1], 
+        [Join2].[CustomerId] AS [CustomerId], 
+        [Join2].[Id2] AS [Id2], 
+        [Join2].[Name2] AS [Name1], 
+        [Join2].[IsActive2] AS [IsActive2], 
+        [Join2].[ProjectId2] AS [ProjectId1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) WHEN ([Join2].[Id2] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1], 
+        CASE WHEN ([Join2].[ProjectId1] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C2]
+        FROM  [dbo].[Users] AS [Extent1]
+        LEFT OUTER JOIN  (SELECT [Extent2].[ProjectId] AS [ProjectId1], [Extent2].[UserId] AS [UserId], [Extent3].[Id] AS [Id1], [Extent3].[Name] AS [Name1], [Extent3].[IsActive] AS [IsActive1], [Extent3].[CustomerId] AS [CustomerId], [Extent4].[Id] AS [Id2], [Extent4].[Name] AS [Name2], [Extent4].[IsActive] AS [IsActive2], [Extent4].[ProjectId] AS [ProjectId2]
+            FROM   [dbo].[UserProject] AS [Extent2]
+            INNER JOIN [dbo].[Projects] AS [Extent3] ON [Extent3].[Id] = [Extent2].[ProjectId]
+            LEFT OUTER JOIN [dbo].[Activities] AS [Extent4] ON [Extent3].[Id] = [Extent4].[ProjectId] ) AS [Join2] ON [Extent1].[Id] = [Join2].[UserId]
+        WHERE [Extent1].[IsActive] = 1
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[C2] ASC, [Project1].[ProjectId] ASC, [Project1].[UserId] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+Log Time: 2016-12-23 14:38:08.1206
+User Agent: 
+ProcessTime: 00:04:58.844
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-23 17:05:29.7638
+User Agent: 
+ProcessTime: 00:10:01.320
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2016-12-23 18:23:30.6272
+User Agent: 
+ProcessTime: 00:24:47.626
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2016-12-23 18:26:16.4707
+User Agent: 
+ProcessTime: 00:27:33.469
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 14:21:08.8408
+User Agent: 
+ProcessTime: 00:03:12.576
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 14:24:14.4586
+User Agent: 
+ProcessTime: 00:06:18.194
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 14:25:59.4718
+User Agent: 
+ProcessTime: 00:08:03.207
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 16:13:15.5362
+User Agent: 
+ProcessTime: 00:03:32.473
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 16:13:16.7480
+User Agent: 
+ProcessTime: 00:03:33.684
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 16:52:57.6490
+User Agent: 
+ProcessTime: 00:22:24.284
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 16:52:58.9863
+User Agent: 
+ProcessTime: 00:22:25.621
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 16:53:56.7844
+User Agent: 
+ProcessTime: 00:23:23.419
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 16:55:46.8412
+User Agent: 
+ProcessTime: 00:25:13.476
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 17:07:14.4838
+User Agent: 
+ProcessTime: 00:02:29.987
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 17:09:31.3142
+User Agent: 
+ProcessTime: 00:04:46.817
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 17:20:29.6875
+User Agent: 
+ProcessTime: 00:01:53.665
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2016-12-26 17:26:58.5144
+User Agent: 
+ProcessTime: 00:08:22.492
+ 
+
+Attaching an entity of type 'TBT.DAL.Entities.User' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+Log Time: 2016-12-26 18:54:13.7241
+User Agent: 
+ProcessTime: 00:03:41.087
+ 
+
+Attaching an entity of type 'TBT.DAL.Entities.User' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+Log Time: 2016-12-26 18:58:46.9616
+User Agent: 
+ProcessTime: 00:02:10.385
+ 
+
+Attaching an entity of type 'TBT.DAL.Entities.User' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+Log Time: 2016-12-26 19:01:18.8235
+User Agent: 
+ProcessTime: 00:00:52.302
+ 
+
+Attaching an entity of type 'TBT.DAL.Entities.User' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+Log Time: 2016-12-26 19:03:53.7842
+User Agent: 
+ProcessTime: 00:03:27.262
+ 
+
+The object cannot be detached because it is not attached to the ObjectStateManager.
+Log Time: 2016-12-26 19:10:50.7285
+User Agent: 
+ProcessTime: 00:01:43.242
+ 
+
+The object cannot be detached because it is not attached to the ObjectStateManager.
+Log Time: 2016-12-26 19:11:13.3290
+User Agent: 
+ProcessTime: 00:02:05.842
+ 
+
+Attaching an entity of type 'TBT.DAL.Entities.User' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+Log Time: 2016-12-26 19:15:34.0159
+User Agent: 
+ProcessTime: 00:03:38.117
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-01-18 11:40:54.7416
+User Agent: 
+ProcessTime: 00:09:40.222
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-01-18 11:40:54.7416
+User Agent: 
+ProcessTime: 00:09:40.222
+ 
+
+The operation was canceled.
+Log Time: 2017-03-31 11:02:35.4977
+User Agent: 
+ProcessTime: 00:23:36.335
+ 
+
+A task was canceled.
+Log Time: 2017-03-31 11:02:35.4543
+User Agent: 
+ProcessTime: 00:23:36.292
+ 
+
+A task was canceled.
+Log Time: 2017-03-31 11:02:35.4543
+User Agent: 
+ProcessTime: 00:23:36.292
+ 
+
+A task was canceled.
+Log Time: 2017-04-03 13:42:13.5088
+User Agent: 
+ProcessTime: 00:00:02.224
+ 
+
+A task was canceled.
+Log Time: 2017-04-03 13:42:13.5088
+User Agent: 
+ProcessTime: 00:00:02.224
+ 
+
+A task was canceled.
+Log Time: 2017-05-10 12:04:20.0383
+User Agent: 
+ProcessTime: 00:00:00.814
+ 
+
+A task was canceled.
+Log Time: 2017-05-10 12:04:20.0383
+User Agent: 
+ProcessTime: 00:00:00.814
+ 
+
+A task was canceled.
+Log Time: 2017-05-10 12:04:20.0383
+User Agent: 
+ProcessTime: 00:00:00.814
+ 
+
+A task was canceled.
+Log Time: 2017-05-10 12:04:20.0944
+User Agent: 
+ProcessTime: 00:00:00.870
+ 
+
+A task was canceled.
+Log Time: 2017-05-19 10:08:46.1955
+User Agent: 
+ProcessTime: 00:00:26.406
+ 
+
+A task was canceled.
+Log Time: 2017-05-19 10:08:46.1955
+User Agent: 
+ProcessTime: 00:00:26.406
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 15:58:54.8501
+User Agent: 
+ProcessTime: 00:11:25.668
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:00:18.5935
+User Agent: 
+ProcessTime: 00:01:14.822
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:04:46.2991
+User Agent: 
+ProcessTime: 00:01:27.067
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:05:03.1400
+User Agent: 
+ProcessTime: 00:01:43.908
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:10:59.9976
+User Agent: 
+ProcessTime: 00:00:38.617
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:15:03.4517
+User Agent: 
+ProcessTime: 00:00:38.223
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:18:23.8744
+User Agent: 
+ProcessTime: 00:03:58.645
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:21:20.3794
+User Agent: 
+ProcessTime: 00:06:55.150
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:21:44.5976
+User Agent: 
+ProcessTime: 00:07:19.368
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:27:51.3500
+User Agent: 
+ProcessTime: 00:02:14.402
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:29:22.9083
+User Agent: 
+ProcessTime: 00:03:45.960
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:34:28.0384
+User Agent: 
+ProcessTime: 00:08:51.090
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:36:46.1352
+User Agent: 
+ProcessTime: 00:01:52.407
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:38:50.1786
+User Agent: 
+ProcessTime: 00:03:56.451
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:45:30.7917
+User Agent: 
+ProcessTime: 00:10:37.064
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:46:54.7411
+User Agent: 
+ProcessTime: 00:12:01.013
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:48:33.4496
+User Agent: 
+ProcessTime: 00:01:21.869
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:53:11.2067
+User Agent: 
+ProcessTime: 00:05:59.626
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:54:42.2626
+User Agent: 
+ProcessTime: 00:07:30.682
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:54:42.2956
+User Agent: 
+ProcessTime: 00:07:30.715
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:54:53.8044
+User Agent: 
+ProcessTime: 00:07:42.223
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 16:59:21.0940
+User Agent: 
+ProcessTime: 00:12:09.513
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-07-24 17:06:40.6236
+User Agent: 
+ProcessTime: 00:19:29.043
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 11:34:39.8411
+User Agent: 
+ProcessTime: 00:45:18.319
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 11:34:39.8411
+User Agent: 
+ProcessTime: 00:45:18.319
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 11:34:39.8411
+User Agent: 
+ProcessTime: 00:45:18.319
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 11:34:39.8411
+User Agent: 
+ProcessTime: 00:45:18.319
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 11:34:39.8596
+User Agent: 
+ProcessTime: 00:45:18.337
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-07-25 14:09:44.6880
+User Agent: 
+ProcessTime: 01:53:14.946
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-07-25 14:14:44.2419
+User Agent: 
+ProcessTime: 01:58:14.500
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-07-25 14:21:23.1663
+User Agent: 
+ProcessTime: 02:04:53.425
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 16:24:12.1677
+User Agent: 
+ProcessTime: 00:27:58.245
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 16:33:35.5306
+User Agent: 
+ProcessTime: 00:37:21.608
+ 
+
+The operation was canceled.
+Log Time: 2017-07-25 16:35:21.4195
+User Agent: 
+ProcessTime: 00:39:07.497
+ 
+
+A task was canceled.
+Log Time: 2017-07-25 16:41:01.1819
+User Agent: 
+ProcessTime: 00:44:47.259
+ 
+
+The operation was canceled.
+Log Time: 2017-07-25 16:56:16.7553
+User Agent: 
+ProcessTime: 01:00:02.832
+ 
+
+A task was canceled.
+Log Time: 2017-07-26 10:28:08.6825
+User Agent: 
+ProcessTime: 00:25:05.733
+ 
+
+A task was canceled.
+Log Time: 2017-07-26 10:30:11.0426
+User Agent: 
+ProcessTime: 00:27:08.093
+ 
+
+A task was canceled.
+Log Time: 2017-07-26 16:26:23.9543
+User Agent: 
+ProcessTime: 00:17:42.065
+ 
+
+The operation was canceled.
+Log Time: 2017-07-26 16:28:36.1397
+User Agent: 
+ProcessTime: 00:19:54.250
+ 
+
+A task was canceled.
+Log Time: 2017-07-26 18:32:57.1787
+User Agent: 
+ProcessTime: 00:57:21.902
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 08:47:47.3085
+User Agent: 
+ProcessTime: 00:25:29.362
+ 
+
+The operation was canceled.
+Log Time: 2017-07-27 09:21:51.1434
+User Agent: 
+ProcessTime: 00:59:33.197
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 09:26:08.2620
+User Agent: 
+ProcessTime: 01:03:50.316
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 09:33:53.5745
+User Agent: 
+ProcessTime: 01:11:35.628
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 09:37:03.3904
+User Agent: 
+ProcessTime: 01:14:45.444
+ 
+
+The operation was canceled.
+Log Time: 2017-07-27 09:39:26.3310
+User Agent: 
+ProcessTime: 01:17:08.385
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 09:40:06.7558
+User Agent: 
+ProcessTime: 01:17:48.809
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 09:40:35.2998
+User Agent: 
+ProcessTime: 01:18:17.353
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 10:06:49.6740
+User Agent: 
+ProcessTime: 01:44:31.728
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 10:13:18.0332
+User Agent: 
+ProcessTime: 01:51:00.087
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 10:14:47.5812
+User Agent: 
+ProcessTime: 01:52:29.635
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 11:45:15.0018
+User Agent: 
+ProcessTime: 03:22:57.055
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 11:55:01.2861
+User Agent: 
+ProcessTime: 03:32:43.340
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 12:01:56.5498
+User Agent: 
+ProcessTime: 03:39:38.603
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 12:03:21.5222
+User Agent: 
+ProcessTime: 03:41:03.576
+ 
+
+The operation was canceled.
+Log Time: 2017-07-27 12:38:38.8610
+User Agent: 
+ProcessTime: 04:16:20.915
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 12:44:39.7002
+User Agent: 
+ProcessTime: 04:22:21.754
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 12:44:40.3571
+User Agent: 
+ProcessTime: 04:22:22.411
+ 
+
+The operation was canceled.
+Log Time: 2017-07-27 12:47:25.3525
+User Agent: 
+ProcessTime: 04:25:07.406
+ 
+
+A task was canceled.
+Log Time: 2017-07-27 12:48:00.6769
+User Agent: 
+ProcessTime: 04:25:42.730
+ 
+
+A task was canceled.
+Log Time: 2017-07-28 13:31:54.7098
+User Agent: 
+ProcessTime: 00:32:14.674
+ 
+
+The operation was canceled.
+Log Time: 2017-07-28 13:34:14.7037
+User Agent: 
+ProcessTime: 00:34:34.668
+ 
+
+A task was canceled.
+Log Time: 2017-07-28 13:53:09.8387
+User Agent: 
+ProcessTime: 00:53:29.803
+ 
+
+The operation was canceled.
+Log Time: 2017-07-28 15:07:08.8064
+User Agent: 
+ProcessTime: 00:05:56.813
+ 
+
+A task was canceled.
+Log Time: 2017-07-28 15:20:20.9772
+User Agent: 
+ProcessTime: 00:19:08.984
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2017-08-08 12:01:16.6478
+User Agent: 
+ProcessTime: 01:53:16.019
+ 
+
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+Log Time: 2017-08-08 17:14:03.0860
+User Agent: 
+ProcessTime: 07:06:02.457
+ 
+
