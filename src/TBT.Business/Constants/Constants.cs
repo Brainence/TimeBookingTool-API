@@ -1,4 +1,6 @@
-﻿using TBT.Business.EmailService.Models;
+﻿using System;
+using System.Configuration;
+using TBT.Business.EmailService.Models;
 
 namespace TBT.Business.Constants
 {
@@ -20,13 +22,27 @@ namespace TBT.Business.Constants
         {
             DefaultSmtpSettings = new SmtpSettings()
             {
-                Username = "timebrainence@gmail.com",
-                Password = "brainence!",
-                Port = 587,
-                Server = "smtp.gmail.com",
-                UseSsl = true
+                Username = ConfigurationManager.AppSettings[Constants.SmtpUsername],
+                Password = ConfigurationManager.AppSettings[Constants.SmtpPassword],
+                Port = Convert.ToInt32(ConfigurationManager.AppSettings[Constants.SmtpPort]),
+                Server = ConfigurationManager.AppSettings[Constants.SmtpServer],
+                UseSsl = Convert.ToBoolean(ConfigurationManager.AppSettings[Constants.SmtpUseSsl])
+                //Username = "timebrainence@gmail.com",
+                //Password = "brainence!",
+                //Port = 587,
+                //Server = "smtp.gmail.com",
+                //UseSsl = true
             };
         }
+    }
+
+    public class Constants
+    {
+        public static string SmtpUsername => "SmtpUsername";
+        public static string SmtpPassword => "SmtpPassword";
+        public static string SmtpPort => "SmtpPort";
+        public static string SmtpServer => "SmtpServer";
+        public static string SmtpUseSsl => "SmtpUseSsl";
     }
 
 }

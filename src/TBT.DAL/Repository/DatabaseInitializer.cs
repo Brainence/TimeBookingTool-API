@@ -10,10 +10,10 @@ namespace TBT.DAL.Repository
         {
             context.Users.Add(new User()
             {
-                FirstName = "Vasyl",
-                LastName = "Malanii",
+                FirstName = "Sergey",
+                LastName = "Chujko",
                 Password = new PasswordHasher().HashPassword("brainence!"),
-                Username = "vmalanii@brainence.com",
+                Username = "schuiko@brainence.com",
                 IsAdmin = true,
                 IsActive = true
             });

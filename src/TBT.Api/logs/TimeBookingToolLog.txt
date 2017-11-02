@@ -998,3 +998,518 @@ User Agent:
 ProcessTime: 07:06:02.457
  
 
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 11:53:12.6962
+User Agent: 
+ProcessTime: 00:02:39.518
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 11:54:04.3906
+User Agent: 
+ProcessTime: 00:03:31.213
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 12:15:15.9564
+User Agent: 
+ProcessTime: 00:24:42.778
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 14:34:38.5896
+User Agent: 
+ProcessTime: 02:44:05.412
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 14:34:39.3577
+User Agent: 
+ProcessTime: 02:44:06.180
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 14:35:55.5466
+User Agent: 
+ProcessTime: 02:45:22.369
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 15:05:17.3636
+User Agent: 
+ProcessTime: 03:14:44.186
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 15:05:36.7159
+User Agent: 
+ProcessTime: 03:15:03.538
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 15:07:14.6281
+User Agent: 
+ProcessTime: 03:16:41.450
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 15:09:02.4021
+User Agent: 
+ProcessTime: 03:18:29.224
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-10 15:11:03.7124
+User Agent: 
+ProcessTime: 03:20:30.534
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+A task was canceled.
+Log Time: 2017-10-10 17:10:43.8092
+User Agent: 
+ProcessTime: 00:00:13.798
+ 
+
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+Log Time: 2017-10-11 11:19:08.7761
+User Agent: 
+ProcessTime: 00:00:26.868
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpTransport.EndSendMail(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at TBT.Business.EmailService.Implementations.BaseEmailSevice.<SendMailAsync>d__10.MoveNext() in E:\GitHub\TimeBookingTool-API\src\TBT.Business.EmailService\Implementations\BaseEmailSevice.cs:line 56 | ExecutionContext.RunInternal => <SendMailAsync>d__10.MoveNext => LogManager.Error 
+
+The specified string is not in the form required for an e-mail address.
+Log Time: 2017-10-12 11:32:12.0518
+User Agent: 
+ProcessTime: 20:19:12.544
+ 
+
+A task was canceled.
+Log Time: 2017-10-12 12:20:12.2513
+User Agent: 
+ProcessTime: 00:00:00.782
+ 
+
+A task was canceled.
+Log Time: 2017-10-12 13:14:35.4696
+User Agent: 
+ProcessTime: 00:00:03.143
+ 
+
+A task was canceled.
+Log Time: 2017-10-12 15:14:35.9972
+User Agent: 
+ProcessTime: 00:06:20.311
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 12:53:55.2434
+User Agent: 
+ProcessTime: 00:01:32.348
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 12:54:43.6798
+User Agent: 
+ProcessTime: 00:02:20.784
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 12:55:41.5079
+User Agent: 
+ProcessTime: 00:03:18.613
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 12:59:28.7737
+User Agent: 
+ProcessTime: 00:07:05.878
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 13:00:08.2202
+User Agent: 
+ProcessTime: 00:07:45.325
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 13:02:13.1229
+User Agent: 
+ProcessTime: 00:09:50.228
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 13:07:26.8808
+User Agent: 
+ProcessTime: 00:01:19.346
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 13:09:10.7149
+User Agent: 
+ProcessTime: 00:00:47.771
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 13:11:15.6201
+User Agent: 
+ProcessTime: 00:00:37.726
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 13:14:54.0103
+User Agent: 
+ProcessTime: 00:04:16.116
+ 
+
+Value cannot be null.
+Parameter name: address
+Log Time: 2017-10-17 13:16:15.7158
+User Agent: 
+ProcessTime: 00:05:37.821
+ 
+
+Object reference not set to an instance of an object.
+Log Time: 2017-10-18 16:46:54.6826
+User Agent: 
+ProcessTime: 00:00:02.923
+ 
+
+Object reference not set to an instance of an object.
+Log Time: 2017-10-18 17:09:07.5568
+User Agent: 
+ProcessTime: 00:00:01.938
+ 
+
+Object reference not set to an instance of an object.
+Log Time: 2017-10-18 17:11:39.2405
+User Agent: 
+ProcessTime: 00:02:33.621
+ 
+
+Object reference not set to an instance of an object.
+Log Time: 2017-10-18 17:12:15.1841
+User Agent: 
+ProcessTime: 00:03:09.565
+ 
+
+Object reference not set to an instance of an object.
+Log Time: 2017-10-18 17:13:22.0194
+User Agent: 
+ProcessTime: 00:04:16.400
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-21 22:47:21.1932
+User Agent: 
+ProcessTime: 00:31:55.651
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-21 22:47:26.7409
+User Agent: 
+ProcessTime: 00:32:01.199
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-24 19:44:05.9055
+User Agent: 
+ProcessTime: 01:42:16.184
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-24 19:44:30.5928
+User Agent: 
+ProcessTime: 01:42:40.871
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-24 19:44:52.8495
+User Agent: 
+ProcessTime: 01:43:03.128
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-24 19:45:11.3724
+User Agent: 
+ProcessTime: 01:43:21.651
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:48:25.5775
+User Agent: 
+ProcessTime: 01:46:35.856
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:48:25.7431
+User Agent: 
+ProcessTime: 01:46:36.021
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:48:25.7431
+User Agent: 
+ProcessTime: 01:46:36.021
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:48:25.7431
+User Agent: 
+ProcessTime: 01:46:36.021
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:48:25.7431
+User Agent: 
+ProcessTime: 01:46:36.021
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:53:37.3360
+User Agent: 
+ProcessTime: 01:51:47.614
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:56:19.8196
+User Agent: 
+ProcessTime: 01:54:30.098
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:56:20.0833
+User Agent: 
+ProcessTime: 01:54:30.362
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:56:20.0833
+User Agent: 
+ProcessTime: 01:54:30.362
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:56:20.0973
+User Agent: 
+ProcessTime: 01:54:30.376
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 19:56:20.0973
+User Agent: 
+ProcessTime: 01:54:30.376
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 20:05:38.3393
+User Agent: 
+ProcessTime: 02:03:48.618
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 20:05:38.3393
+User Agent: 
+ProcessTime: 02:03:48.618
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 20:05:38.3683
+User Agent: 
+ProcessTime: 02:03:48.647
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 20:05:38.3683
+User Agent: 
+ProcessTime: 02:03:48.647
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 20:05:38.3683
+User Agent: 
+ProcessTime: 02:03:48.647
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 20:05:38.3683
+User Agent: 
+ProcessTime: 02:03:48.647
+ 
+
+A task was canceled.
+Log Time: 2017-10-24 20:30:59.1153
+User Agent: 
+ProcessTime: 02:29:09.394
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-30 15:18:42.2656
+User Agent: 
+ProcessTime: 00:57:18.335
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-30 15:18:46.1376
+User Agent: 
+ProcessTime: 00:57:22.207
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-10-30 15:19:01.6131
+User Agent: 
+ProcessTime: 00:57:37.683
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-10-30 15:19:05.3789
+User Agent: 
+ProcessTime: 00:57:41.448
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-10-30 15:19:38.5713
+User Agent: 
+ProcessTime: 00:58:14.641
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-10-30 15:20:24.8402
+User Agent: 
+ProcessTime: 00:59:00.910
+ 
+
+Value cannot be null.
+Parameter name: entity
+Log Time: 2017-10-30 15:21:07.0041
+User Agent: 
+ProcessTime: 00:59:43.074
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-30 20:41:09.0554
+User Agent: 
+ProcessTime: 00:20:41.968
+ 
+
+An error occurred while updating the entries. See the inner exception for details.
+Log Time: 2017-10-30 20:48:53.1598
+User Agent: 
+ProcessTime: 00:28:26.072
+ 
+
+Value cannot be null.
+Parameter name: password
+Log Time: 2017-10-30 20:59:56.5162
+User Agent: 
+ProcessTime: 00:39:29.428
+ 
+

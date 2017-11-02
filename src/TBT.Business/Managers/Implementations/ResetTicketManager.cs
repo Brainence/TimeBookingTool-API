@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Configuration;
+using System.Globalization;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using TBT.Business.EmailService.Interfaces;
