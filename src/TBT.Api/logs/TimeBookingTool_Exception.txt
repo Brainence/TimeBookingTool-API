@@ -52,3 +52,12 @@ Method: <StartAsync>d__8
 Parameter: 1168
 Log Time: 2017-11-11 03:17:20.1981
 
+A task was canceled.
+Log Time: 2017-11-16 00:18:09.1540
+
+A task was canceled.
+Log Time: 2017-11-16 00:18:09.1540
+
+A task was canceled.
+Log Time: 2017-11-16 00:18:09.1540
+

@@ -10,5 +10,10 @@ namespace TBT.Business.Models.BusinessModels
         public string Token { get; set; }
         public DateTime ExpirationDate { get; set; }
         public bool IsUsed { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Id={Id}, Username={Username}, Token={Token}, ExpirationDate={ExpirationDate.ToString()}, IsUsed={IsUsed} }}";
+        }
     }
 }

@@ -39,7 +39,7 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.Description = "Service refreshes running activities in 24 00.";
+            this.serviceInstaller1.Description = "Service refreshes running activities at 24 00.";
             this.serviceInstaller1.DisplayName = "Activites refresher service.";
             this.serviceInstaller1.ServiceName = "ActivityRefresherService";
             this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
