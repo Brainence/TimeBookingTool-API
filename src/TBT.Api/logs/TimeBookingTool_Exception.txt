@@ -61,3 +61,388 @@ Log Time: 2017-11-16 00:18:09.1540
 A task was canceled.
 Log Time: 2017-11-16 00:18:09.1540
 
+RequestUri:http://localhost/tbt/api/TimeEntry/GetDuration/1/20171031T220000/20171129T220000
+Content: 
+Returns: "00:26:37.0723015"
+
+Log Time: 2017-11-08 12:58:04.1787
+StackTrace:AsyncTaskMethodBuilder`1.Start => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry
+Content: 
+Returns: {"Id":1190,"User":{"Id":1,"FirstName":null,"LastName":null,"Username":null,"Password":null,"IsAdmin":false,"IsActive":true,"Projects":[],"TimeEntries":[],"TimeLimit":null,"CurrentTimeZone":null},"Activity":{"Id":2,"Name":null,"IsActive":true,"Project":null,"ProjectId":null},"Duration":"00:00:00","Date":"2017-11-08T10:58:04.2953057Z","IsActive":true,"IsRunning":false,"Comment":null,"TimeLimit":null,"LastUpdated":null,"UserId":0,"ActivityId":0}
+
+Log Time: 2017-11-08 12:58:05.3671
+StackTrace:ExecutionContext.RunInternal => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/Start/1190
+Content: 
+Returns: true
+
+Log Time: 2017-11-08 12:58:05.5598
+StackTrace:ExecutionContext.RunInternal => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/GetByUser/1/20171107T220000/20171107T220000
+Content: 
+Returns: [{"Id":1187,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:01:04.5933137","Date":"2017-11-08T10:11:17.707","IsActive":true,"IsRunning":false,"Comment":null,"TimeLimit":null,"LastUpdated":"2017-11-08T10:11:22.903","UserId":1,"ActivityId":2},{"Id":1188,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:00:09.9205130","Date":"2017-11-08T10:12:37.243","IsActive":true,"IsRunning":false,"Comment":"","TimeLimit":null,"LastUpdated":"2017-11-08T10:12:39.237","UserId":1,"ActivityId":2},{"Id":1189,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:25:22.5584748","Date":"2017-11-08T10:30:53.897","IsActive":true,"IsRunning":false,"Comment":null,"TimeLimit":null,"LastUpdated":"2017-11-08T10:52:45.21","UserId":1,"ActivityId":2},{"Id":1190,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:00:00.6787746","Date":"2017-11-08T10:58:04.297","IsActive":true,"IsRunning":true,"Comment":null,"TimeLimit":null,"LastUpdated":"2017-11-08T10:58:06.2057746Z","UserId":1,"ActivityId":2}]
+
+Log Time: 2017-11-08 12:58:06.7762
+StackTrace:ExecutionContext.RunInternal => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/GetDuration/1/20171105T220000/20171111T220000
+Content: 
+Returns: "00:26:37.0723015"
+
+Log Time: 2017-11-08 12:58:07.0220
+StackTrace:AsyncTaskMethodBuilder`1.Start => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/GetByUser/1/20171107T220000/20171107T220000
+Content: 
+Returns: [{"Id":1187,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:01:04.5933137","Date":"2017-11-08T10:11:17.707","IsActive":true,"IsRunning":false,"Comment":null,"TimeLimit":null,"LastUpdated":"2017-11-08T10:11:22.903","UserId":1,"ActivityId":2},{"Id":1188,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:00:09.9205130","Date":"2017-11-08T10:12:37.243","IsActive":true,"IsRunning":false,"Comment":"","TimeLimit":null,"LastUpdated":"2017-11-08T10:12:39.237","UserId":1,"ActivityId":2},{"Id":1189,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:25:22.5584748","Date":"2017-11-08T10:30:53.897","IsActive":true,"IsRunning":false,"Comment":null,"TimeLimit":null,"LastUpdated":"2017-11-08T10:52:45.21","UserId":1,"ActivityId":2},{"Id":1190,"User":{"Id":1,"FirstName":"Serhii","LastName":"Chujko","Username":"schuiko@brainence.com","Password":null,"IsAdmin":true,"IsActive":true,"Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":3,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":16,"Name":"123123123123","IsActive":true,"ProjectId":3},{"Id":17,"Name":"qwe","IsActive":true,"ProjectId":3}],"Users":null,"Customer":null,"CustomerId":6},{"Id":4,"Name":"123123","IsActive":true,"Activities":[{"Id":5,"Name":"Task5","IsActive":true,"ProjectId":4}],"Users":null,"Customer":null,"CustomerId":1},{"Id":5,"Name":"Test project","IsActive":true,"Activities":[{"Id":21,"Name":"0875608743256","IsActive":true,"ProjectId":5},{"Id":23,"Name":"test task","IsActive":true,"ProjectId":5}],"Users":null,"Customer":null,"CustomerId":19},{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":2,"Name":"Task2","IsActive":true,"ProjectId":1},{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},{"Id":7,"Name":"12312312123123123121221312312312312321","IsActive":true,"Activities":[{"Id":12,"Name":"123345678","IsActive":true,"ProjectId":7},{"Id":15,"Name":"Test task","IsActive":true,"ProjectId":7},{"Id":19,"Name":"?????????????????????????","IsActive":true,"ProjectId":7},{"Id":20,"Name":"??????????????????????","IsActive":true,"ProjectId":7}],"Users":null,"Customer":null,"CustomerId":1}],"TimeEntries":null,"TimeLimit":99999999,"CurrentTimeZone":"02:00:00"},"Activity":{"Id":2,"Name":"Task2","IsActive":true,"Project":{"Id":1,"Name":"Dummy project","IsActive":true,"Activities":[{"Id":3,"Name":"Task3","IsActive":true,"ProjectId":1},{"Id":4,"Name":"Task4","IsActive":true,"ProjectId":1},{"Id":8,"Name":"12334","IsActive":true,"ProjectId":1},{"Id":9,"Name":"123345","IsActive":true,"ProjectId":1},{"Id":10,"Name":"1233456","IsActive":true,"ProjectId":1},{"Id":11,"Name":"12334567","IsActive":true,"ProjectId":1},{"Id":13,"Name":"1233456789","IsActive":true,"ProjectId":1},{"Id":22,"Name":"8473480763458346503465340857635083746534875345353453453535435345","IsActive":true,"ProjectId":1}],"Users":null,"Customer":{"Id":4,"Name":"123333","Projects":[{"Id":6,"Name":"12312342342234234","IsActive":true,"Activities":[{"Id":1,"Name":"Task1","IsActive":true,"ProjectId":6},{"Id":7,"Name":"Test task 111111","IsActive":true,"ProjectId":6},{"Id":18,"Name":"111","IsActive":true,"ProjectId":6}],"Users":null,"CustomerId":4}],"IsActive":true},"CustomerId":4},"ProjectId":1},"Duration":"00:00:01.4277943","Date":"2017-11-08T10:58:04.297","IsActive":true,"IsRunning":true,"Comment":null,"TimeLimit":null,"LastUpdated":"2017-11-08T10:58:06.9560197Z","UserId":1,"ActivityId":2}]
+
+Log Time: 2017-11-08 12:58:07.2895
+StackTrace:ExecutionContext.RunInternal => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/GetDuration/1/20171031T220000/20171129T220000
+Content: 
+Returns: "00:26:37.0723015"
+
+Log Time: 2017-11-08 12:58:07.5596
+StackTrace:AsyncTaskMethodBuilder`1.Start => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/GetDuration/1/20171031T220000/20171129T220000
+Content: 
+Returns: "00:26:37.0723015"
+
+Log Time: 2017-11-08 12:58:07.5596
+StackTrace:AsyncTaskMethodBuilder`1.Start => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/GetDuration/1/20171031T220000/20171129T220000
+Content: 
+Returns: "00:26:37.0723015"
+
+Log Time: 2017-11-08 12:58:07.6601
+StackTrace:AsyncTaskMethodBuilder`1.Start => <SendAsync>d__2.MoveNext => LogManager.Error
+
+RequestUri:http://localhost/tbt/api/TimeEntry/GetDuration/1/20171031T220000/20171129T220000
+Content: 
+Returns: "00:26:37.0723015"
+
+Log Time: 2017-11-08 12:58:07.7162
+StackTrace:AsyncTaskMethodBuilder`1.Start => <SendAsync>d__2.MoveNext => LogManager.Error
+
+NEW TEST EXCEPTION 
+Thrown by: MoveNext
+Log Time: 2017-11-08 14:56:58.4864
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+NEW TEST EXCEPTION 
+Thrown by: <StartAsync>d__8
+Log Time: 2017-11-08 14:59:15.0212
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+NEW TEST EXCEPTION 
+Thrown by: <StartAsync>d__8
+Log Time: 2017-11-08 14:59:15.0212
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: SqlInternalConnectionTds
+Log Time: 2017-11-08 15:04:31.6653
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: SqlInternalConnectionTds
+Log Time: 2017-11-08 15:05:00.8646
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: SqlInternalConnectionTds
+Log Time: 2017-11-08 15:06:14.2616
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:43.8766
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8766
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A task was canceled. 
+Thrown by: TaskAwaiter
+Log Time: 2017-11-08 15:06:43.8871
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:43.9137
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:43.9337
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:43.9542
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:43.9762
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:43.9972
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.0202
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.0427
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.0828
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.1028
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.1223
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.1433
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.1638
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.2049
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:06:44.2639
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: SqlInternalConnectionTds
+Log Time: 2017-11-08 15:09:22.5569
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.6266
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.6476
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.6701
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.7117
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.8112
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.8323
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.8533
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:51.9777
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.1328
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.1528
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.1718
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.2198
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.2418
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.2744
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.2944
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.3139
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.3329
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.3524
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.3719
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.3925
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.4125
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.4320
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.4705
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.6937
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.7147
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.7607
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.7807
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.8002
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.8208
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.8408
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) The system cannot find the file specified
+Thrown by: DbConnectionPool
+Log Time: 2017-11-08 15:09:52.8613
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+

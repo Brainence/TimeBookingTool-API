@@ -34,55 +34,55 @@ namespace TBT.Business.Managers.Implementations
 
         public UserModel GetByEmail(string email)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<User, UserModel>(
                      UnitOfWork.Users.GetByEmail(email));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {email}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {email}");
+            //    return null;
+            //}
         }
 
         public async Task<List<UserModel>> GetByProjectAsync(int projectId)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
                      await UnitOfWork.Users.GetByProjectAsync(projectId));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {projectId}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {projectId}");
+            //    return null;
+            //}
         }
 
         public override Task<int> AddAsync(UserModel model)
         {
-            try
-            {
+            //try
+            //{
                 model.Password = PasswordHelpers.HashPassword(model.Password);
                 var result = base.AddAsync(model);
                 model.Password = string.Empty;
                 return result;
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
+            //    return null;
+            //}
         }
 
         public override async Task UpdateAsync(UserModel model)
         {
-            try
-            {
+            //try
+            //{
                 var user = await Repository.GetAsync(model.Id);
 
                 if (user != null) model.Password = user.Password;
@@ -93,41 +93,41 @@ namespace TBT.Business.Managers.Implementations
                 await Repository.UpdateAsync(ObjectMapper.Map<UserModel, User>(model));
 
                 await UnitOfWork.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
+            //}
         }
 
         public async Task<bool> IsPasswordValid(int userId, string password)
         {
-            try
-            {
+            //try
+            //{
                 return await UnitOfWork.Users.IsPasswordValid(userId, password);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: userId={userId}; password={password}");
-                return false;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: userId={userId}; password={password}");
+            //    return false;
+            //}
         }
 
         public async Task ChangePassword(int userId, string oldPassword, string newPassword)
         {
-            try
-            {
+            //try
+            //{
                 await UnitOfWork.Users.ChangePassword(userId, oldPassword, newPassword);
 
                 await UnitOfWork.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: userId={userId}; oldPassword={oldPassword}; newPassword={newPassword}");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: userId={userId}; oldPassword={oldPassword}; newPassword={newPassword}");
+            //}
         }
 
         #endregion

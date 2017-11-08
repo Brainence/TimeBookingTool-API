@@ -36,38 +36,38 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<ActivityModel> GetByName(string name, int projectId)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<Activity, ActivityModel>(
                      await UnitOfWork.Activities.GetByName(name, projectId));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: name={name}; projectId={projectId}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: name={name}; projectId={projectId}");
+            //    return null;
+            //}
         }
 
         public async Task<List<ActivityModel>> GetByProjectAsync(int id)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<Activity>, List<ActivityModel>>(
                      await UnitOfWork.Activities.GetByProjectAsync(id));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {id}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {id}");
+            //    return null;
+            //}
         }
 
         public async override Task UpdateAsync(ActivityModel model)
         {
-            try
-            {
+            //try
+            //{
                 if (model.Project == null)
                 {
                     var activity = await UnitOfWork.Activities.GetAsync(model.Id);
@@ -80,12 +80,12 @@ namespace TBT.Business.Managers.Implementations
                 }
 
                 await base.UpdateAsync(model);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
+            //}
         }
         #endregion
     }

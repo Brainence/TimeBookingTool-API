@@ -7,6 +7,7 @@ using TBT.Business.Exceptions;
 using TBT.WebApi.Exceptions;
 using TBT.Components.Interfaces.Logger;
 using TBT.Business.Infrastructure.CastleWindsor;
+using System.Linq;
 
 namespace TBT.WebApi.Common.Filters
 {
@@ -67,7 +68,9 @@ namespace TBT.WebApi.Common.Filters
                     HttpStatusCode.InternalServerError);
             }
 
-            _logManager.Error(context.Exception.Message, context.Exception);
+            _logManager.Error(context.Exception, $"{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.ReflectedType.Name}");
+            //_logManager.Error(context.Exception, $"{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.Name}");
+            //_logManager.Error(context.Exception.Message, context.Exception);
 
             return base.OnExceptionAsync(context, cancellationToken);
         }

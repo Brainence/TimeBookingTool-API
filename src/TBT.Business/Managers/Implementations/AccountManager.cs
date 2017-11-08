@@ -30,17 +30,17 @@ namespace TBT.Business.Managers.Implementations
 
         public Account GetByEmail(string email)
         {
-            try
-            {
+            //try
+            //{
                 var x = UnitOfWork.Users.GetByEmail(email);
                 return ObjectMapper.Map<User, Account>(x);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {email}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {email}");
+            //    return null;
+            //}
         }
 
         #endregion

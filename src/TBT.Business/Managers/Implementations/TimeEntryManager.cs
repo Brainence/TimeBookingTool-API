@@ -37,186 +37,186 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string date)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                      await UnitOfWork.TimeEntries.GetByUserAsync(userId, date));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; date={date}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; date={date}");
+            //    return null;
+            //}
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string from, string to)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                      await UnitOfWork.TimeEntries.GetByUserAsync(userId, from, to));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}; to={to}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}; to={to}");
+            //    return null;
+            //}
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, bool isRunning)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                     await UnitOfWork.TimeEntries.GetByUserAsync(userId, isRunning));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; isRunning={isRunning}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; isRunning={isRunning}");
+            //    return null;
+            //}
         }
 
         public async Task<List<TimeEntryModel>> GetByUserFromAsync(int userId, string from)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                     await UnitOfWork.TimeEntries.GetByUserFromAsync(userId, from));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}");
+            //    return null;
+            //}
         }
 
         public async Task<List<TimeEntryModel>> GetByUserToAsync(int userId, string to)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                     await UnitOfWork.TimeEntries.GetByUserToAsync(userId, to));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; to={to}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; to={to}");
+            //    return null;
+            //}
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                     await UnitOfWork.TimeEntries.GetByUserAsync(userId));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {userId}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {userId}");
+            //    return null;
+            //}
         }
 
         public async Task<bool> StartAsync(int timeEntryId)
         {
-            try
-            {
+            //try
+            //{
                 var result = await UnitOfWork.TimeEntries.StartAsync(timeEntryId);
 
                 return await Task.FromResult(result);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
-                return false;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
+            //    return false;
+            //}
         }
 
         public async Task<bool> StopAsync(int timeEntryId)
         {
-            try
-            {
+            //try
+            //{
                 var result = await UnitOfWork.TimeEntries.StopAsync(timeEntryId);
 
                 return await Task.FromResult(result);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
-                return false;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
+            //    return false;
+            //}
         }
 
         public async Task<bool> RemoveAsync(int timeEntryId)
         {
-            try
-            {
+            //try
+            //{
                 var result = await UnitOfWork.TimeEntries.RemoveAsync(timeEntryId);
 
                 return await Task.FromResult(result);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
-                return false;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
+            //    return false;
+            //}
         }
 
         public async Task<bool> UpdateAsync(TimeEntryModel model, bool clientDuration = false)
         {
-            try
-            {
+            //try
+            //{
                 var result = await (Repository as ITimeEntryRepository).UpdateAsync(
                     ObjectMapper.Map<TimeEntryModel, TimeEntry>(model), clientDuration);
 
                 return await Task.FromResult(result);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: model={model.ToString()}; cleintDuration={clientDuration}");
-                return false;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: model={model.ToString()}; cleintDuration={clientDuration}");
+            //    return false;
+            //}
         }
 
         public async Task<TimeSpan?> GetDurationAsync(int userId, string from, string to)
         {
-            try
-            {
+            //try
+            //{
                 return await UnitOfWork.TimeEntries.GetDurationAsync(userId, from, to);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}; to={to}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}; to={to}");
+            //    return null;
+            //}
         }
 
         public async Task<List<TimeEntryModel>> GetByIsRunning(bool isRunning)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                     await UnitOfWork.TimeEntries.GetByIsRunning(isRunning));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: {isRunning}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: {isRunning}");
+            //    return null;
+            //}
         }
         #endregion
     }

@@ -30,23 +30,23 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<bool> ChangePassword(int userId, string newPassword, string token)
         {
-            try
-            {
+            //try
+            //{
                 newPassword = PasswordHelpers.HashPassword(newPassword);
                 return await UnitOfWork.ResetTickets.ChangePassword(userId, newPassword, token);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: userid={userId}; newpassword={newPassword}; token={token}");
-                return false;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameters: userid={userId}; newpassword={newPassword}; token={token}");
+            //    return false;
+            //}
         }
 
         public async Task<bool> CreateResetTicket(int userId)
         {
-            try
-            {
+            //try
+            //{
                 var resetTicket = await UnitOfWork.ResetTickets.CreateResetTicket(userId);
                 if (resetTicket == null) return false;
 
@@ -67,13 +67,13 @@ namespace TBT.Business.Managers.Implementations
 
                 var succeed = await emailService.SendMailAsync(emailMessage);
                 return succeed;
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {userId}");
-                return false;
-            }            
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {userId}");
+            //    return false;
+            //}            
         }
     }
 }

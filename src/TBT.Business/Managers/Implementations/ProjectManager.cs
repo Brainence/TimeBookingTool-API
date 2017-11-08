@@ -39,68 +39,68 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<ProjectModel>> GetByActivityAsync(int activityId)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
                      await UnitOfWork.Projects.GetByActivityAsync(activityId));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {activityId}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {activityId}");
+            //    return null;
+            //}
         }
 
         public async Task<List<ProjectModel>> GetByCustomerAsync(int customerId)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
                      await UnitOfWork.Projects.GetByCustomerAsync(customerId));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {customerId}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {customerId}");
+            //    return null;
+            //}
         }
 
         public async Task<ProjectModel> GetByName(string name)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<Project, ProjectModel>(
                     await UnitOfWork.Projects.GetByName(name));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {name}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {name}");
+            //    return null;
+            //}
         }
 
         public async Task<List<ProjectModel>> GetByUserAsync(int userId)
         {
-            try
-            {
+            //try
+            //{
                 return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
                      await UnitOfWork.Projects.GetByUserAsync(userId));
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {userId}");
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {userId}");
+            //    return null;
+            //}
         }
 
         public async override Task UpdateAsync(ProjectModel model)
         {
-            try
-            {
+            //try
+            //{
                 if (model.Customer == null)
                 {
                     var project = await UnitOfWork.Projects.GetAsync(model.Id);
@@ -113,12 +113,12 @@ namespace TBT.Business.Managers.Implementations
                 }
 
                 await base.UpdateAsync(model);
-            }
-            catch (Exception ex)
-            {
-                var x = MethodBase.GetCurrentMethod();
-                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    var x = MethodBase.GetCurrentMethod();
+            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
+            //}
         }
         #endregion
     }

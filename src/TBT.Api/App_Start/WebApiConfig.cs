@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Routing;
+using TBT.Api.Common;
 using TBT.WebApi.Common.Filters;
 
 namespace TBT.WebApi
@@ -21,6 +22,7 @@ namespace TBT.WebApi
 
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
+            config.MessageHandlers.Add(new MessageLogHandler());
             config.Filters.Add(new ExceptionFilter());
         }
     }

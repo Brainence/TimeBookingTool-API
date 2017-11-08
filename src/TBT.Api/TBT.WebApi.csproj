@@ -221,6 +221,7 @@
     <Compile Include="Common\Exceptions\ApiSecurityException.cs" />
     <Compile Include="Common\Exceptions\ApiValidationException.cs" />
     <Compile Include="Common\Filters\ExceptionFilterAttribute.cs" />
+    <Compile Include="Common\MessageLogHandler.cs" />
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\Base\BaseCrudApiController.cs" />
     <Compile Include="Controllers\Base\CrudApiController.cs" />
