@@ -13,7 +13,7 @@ namespace TBT.Business.Models.BusinessModels
 
         public override string ToString()
         {
-            return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Project={Project.ToString()} }}";
+            return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Project={Project?.ToString()} }}";
         }
     }
 }

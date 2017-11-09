@@ -23,7 +23,7 @@ namespace TBT.Business.Models.BusinessModels
         public override string ToString()
         {
             //return $"{{ Id={Id}, User={User.ToString()}, Activity={Activity.ToString()}, Duration={Duration.ToString()}, Date={Date.ToString()}, IsActive={IsActive}, IsRunning={IsRunning}, Comment={Comment}, TimeLimit={TimeLimit?.ToString()}, LastUpdated={LastUpdated?.ToString()} }}";
-            return $"{{ Id={Id}, User={User.ToString()}, Activity={Activity.ToString()}, Duration={Duration.ToString()}, Date={Date.ToString()}, IsActive={IsActive}, TimeLimit={TimeLimit?.ToString()}, LastUpdated={LastUpdated?.ToString()} }}";
+            return $"{{ Id={Id}, User={User?.ToString()}, Activity={Activity?.ToString()}, Duration={Duration.ToString()}, Date={Date.ToString()}, IsActive={IsActive}, TimeLimit={TimeLimit?.ToString()}, LastUpdated={LastUpdated?.ToString()} }}";
         }
     }
 }

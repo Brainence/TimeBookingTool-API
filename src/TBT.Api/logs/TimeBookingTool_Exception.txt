@@ -601,3 +601,76 @@ Thrown by: <GetAsync>d__1
 Log Time: 2017-11-09 18:22:10.0897
 StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
 
+The given key was not present in the dictionary. 
+Thrown by: ThrowHelper
+Log Time: 2017-11-09 20:25:25.0237
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+The given key was not present in the dictionary. 
+Thrown by: ThrowHelper
+Log Time: 2017-11-09 20:25:25.0393
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+The given key was not present in the dictionary. 
+Thrown by: ThrowHelper
+Log Time: 2017-11-09 20:25:25.0237
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+The given key was not present in the dictionary. 
+Thrown by: ThrowHelper
+Log Time: 2017-11-09 20:26:45.9423
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:30:10.4222
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:30:41.7489
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:32:00.3532
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:34:18.9691
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:34:18.9691
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:34:18.9691
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:37:21.2914
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:40:14.3600
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+Object reference not set to an instance of an object. 
+Thrown by: ProjectModel
+Log Time: 2017-11-09 20:41:07.8563
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+$Log Time: 2017-11-09 20:52:45.0242
+{message}
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+$Log Time: 2017-11-09 20:52:45.7019
+{message}
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
