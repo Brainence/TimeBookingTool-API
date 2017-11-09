@@ -16,7 +16,7 @@ namespace TBT.Api.Common
 
         public MessageLogHandler()
         {
-            _logManager = ServiceLocator.Current.Get<ILogManager>();
+            _logManager = ServiceLocator.Current.Get<ILogManager>("info");
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -24,7 +24,7 @@ namespace TBT.Api.Common
             var result = await base.SendAsync(request, cancellationToken);
             if (result.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                _logManager.Info($"RequestUri:{request.RequestUri}\r\nContent: {await request.Content.ReadAsStringAsync()}\r\nReturns: {await result.Content.ReadAsStringAsync()}\r\n");
+                _logManager.Info($"RequestUri:{request.RequestUri}\r\nContent: {await request.Content.ReadAsStringAsync()}\r\nReturns: {await result.Content.ReadAsStringAsync()}");
             }
             return result;
         }

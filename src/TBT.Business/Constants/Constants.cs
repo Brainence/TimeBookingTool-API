@@ -8,6 +8,7 @@ namespace TBT.Business.Constants
     {
         public const string ConnectionString = "TimeBookingToolConnectionString";
         public const string LogManager = "LogManagerName";
+        public const string InformationLogManagerName = "TimeBookingTool_InformationLogger";
     }
 
     public static class NumericConstants
@@ -27,11 +28,6 @@ namespace TBT.Business.Constants
                 Port = Convert.ToInt32(ConfigurationManager.AppSettings[Constants.SmtpPort]),
                 Server = ConfigurationManager.AppSettings[Constants.SmtpServer],
                 UseSsl = Convert.ToBoolean(ConfigurationManager.AppSettings[Constants.SmtpUseSsl])
-                //Username = "timebrainence@gmail.com",
-                //Password = "brainence!",
-                //Port = 587,
-                //Server = "smtp.gmail.com",
-                //UseSsl = true
             };
         }
     }

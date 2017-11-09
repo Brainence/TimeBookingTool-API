@@ -586,3 +586,18 @@ Returns: "00:32:39.8513557"
 Log Time: 2017-11-08 16:48:48.0282
 StackTrace:AsyncTaskMethodBuilder`1.Start => <SendAsync>d__2.MoveNext => LogManager.Info
 
+TEST 
+Thrown by: <GetAsync>d__1
+Log Time: 2017-11-09 18:22:09.1728
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+TEST 
+Thrown by: <GetAsync>d__1
+Log Time: 2017-11-09 18:22:09.6597
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+
+TEST 
+Thrown by: <GetAsync>d__1
+Log Time: 2017-11-09 18:22:10.0897
+StackTrace:<ExecuteExceptionFilterAsyncCore>d__0.MoveNext => ExceptionFilter.OnExceptionAsync => LogManager.Error
+

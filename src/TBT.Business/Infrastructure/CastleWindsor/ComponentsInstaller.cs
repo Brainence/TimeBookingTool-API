@@ -24,6 +24,8 @@ namespace TBT.Business.Infrastructure.CastleWindsor
             container.Register(Component.For<ILogManager>().ImplementedBy<LogManager>()
                 .DependsOn(Dependency.OnAppSettingsValue("loggerName", StringConstants.LogManager)).LifeStyle.Transient);
 
+            container.Register(Component.For<ILogManager>().ImplementedBy<LogManager>().Named("info")
+                .DependsOn(Dependency.OnAppSettingsValue("loggerName", StringConstants.InformationLogManagerName)).LifeStyle.Transient);
 
             container.Register(Component.For<IEmailService>().ImplementedBy<EmailService.Implementations.EmailService>()
                 .DependsOn(Dependency.OnValue("smtpSettings", SmtpSettingsConstants.DefaultSmtpSettings)).LifeStyle.Transient);
