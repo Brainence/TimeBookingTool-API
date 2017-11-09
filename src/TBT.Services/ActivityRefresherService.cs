@@ -67,11 +67,11 @@ namespace TBT.Services
         {
             try
             {
-                await _semaphore.WaitAsync();
+                //await _semaphore.WaitAsync();
                 if (DateTime.Now.TimeOfDay >= _refresherTime)
                 {
                     var _timeEntryManager = ServiceLocator.Current.Get<ITimeEntryManager>();
-                    var timeEntries = await _timeEntryManager.GetByIsRunning(true);
+                        var timeEntries = await _timeEntryManager.GetByIsRunning(true);
                     TimeEntryModel tempTimeEntry;
                     if (timeEntries.Any())
                     {
@@ -91,10 +91,10 @@ namespace TBT.Services
                             };
                             await _timeEntryManager.StartAsync(await _timeEntryManager.AddAsync(tempTimeEntry));
                         }
+                        //_semaphore.Release();
+                        _timer.Interval = _refresherTime.TotalMilliseconds + 30 * 1000;
                     }
-                    _semaphore.Release();
-                    _timer.Interval = _refresherTime.TotalMilliseconds;
-                };
+                }
             }
             catch(Exception ex)
             {

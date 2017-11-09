@@ -229,7 +229,6 @@
     <Compile Include="Common\FluentValidation\Installers\ValidatorsInstaller.cs" />
     <Compile Include="Common\FluentValidation\Interfaces\IValidatorFactory.cs" />
     <Compile Include="Common\FluentValidation\Validators\CustomerValidator.cs" />
-    <Compile Include="Common\MessageLogHandler.cs" />
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\Base\BaseCrudApiController.cs" />
     <Compile Include="Controllers\Base\CrudApiController.cs" />
