@@ -129,6 +129,12 @@ namespace TBT.Business.Managers.Implementations
         {
             return await UnitOfWork.TimeEntries.GetDurationAsync(userId, from, to);
         }
+
+        public async Task<List<TimeEntryModel>> GetByIsRunning(bool isRunning)
+        {
+            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                await UnitOfWork.TimeEntries.GetByIsRunning(isRunning));
+        }
         #endregion
     }
 }

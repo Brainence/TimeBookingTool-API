@@ -19,5 +19,6 @@ namespace TBT.Business.Managers.Interfaces
         Task<bool> StopAsync(int timeEntryId);
         Task<bool> RemoveAsync(int timeEntryId);
         Task<bool> UpdateAsync(TimeEntryModel entity, bool clientDuration);
+        Task<List<TimeEntryModel>> GetByIsRunning(bool isRunning);
     }
 }

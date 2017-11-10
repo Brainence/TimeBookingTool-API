@@ -403,5 +403,23 @@ namespace TBT.DAL.Repository.Implementations
             }
             catch { return null; }
         }
+
+        public async Task<IQueryable<TimeEntry>> GetByIsRunning(bool isRunning)
+        {
+            try
+            {
+                var timeEntries = DbSet
+                    .Where(t => t.IsRunning == isRunning
+                                && t.IsActive)
+                    .Include(x => x.Activity.Project.Customer)
+                    .Include(x => x.User.Projects)
+                    .Include(x => x.User.TimeEntries)
+                    .OrderBy(t => t.Date)
+                    .Cast<TimeEntry>();
+
+                return await Task.FromResult(timeEntries);
+            }
+            catch { return null; }
+        }
     }
 }

@@ -18,5 +18,6 @@ namespace TBT.DAL.Repository.Interfaces
         Task<bool> StopAsync(int timeEntryId);
         Task<bool> RemoveAsync(int timeEntryId);
         Task<bool> UpdateAsync(TimeEntry entity, bool clientDuration);
+        Task<IQueryable<TimeEntry>> GetByIsRunning(bool isRunning);
     }
 }
