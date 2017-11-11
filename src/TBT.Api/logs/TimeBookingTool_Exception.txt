@@ -1,0 +1,54 @@
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager+<StartAsync>d__8
+Method: MoveNext
+Parameter: 1167
+Log Time: 2017-11-11 03:02:31.8028
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager+<StartAsync>d__8
+Method: MoveNext
+Parameter: 1167
+Log Time: 2017-11-11 03:05:53.4123
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager+<StartAsync>d__8
+Method: MoveNext
+Parameter: 1168
+Log Time: 2017-11-11 03:08:19.7586
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager+<StartAsync>d__8
+Method: MoveNext
+Parameter: 1168
+Log Time: 2017-11-11 03:09:57.4890
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager+<StartAsync>d__8
+Method: MoveNext
+Parameter: 1168
+Log Time: 2017-11-11 03:14:42.6906
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager
+Method: MoveNext
+Parameter: 1168
+Log Time: 2017-11-11 03:14:54.6232
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager
+Method: MoveNext
+Parameter: 1168
+Log Time: 2017-11-11 03:15:05.0677
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager
+Method: MoveNext
+Parameter: 1168
+Log Time: 2017-11-11 03:16:11.1922
+
+Test exception 
+ObjectType: TBT.Business.Managers.Implementations.TimeEntryManager
+Method: <StartAsync>d__8
+Parameter: 1168
+Log Time: 2017-11-11 03:17:20.1981
+

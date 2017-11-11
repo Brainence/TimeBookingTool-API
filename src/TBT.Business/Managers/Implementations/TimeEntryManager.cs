@@ -1,11 +1,14 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
+using TBT.Components.Interfaces.Logger;
 using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
@@ -19,8 +22,8 @@ namespace TBT.Business.Managers.Implementations
         public TimeEntryManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.TimeEntries, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.TimeEntries, objectMapper, configurationProvider, logger)
         {
         }
 
@@ -34,38 +37,92 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string date)
         {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                 await UnitOfWork.TimeEntries.GetByUserAsync(userId, date));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                     await UnitOfWork.TimeEntries.GetByUserAsync(userId, date));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; date={date}");
+                return null;
+            }
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string from, string to)
         {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                 await UnitOfWork.TimeEntries.GetByUserAsync(userId, from, to));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                     await UnitOfWork.TimeEntries.GetByUserAsync(userId, from, to));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}; to={to}");
+                return null;
+            }
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, bool isRunning)
         {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                await UnitOfWork.TimeEntries.GetByUserAsync(userId, isRunning));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                    await UnitOfWork.TimeEntries.GetByUserAsync(userId, isRunning));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; isRunning={isRunning}");
+                return null;
+            }
         }
 
         public async Task<List<TimeEntryModel>> GetByUserFromAsync(int userId, string from)
         {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                await UnitOfWork.TimeEntries.GetByUserFromAsync(userId, from));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                    await UnitOfWork.TimeEntries.GetByUserFromAsync(userId, from));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}");
+                return null;
+            }
         }
 
         public async Task<List<TimeEntryModel>> GetByUserToAsync(int userId, string to)
         {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                await UnitOfWork.TimeEntries.GetByUserToAsync(userId, to));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                    await UnitOfWork.TimeEntries.GetByUserToAsync(userId, to));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; to={to}");
+                return null;
+            }
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId)
         {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                await UnitOfWork.TimeEntries.GetByUserAsync(userId));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                    await UnitOfWork.TimeEntries.GetByUserAsync(userId));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {userId}");
+                return null;
+            }
         }
 
         public async Task<bool> StartAsync(int timeEntryId)
@@ -76,9 +133,11 @@ namespace TBT.Business.Managers.Implementations
 
                 return await Task.FromResult(result);
             }
-            catch
+            catch (Exception ex)
             {
-                return await Task.FromResult(false);
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
+                return false;
             }
         }
 
@@ -90,9 +149,11 @@ namespace TBT.Business.Managers.Implementations
 
                 return await Task.FromResult(result);
             }
-            catch
+            catch (Exception ex)
             {
-                return await Task.FromResult(false);
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
+                return false;
             }
         }
 
@@ -104,9 +165,11 @@ namespace TBT.Business.Managers.Implementations
 
                 return await Task.FromResult(result);
             }
-            catch
+            catch (Exception ex)
             {
-                return await Task.FromResult(false);
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {timeEntryId}");
+                return false;
             }
         }
 
@@ -119,21 +182,41 @@ namespace TBT.Business.Managers.Implementations
 
                 return await Task.FromResult(result);
             }
-            catch
+            catch (Exception ex)
             {
-                return await Task.FromResult(false);
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: model={model.ToString()}; cleintDuration={clientDuration}");
+                return false;
             }
         }
 
         public async Task<TimeSpan?> GetDurationAsync(int userId, string from, string to)
         {
-            return await UnitOfWork.TimeEntries.GetDurationAsync(userId, from, to);
+            try
+            {
+                return await UnitOfWork.TimeEntries.GetDurationAsync(userId, from, to);
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: userId={userId}; from={from}; to={to}");
+                return null;
+            }
         }
 
         public async Task<List<TimeEntryModel>> GetByIsRunning(bool isRunning)
         {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                await UnitOfWork.TimeEntries.GetByIsRunning(isRunning));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                    await UnitOfWork.TimeEntries.GetByIsRunning(isRunning));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameters: {isRunning}");
+                return null;
+            }
         }
         #endregion
     }

@@ -1,12 +1,16 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.ObjectMapper;
+using TBT.Components.Interfaces.Logger;
+using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
 
@@ -19,8 +23,8 @@ namespace TBT.Business.Managers.Implementations
         public ProjectManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.Projects, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.Projects, objectMapper, configurationProvider, logger)
         {
         }
 
@@ -35,41 +39,86 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<ProjectModel>> GetByActivityAsync(int activityId)
         {
-            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
-                 await UnitOfWork.Projects.GetByActivityAsync(activityId));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
+                     await UnitOfWork.Projects.GetByActivityAsync(activityId));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {activityId}");
+                return null;
+            }
         }
 
         public async Task<List<ProjectModel>> GetByCustomerAsync(int customerId)
         {
-            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
-                 await UnitOfWork.Projects.GetByCustomerAsync(customerId));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
+                     await UnitOfWork.Projects.GetByCustomerAsync(customerId));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {customerId}");
+                return null;
+            }
         }
 
         public async Task<ProjectModel> GetByName(string name)
         {
-            return ObjectMapper.Map<Project, ProjectModel>(
-                await UnitOfWork.Projects.GetByName(name));
+            try
+            {
+                return ObjectMapper.Map<Project, ProjectModel>(
+                    await UnitOfWork.Projects.GetByName(name));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {name}");
+                return null;
+            }
         }
 
         public async Task<List<ProjectModel>> GetByUserAsync(int userId)
         {
-            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
-                 await UnitOfWork.Projects.GetByUserAsync(userId));
+            try
+            {
+                return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
+                     await UnitOfWork.Projects.GetByUserAsync(userId));
+            }
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {userId}");
+                return null;
+            }
         }
+
         public async override Task UpdateAsync(ProjectModel model)
         {
-            if (model.Customer == null)
+            try
             {
-                var project = await UnitOfWork.Projects.GetAsync(model.Id);
-                if (project == null || !project.CustomerId.HasValue) return;
+                if (model.Customer == null)
+                {
+                    var project = await UnitOfWork.Projects.GetAsync(model.Id);
+                    if (project == null || !project.CustomerId.HasValue) return;
 
-                var customer = await UnitOfWork.Customers.GetAsync(project.CustomerId.Value);
-                if (customer == null) return;
+                    var customer = await UnitOfWork.Customers.GetAsync(project.CustomerId.Value);
+                    if (customer == null) return;
 
-                model.Customer = ObjectMapper.Map<Customer, CustomerModel>(customer);
+                    model.Customer = ObjectMapper.Map<Customer, CustomerModel>(customer);
+                }
+
+                await base.UpdateAsync(model);
             }
-
-            await base.UpdateAsync(model);
+            catch (Exception ex)
+            {
+                var x = MethodBase.GetCurrentMethod();
+                Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
+            }
         }
         #endregion
     }

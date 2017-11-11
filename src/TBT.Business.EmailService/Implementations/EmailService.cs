@@ -1,4 +1,5 @@
-﻿using TBT.Business.EmailService.Interfaces;
+﻿using NLog;
+using TBT.Business.EmailService.Interfaces;
 using TBT.Business.EmailService.Models;
 using TBT.Components.Interfaces.Logger;
 

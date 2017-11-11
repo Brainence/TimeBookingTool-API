@@ -1,5 +1,7 @@
-﻿using System;
+﻿using NLog;
+using System;
 using TBT.Business.Providers.Interfaces;
+using TBT.Components.Interfaces.Logger;
 using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Repository.Interfaces;
 
@@ -12,6 +14,7 @@ namespace TBT.Business.Implementations
         private readonly IApplicationUnitOfWork unitOfWork;
         private readonly IObjectMapper objectMapper;
         private readonly IConfigurationProvider configurationProvider;
+        private readonly ILogManager logger;
 
         #endregion
 
@@ -32,6 +35,11 @@ namespace TBT.Business.Implementations
             get { return configurationProvider; }
         }
 
+        protected ILogManager Logger
+        {
+            get { return logger; }
+        }
+
         #endregion
 
         #region Constructors
@@ -39,11 +47,12 @@ namespace TBT.Business.Implementations
         protected BaseManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
         {
             this.unitOfWork = unitOfWork;
             this.objectMapper = objectMapper;
             this.configurationProvider = configurationProvider;
+            this.logger = logger;
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Threading.Tasks;
 using TBT.Business.EmailService.Models;
 using TBT.Components.Interfaces.Logger;
@@ -57,19 +58,19 @@ namespace TBT.Business.EmailService.Implementations
 
                 return true;
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                this.logManager.Error(exception, exception.InnerException?.Message ?? exception.Message);
-
+                var x = MethodBase.GetCurrentMethod();
+                logManager.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {mailMessage.ToString()}");
                 return false;
             }
         }
 
         public virtual Task<bool> SendMailAsync(MailMessage mailMessage, SmtpSettings smtpSettings)
         {
-            this.SetSmtpSettings(smtpSettings);
+            SetSmtpSettings(smtpSettings);
 
-            return this.SendMailAsync(mailMessage);
+            return SendMailAsync(mailMessage);
         }
 
         protected void SetSmtpSettings(SmtpSettings smtpSettings)
