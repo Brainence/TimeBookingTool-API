@@ -4,6 +4,12 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using FluentValidation;
 using TBT.Business.Infrastructure.CastleWindsor.ComponentSelector;
+using TBT.Api.Common.FluentValidation.Store.Interfaces;
+using TBT.Api.Common.FluentValidation.Store.Implementations;
+using TBT.Business.Models.BusinessModels;
+using TBT.Api.Common.FluentValidation.Validators;
+using TBT.Api.Common.FluentValidation.Base;
+using TBT.Api.Common.FluentValidation.Interfaces;
 
 namespace TBT.Api.Common.FluentValidation.Installers
 {
@@ -11,8 +17,20 @@ namespace TBT.Api.Common.FluentValidation.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.AddFacility<TypedFactoryFacility>();
-            container.Register(Component.For<IValidatorFactory>().AsFactory(c => c.SelectedWith(new FactoryComponentSelector())).LifeStyle.Transient);
+            container.Register(Component.For<IValidatorStore>().Named(typeof(IValidatorStore).FullName).ImplementedBy<ValidatorStore>().LifeStyle.Transient);
+
+            container.Register(Component.For<IModelBaseValidator>().ImplementedBy<ActivityValidator>()
+                .DependsOn(Property.ForKey("mode")).Named(nameof(ActivityValidator)).LifeStyle.Transient);
+            container.Register(Component.For<IModelBaseValidator>().ImplementedBy<CustomerValidator>()
+                .DependsOn(Property.ForKey("mode")).Named(nameof(CustomerValidator)).LifeStyle.Transient);
+            container.Register(Component.For<IModelBaseValidator>().ImplementedBy<ProjectValidator>()
+                .DependsOn(Property.ForKey("mode")).Named(nameof(ProjectValidator)).LifeStyle.Transient);
+            container.Register(Component.For<IModelBaseValidator>().ImplementedBy<ResetTicketValidator>()
+                .DependsOn(Property.ForKey("mode")).Named(nameof(ResetTicketValidator)).LifeStyle.Transient);
+            container.Register(Component.For<IModelBaseValidator>().ImplementedBy<TimeEntryValidator>()
+                .DependsOn(Property.ForKey("mode")).Named(nameof(TimeEntryValidator)).LifeStyle.Transient);
+            container.Register(Component.For<IModelBaseValidator>().ImplementedBy<UserValidator>()
+                .DependsOn(Property.ForKey("mode")).Named(nameof(UserValidator)).LifeStyle.Transient);
         }
     }
 }

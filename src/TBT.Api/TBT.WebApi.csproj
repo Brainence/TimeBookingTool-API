@@ -215,6 +215,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Filters\Base\ModelBaseValidationFilter.cs" />
     <Compile Include="Common\Filters\CommonActionFilter.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -225,10 +226,21 @@
     <Compile Include="Common\Exceptions\ApiException.cs" />
     <Compile Include="Common\Exceptions\ApiSecurityException.cs" />
     <Compile Include="Common\Exceptions\ApiValidationException.cs" />
+    <Compile Include="Common\Filters\ControllersFilters\UserControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ExceptionFilterAttribute.cs" />
+    <Compile Include="Common\FluentValidation\Attributes\Validator.cs" />
+    <Compile Include="Common\FluentValidation\Base\ModelBaseValidator.cs" />
     <Compile Include="Common\FluentValidation\Installers\ValidatorsInstaller.cs" />
+    <Compile Include="Common\FluentValidation\Interfaces\IModelBaseValidator.cs" />
     <Compile Include="Common\FluentValidation\Interfaces\IValidatorFactory.cs" />
+    <Compile Include="Common\FluentValidation\Store\Implementations\ValidatorStore.cs" />
+    <Compile Include="Common\FluentValidation\Store\Interfaces\IValidatorStore.cs" />
+    <Compile Include="Common\FluentValidation\Validators\ActivityValidator.cs" />
     <Compile Include="Common\FluentValidation\Validators\CustomerValidator.cs" />
+    <Compile Include="Common\FluentValidation\Validators\ProjectValidator.cs" />
+    <Compile Include="Common\FluentValidation\Validators\ResetTicketValidator.cs" />
+    <Compile Include="Common\FluentValidation\Validators\TimeEntryValidator.cs" />
+    <Compile Include="Common\FluentValidation\Validators\UserValidator.cs" />
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\Base\BaseCrudApiController.cs" />
     <Compile Include="Controllers\Base\CrudApiController.cs" />
@@ -257,8 +269,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ActionFilters\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Common\FluentValidation\Factories\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TBT.Business\TBT.Business.csproj">

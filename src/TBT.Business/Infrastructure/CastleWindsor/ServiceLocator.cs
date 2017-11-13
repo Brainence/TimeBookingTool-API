@@ -37,5 +37,10 @@ namespace TBT.Business.Infrastructure.CastleWindsor
         {
             return _serviceContainer.Resolve<T>(name);
         }
+
+        public T Get<T>(string name, object args)
+        {
+            return _serviceContainer.Resolve<T>(name, args);
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using TBT.WebApi.Common.CastleWindsor.Infrastructure;
 using TBT.WebApi.Common.CastleWindsor.Installers;
 using TBT.Business.Infrastructure.CastleWindsor;
+using TBT.Api.Common.FluentValidation.Installers;
 using AutoMapper;
 
 namespace TBT.WebApi
@@ -25,7 +26,8 @@ namespace TBT.WebApi
                 new ProvidersInstaller(),
                 new FactoriesInstaller(),
                 new ManagerInstaller(),
-                new RepositoryInstaller());
+                new RepositoryInstaller(),
+                new ValidatorsInstaller());
 
             ServiceLocator.Current.SetLocatorProvider(container);
         }

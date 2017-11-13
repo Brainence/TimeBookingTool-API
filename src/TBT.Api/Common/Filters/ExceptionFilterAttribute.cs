@@ -65,12 +65,10 @@ namespace TBT.WebApi.Common.Filters
             else
             {
                 context.Response = context.Request.CreateResponse(
-                    HttpStatusCode.InternalServerError);
+                    HttpStatusCode.InternalServerError, context.Exception.Message);
             }
 
-            _logManager.Error(context.Exception, $"{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.ReflectedType.Name}");
-            //_logManager.Error(context.Exception, $"{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.Name}");
-            //_logManager.Error(context.Exception.Message, context.Exception);
+            _logManager.Error(context.Exception, $"{context.Exception.ToString()}\r\n{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.ReflectedType.Name}");
 
             return base.OnExceptionAsync(context, cancellationToken);
         }

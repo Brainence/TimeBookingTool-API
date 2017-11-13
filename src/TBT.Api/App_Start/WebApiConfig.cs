@@ -22,7 +22,7 @@ namespace TBT.WebApi
 
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
-            config.MessageHandlers.Add(new MessageLogHandler());
+
             config.Filters.Add(new ExceptionFilter());
         }
     }

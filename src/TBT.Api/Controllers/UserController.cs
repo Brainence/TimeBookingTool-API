@@ -1,5 +1,8 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using TBT.Api.Common.Filters.Base;
+using TBT.Api.Common.Filters.ControllersFilters;
+using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
@@ -15,27 +18,29 @@ namespace TBT.Api.Controllers
             : base(managerStore, managerStore.UserManager)
         { }
 
+        [UserControllerValidationFilter]
         [HttpGet]
         [Route("")]
         [AllowAnonymous]
-        public UserModel GetByEmail(string email)
+        public UserModel GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
         {
             return ManagerStore.UserManager.GetByEmail(email);
         }
 
+        [UserControllerValidationFilter]
         [HttpGet]
-        [Route("ValidatePassword/{userId:int:min(1)}/{password}")]
-        public async Task<bool> IsPasswordValid(int userId, string password)
+        [Route("ValidatePassword/{id:int:min(1)}/{password}")]
+        public async Task<bool> IsPasswordValid([Validator(ValidationMode.Exist)]int id, string password)
         {
-            return await ManagerStore.UserManager.IsPasswordValid(userId, password);
+            return await ManagerStore.UserManager.IsPasswordValid(id, password);
         }
 
-
+        [UserControllerValidationFilter]
         [HttpGet]
-        [Route("ChangePassword/{userId:int:min(1)}/{oldPassword}/{newPassword}")]
-        public async Task ChangePassword(int userId, string oldPassword, string newPassword)
+        [Route("ChangePassword/{id:int:min(1)}/{oldPassword}/{newPassword}")]
+        public async Task ChangePassword([Validator(ValidationMode.Exist)]int id, string oldPassword, string newPassword)
         {
-            await ManagerStore.UserManager.ChangePassword(userId, oldPassword, newPassword);
+            await ManagerStore.UserManager.ChangePassword(id, oldPassword, newPassword);
         }
     }
 }
