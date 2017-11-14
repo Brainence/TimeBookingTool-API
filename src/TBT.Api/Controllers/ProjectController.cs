@@ -6,6 +6,9 @@ using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.WebApi.Common.Filters;
+using TBT.Api.Common.Filters.ControllersFilters;
+using TBT.Api.Common.Filters.Base;
+using TBT.Api.Common.FluentValidation.Attributes;
 
 namespace TBT.Api.Controllers
 {    
@@ -19,7 +22,8 @@ namespace TBT.Api.Controllers
 
         [HttpGet]
         [Route("GetByUser/{userId:int:min(1)}")]
-        public async Task<List<ProjectModel>> GetByUserAsync(int userId)
+        [ProjectControllerValidationFilter]
+        public async Task<List<ProjectModel>> GetByUserAsync([Validator(ValidationMode.Exist)]int userId)
         {
             return await ManagerStore.ProjectManager.GetByUserAsync(userId);
         }
@@ -27,14 +31,14 @@ namespace TBT.Api.Controllers
 
         [HttpGet]
         [Route("GetByCustomer/{customerId:int:min(1)}")]
-        public async Task<List<ProjectModel>> GetByCustomerAsync(int customerId)
+        public async Task<List<ProjectModel>> GetByCustomerAsync([Validator(ValidationMode.Exist)]int customerId)
         {
             return await ManagerStore.ProjectManager.GetByCustomerAsync(customerId);
         }
 
         [HttpGet]
         [Route("GetByName/{name}")]
-        public async Task<ProjectModel> GetByName(string name)
+        public async Task<ProjectModel> GetByName([Validator(ValidationMode.DataRelevance)]string name)
         {
             return await ManagerStore.ProjectManager.GetByName(name);
         }

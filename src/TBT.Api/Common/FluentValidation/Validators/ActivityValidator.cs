@@ -17,11 +17,14 @@ namespace TBT.Api.Common.FluentValidation.Validators
         public ActivityValidator(IActivityManager manager, ValidationMode mode):
             base(manager, mode)
         {
+            RuleFor(activity => activity.Project.Id).GreaterThan(0)
+                .When(x => HasFlag(ValidationMode.DataRelevance))
+                .WithMessage("ProjectId can't be less or equal 0.");
             RuleFor(activity => activity.Name).NotEmpty()
-                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
+                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update | ValidationMode.DataRelevance))
                 .WithMessage("{PropertyName} can't be empty.");
             RuleFor(activity => activity.IsActive).Equal(true)
-                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
+                .When(x => HasFlag(ValidationMode.Add))
                 .WithMessage("{PropertyName} can't be {PropertyValue}.");
             RuleFor(activity => activity.Project).NotNull()
                 .MustAsync(async (x, token) => await ExistsAsync(x.Id, ServiceLocator.Current.Get<IProjectManager>()))

@@ -8,6 +8,7 @@ using TBT.Business.Interfaces;
 using TBT.Api.Common.Filters.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Api.Common.FluentValidation.Base;
+using TBT.Business.Infrastructure.CastleWindsor;
 
 namespace TBT.Api.Common.FluentValidation.Validators
 {
@@ -17,8 +18,15 @@ namespace TBT.Api.Common.FluentValidation.Validators
             base(manager, mode)
         {
             RuleFor(project => project.Name).NotEmpty()
-                .When(x => HasFlag(ValidationMode.DataRelevance))
+                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update | ValidationMode.DataRelevance))
                 .WithMessage("{PropertyName} can't be null or empty.");
+            RuleFor(project => project.IsActive).Equal(true)
+                .When(x => HasFlag(ValidationMode.Add))
+                .WithMessage("{PropertyName} can't be {PropertyValue}");
+            RuleFor(project => project.Customer).NotNull()
+                .MustAsync(async (x, token) => await ExistsAsync(x.Id, ServiceLocator.Current.Get<ICustomerManager>()))
+                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
+                .WithMessage("{PropertyName} can't be null or doesn't exist.");
         }
     }
 }

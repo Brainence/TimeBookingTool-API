@@ -16,7 +16,6 @@ namespace TBT.Business.Models.BusinessModels
 
         public override string ToString()
         {
-            //return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Activities=[ {string.Join(";", Activities)} ], Users=[ {string.Join(";", Users)} ], Customer={Customer.ToString()} }}";
             return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Customer={Customer?.ToString()} }}";
         }
     }

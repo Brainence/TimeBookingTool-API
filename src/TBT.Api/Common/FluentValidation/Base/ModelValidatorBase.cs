@@ -22,12 +22,14 @@ namespace TBT.Api.Common.FluentValidation.Base
             _mode = mode;
             _manager = manager;
             CascadeMode = CascadeMode.StopOnFirstFailure;
-            RuleFor(x => x.Id).GreaterThan(0).When(x => HasFlag(ValidationMode.Exist))
+            RuleFor(x => x.Id).GreaterThan(0).When(x => HasFlag(~ValidationMode.Add))
                 .WithMessage("{PropertyName} can't be less or equal 0.");
             RuleFor(x => x.Id).MustAsync(async (id, token) => await ExistsAsync(id, _manager))
-                .When(x => HasFlag(ValidationMode.Exist | ValidationMode.Delete | ValidationMode.Update)).WithMessage("{PropertyValue}th item isn't exists.");
+                .When(x => HasFlag(ValidationMode.Exist | ValidationMode.Delete | ValidationMode.Update))
+                .WithMessage("{PropertyValue}th item isn't exists.");
             RuleFor(x => x.Id).MustAsync(async (id, token) => !(await ExistsAsync(id, _manager)))
-                .When(x => HasFlag(ValidationMode.Add)).WithMessage("Item with id {PropertyValue} is already exists.");
+                .When(x => HasFlag(ValidationMode.Add))
+                .WithMessage("Item with id {PropertyValue} is already exists.");
         }
 
         public ValidationMode Mode

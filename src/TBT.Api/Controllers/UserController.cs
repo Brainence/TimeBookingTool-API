@@ -27,9 +27,9 @@ namespace TBT.Api.Controllers
             return ManagerStore.UserManager.GetByEmail(email);
         }
 
-        [UserControllerValidationFilter]
         [HttpGet]
         [Route("ValidatePassword/{id:int:min(1)}/{password}")]
+        [UserControllerValidationFilter]
         public async Task<bool> IsPasswordValid([Validator(ValidationMode.Exist)]int id, string password)
         {
             return await ManagerStore.UserManager.IsPasswordValid(id, password);

@@ -229,6 +229,7 @@
     <Compile Include="Common\Exceptions\ApiSecurityException.cs" />
     <Compile Include="Common\Exceptions\ApiValidationException.cs" />
     <Compile Include="Common\Filters\ControllersFilters\ActivityControllerValidationFilter.cs" />
+    <Compile Include="Common\Filters\ControllersFilters\ProjectControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\UserControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ExceptionFilterAttribute.cs" />
     <Compile Include="Common\FluentValidation\Attributes\Validator.cs" />

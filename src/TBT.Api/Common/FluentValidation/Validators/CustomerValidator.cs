@@ -16,7 +16,12 @@ namespace TBT.Api.Common.FluentValidation.Validators
         public CustomerValidator(ICustomerManager manager, ValidationMode mode) :
             base(manager, mode)
         {
-
+            RuleFor(customer => customer.Name).NotEmpty()
+                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
+                .WithMessage("{PropertyName} can't be null or empty.");
+            RuleFor(customer => customer.IsActive).Equal(true)
+                .When(x => HasFlag(ValidationMode.Add))
+                .WithMessage("{PropertyName} can't be {PropertyValue}.");
         }
     }
 }

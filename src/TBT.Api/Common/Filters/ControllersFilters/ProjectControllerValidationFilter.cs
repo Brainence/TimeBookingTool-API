@@ -1,21 +1,19 @@
-﻿using FluentValidation.Results;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http.Controllers;
 using TBT.Api.Common.Filters.Base;
 using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Common.FluentValidation.Interfaces;
 using TBT.Business.Models.BusinessModels;
-using TBT.Business.Interfaces;
 using TBT.WebApi.Exceptions;
+using TBT.Business.Interfaces;
+using FluentValidation.Results;
 
 namespace TBT.Api.Common.Filters.ControllersFilters
 {
-    public class ActivityControllerValidationFilter: ModelValidationFilterBase
+    public class ProjectControllerValidationFilter: ModelValidationFilterBase
     {
         public override async Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
@@ -27,16 +25,21 @@ namespace TBT.Api.Common.Filters.ControllersFilters
             foreach (var parameter in actionContext.ActionDescriptor.GetParameters().Where(x => x.GetCustomAttributes<object>().OfType<Validator>().Any()))
             {
                 attribute = parameter.GetCustomAttributes<object>().OfType<Validator>().FirstOrDefault();
-                if (parameter.ParameterName == "projectId")
+                if (parameter.ParameterName == "userId")
                 {
-                    model = new ProjectModel() { Id = (int)actionContext.ActionArguments[parameter.ParameterName] };
-                    validator = _validatorStore.GetValidator(attribute.Mode, typeof(ProjectModel));
-                    result = await validator.ValidateAsync((ProjectModel)model);
+                    model = new UserModel() { Id = (int)actionContext.ActionArguments[parameter.ParameterName] };
+                    validator = _validatorStore.GetValidator(attribute.Mode, typeof(UserModel));
+                    result = await validator.ValidateAsync((UserModel)tempProject);
+                } else if (parameter.ParameterName == "customerId")
+                {
+                    model = new CustomerModel() { Id = (int)actionContext.ActionArguments[parameter.ParameterName] };
+                    validator = _validatorStore.GetValidator(attribute.Mode, typeof(CustomerModel));
+                    result = await validator.ValidateAsync((CustomerModel)tempProject);
                 } else if (parameter.ParameterName == "name")
                 {
-                    model = new ActivityModel() { Name = actionContext.ActionArguments[parameter.ParameterName].ToString() };
-                    validator = _validatorStore.GetValidator(attribute.Mode, typeof(ActivityModel));
-                    result = await validator.ValidateAsync((ActivityModel)model);
+                    model = new ProjectModel() { Name = actionContext.ActionArguments[parameter.ParameterName].ToString() };
+                    validator = _validatorStore.GetValidator(attribute.Mode, typeof(ProjectModel));
+                    result = await validator.ValidateAsync(tempProject);
                 }
                 if (!result.IsValid)
                 {
