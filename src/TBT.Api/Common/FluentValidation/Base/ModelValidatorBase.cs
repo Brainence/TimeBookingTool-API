@@ -12,12 +12,12 @@ using FluentValidation.Results;
 
 namespace TBT.Api.Common.FluentValidation.Base
 {
-    public abstract class ModelBaseValidator<T> :AbstractValidator<T>, IModelBaseValidator where T : class, IModel
+    public abstract class ModelValidatorBase<T> :AbstractValidator<T>, IModelValidatorBase where T : class, IModel
     {
         protected readonly ValidationMode _mode;
         protected ICrudManager<T> _manager;
 
-        protected ModelBaseValidator(ICrudManager<T> manager, ValidationMode mode)
+        protected ModelValidatorBase(ICrudManager<T> manager, ValidationMode mode)
         {
             _mode = mode;
             _manager = manager;

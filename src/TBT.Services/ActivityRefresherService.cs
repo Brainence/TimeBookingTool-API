@@ -51,6 +51,7 @@ namespace TBT.Services
             _timer = new System.Timers.Timer();
             _timer.Interval = (_refresherTime - DateTime.Now.TimeOfDay).TotalMilliseconds;
             _timer.Elapsed += TickHandler;
+            Microsoft.Win32.SystemEvents.TimeChanged += (sender, e) => _timer.Interval = (_refresherTime - DateTime.Now.TimeOfDay).TotalMilliseconds;
             _timer.Start();
 
         }

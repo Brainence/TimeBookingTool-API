@@ -26,7 +26,7 @@ namespace TBT.Api.Common.Filters.Base
         Add = 16
     }
 
-    public class ModelBaseValidationFilter: ActionFilterAttribute
+    public class ModelValidationFilterBase: ActionFilterAttribute
     {
         protected IValidatorStore _validatorStore;
 
@@ -54,7 +54,7 @@ namespace TBT.Api.Common.Filters.Base
                 var result = await validator.ValidateAsync(model);
                 if (!result.IsValid)
                 {
-                    throw new ApiValidationException(string.Join("\r\n", result.Errors));
+                    throw new ApiValidationException(string.Join(Environment.NewLine, result.Errors));
                 }
             }
         }

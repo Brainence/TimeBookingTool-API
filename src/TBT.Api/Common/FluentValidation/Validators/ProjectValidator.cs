@@ -11,12 +11,14 @@ using TBT.Api.Common.FluentValidation.Base;
 
 namespace TBT.Api.Common.FluentValidation.Validators
 {
-    public class ProjectValidator: ModelBaseValidator<ProjectModel>
+    public class ProjectValidator: ModelValidatorBase<ProjectModel>
     {
         public ProjectValidator(IProjectManager manager, ValidationMode mode) :
             base(manager, mode)
         {
-
+            RuleFor(project => project.Name).NotEmpty()
+                .When(x => HasFlag(ValidationMode.DataRelevance))
+                .WithMessage("{PropertyName} can't be null or empty.");
         }
     }
 }

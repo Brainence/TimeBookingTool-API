@@ -33,7 +33,7 @@ namespace TBT.Api.Controllers.Base
 
         [HttpGet]
         [Route("{id:int:min(1)}")]
-        [ModelBaseValidationFilter]
+        [ModelValidationFilterBase]
         public virtual async Task<HttpResponseMessage> GetAsync(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK,
@@ -42,7 +42,7 @@ namespace TBT.Api.Controllers.Base
 
         [HttpPost]
         [Route("")]
-        [ModelBaseValidationFilter]
+        [ModelValidationFilterBase]
         public virtual async Task<HttpResponseMessage> CreateAsync([Validator(ValidationMode.Add)]TModel model)
         {
             model.Id = await Manager.AddAsync(model);
@@ -52,7 +52,7 @@ namespace TBT.Api.Controllers.Base
 
         [HttpPut]
         [Route("")]
-        [ModelBaseValidationFilter]
+        [ModelValidationFilterBase]
         public virtual async Task<HttpResponseMessage> UpdateAsync([Validator(ValidationMode.Update)]TModel model)
         {
             await Manager.UpdateAsync(model);
@@ -62,7 +62,7 @@ namespace TBT.Api.Controllers.Base
 
         [HttpDelete]
         [Route("{id:int:min(1)}")]
-        [ModelBaseValidationFilter]
+        [ModelValidationFilterBase]
         public virtual async Task<HttpResponseMessage> DeleteAsync([Validator(ValidationMode.Exist)]int id)
         {
             await Manager.DeleteAsync(id);

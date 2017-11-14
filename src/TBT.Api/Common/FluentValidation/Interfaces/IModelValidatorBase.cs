@@ -9,7 +9,7 @@ using FluentValidation.Results;
 
 namespace TBT.Api.Common.FluentValidation.Interfaces
 {
-    public interface IModelBaseValidator
+    public interface IModelValidatorBase
     {
         Task<ValidationResult> ValidateAsync(object value);
         ValidationMode Mode { get; }

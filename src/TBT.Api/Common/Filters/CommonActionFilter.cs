@@ -30,7 +30,7 @@ namespace TBT.WebApi.Common.Filters
         {
             if (actionExecutedContext.Response != null && actionExecutedContext.Response?.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                _logger.Info($"RequestUri:{actionExecutedContext.Request.RequestUri}\r\nContent: {string.Join(";", actionExecutedContext.ActionContext?.ActionArguments?.Select(x => $"{x.Key} = {x.Value?.ToString()}"))}\r\nReturns: {actionExecutedContext.Response?.Content?.ReadAsStringAsync()}");
+                _logger.Info($"RequestUri:{actionExecutedContext.Request.RequestUri}\r\nContent: {string.Join(";", actionExecutedContext.ActionContext?.ActionArguments?.Select(x => $"{x.Key} = {x.Value?.ToString()}"))}\r\nReturns: {actionExecutedContext.Response?.Content?.ReadAsStringAsync().Result}");
             }
             return Task.FromResult(0);
         }

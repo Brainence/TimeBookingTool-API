@@ -11,7 +11,7 @@ using TBT.Api.Common.FluentValidation.Base;
 
 namespace TBT.Api.Common.FluentValidation.Validators
 {
-    public class CustomerValidator: ModelBaseValidator<CustomerModel>
+    public class CustomerValidator: ModelValidatorBase<CustomerModel>
     {
         public CustomerValidator(ICustomerManager manager, ValidationMode mode) :
             base(manager, mode)

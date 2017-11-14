@@ -10,12 +10,13 @@ using TBT.Api.Common.Filters.Base;
 
 namespace TBT.Api.Common.FluentValidation.Validators
 {
-    public class UserValidator: ModelBaseValidator<UserModel>
+    public class UserValidator: ModelValidatorBase<UserModel>
     {
         public UserValidator(IUserManager manager, ValidationMode mode) :
             base(manager, mode)
         {
-            RuleFor(user => user.Username).EmailAddress().When(x => HasFlag(ValidationMode.DataRelevance))
+            RuleFor(user => user.Username).EmailAddress()
+                .When(x => HasFlag(ValidationMode.DataRelevance))
                 .WithMessage("{PropertyName} must be an email");
         }
     }

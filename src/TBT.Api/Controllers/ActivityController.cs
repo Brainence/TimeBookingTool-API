@@ -2,10 +2,13 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using TBT.Api.Common.Filters.ControllersFilters;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.WebApi.Common.Filters;
+using TBT.Api.Common.FluentValidation.Attributes;
+using TBT.Api.Common.Filters.Base;
 
 namespace TBT.Api.Controllers
 {
@@ -25,8 +28,9 @@ namespace TBT.Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetByName/{name}/{projectId}")]
-        public async Task<ActivityModel> GetByName(string name, int projectId)
+        [Route("GetByName/{name}/{projectId:int:min(1)}")]
+        [ActivityControllerValidationFilter]
+        public async Task<ActivityModel> GetByName(string name, [Validator(ValidationMode.Exist)]int projectId)
         {
             return await ManagerStore.ActivityManager.GetByName(name, projectId);
         }

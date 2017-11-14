@@ -9,7 +9,7 @@ using TBT.Api.Common.Filters.Base;
 
 namespace TBT.Api.Common.FluentValidation.Validators
 {
-    public class TimeEntryValidator: ModelBaseValidator<TimeEntryModel>
+    public class TimeEntryValidator: ModelValidatorBase<TimeEntryModel>
     {
         public TimeEntryValidator(ITimeEntryManager manager, ValidationMode mode) :
             base(manager, mode)

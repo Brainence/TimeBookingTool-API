@@ -217,7 +217,7 @@
   <ItemGroup>
     <Compile Include="Common\ExceptionHandlers\CustomHandleResult.cs" />
     <Compile Include="Common\ExceptionHandlers\GlobalExceptionHandler.cs" />
-    <Compile Include="Common\Filters\Base\ModelBaseValidationFilter.cs" />
+    <Compile Include="Common\Filters\Base\ModelValidationFilterBase.cs" />
     <Compile Include="Common\Filters\CommonActionFilter.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -228,12 +228,13 @@
     <Compile Include="Common\Exceptions\ApiException.cs" />
     <Compile Include="Common\Exceptions\ApiSecurityException.cs" />
     <Compile Include="Common\Exceptions\ApiValidationException.cs" />
+    <Compile Include="Common\Filters\ControllersFilters\ActivityControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\UserControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ExceptionFilterAttribute.cs" />
     <Compile Include="Common\FluentValidation\Attributes\Validator.cs" />
-    <Compile Include="Common\FluentValidation\Base\ModelBaseValidator.cs" />
+    <Compile Include="Common\FluentValidation\Base\ModelValidatorBase.cs" />
     <Compile Include="Common\FluentValidation\Installers\ValidatorsInstaller.cs" />
-    <Compile Include="Common\FluentValidation\Interfaces\IModelBaseValidator.cs" />
+    <Compile Include="Common\FluentValidation\Interfaces\IModelValidatorBase.cs" />
     <Compile Include="Common\FluentValidation\Interfaces\IValidatorFactory.cs" />
     <Compile Include="Common\FluentValidation\Store\Implementations\ValidatorStore.cs" />
     <Compile Include="Common\FluentValidation\Store\Interfaces\IValidatorStore.cs" />
