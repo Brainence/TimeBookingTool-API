@@ -17,9 +17,9 @@ namespace TBT.Api.Common.FluentValidation.Validators
         public ActivityValidator(IActivityManager manager, ValidationMode mode):
             base(manager, mode)
         {
-            RuleFor(activity => activity.Project.Id).GreaterThan(0)
-                .When(x => HasFlag(ValidationMode.DataRelevance))
-                .WithMessage("ProjectId can't be less or equal 0.");
+            //RuleFor(activity => activity.Project).Must(x => x.Id > 0)
+            //    .When(x => HasFlag(ValidationMode.Exist))
+            //    .WithMessage("ProjectId can't be less or equal 0.");
             RuleFor(activity => activity.Name).NotEmpty()
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update | ValidationMode.DataRelevance))
                 .WithMessage("{PropertyName} can't be empty.");

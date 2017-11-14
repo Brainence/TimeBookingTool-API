@@ -4,6 +4,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using TBT.Api.Common.Filters.Base;
+using TBT.Api.Common.Filters.ControllersFilters;
+using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
@@ -21,77 +24,88 @@ namespace TBT.Api.Controllers
 
         [HttpGet]
         [Route("{userId:int:min(1)}/{isRunning:bool}")]
-        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, bool isRunning)
+        [TimeEntryControllerValidationFilter]
+        public async Task<List<TimeEntryModel>> GetByUserAsync([Validator(ValidationMode.Exist)]int userId, bool isRunning)
         {
             return await ManagerStore.TimeEntryManager.GetByUserAsync(userId, isRunning);
         }
 
         [HttpGet]
         [Route("GetByUser/{userId:int:min(1)}/{date}")]
-        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string date)
+        [TimeEntryControllerValidationFilter]
+        public async Task<List<TimeEntryModel>> GetByUserAsync([Validator(ValidationMode.Exist)]int userId, [Validator(ValidationMode.DataRelevance)]string date)
         {
             return await ManagerStore.TimeEntryManager.GetByUserAsync(userId, date);
         }
 
         [HttpGet]
         [Route("GetByUser/{userId:int:min(1)}/{from}/{to}")]
-        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string from, string to)
+        [TimeEntryControllerValidationFilter]
+        public async Task<List<TimeEntryModel>> GetByUserAsync([Validator(ValidationMode.Exist)]int userId, string from, string to)
         {
             return await ManagerStore.TimeEntryManager.GetByUserAsync(userId, from, to);
         }
 
         [HttpGet]
         [Route("GetDuration/{userId:int:min(1)}/{from}/{to}")]
-        public async Task<TimeSpan?> GetDurationAsync(int userId, string from, string to)
+        [TimeEntryControllerValidationFilter]
+        public async Task<TimeSpan?> GetDurationAsync([Validator(ValidationMode.Exist)]int userId, string from, string to)
         {
             return await ManagerStore.TimeEntryManager.GetDurationAsync(userId, from, to);
         }
 
         [HttpGet]
         [Route("GetByUserTo/{userId:int:min(1)}/{to}")]
-        public async Task<List<TimeEntryModel>> GetByUserToAsync(int userId, string to)
+        [TimeEntryControllerValidationFilter]
+        public async Task<List<TimeEntryModel>> GetByUserToAsync([Validator(ValidationMode.Exist)]int userId, string to)
         {
             return await ManagerStore.TimeEntryManager.GetByUserToAsync(userId, to);
         }
 
         [HttpGet]
         [Route("GetByUserFrom/{userId:int:min(1)}/{from}")]
-        public async Task<List<TimeEntryModel>> GetByActivityFromAsync(int userId, string from)
+        [TimeEntryControllerValidationFilter]
+        public async Task<List<TimeEntryModel>> GetByActivityFromAsync([Validator(ValidationMode.Exist)]int userId, string from)
         {
             return await ManagerStore.TimeEntryManager.GetByUserFromAsync(userId, from);
         }
 
         [HttpGet]
         [Route("GetByUser/{userId:int:min(1)}")]
-        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId)
+        [TimeEntryControllerValidationFilter]
+        public async Task<List<TimeEntryModel>> GetByUserAsync([Validator(ValidationMode.Exist)]int userId)
         {
             return await ManagerStore.TimeEntryManager.GetByUserAsync(userId);
         }
 
         [HttpGet]
-        [Route("Start/{timeEntryId:int:min(1)}")]
-        public async Task<bool> StartAsync(int timeEntryId)
+        [Route("Start/{id:int:min(1)}")]
+        [TimeEntryControllerValidationFilter]
+        public async Task<bool> StartAsync([Validator(ValidationMode.Exist)]int id)
         {
-            return await ManagerStore.TimeEntryManager.StartAsync(timeEntryId);
+            return await ManagerStore.TimeEntryManager.StartAsync(id);
         }
         
         [HttpGet]
-        [Route("Stop/{timeEntryId:int:min(1)}")]
-        public async Task<bool> StopAsync(int timeEntryId)
+        [Route("Stop/{id:int:min(1)}")]
+        [TimeEntryControllerValidationFilter]
+        public async Task<bool> StopAsync([Validator(ValidationMode.Exist)]int id)
         {
-            return await ManagerStore.TimeEntryManager.StopAsync(timeEntryId);
+            return await ManagerStore.TimeEntryManager.StopAsync(id);
         }
         
         [HttpGet]
-        [Route("Remove/{timeEntryId:int:min(1)}")]
-        public async Task<bool> RemoveAsync(int timeEntryId)
+        [Route("Remove/{id:int:min(1)}")]
+        [TimeEntryControllerValidationFilter]
+        public async Task<bool> RemoveAsync([Validator(ValidationMode.Exist)]int id)
         {
-            return await ManagerStore.TimeEntryManager.RemoveAsync(timeEntryId);
+            return await ManagerStore.TimeEntryManager.RemoveAsync(id);
         }
 
         [HttpPut]
         [Route("ServerDuration")]
-        public async override Task<HttpResponseMessage> UpdateAsync(TimeEntryModel timeEntry)
+        [TimeEntryControllerValidationFilter]
+        public async override Task<HttpResponseMessage> UpdateAsync([Validator(ValidationMode.Update)]TimeEntryModel timeEntry)
         {
             await ManagerStore.TimeEntryManager.UpdateAsync(timeEntry, false);
 
@@ -101,7 +115,8 @@ namespace TBT.Api.Controllers
 
         [HttpPut]
         [Route("ClientDuration")]
-        public async Task<HttpResponseMessage> ClientDurationUpdateAsync(TimeEntryModel timeEntry)
+        [TimeEntryControllerValidationFilter]
+        public async Task<HttpResponseMessage> ClientDurationUpdateAsync([Validator(ValidationMode.Exist)]TimeEntryModel timeEntry)
         {
             await ManagerStore.TimeEntryManager.UpdateAsync(timeEntry, true);
 

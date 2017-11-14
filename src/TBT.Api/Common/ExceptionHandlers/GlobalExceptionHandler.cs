@@ -60,7 +60,7 @@ namespace TBT.Api.Common.ExceptionHandlers
             }
             context.Result = result;
 
-            _logManager.Error(context.Exception, $"{context.Exception.ToString()}\r\n{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.ReflectedType.Name}");
+            _logManager.Error(context.Exception, $"{context.Exception.ToString()}\r\n{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.ReflectedType?.Name}");
             return base.HandleAsync(context, cancellationToken);
         }
     }

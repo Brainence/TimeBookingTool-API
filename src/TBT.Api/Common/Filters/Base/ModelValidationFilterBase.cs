@@ -39,11 +39,12 @@ namespace TBT.Api.Common.Filters.Base
             {
                 if (parameter.ParameterName == "id")
                 {
-                    type = ((ReflectedHttpActionDescriptor)actionContext.ActionDescriptor).MethodInfo.DeclaringType.GetGenericArguments()[0];
-                    model = ServiceLocator.Current.Get<IModel>();
+                    var temp = ((ReflectedHttpActionDescriptor)actionContext.ActionDescriptor).MethodInfo.DeclaringType.GetGenericArguments();
+                    type = temp.Any() ? temp[0] : ((ReflectedHttpActionDescriptor)actionContext.ActionDescriptor).MethodInfo.DeclaringType.BaseType.GetGenericArguments()[0];
+                    model = (IModel)Activator.CreateInstance(type);
                     ((IModel)model).Id = (int)actionContext.ActionArguments[parameter.ParameterName];
                 }
-                if (parameter.ParameterType.IsSubclassOf(typeof(IModel)))
+                if (parameter.ParameterType.GetInterface("IModel") != null)
                 {
                     type = actionContext.ActionArguments[parameter.ParameterName].GetType();
                     model = actionContext.ActionArguments[parameter.ParameterName];
