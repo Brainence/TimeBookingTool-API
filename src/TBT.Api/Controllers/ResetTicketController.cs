@@ -22,7 +22,7 @@ namespace TBT.Api.Controllers
         [HttpGet]
         [Route("CreateResetTicket/{userId:int:min(1)}")]
         [AllowAnonymous]
-        [TimeEntryControllerValidationFilter]
+        [ResetTicketControllerValidationFilter]
         public async Task<bool> CreateResetTicket([Validator(ValidationMode.Exist)]int userId)
         {
             return await ManagerStore.ResetTicketManager.CreateResetTicket(userId);
@@ -31,7 +31,7 @@ namespace TBT.Api.Controllers
         [HttpGet]
         [Route("ChangePassword/{userId:int:min(1)}/{newPassword}/{token}")]
         [AllowAnonymous]
-        [TimeEntryControllerValidationFilter]
+        [ResetTicketControllerValidationFilter]
         public async Task<bool> ChangePassword([Validator(ValidationMode.Exist)]int userId, string newPassword, string token)
         {
             return await ManagerStore.ResetTicketManager.ChangePassword(userId, newPassword, token);
