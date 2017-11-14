@@ -26,12 +26,13 @@ namespace TBT.WebApi.Common.Filters
             _logger = ServiceLocator.Current.Get<ILogManager>("info");
         }
 
-        public override async Task OnActionExecutedAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
+        public override Task OnActionExecutedAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
         {
-            if (actionExecutedContext.Response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (actionExecutedContext.Response != null && actionExecutedContext.Response?.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                _logger.Info($"RequestUri:{actionExecutedContext.Request.RequestUri}\r\nContent: {string.Join(";", actionExecutedContext.ActionContext?.ActionArguments?.Select(x => $"{x.Key} = {x.Value?.ToString()}"))}\r\nReturns: {await actionExecutedContext.Response?.Content?.ReadAsStringAsync()}");
+                _logger.Info($"RequestUri:{actionExecutedContext.Request.RequestUri}\r\nContent: {string.Join(";", actionExecutedContext.ActionContext?.ActionArguments?.Select(x => $"{x.Key} = {x.Value?.ToString()}"))}\r\nReturns: {actionExecutedContext.Response?.Content?.ReadAsStringAsync()}");
             }
+            return Task.FromResult(0);
         }
     }
 }

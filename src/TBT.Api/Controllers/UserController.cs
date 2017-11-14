@@ -18,10 +18,10 @@ namespace TBT.Api.Controllers
             : base(managerStore, managerStore.UserManager)
         { }
 
-        [UserControllerValidationFilter]
         [HttpGet]
         [Route("")]
         [AllowAnonymous]
+        [UserControllerValidationFilter]
         public UserModel GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
         {
             return ManagerStore.UserManager.GetByEmail(email);

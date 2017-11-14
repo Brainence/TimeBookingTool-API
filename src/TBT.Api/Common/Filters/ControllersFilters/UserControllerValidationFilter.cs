@@ -15,10 +15,10 @@ namespace TBT.Api.Common.Filters.ControllersFilters
     public class UserControllerValidationFilter: ModelBaseValidationFilter
     {
 
-        public override async void OnActionExecuting(HttpActionContext actionContext)
+
+        public override async Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
-            throw new ApiValidationException("");
-            base.OnActionExecuting(actionContext);
+            await base.OnActionExecutingAsync(actionContext, cancellationToken);
             var model = default(UserModel);
             foreach (var parameter in actionContext.ActionDescriptor.GetParameters().Where(x => x.GetCustomAttributes<object>().OfType<Validator>().Any()))
             {
