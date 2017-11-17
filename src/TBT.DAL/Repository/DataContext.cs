@@ -45,6 +45,7 @@ namespace TBT.DAL.Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<DataContext>(null);
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Customer>()
