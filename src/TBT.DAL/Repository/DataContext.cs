@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Configuration;
 using TBT.DAL.Entities;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace TBT.DAL.Repository
 {
@@ -51,6 +52,8 @@ namespace TBT.DAL.Repository
                 .WithRequired(p => p.Customer)
                 .HasForeignKey(p => p.CustomerId)
                 .WillCascadeOnDelete();
+
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<TimeEntry>()
                 .HasRequired(u => u.User)
@@ -103,11 +106,6 @@ namespace TBT.DAL.Repository
                 .WithRequired(p => p.Company)
                 .HasForeignKey(p => p.CompanyId)
                 .WillCascadeOnDelete();
-
-            modelBuilder.Entity<Company>()
-                .HasMany(u => u.Projects)
-                .WithRequired(p => p.Company)
-                .HasForeignKey(p => p.CompanyId);
 
             modelBuilder.Entity<Company>()
                 .HasMany(u => u.Customers)

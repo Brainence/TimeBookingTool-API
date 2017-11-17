@@ -22,7 +22,7 @@ namespace TBT.Business.Managers.Implementations
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
             IConfigurationProvider configurationProvider, ILogManager logger)
-            : base(unitOfWork, unitOfWork.Customers, objectMapper, configurationProvider, logger)
+            : base(unitOfWork, unitOfWork.Companies, objectMapper, configurationProvider, logger)
         {
         }
 

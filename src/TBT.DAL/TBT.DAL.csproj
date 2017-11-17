@@ -73,10 +73,6 @@
     <Compile Include="Entities\ResetTicket.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Project.cs" />
-    <Compile Include="Migrations\201711171556171_AddCompanyApproach-Migration.cs" />
-    <Compile Include="Migrations\201711171556171_AddCompanyApproach-Migration.Designer.cs">
-      <DependentUpon>201711171556171_AddCompanyApproach-Migration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\Implementations\Repository.cs" />
@@ -116,11 +112,6 @@
       <Project>{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7}</Project>
       <Name>TBT.Components</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711171556171_AddCompanyApproach-Migration.resx">
-      <DependentUpon>201711171556171_AddCompanyApproach-Migration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
