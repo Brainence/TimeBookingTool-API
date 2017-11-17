@@ -7,18 +7,18 @@ namespace TBT.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddReferencesToCompanyForTables : IMigrationMetadata
+    public sealed partial class AddCompanyApproachMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddReferencesToCompanyForTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCompanyApproachMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711171237599_AddReferencesToCompanyForTables"; }
+            get { return "201711171556171_AddCompanyApproach-Migration"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

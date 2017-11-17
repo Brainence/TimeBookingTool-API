@@ -73,25 +73,9 @@
     <Compile Include="Entities\ResetTicket.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Project.cs" />
-    <Compile Include="Migrations\201711171209297_InitialCompanyApproach-Migration.cs" />
-    <Compile Include="Migrations\201711171209297_InitialCompanyApproach-Migration.Designer.cs">
-      <DependentUpon>201711171209297_InitialCompanyApproach-Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711171222440_CompanyApproachForTables-Migration.cs" />
-    <Compile Include="Migrations\201711171222440_CompanyApproachForTables-Migration.Designer.cs">
-      <DependentUpon>201711171222440_CompanyApproachForTables-Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711171237599_AddReferencesToCompanyForTables.cs" />
-    <Compile Include="Migrations\201711171237599_AddReferencesToCompanyForTables.Designer.cs">
-      <DependentUpon>201711171237599_AddReferencesToCompanyForTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711171421481_RemovLoginPasswordFromCompany-Migration.cs" />
-    <Compile Include="Migrations\201711171421481_RemovLoginPasswordFromCompany-Migration.Designer.cs">
-      <DependentUpon>201711171421481_RemovLoginPasswordFromCompany-Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711171441291_FixReletions-Migration.cs" />
-    <Compile Include="Migrations\201711171441291_FixReletions-Migration.Designer.cs">
-      <DependentUpon>201711171441291_FixReletions-Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201711171556171_AddCompanyApproach-Migration.cs" />
+    <Compile Include="Migrations\201711171556171_AddCompanyApproach-Migration.Designer.cs">
+      <DependentUpon>201711171556171_AddCompanyApproach-Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,20 +118,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711171209297_InitialCompanyApproach-Migration.resx">
-      <DependentUpon>201711171209297_InitialCompanyApproach-Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711171222440_CompanyApproachForTables-Migration.resx">
-      <DependentUpon>201711171222440_CompanyApproachForTables-Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711171237599_AddReferencesToCompanyForTables.resx">
-      <DependentUpon>201711171237599_AddReferencesToCompanyForTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711171421481_RemovLoginPasswordFromCompany-Migration.resx">
-      <DependentUpon>201711171421481_RemovLoginPasswordFromCompany-Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711171441291_FixReletions-Migration.resx">
-      <DependentUpon>201711171441291_FixReletions-Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711171556171_AddCompanyApproach-Migration.resx">
+      <DependentUpon>201711171556171_AddCompanyApproach-Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

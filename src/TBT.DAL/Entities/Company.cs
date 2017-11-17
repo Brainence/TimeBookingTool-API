@@ -19,6 +19,5 @@ namespace TBT.DAL.Entities
         public bool IsActive { get; set; }
         public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }
-        public virtual ICollection<Project> Projects { get; set; }
     }
 }
