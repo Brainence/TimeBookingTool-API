@@ -66,12 +66,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\TimeEntry.cs" />
     <Compile Include="Entities\ResetTicket.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Project.cs" />
+    <Compile Include="Migrations\201711171209297_InitialCompanyApproach-Migration.cs" />
+    <Compile Include="Migrations\201711171209297_InitialCompanyApproach-Migration.Designer.cs">
+      <DependentUpon>201711171209297_InitialCompanyApproach-Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711171222440_CompanyApproachForTables-Migration.cs" />
+    <Compile Include="Migrations\201711171222440_CompanyApproachForTables-Migration.Designer.cs">
+      <DependentUpon>201711171222440_CompanyApproachForTables-Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711171237599_AddReferencesToCompanyForTables.cs" />
+    <Compile Include="Migrations\201711171237599_AddReferencesToCompanyForTables.Designer.cs">
+      <DependentUpon>201711171237599_AddReferencesToCompanyForTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711171421481_RemovLoginPasswordFromCompany-Migration.cs" />
+    <Compile Include="Migrations\201711171421481_RemovLoginPasswordFromCompany-Migration.Designer.cs">
+      <DependentUpon>201711171421481_RemovLoginPasswordFromCompany-Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711171441291_FixReletions-Migration.cs" />
+    <Compile Include="Migrations\201711171441291_FixReletions-Migration.Designer.cs">
+      <DependentUpon>201711171441291_FixReletions-Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\Implementations\Repository.cs" />
@@ -83,6 +104,7 @@
     <Compile Include="Repository\Base\Interfaces\IEntity.cs" />
     <Compile Include="Repository\DataContext.cs" />
     <Compile Include="Repository\Implementations\ApplicationUnitOfWork.cs" />
+    <Compile Include="Repository\Implementations\CompanyRepository.cs" />
     <Compile Include="Repository\Implementations\ProjectRepository.cs" />
     <Compile Include="Repository\Implementations\ActivityRepository.cs" />
     <Compile Include="Repository\Implementations\CustomerRepository.cs" />
@@ -91,6 +113,7 @@
     <Compile Include="Repository\Implementations\ResetTicketRepository.cs" />
     <Compile Include="Repository\Implementations\UserRepository.cs" />
     <Compile Include="Repository\Interfaces\IApplicationUnitOfWork.cs" />
+    <Compile Include="Repository\Interfaces\ICompanyRepository.cs" />
     <Compile Include="Repository\Interfaces\ICustomerRepository.cs" />
     <Compile Include="Repository\Interfaces\IActivityRepository.cs" />
     <Compile Include="Repository\Interfaces\ITimeEntryRepository.cs" />
@@ -109,6 +132,23 @@
       <Project>{1AC89E7A-1F05-4E03-8FB7-23D648BB85E7}</Project>
       <Name>TBT.Components</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711171209297_InitialCompanyApproach-Migration.resx">
+      <DependentUpon>201711171209297_InitialCompanyApproach-Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711171222440_CompanyApproachForTables-Migration.resx">
+      <DependentUpon>201711171222440_CompanyApproachForTables-Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711171237599_AddReferencesToCompanyForTables.resx">
+      <DependentUpon>201711171237599_AddReferencesToCompanyForTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711171421481_RemovLoginPasswordFromCompany-Migration.resx">
+      <DependentUpon>201711171421481_RemovLoginPasswordFromCompany-Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711171441291_FixReletions-Migration.resx">
+      <DependentUpon>201711171441291_FixReletions-Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

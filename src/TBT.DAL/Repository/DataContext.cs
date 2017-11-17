@@ -40,6 +40,7 @@ namespace TBT.DAL.Repository
         public DbSet<Activity> Tasks { get; set; }
         public DbSet<TimeEntry> TimeEntries { get; set; }
         public DbSet<ResetTicket> ResetTickets { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -54,14 +55,12 @@ namespace TBT.DAL.Repository
             modelBuilder.Entity<TimeEntry>()
                 .HasRequired(u => u.User)
                 .WithMany(p => p.TimeEntries)
-                .HasForeignKey(p => p.UserId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.UserId);
 
             modelBuilder.Entity<Activity>()
                 .HasRequired(u => u.Project)
                 .WithMany(p => p.Activities)
-                .HasForeignKey(p => p.ProjectId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.ProjectId);
 
             modelBuilder.Entity<Project>()
                 .HasMany(u => u.Users)
@@ -82,8 +81,7 @@ namespace TBT.DAL.Repository
             modelBuilder.Entity<Project>()
                 .HasRequired(u => u.Customer)
                 .WithMany(p => p.Projects)
-                .HasForeignKey(p => p.CustomerId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.CustomerId);
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Projects)
@@ -98,8 +96,23 @@ namespace TBT.DAL.Repository
             modelBuilder.Entity<User>()
                 .HasMany(u => u.TimeEntries)
                 .WithRequired(p => p.User)
-                .HasForeignKey(p => p.UserId)
+                .HasForeignKey(p => p.UserId);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(u => u.Users)
+                .WithRequired(p => p.Company)
+                .HasForeignKey(p => p.CompanyId)
                 .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Company>()
+                .HasMany(u => u.Projects)
+                .WithRequired(p => p.Company)
+                .HasForeignKey(p => p.CompanyId);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(u => u.Customers)
+                .WithRequired(p => p.Company)
+                .HasForeignKey(p => p.CompanyId);
         }
     }
 }

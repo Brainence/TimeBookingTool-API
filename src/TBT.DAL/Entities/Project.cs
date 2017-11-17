@@ -17,5 +17,7 @@ namespace TBT.DAL.Entities
         public virtual ICollection<User> Users { get; set; }
         public int? CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public int CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }

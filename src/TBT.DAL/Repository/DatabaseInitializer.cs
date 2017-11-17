@@ -8,6 +8,12 @@ namespace TBT.DAL.Repository
     {
         public override void InitializeDatabase(DataContext context)
         {
+            context.Companies.Add(new Company()
+            {
+                CompanyName = "Brainence",
+                IsActive = true,
+            });
+
             context.Users.Add(new User()
             {
                 FirstName = "Sergey",
@@ -15,8 +21,9 @@ namespace TBT.DAL.Repository
                 Password = new PasswordHasher().HashPassword("brainence!"),
                 Username = "schuiko@brainence.com",
                 IsAdmin = true,
-                IsActive = true
-            });
+                IsActive = true,
+                CompanyId = 1
+            });            
 
             base.InitializeDatabase(context);
         }

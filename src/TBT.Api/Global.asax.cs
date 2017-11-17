@@ -9,6 +9,7 @@ using TBT.WebApi.Common.CastleWindsor.Infrastructure;
 using TBT.WebApi.Common.CastleWindsor.Installers;
 using TBT.Business.Infrastructure.CastleWindsor;
 using TBT.Api.Common.FluentValidation.Installers;
+using TBT.Api.Common.Quartz.Schedulers;
 using AutoMapper;
 
 namespace TBT.WebApi
@@ -43,6 +44,7 @@ namespace TBT.WebApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             InitializeAutoMapper();
+            GlobalSchedular.Start();
         }
 
         private void InitializeAutoMapper()

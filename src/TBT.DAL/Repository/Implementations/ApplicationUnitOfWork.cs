@@ -16,6 +16,7 @@ namespace TBT.DAL.Repository.Implementations
         private IUserRepository _usersRepository;
         private IUserProjectRepository _userProjectRepository;
         private IResetTicketRepository _resetTicketRepository;
+        private ICompanyRepository _companyRepository;
 
         public ApplicationUnitOfWork(IRepositoryFactory repositoryFactory, DbContext context)
         {
@@ -56,6 +57,11 @@ namespace TBT.DAL.Repository.Implementations
         public IResetTicketRepository ResetTickets
         {
             get { return _resetTicketRepository ?? (_resetTicketRepository = new ResetTicketRepository(_context)); }
+        }
+
+        public ICompanyRepository Companies
+        {
+            get { return _companyRepository ?? (_companyRepository = new CompanyRepository(_context)); }
         }
 
         public int SaveChanges()

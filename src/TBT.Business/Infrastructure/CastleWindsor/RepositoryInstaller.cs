@@ -25,6 +25,7 @@ namespace TBT.Business.Infrastructure.CastleWindsor
             container.Register(Component.For<IProjectRepository>().Named(typeof(IProjectRepository).FullName).ImplementedBy<ProjectRepository>().LifeStyle.Transient);
             container.Register(Component.For<IUserRepository>().Named(typeof(IUserRepository).FullName).ImplementedBy<UserRepository>().LifeStyle.Transient);
             container.Register(Component.For<ITimeEntryRepository>().Named(typeof(ITimeEntryRepository).FullName).ImplementedBy<TimeEntryRepository>().LifeStyle.Transient);
+            container.Register(Component.For<ICompanyRepository>().Named(typeof(ICompanyRepository).FullName).ImplementedBy<CompanyRepository>().LifeStyle.Transient);
         }
     }
 }

@@ -28,5 +28,7 @@ namespace TBT.DAL.Entities
         public virtual ICollection<TimeEntry> TimeEntries { get; set; }
         public int? TimeLimit { get; set; }
         public TimeSpan? CurrentTimeZone { get; set; }
+        public int CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }

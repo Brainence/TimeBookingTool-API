@@ -93,12 +93,14 @@
     <Compile Include="Infrastructure\CastleWindsor\ProvidersInstaller.cs" />
     <Compile Include="Infrastructure\CastleWindsor\RepositoryInstaller.cs" />
     <Compile Include="Infrastructure\CastleWindsor\ServiceLocator.cs" />
+    <Compile Include="Infrastructure\MapperProfiles\CompanyProfile.cs" />
     <Compile Include="Infrastructure\MapperProfiles\ResetTicketProfile.cs" />
     <Compile Include="Infrastructure\MapperProfiles\UserProfile.cs" />
     <Compile Include="Infrastructure\MapperProfiles\ProjectProfile.cs" />
     <Compile Include="Infrastructure\MapperProfiles\TimeEntryProfile.cs" />
     <Compile Include="Infrastructure\MapperProfiles\CustomerProfile.cs" />
     <Compile Include="Infrastructure\MapperProfiles\ActivityProfile.cs" />
+    <Compile Include="Managers\Implementations\CompanyManager.cs" />
     <Compile Include="Managers\Implementations\ResetTicketManager.cs" />
     <Compile Include="Managers\Implementations\ManagerStore.cs" />
     <Compile Include="Managers\Implementations\ProjectManager.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="Managers\Implementations\TimeEntryManager.cs" />
     <Compile Include="Managers\Implementations\ActivityManager.cs" />
     <Compile Include="Managers\Implementations\UserProjectManager.cs" />
+    <Compile Include="Managers\Interfaces\ICompanyManager.cs" />
     <Compile Include="Managers\Interfaces\IManagerStore.cs" />
     <Compile Include="Managers\Interfaces\IProjectManager.cs" />
     <Compile Include="Managers\Interfaces\ICustomerManager.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="Managers\Interfaces\IActivityManager.cs" />
     <Compile Include="Managers\Interfaces\IUserProjectManager.cs" />
     <Compile Include="Models\BusinessModels\Account.cs" />
+    <Compile Include="Models\BusinessModels\CompanyModel.cs" />
     <Compile Include="Models\BusinessModels\CustomerModel.cs" />
     <Compile Include="Models\BusinessModels\ProjectModel.cs" />
     <Compile Include="Models\BusinessModels\ActivityModel.cs" />

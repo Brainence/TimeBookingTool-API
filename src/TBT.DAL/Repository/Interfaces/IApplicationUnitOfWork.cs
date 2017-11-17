@@ -12,6 +12,8 @@ namespace TBT.DAL.Repository.Interfaces
         IUserRepository Users { get; }
         IUserProjectRepository UserProjects { get; }
         IResetTicketRepository ResetTickets { get; }
+        ICompanyRepository Companies { get; }
+
         int SaveChanges();
         Task<int> SaveChangesAsync();
     }

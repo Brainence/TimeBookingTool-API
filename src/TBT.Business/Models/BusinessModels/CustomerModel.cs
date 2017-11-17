@@ -9,10 +9,13 @@ namespace TBT.Business.Models.BusinessModels
         public string Name { get; set; }
         public List<ProjectModel> Projects { get; set; }
         public bool IsActive { get; set; }
+        public CompanyModel Company { get; set; }
+
+        public int? CompanyId { get; set; }
 
         public override string ToString()
         {
-            return $"{{ Id={Id}, Name={Name}, IsActive={IsActive} }}";
+            return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Company={Company.ToString()} }}";
         }
     }
 }

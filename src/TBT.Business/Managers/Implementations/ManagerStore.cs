@@ -20,6 +20,7 @@ namespace TBT.Business.Managers.Implementations
         private IUserManager _userManager;
         private IUserProjectManager _userProjectManager;
         private IResetTicketManager _resetTicketManager;
+        private ICompanyManager _companyManager;
 
         #endregion
 
@@ -58,6 +59,11 @@ namespace TBT.Business.Managers.Implementations
         public IResetTicketManager ResetTicketManager
         {
             get { return _resetTicketManager ?? (_resetTicketManager = _managerFactory.Create<IResetTicketManager>(typeof(IResetTicketManager).FullName)); }
+        }
+
+        public ICompanyManager CompanyManager
+        {
+            get { return _companyManager ?? (_companyManager = _managerFactory.Create<ICompanyManager>(typeof(ICompanyManager).FullName)); }
         }
 
         #endregion

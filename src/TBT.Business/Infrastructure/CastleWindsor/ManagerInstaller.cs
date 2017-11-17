@@ -21,6 +21,7 @@ namespace TBT.Business.Infrastructure.CastleWindsor
             container.Register(Component.For<ITimeEntryManager>().Named(typeof(ITimeEntryManager).FullName).ImplementedBy<TimeEntryManager>().LifeStyle.Transient);
             container.Register(Component.For<IUserProjectManager>().Named(typeof(IUserProjectManager).FullName).ImplementedBy<UserProjectManager>().LifeStyle.Transient);
             container.Register(Component.For<IResetTicketManager>().Named(typeof(IResetTicketManager).FullName).ImplementedBy<ResetTicketManager>().LifeStyle.Transient);
+            container.Register(Component.For<ICompanyManager>().Named(typeof(ICompanyManager).FullName).ImplementedBy<CompanyManager>().LifeStyle.Transient);
         }
     }
 }
