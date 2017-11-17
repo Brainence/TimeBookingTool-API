@@ -53,8 +53,6 @@ namespace TBT.DAL.Repository
                 .HasForeignKey(p => p.CustomerId)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-
             modelBuilder.Entity<TimeEntry>()
                 .HasRequired(u => u.User)
                 .WithMany(p => p.TimeEntries)
@@ -104,8 +102,7 @@ namespace TBT.DAL.Repository
             modelBuilder.Entity<Company>()
                 .HasMany(u => u.Users)
                 .WithRequired(p => p.Company)
-                .HasForeignKey(p => p.CompanyId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.CompanyId);
 
             modelBuilder.Entity<Company>()
                 .HasMany(u => u.Customers)
