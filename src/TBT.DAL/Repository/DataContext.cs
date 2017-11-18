@@ -1,25 +1,19 @@
 ﻿using System.Data.Entity;
 using System.Configuration;
 using TBT.DAL.Entities;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace TBT.DAL.Repository
 {
     public class DataContext : DbContext
     {
-        static DataContext()
+        public DataContext(string connectionString) : base(connectionString)
+        {
+
+        }
+
+        public DataContext() : this(ConnectionString)
         {
             Database.SetInitializer(new DatabaseInitializer());
-        }
-
-        public DataContext(string connectionString)
-            : base(connectionString)
-        {
-        }
-
-        public DataContext()
-            : this(ConnectionString)
-        {
         }
 
         public static string ConnectionString
@@ -45,7 +39,7 @@ namespace TBT.DAL.Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer<DataContext>(null);
+            //Database.SetInitializer<DataContext>(б);
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Customer>()
@@ -100,14 +94,15 @@ namespace TBT.DAL.Repository
                 .WithRequired(p => p.User)
                 .HasForeignKey(p => p.UserId);
 
-            modelBuilder.Entity<Company>()
-                .HasMany(u => u.Users)
-                .WithRequired(p => p.Company)
-                .HasForeignKey(p => p.CompanyId);
+            modelBuilder.Entity<User>()
+                .HasOptional(i => i.Company)
+                .WithMany(i => i.Users)
+                .HasForeignKey(i => i.CompanyId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Company>()
                 .HasMany(u => u.Customers)
-                .WithRequired(p => p.Company)
+                .WithOptional(p => p.Company)
                 .HasForeignKey(p => p.CompanyId);
         }
     }

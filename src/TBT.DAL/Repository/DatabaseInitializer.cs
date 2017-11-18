@@ -6,8 +6,9 @@ namespace TBT.DAL.Repository
 {
     public class DatabaseInitializer : CreateDatabaseIfNotExists<DataContext>
     {
-        public override void InitializeDatabase(DataContext context)
+        protected override void Seed(DataContext context)
         {
+            base.Seed(context);
             context.Companies.Add(new Company()
             {
                 CompanyName = "Brainence",
@@ -23,9 +24,7 @@ namespace TBT.DAL.Repository
                 IsAdmin = true,
                 IsActive = true,
                 CompanyId = 1
-            });            
-
-            base.InitializeDatabase(context);
+            });
         }
     }
 }
