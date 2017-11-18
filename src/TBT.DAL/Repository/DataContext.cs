@@ -8,12 +8,11 @@ namespace TBT.DAL.Repository
     {
         public DataContext(string connectionString) : base(connectionString)
         {
-
+            Database.SetInitializer(new DatabaseInitializer());
         }
 
         public DataContext() : this(ConnectionString)
         {
-            Database.SetInitializer(new DatabaseInitializer());
         }
 
         public static string ConnectionString
@@ -39,7 +38,6 @@ namespace TBT.DAL.Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //Database.SetInitializer<DataContext>(б);
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Customer>()
