@@ -73,9 +73,13 @@
     <Compile Include="Entities\ResetTicket.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Project.cs" />
-    <Compile Include="Migrations\201711171821184_AddCompanyApproach-Migration.cs" />
-    <Compile Include="Migrations\201711171821184_AddCompanyApproach-Migration.Designer.cs">
-      <DependentUpon>201711171821184_AddCompanyApproach-Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201711181405224_Initial.cs" />
+    <Compile Include="Migrations\201711181405224_Initial.Designer.cs">
+      <DependentUpon>201711181405224_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711181441287_Company.cs" />
+    <Compile Include="Migrations\201711181441287_Company.Designer.cs">
+      <DependentUpon>201711181441287_Company.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,8 +122,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711171821184_AddCompanyApproach-Migration.resx">
-      <DependentUpon>201711171821184_AddCompanyApproach-Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711181405224_Initial.resx">
+      <DependentUpon>201711181405224_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711181441287_Company.resx">
+      <DependentUpon>201711181441287_Company.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
