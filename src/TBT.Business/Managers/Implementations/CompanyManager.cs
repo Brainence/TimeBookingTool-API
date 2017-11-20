@@ -10,7 +10,7 @@ using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
-
+using Microsoft.AspNet.Identity;
 
 namespace TBT.Business.Managers.Implementations
 {
@@ -30,7 +30,26 @@ namespace TBT.Business.Managers.Implementations
 
         #region Interface members
 
+        public async Task<CompanyModel> GetByName(string name)
+        {
+            return ObjectMapper.Map<Company, CompanyModel>(
+                     await UnitOfWork.Companies.GetByName(name));
+        }
 
+        public async Task<int> RegisterCompany(UserModel superAdmin)
+        {
+            if(superAdmin == null || superAdmin.Company == null) { return 0; }
+            var entity = ObjectMapper.Map<UserModel, User>(superAdmin);
+            entity.Password = new PasswordHasher().HashPassword(entity.Password);
+
+            await Repository.AddAsync(ObjectMapper.Map<CompanyModel, Company>(superAdmin.Company));
+
+            await UnitOfWork.Users.AddAsync(entity);
+
+            await UnitOfWork.SaveChangesAsync();
+
+            return entity.Id;
+        }
 
         #endregion
     }

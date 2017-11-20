@@ -241,6 +241,7 @@
     <Compile Include="Common\Exceptions\ApiSecurityException.cs" />
     <Compile Include="Common\Exceptions\ApiValidationException.cs" />
     <Compile Include="Common\Filters\ControllersFilters\ActivityControllerValidationFilter.cs" />
+    <Compile Include="Common\Filters\ControllersFilters\CompanyRegistrationValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\ProjectControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\ResetTicketControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\TimeEntryControllerValidationFilter.cs" />
@@ -250,10 +251,10 @@
     <Compile Include="Common\FluentValidation\Base\ModelValidatorBase.cs" />
     <Compile Include="Common\FluentValidation\Installers\ValidatorsInstaller.cs" />
     <Compile Include="Common\FluentValidation\Interfaces\IModelValidatorBase.cs" />
-    <Compile Include="Common\FluentValidation\Interfaces\IValidatorFactory.cs" />
     <Compile Include="Common\FluentValidation\Store\Implementations\ValidatorStore.cs" />
     <Compile Include="Common\FluentValidation\Store\Interfaces\IValidatorStore.cs" />
     <Compile Include="Common\FluentValidation\Validators\ActivityValidator.cs" />
+    <Compile Include="Common\FluentValidation\Validators\CompanyValidator.cs" />
     <Compile Include="Common\FluentValidation\Validators\CustomerValidator.cs" />
     <Compile Include="Common\FluentValidation\Validators\ProjectValidator.cs" />
     <Compile Include="Common\FluentValidation\Validators\ResetTicketValidator.cs" />
@@ -264,6 +265,7 @@
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\Base\BaseCrudApiController.cs" />
     <Compile Include="Controllers\Base\CrudApiController.cs" />
+    <Compile Include="Controllers\CompanyRegistrationController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
@@ -293,7 +295,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Common\FluentValidation\Factories\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TBT.Business\TBT.Business.csproj">

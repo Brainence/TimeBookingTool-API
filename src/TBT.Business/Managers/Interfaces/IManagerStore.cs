@@ -13,5 +13,6 @@ namespace TBT.Business.Managers.Interfaces
         IUserManager UserManager { get; }
         IUserProjectManager UserProjectManager { get; }
         IResetTicketManager ResetTicketManager { get; }
+        ICompanyManager CompanyManager { get; }
     }
 }

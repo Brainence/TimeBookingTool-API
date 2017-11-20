@@ -23,6 +23,8 @@ namespace TBT.Api.Common.FluentValidation.Installers
                 .DependsOn(Property.ForKey("mode")).Named(nameof(ActivityValidator)).LifeStyle.Transient);
             container.Register(Component.For<IModelValidatorBase>().ImplementedBy<CustomerValidator>()
                 .DependsOn(Property.ForKey("mode")).Named(nameof(CustomerValidator)).LifeStyle.Transient);
+            container.Register(Component.For<IModelValidatorBase>().ImplementedBy<CompanyValidator>()
+                .DependsOn(Property.ForKey("mode")).Named(nameof(CompanyValidator)).LifeStyle.Transient);
             container.Register(Component.For<IModelValidatorBase>().ImplementedBy<ProjectValidator>()
                 .DependsOn(Property.ForKey("mode")).Named(nameof(ProjectValidator)).LifeStyle.Transient);
             container.Register(Component.For<IModelValidatorBase>().ImplementedBy<ResetTicketValidator>()

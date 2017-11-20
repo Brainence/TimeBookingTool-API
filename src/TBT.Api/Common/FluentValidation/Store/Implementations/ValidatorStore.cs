@@ -25,14 +25,16 @@ namespace TBT.Api.Common.FluentValidation.Store.Implementations
         private ResetTicketValidator _resetTicketValidator;
         private TimeEntryValidator _timeEntryValidator;
         private UserValidator _userValidator;
+        private CompanyValidator _companyValidator;
 
         #endregion
+
+        #region Interface members
 
         public IModelValidatorBase GetValidator(ValidationMode mode, Type model)
         {
             return ServiceLocator.Current.Get<IModelValidatorBase>(GetType().GetProperties().FirstOrDefault(x => x.PropertyType.BaseType.GetGenericArguments()[0] == model)?.Name, new { mode = mode });
         }
-
 
         public ActivityValidator ActivityValidator
         {
@@ -63,5 +65,12 @@ namespace TBT.Api.Common.FluentValidation.Store.Implementations
         {
             get { return _userValidator ?? (_userValidator = (UserValidator)ServiceLocator.Current.Get<ModelValidatorBase<UserModel>>()); }
         }
+
+        public CompanyValidator CompanyValidator
+        {
+            get { return _companyValidator ?? (_companyValidator = (CompanyValidator)ServiceLocator.Current.Get<ModelValidatorBase<CompanyModel>>()); }
+        }
+
+        #endregion
     }
 }
