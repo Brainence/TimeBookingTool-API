@@ -15,12 +15,5 @@ namespace TBT.Api.Common.FluentValidation.Store.Interfaces
     public interface IValidatorStore
     {
         IModelValidatorBase GetValidator(ValidationMode mode, Type model);
-        ActivityValidator ActivityValidator { get; }
-        CustomerValidator CustomerValidator { get; }
-        CompanyValidator CompanyValidator { get; }
-        ProjectValidator ProjectValidator { get; }
-        ResetTicketValidator ResetTicketValidator { get; }
-        TimeEntryValidator TimeEntryValidator { get; }
-        UserValidator UserValidator { get; }
     }
 }
