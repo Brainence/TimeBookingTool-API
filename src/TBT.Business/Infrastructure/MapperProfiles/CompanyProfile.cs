@@ -12,13 +12,11 @@ namespace TBT.Business.Infrastructure.MapperProfiles
         {
             CreateMap<Company, CompanyModel>()
                 .ForMember(dest => dest.Customers, opt => opt.MapFrom(src => src.Customers.Where(x => x.IsActive)))
-                //.ForMember(dest => dest.Projects, opt => opt.MapFrom(src => src.Projects.Where(x => x.IsActive)))
                 .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Where(x => x.IsActive)));
 
             CreateMap<CompanyModel, Company>()
                 .ForMember(dest => dest.Customers, opt => opt.Ignore())
                 .ForMember(dest => dest.Users, opt => opt.Ignore());
-                //.ForMember(dest => dest.Projects, opt => opt.Ignore());
         }
     }
 }

@@ -17,6 +17,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
             CreateMap<UserModel, User>()
                 .ForMember(d => d.Projects, opt => opt.Ignore())
                 .ForMember(d => d.TimeEntries, opt => opt.Ignore())
+                .ForMember(d => d.Company, opt => opt.Ignore())
                 .ForMember(d => d.CompanyId, opt => opt.MapFrom(src => src.Company.Id));
 
 
