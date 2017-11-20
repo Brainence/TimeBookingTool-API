@@ -22,7 +22,7 @@ namespace TBT.Api.Common.Filters.ControllersFilters
             {
                 if (parameter.ParameterName == "email")
                 {
-                    model = new UserModel() { Username = actionContext.ActionArguments[parameter.ParameterName].ToString() };
+                    model = new UserModel() { Username = actionContext.ActionArguments[parameter.ParameterName]?.ToString() };
                 }
                 var attribute = parameter.GetCustomAttributes<object>().OfType<Validator>().FirstOrDefault();
                 var validator = _validatorStore.GetValidator(attribute.Mode, typeof(UserModel));

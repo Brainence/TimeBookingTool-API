@@ -8,7 +8,6 @@ namespace TBT.Business.Models.BusinessModels
         public int Id { get; set; }
         public string CompanyName { get; set; }
         public bool IsActive { get; set; }
-        public List<ProjectModel> Projects { get; set; }
         public List<UserModel> Users { get; set; }
         public List<CustomerModel> Customers { get; set; }
 
