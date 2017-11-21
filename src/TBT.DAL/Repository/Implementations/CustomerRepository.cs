@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
@@ -25,6 +26,14 @@ namespace TBT.DAL.Repository.Implementations
         public override Task<Customer> GetAsync(int id)
         {
             return Task.FromResult(DbSet.Include(u => u.Company).Where(c => c.IsActive).FirstOrDefault(c => c.Id == id));
+        }
+
+        public Task<IQueryable<Customer>> GetByCompanyIdAsync(int companyId)
+        {
+            return Task.FromResult(DbSet
+                .Include(x => x.Company)
+                .Include(x => x.Projects)
+                .Where(x => x.IsActive && x.CompanyId == companyId));
         }
     }
 }

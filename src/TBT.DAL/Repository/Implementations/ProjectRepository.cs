@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
@@ -29,6 +30,15 @@ namespace TBT.DAL.Repository.Implementations
                 .Include(x => x.Customer));
         }
 
+        public Task<IQueryable<Project>> GetByCompanyIdAsync(int companyId)
+        {
+            return Task.FromResult(
+                DbSet
+                .Where(p => p.IsActive && p.Customer.CompanyId == companyId)
+                .Include(x => x.Users)
+                .Include(x => x.Customer));
+        }
+
         public Task<IQueryable<Project>> GetByCustomerAsync(int customerId)
         {
             return Task.FromResult(
@@ -50,10 +60,10 @@ namespace TBT.DAL.Repository.Implementations
         {
             return Task.FromResult(
                 DbSet
-                .Where(p => p.IsActive && p.Users.Select(x => x.Id).Contains(userId))
                 .Include(u => u.Users.Select(p => p.Projects))
                 .Include(u => u.Activities.Select(t => t.Project))
-                .Include(x => x.Customer));
+                .Include(x => x.Customer)
+                .Where(p => p.IsActive && p.Users.Select(x => x.Id).Contains(userId)));
         }
     }
 }

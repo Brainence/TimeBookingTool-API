@@ -64,6 +64,12 @@ namespace TBT.Business.Managers.Implementations
             //}
         }
 
+        public async  Task<List<ActivityModel>> GetByCompanyIdAsync(int companyId)
+        {
+            return ObjectMapper.Map<IQueryable<Activity>, List<ActivityModel>>(
+                     await UnitOfWork.Activities.GetByCompanyIdAsync(companyId));
+        }
+
         public async override Task UpdateAsync(ActivityModel model)
         {
             //try

@@ -10,5 +10,6 @@ namespace TBT.DAL.Repository.Interfaces
         Task<IQueryable<User>> GetByProjectAsync(int projectId);
         Task<bool> IsPasswordValid(int userId, string password);
         Task ChangePassword(int userId, string oldPassword, string newPassword);
+        Task<IQueryable<User>> GetByCompanyId(int companyId);
     }
 }

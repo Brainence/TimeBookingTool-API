@@ -62,6 +62,12 @@ namespace TBT.Business.Managers.Implementations
             //}
         }
 
+        public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
+        {
+            return ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
+                     await UnitOfWork.Users.GetByCompanyId(companyId));
+        }
+
         public override Task<int> AddAsync(UserModel model)
         {
             //try

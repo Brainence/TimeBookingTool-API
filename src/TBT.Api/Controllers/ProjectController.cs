@@ -31,13 +31,23 @@ namespace TBT.Api.Controllers
 
         [HttpGet]
         [Route("GetByCustomer/{customerId:int:min(1)}")]
+        [ProjectControllerValidationFilter]
         public async Task<List<ProjectModel>> GetByCustomerAsync([Validator(ValidationMode.Exist)]int customerId)
         {
             return await ManagerStore.ProjectManager.GetByCustomerAsync(customerId);
         }
 
         [HttpGet]
+        [Route("GetByCompany/{companyId:int:min(1)}")]
+        [ProjectControllerValidationFilter]
+        public async Task<List<ProjectModel>> GetByCompanyAsync([Validator(ValidationMode.Exist)]int companyId)
+        {
+            return await ManagerStore.ProjectManager.GetByCompanyIdAsync(companyId);
+        }
+
+        [HttpGet]
         [Route("GetByName/{name}")]
+        [ProjectControllerValidationFilter]
         public async Task<ProjectModel> GetByName([Validator(ValidationMode.DataRelevance)]string name)
         {
             return await ManagerStore.ProjectManager.GetByName(name);

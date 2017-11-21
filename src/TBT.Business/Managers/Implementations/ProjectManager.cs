@@ -67,6 +67,12 @@ namespace TBT.Business.Managers.Implementations
             //}
         }
 
+        public async Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId)
+        {
+            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
+                     await UnitOfWork.Projects.GetByCompanyIdAsync(companyId));
+        }
+
         public async Task<ProjectModel> GetByName(string name)
         {
             //try

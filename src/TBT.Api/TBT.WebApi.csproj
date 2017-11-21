@@ -242,6 +242,7 @@
     <Compile Include="Common\Exceptions\ApiValidationException.cs" />
     <Compile Include="Common\Filters\ControllersFilters\ActivityControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\CompanyRegistrationValidationFilter.cs" />
+    <Compile Include="Common\Filters\ControllersFilters\CustomerControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\ProjectControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\ResetTicketControllerValidationFilter.cs" />
     <Compile Include="Common\Filters\ControllersFilters\TimeEntryControllerValidationFilter.cs" />

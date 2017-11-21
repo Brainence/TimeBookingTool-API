@@ -10,6 +10,8 @@ using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TBT.Business.Managers.Implementations
 {
@@ -42,6 +44,12 @@ namespace TBT.Business.Managers.Implementations
             //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {name}");
             //    return null;
             //}
+        }
+
+        public async Task<List<CustomerModel>> GetByCompanyIdAsync(int companyId)
+        {
+            return ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
+                     await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
         }
 
         #endregion

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using System;
 
 namespace TBT.DAL.Repository.Implementations
 {
@@ -73,6 +74,18 @@ namespace TBT.DAL.Repository.Implementations
             if (user == null) return;
 
             user.Password = new PasswordHasher().HashPassword(newPassword);
+        }
+
+        public Task<IQueryable<User>> GetByCompanyId(int companyId)
+        {
+            return Task.FromResult(
+                DbSet
+                .Include(u => u.Projects.Select(p => p.Activities))
+                .Include(u => u.Company)
+                .Where(x => x.IsActive && x.Company.Id == companyId)
+                .OrderBy(u => u.FirstName)
+                .ThenBy(u => u.LastName)
+                .Cast<User>());
         }
     }
 }

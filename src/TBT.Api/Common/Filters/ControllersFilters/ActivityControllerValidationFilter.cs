@@ -32,7 +32,14 @@ namespace TBT.Api.Common.Filters.ControllersFilters
                     model = new ProjectModel() { Id = (int)actionContext.ActionArguments[parameter.ParameterName] };
                     validator = _validatorStore.GetValidator(attribute.Mode, typeof(ProjectModel));
                     result = await validator.ValidateAsync((ProjectModel)model);
-                } else if (parameter.ParameterName == "name")
+                }
+                else if (parameter.ParameterName == "companyId")
+                {
+                    model = new CompanyModel() { Id = (int)actionContext.ActionArguments[parameter.ParameterName] };
+                    validator = _validatorStore.GetValidator(attribute.Mode, typeof(CompanyModel));
+                    result = await validator.ValidateAsync((CompanyModel)model);
+                }
+                else if (parameter.ParameterName == "name")
                 {
                     model = new ActivityModel() { Name = actionContext.ActionArguments[parameter.ParameterName].ToString() };
                     validator = _validatorStore.GetValidator(attribute.Mode, typeof(ActivityModel));

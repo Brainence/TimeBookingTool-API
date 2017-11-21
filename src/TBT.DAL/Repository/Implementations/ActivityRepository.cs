@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
@@ -20,6 +21,15 @@ namespace TBT.DAL.Repository.Implementations
                 DbSet
                 .Where(x => x.IsActive)
                 .Include(x => x.Project.Users)
+                .OrderByDescending(a => a.Name));
+        }
+
+        public Task<IQueryable<Activity>> GetByCompanyIdAsync(int companyId)
+        {
+            return Task.FromResult<IQueryable<Activity>>(
+                DbSet
+                .Include(x => x.Project.Users)
+                .Where(x => x.IsActive && x.Project.Customer.CompanyId == companyId)
                 .OrderByDescending(a => a.Name));
         }
 

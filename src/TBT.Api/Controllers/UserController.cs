@@ -7,6 +7,7 @@ using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.WebApi.Common.Filters;
+using System.Collections.Generic;
 
 namespace TBT.Api.Controllers
 {    
@@ -33,6 +34,14 @@ namespace TBT.Api.Controllers
         public async Task<bool> IsPasswordValid([Validator(ValidationMode.Exist)]int id, string password)
         {
             return await ManagerStore.UserManager.IsPasswordValid(id, password);
+        }
+
+        [HttpGet]
+        [Route("GetByCompany/{companyId:int:min(1)}")]
+        [UserControllerValidationFilter]
+        public async Task<List<UserModel>> GetByCompanyId([Validator(ValidationMode.Exist)]int companyId)
+        {
+            return await ManagerStore.UserManager.GetByCompanyIdAsync(companyId);
         }
 
         [UserControllerValidationFilter]
