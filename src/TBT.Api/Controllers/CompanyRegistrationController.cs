@@ -29,6 +29,7 @@ namespace TBT.Api.Controllers
         [AllowAnonymous]
         public virtual async Task<HttpResponseMessage> RegisterCompany([Validator(ValidationMode.Add)]UserModel newUser)
         {
+            newUser.IsAdmin = true;
             return Request.CreateResponse(HttpStatusCode.OK, await ManagerStore.CompanyManager.RegisterCompany(newUser));
         }
     }
