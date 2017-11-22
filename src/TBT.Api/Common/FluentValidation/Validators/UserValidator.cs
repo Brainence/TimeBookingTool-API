@@ -24,7 +24,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
                 .MustAsync((x, token) => 
                 {
                     var tempUser = ((IUserManager)_manager).GetByEmail(x.Username);
-                    return Task.FromResult(tempUser != null && x.Id == tempUser.Id); })
+                    return Task.FromResult(tempUser == null || x.Id == tempUser.Id); })
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
                 .WithMessage("User with this login already exists.");
         }
