@@ -22,7 +22,7 @@ namespace TBT.Api.Common.FluentValidation.Base
             _mode = mode;
             _manager = manager;
             CascadeMode = CascadeMode.StopOnFirstFailure;
-            RuleFor(x => x.Id).GreaterThan(0).When(x => HasFlag(~(ValidationMode.Add | ValidationMode.DataRelevance)))
+            RuleFor(x => x.Id).GreaterThan(0).When(x => HasFlag(ValidationMode.None & ~(ValidationMode.Add | ValidationMode.DataRelevance)))
                 .WithMessage("{PropertyName} can't be less or equal 0.");
             RuleFor(x => x.Id).MustAsync(async (id, token) => await ExistsAsync(id, _manager))
                 .When(x => HasFlag(ValidationMode.Exist | ValidationMode.Delete | ValidationMode.Update))

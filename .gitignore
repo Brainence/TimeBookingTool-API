@@ -288,3 +288,4 @@ __pycache__/
 *.xsd.cs
 src/TBT.Api/logs/TimeBookingTool_Exception.txt
 src/TBT.Api/logs/TimeBookingTool_Information.txt
+*.txt
