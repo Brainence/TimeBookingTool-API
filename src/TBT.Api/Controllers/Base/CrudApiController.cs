@@ -4,13 +4,11 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using TBT.Business.Interfaces;
 using TBT.Business.Managers.Interfaces;
-using TBT.WebApi.Common.Filters;
 using TBT.Api.Common.Filters.Base;
 using TBT.Api.Common.FluentValidation.Attributes;
 
 namespace TBT.Api.Controllers.Base
 {
-    [CommonActionFilter]
     public abstract class CrudApiController<TModel> : BaseApiController<TModel> where TModel : class, IModel
     {
         #region Constructors

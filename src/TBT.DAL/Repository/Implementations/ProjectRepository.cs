@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,13 +30,13 @@ namespace TBT.DAL.Repository.Implementations
                 .Include(x => x.Customer));
         }
 
-        public Task<IQueryable<Project>> GetByCompanyIdAsync(int companyId)
+        public Task<IEnumerable<Project>> GetByCompanyIdAsync(int companyId)
         {
             return Task.FromResult(
                 DbSet
                 .Where(p => p.IsActive && p.Customer.CompanyId == companyId)
                 .Include(x => x.Users)
-                .Include(x => x.Customer));
+                .Include(x => x.Customer).AsEnumerable());
         }
 
         public Task<IQueryable<Project>> GetByCustomerAsync(int customerId)

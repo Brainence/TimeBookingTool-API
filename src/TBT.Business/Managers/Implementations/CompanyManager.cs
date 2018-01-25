@@ -1,7 +1,4 @@
-﻿using NLog;
-using System;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
@@ -38,7 +35,7 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<int> RegisterCompany(UserModel superAdmin)
         {
-            if(superAdmin == null || superAdmin.Company == null) { return 0; }
+            if(superAdmin?.Company == null) { return 0; }
             var entity = ObjectMapper.Map<UserModel, User>(superAdmin);
             entity.Password = new PasswordHasher().HashPassword(entity.Password);
 

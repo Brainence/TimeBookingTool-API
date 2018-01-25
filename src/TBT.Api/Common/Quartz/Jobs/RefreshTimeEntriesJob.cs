@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Quartz;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Infrastructure.CastleWindsor;
@@ -17,13 +14,12 @@ namespace TBT.Api.Common.Quartz.Jobs
         {
             var _manager = ServiceLocator.Current.Get<ITimeEntryManager>();
             var timeEntries = await _manager.GetByIsRunning(true);
-            TimeEntryModel tempTimeEntry;
             if (timeEntries.Any())
             {
                 foreach (var item in timeEntries)
                 {
                     await _manager.StopAsync(item.Id);
-                    tempTimeEntry = new TimeEntryModel()
+                    var tempTimeEntry = new TimeEntryModel()
                     {
                         Activity = item.Activity,
                         ActivityId = item.ActivityId,

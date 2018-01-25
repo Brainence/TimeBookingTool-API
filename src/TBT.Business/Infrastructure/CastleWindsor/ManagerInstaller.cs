@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using TBT.Business.EmailService.Interfaces;
 using TBT.Business.Managers.Implementations;
 using TBT.Business.Managers.Interfaces;
 

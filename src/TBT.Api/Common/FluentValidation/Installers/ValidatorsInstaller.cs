@@ -1,14 +1,9 @@
-﻿using Castle.Facilities.TypedFactory;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using FluentValidation;
-using TBT.Business.Infrastructure.CastleWindsor.ComponentSelector;
 using TBT.Api.Common.FluentValidation.Store.Interfaces;
 using TBT.Api.Common.FluentValidation.Store.Implementations;
-using TBT.Business.Models.BusinessModels;
 using TBT.Api.Common.FluentValidation.Validators;
-using TBT.Api.Common.FluentValidation.Base;
 using TBT.Api.Common.FluentValidation.Interfaces;
 
 namespace TBT.Api.Common.FluentValidation.Installers

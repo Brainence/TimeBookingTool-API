@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http.ExceptionHandling;
 using TBT.Business.Exceptions;
 using TBT.Business.Infrastructure.CastleWindsor;
@@ -60,7 +55,7 @@ namespace TBT.Api.Common.ExceptionHandlers
             }
             context.Result = result;
 
-            _logManager.Error(context.Exception, $"{context.Exception.ToString()}\r\n{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.ReflectedType?.Name}");
+            _logManager.Error(context.Exception, $"{context.Exception}\r\n{context.Exception.Message} {context.Exception.InnerException?.Message}\r\nThrown by: {context.Exception.TargetSite.ReflectedType?.Name}");
             return base.HandleAsync(context, cancellationToken);
         }
     }

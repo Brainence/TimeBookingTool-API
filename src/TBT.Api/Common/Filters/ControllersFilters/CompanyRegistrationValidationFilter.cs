@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using TBT.Api.Common.FluentValidation.Attributes;
@@ -17,7 +15,7 @@ namespace TBT.Api.Common.Filters.ControllersFilters
     public class CompanyRegistrationValidationFilter: ActionFilterAttribute
     {
 
-        public async override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
+        public override async Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
             var model = default(UserModel);
             var _validatorStore = ServiceLocator.Current.Get<IValidatorStore>();

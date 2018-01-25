@@ -1,5 +1,4 @@
-﻿using NLog;
-using System;
+﻿using System;
 using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.Logger;
 using TBT.Components.Interfaces.ObjectMapper;

@@ -1,7 +1,4 @@
-﻿using NLog;
-using System;
-using System.Reflection;
-using TBT.Business.Implementations;
+﻿using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
@@ -25,22 +22,12 @@ namespace TBT.Business.Managers.Implementations
 
         #endregion
 
-
         #region Interface Members
 
         public Account GetByEmail(string email)
         {
-            //try
-            //{
-                var x = UnitOfWork.Users.GetByEmail(email);
-                return ObjectMapper.Map<User, Account>(x);
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {email}");
-            //    return null;
-            //}
+            var x = UnitOfWork.Users.GetByEmail(email);
+            return ObjectMapper.Map<User, Account>(x);
         }
 
         #endregion

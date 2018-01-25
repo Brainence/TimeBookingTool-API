@@ -10,18 +10,19 @@ using TBT.WebApi.Common.CastleWindsor.Installers;
 using TBT.Business.Infrastructure.CastleWindsor;
 using TBT.Api.Common.FluentValidation.Installers;
 using TBT.Api.Common.Quartz.Schedulers;
+using TBT.Business.Infrastructure.MapperProfiles;
 using AutoMapper;
 
 namespace TBT.WebApi
 {
     public class WebApiApplication : HttpApplication
     {
-        private readonly IWindsorContainer container;
+        private readonly IWindsorContainer _container;
 
         public WebApiApplication()
         {
-            container = new WindsorContainer();
-            container.Install(
+            _container = new WindsorContainer();
+            _container.Install(
                 new ControllerInstaller(),
                 new ComponentsInstaller(),
                 new ProvidersInstaller(),
@@ -30,37 +31,39 @@ namespace TBT.WebApi
                 new RepositoryInstaller(),
                 new ValidatorsInstaller());
 
-            ServiceLocator.Current.SetLocatorProvider(container);
+            ServiceLocator.Current.SetLocatorProvider(_container);
         }
 
         protected void Application_Start()
         {
             GlobalConfiguration.Configuration.Services
                 .Replace(typeof(IHttpControllerActivator),
-                         new WindsorCompositionRoot(container));
+                         new WindsorCompositionRoot(_container));
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-
             InitializeAutoMapper();
             GlobalSchedular.Start();
         }
 
         private void InitializeAutoMapper()
         {
-            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("TBT")))
+            Mapper.Initialize(cfg =>
             {
-                foreach (var profile in assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Profile))))
+                foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("TBT")))
                 {
-                    Mapper.AddProfile((Profile)Activator.CreateInstance(profile, null));
+                    foreach (var profile in assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Profile))))
+                    {
+                        cfg.AddProfile((Profile) Activator.CreateInstance(profile, null));
+                    }
                 }
-            }
+            });
         }
 
         public override void Dispose()
         {
-            container.Dispose();
+            _container.Dispose();
             base.Dispose();
         }
     }

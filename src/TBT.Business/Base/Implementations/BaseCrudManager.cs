@@ -1,6 +1,4 @@
-﻿using NLog;
-using System;
-using TBT.Business.Providers.Interfaces;
+﻿using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.Logger;
 using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Repository.Interfaces;
@@ -8,22 +6,19 @@ using TBT.DAL.Repository.Interfaces;
 namespace TBT.Business.Implementations
 {
 
-    public abstract class BaseCrudManager<TEntity> : BaseManager, IDisposable
+    public abstract class BaseCrudManager<TEntity> : BaseManager
         where TEntity : class, IEntity
     {
         #region Fields
 
-        private readonly IRepository<TEntity> repository;
+        private readonly IRepository<TEntity> _repository;
 
         #endregion
 
         #region Properties
 
 
-        protected IRepository<TEntity> Repository
-        {
-            get { return repository; }
-        }
+        protected IRepository<TEntity> Repository => _repository;
 
         #endregion
 
@@ -36,18 +31,10 @@ namespace TBT.Business.Implementations
             IConfigurationProvider configurationProvider, ILogManager logger) 
             : base(unitOfWork, objectMapper, configurationProvider, logger)
         {
-            this.repository = repository;
+            _repository = repository;
         }
 
         #endregion
 
-        #region Interface Members
-
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
-
-        #endregion
     }
 }

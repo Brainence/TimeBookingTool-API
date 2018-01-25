@@ -13,7 +13,7 @@ namespace TBT.Business.Models.BusinessModels
 
         public override string ToString()
         {
-            return $"{{ Id={Id}, Username={Username}, Token={Token}, ExpirationDate={ExpirationDate.ToString()}, IsUsed={IsUsed} }}";
+            return $"{{ Id={Id}, Username={Username}, Token={Token}, ExpirationDate={ExpirationDate}, IsUsed={IsUsed} }}";
         }
     }
 }

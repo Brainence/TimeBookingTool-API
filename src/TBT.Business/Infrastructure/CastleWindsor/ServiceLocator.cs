@@ -4,24 +4,13 @@ namespace TBT.Business.Infrastructure.CastleWindsor
 {
     public class ServiceLocator
     {
-        private static ServiceLocator instance;
+        private static ServiceLocator _instance;
         private IWindsorContainer _serviceContainer;
 
         private ServiceLocator()
         { }
 
-        public static ServiceLocator Current
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new ServiceLocator();
-                }
-
-                return instance;
-            }
-        }
+        public static ServiceLocator Current => _instance ?? (_instance = new ServiceLocator());
 
         public void SetLocatorProvider(IWindsorContainer container)
         {

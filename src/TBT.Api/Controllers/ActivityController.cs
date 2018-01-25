@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using TBT.Api.Common.Filters.ControllersFilters;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
-using TBT.WebApi.Common.Filters;
 using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Common.Filters.Base;
 
 namespace TBT.Api.Controllers
 {
-    [CommonActionFilter]
     [RoutePrefix("api/Activity")]
     public class ActivityController : CrudApiController<ActivityModel>
     {

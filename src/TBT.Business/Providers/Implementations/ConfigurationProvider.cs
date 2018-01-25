@@ -6,18 +6,18 @@ namespace TBT.Business.Providers.Implementations
 {
     public class ConfigurationProvider : IConfigurationProvider
     {
-        private IConfigurationManager configurationManager;
+        private IConfigurationManager _configurationManager;
 
         public ConfigurationProvider(IConfigurationManager configurationManager)
         {
-            this.configurationManager = configurationManager;
+            _configurationManager = configurationManager;
         }
 
         #region Interface Members
 
         public string ConnectionString(string name)
         {
-            var value = configurationManager.ConnectionStrings[name];
+            var value = _configurationManager.ConnectionStrings[name];
 
             if (value == null)
             {
@@ -29,7 +29,7 @@ namespace TBT.Business.Providers.Implementations
 
         public T Get<T>(string key)
         {
-            return configurationManager.Get<T>(key);
+            return _configurationManager.Get<T>(key);
         }
 
         #endregion

@@ -4,9 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Routing;
-using TBT.Api.Common;
 using TBT.Api.Common.ExceptionHandlers;
-using TBT.WebApi.Common.Filters;
 
 namespace TBT.WebApi
 {

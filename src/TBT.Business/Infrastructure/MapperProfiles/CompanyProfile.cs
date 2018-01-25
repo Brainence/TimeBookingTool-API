@@ -2,13 +2,12 @@
 using System.Linq;
 using TBT.Business.Models.BusinessModels;
 using TBT.DAL.Entities;
-using System;
 
 namespace TBT.Business.Infrastructure.MapperProfiles
 {
     public class CompanyProfile: Profile
     {
-        protected override void Configure()
+        public CompanyProfile()
         {
             CreateMap<Company, CompanyModel>()
                 .ForMember(dest => dest.Customers, opt => opt.MapFrom(src => src.Customers.Where(x => x.IsActive)))

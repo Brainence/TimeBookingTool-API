@@ -1,11 +1,6 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using TBT.Api.Common.Filters.Base;
 using TBT.Api.Common.FluentValidation.Base;
-using TBT.Business.Interfaces;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 

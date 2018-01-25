@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using TBT.Api.Common.FluentValidation.Store.Interfaces;
-using TBT.Api.Common.FluentValidation.Validators;
 using TBT.Api.Common.FluentValidation.Interfaces;
 using TBT.Api.Common.Filters.Base;
-using TBT.Business.Interfaces;
-using FluentValidation;
 using TBT.Business.Infrastructure.CastleWindsor;
-using TBT.Business.Models.BusinessModels;
-using TBT.Api.Common.FluentValidation.Base;
-using System.Reflection;
 
 namespace TBT.Api.Common.FluentValidation.Store.Implementations
 {

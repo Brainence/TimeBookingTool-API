@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using TBT.DAL.Repository.Interfaces;
 
@@ -24,45 +23,21 @@ namespace TBT.DAL.Repository.Implementations
             _repositoryFactory = repositoryFactory;
         }
 
-        public IActivityRepository Activities
-        {
-            get { return _activityRepository ?? (_activityRepository = new ActivityRepository(_context)); }
-        }
+        public IActivityRepository Activities => _activityRepository ?? (_activityRepository = new ActivityRepository(_context));
 
-        public ICustomerRepository Customers
-        {
-            get { return _customersRepository ?? (_customersRepository = new CustomerRepository(_context)); }
-        }
+        public ICustomerRepository Customers => _customersRepository ?? (_customersRepository = new CustomerRepository(_context));
 
-        public IProjectRepository Projects
-        {
-            get { return _projectsRepository ?? (_projectsRepository = new ProjectRepository(_context)); }
-        }
+        public IProjectRepository Projects => _projectsRepository ?? (_projectsRepository = new ProjectRepository(_context));
 
-        public ITimeEntryRepository TimeEntries
-        {
-            get { return _timeEntriesRepository ?? (_timeEntriesRepository = new TimeEntryRepository(_context)); }
-        }
+        public ITimeEntryRepository TimeEntries => _timeEntriesRepository ?? (_timeEntriesRepository = new TimeEntryRepository(_context));
 
-        public IUserRepository Users
-        {
-            get { return _usersRepository ?? (_usersRepository = new UserRepository(_context)); }
-        }
+        public IUserRepository Users => _usersRepository ?? (_usersRepository = new UserRepository(_context));
 
-        public IUserProjectRepository UserProjects
-        {
-            get { return _userProjectRepository ?? (_userProjectRepository = new UserProjectRepository(_context)); }
-        }
+        public IUserProjectRepository UserProjects => _userProjectRepository ?? (_userProjectRepository = new UserProjectRepository(_context));
 
-        public IResetTicketRepository ResetTickets
-        {
-            get { return _resetTicketRepository ?? (_resetTicketRepository = new ResetTicketRepository(_context)); }
-        }
+        public IResetTicketRepository ResetTickets => _resetTicketRepository ?? (_resetTicketRepository = new ResetTicketRepository(_context));
 
-        public ICompanyRepository Companies
-        {
-            get { return _companyRepository ?? (_companyRepository = new CompanyRepository(_context)); }
-        }
+        public ICompanyRepository Companies => _companyRepository ?? (_companyRepository = new CompanyRepository(_context));
 
         public int SaveChanges()
         {
@@ -71,23 +46,6 @@ namespace TBT.DAL.Repository.Implementations
 
         public async Task<int> SaveChangesAsync()
         {
-            //try
-            //{
-            //    return await _context.SaveChangesAsync();
-            //}
-            //catch (DbEntityValidationException dbEx)
-            //{
-            //    foreach (var validationErrors in dbEx.EntityValidationErrors)
-            //    {
-            //        foreach (var validationError in validationErrors.ValidationErrors)
-            //        {
-            //            Trace.TraceInformation("Property: {0} Error: {1}",
-            //                                    validationError.PropertyName,
-            //                                    validationError.ErrorMessage);
-            //        }
-            //    }
-            //}
-
             return await _context.SaveChangesAsync();
         }
 

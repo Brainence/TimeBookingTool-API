@@ -10,11 +10,9 @@ using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
-using TBT.WebApi.Common.Filters;
 
 namespace TBT.Api.Controllers
 {
-    [CommonActionFilter]
     [RoutePrefix("api/TimeEntry")]
     public class TimeEntryController : CrudApiController<TimeEntryModel>
     {
@@ -105,7 +103,7 @@ namespace TBT.Api.Controllers
         [HttpPut]
         [Route("ServerDuration")]
         [TimeEntryControllerValidationFilter]
-        public async override Task<HttpResponseMessage> UpdateAsync([Validator(ValidationMode.Update)]TimeEntryModel timeEntry)
+        public override async Task<HttpResponseMessage> UpdateAsync([Validator(ValidationMode.Update)]TimeEntryModel timeEntry)
         {
             await ManagerStore.TimeEntryManager.UpdateAsync(timeEntry, false);
 

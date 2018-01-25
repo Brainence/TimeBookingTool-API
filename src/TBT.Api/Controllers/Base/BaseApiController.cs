@@ -8,16 +8,11 @@ namespace TBT.Api.Controllers.Base
     {
         #region Fields
 
-        private IManagerStore _managerStore;
-
         #endregion
 
         #region Properties
 
-        protected IManagerStore ManagerStore
-        {
-            get { return _managerStore; }
-        }
+        protected IManagerStore ManagerStore { get; private set; }
 
         #endregion
 
@@ -26,7 +21,7 @@ namespace TBT.Api.Controllers.Base
         public BaseApiController(
             IManagerStore managerStore)
         {
-            _managerStore = managerStore;
+            ManagerStore = managerStore;
         }
 
         #endregion
@@ -37,10 +32,10 @@ namespace TBT.Api.Controllers.Base
         {
             if (disposing)
             {
-                if (_managerStore != null)
+                if (ManagerStore != null)
                 {
-                    _managerStore.Dispose();
-                    _managerStore = null;
+                    ManagerStore.Dispose();
+                    ManagerStore = null;
                 }
             }
 

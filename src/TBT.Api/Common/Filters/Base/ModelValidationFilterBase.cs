@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using TBT.WebApi.Exceptions;
 using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Business.Infrastructure.CastleWindsor;
 using TBT.Api.Common.FluentValidation.Store.Interfaces;
-using FluentValidation;
 using TBT.Business.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,7 +27,7 @@ namespace TBT.Api.Common.Filters.Base
     {
         protected IValidatorStore _validatorStore;
 
-        public async override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
+        public override async Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
             if (_validatorStore == null) { _validatorStore = ServiceLocator.Current.Get<IValidatorStore>(); }
             var type = default(Type);

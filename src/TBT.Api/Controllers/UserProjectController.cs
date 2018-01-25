@@ -1,10 +1,9 @@
 ﻿using System.Web.Http;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
-using TBT.WebApi.Common.Filters;
+
 namespace TBT.Api.Controllers
 {
-    [CommonActionFilter]
     [RoutePrefix("api/UserProject")]
     public class UserProjectController : BaseApiController
     {

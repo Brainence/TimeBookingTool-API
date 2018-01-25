@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
-using TBT.WebApi.Common.Filters;
 using TBT.Api.Common.Filters.ControllersFilters;
 using TBT.Api.Common.Filters.Base;
 using TBT.Api.Common.FluentValidation.Attributes;
 
 namespace TBT.Api.Controllers
 {    
-    [CommonActionFilter]
     [RoutePrefix("api/Project")]
     public class ProjectController : CrudApiController<ProjectModel>
     {
@@ -42,7 +39,8 @@ namespace TBT.Api.Controllers
         [ProjectControllerValidationFilter]
         public async Task<List<ProjectModel>> GetByCompanyAsync([Validator(ValidationMode.Exist)]int companyId)
         {
-            return await ManagerStore.ProjectManager.GetByCompanyIdAsync(companyId);
+            var result = await ManagerStore.ProjectManager.GetByCompanyIdAsync(companyId);
+            return result;
         }
 
         [HttpGet]

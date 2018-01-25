@@ -1,10 +1,8 @@
-﻿using Castle.Facilities.TypedFactory;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using System.Data.Entity;
 using TBT.Business.Constants;
-using TBT.Business.Infrastructure.CastleWindsor.ComponentSelector;
 using TBT.DAL.Repository;
 using TBT.DAL.Repository.Interfaces;
 using TBT.DAL.Repository.Implementations;

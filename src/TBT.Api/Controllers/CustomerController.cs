@@ -6,12 +6,10 @@ using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
-using TBT.WebApi.Common.Filters;
 using System.Collections.Generic;
 
 namespace TBT.Api.Controllers
 {
-    [CommonActionFilter]
     [RoutePrefix("api/Customer")]
     public class CustomerController : CrudApiController<CustomerModel>
     {

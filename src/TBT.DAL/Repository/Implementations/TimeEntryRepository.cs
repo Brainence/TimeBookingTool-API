@@ -22,7 +22,7 @@ namespace TBT.DAL.Repository.Implementations
             return date;
         }
 
-        public async override Task<TimeEntry> GetAsync(int id)
+        public override async Task<TimeEntry> GetAsync(int id)
         {
             var timeEntry = DbSet
                 .Where(x => x.IsActive)
@@ -46,19 +46,6 @@ namespace TBT.DAL.Repository.Implementations
                     }
                     timeEntry.LastUpdated = DateTime.UtcNow;
                 }
-                //else if (timeEntry.User != null && timeEntry.User.CurrentTimeZone.HasValue)
-                //{
-                //    var y = timeEntry.LastUpdated.Value.Date;
-                //    var x = new DateTime(y.Year, y.Month, y.Day + 1)
-                //        .Subtract(timeEntry.User.CurrentTimeZone.Value)
-                //        .Subtract(timeEntry.LastUpdated.Value)
-                //        .Duration();
-
-                //    timeEntry.Duration = (timeEntry.Duration + x).Duration();
-                //    timeEntry.IsRunning = false;
-
-                //    await Context.SaveChangesAsync();
-                //}
             }
 
             return await Task.FromResult(timeEntry);
@@ -81,17 +68,6 @@ namespace TBT.DAL.Repository.Implementations
                     }
                     timeEntry.LastUpdated = DateTime.UtcNow;
                 }
-                //else if (timeEntry.User != null && timeEntry.User.CurrentTimeZone.HasValue)
-                //{
-                //    var y = timeEntry.LastUpdated.Value.Date;
-                //    var x = new DateTime(y.Year, y.Month, y.Day + 1)
-                //        .Subtract(timeEntry.User.CurrentTimeZone.Value)
-                //        .Subtract(timeEntry.LastUpdated.Value)
-                //        .Duration();
-
-                //    timeEntry.Duration = (timeEntry.Duration + x).Duration();
-                //    timeEntry.IsRunning = false;
-                //}
             }
         }
 

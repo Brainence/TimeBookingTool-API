@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using FluentValidation;
-using TBT.Business.Models;
+﻿using FluentValidation;
 using TBT.Business.Interfaces;
 using TBT.Api.Common.Filters.Base;
 using System.Threading.Tasks;
@@ -27,15 +22,9 @@ namespace TBT.Api.Common.FluentValidation.Base
             RuleFor(x => x.Id).MustAsync(async (id, token) => await ExistsAsync(id, _manager))
                 .When(x => HasFlag(ValidationMode.Exist | ValidationMode.Delete | ValidationMode.Update))
                 .WithMessage("{PropertyValue}th item isn't exists.");
-            //RuleFor(x => x.Id).MustAsync(async (id, token) => !(await ExistsAsync(id, _manager)))
-            //    .When(x => HasFlag(ValidationMode.Add))
-            //    .WithMessage("Item with id {PropertyValue} is already exists.");
         }
 
-        public ValidationMode Mode
-        {
-            get { return _mode; }
-        }
+        public ValidationMode Mode => _mode;
 
         protected bool HasFlag(ValidationMode mode)
         {
@@ -44,7 +33,7 @@ namespace TBT.Api.Common.FluentValidation.Base
 
         protected async Task<bool> ExistsAsync<TModel>(int id, ICrudManager<TModel> manager) where TModel : class, IModel
         {
-            return (await manager.GetAsync(id)) != null;
+            return await manager.GetAsync(id) != null;
         }
 
         public Task<ValidationResult> ValidateAsync(object value)

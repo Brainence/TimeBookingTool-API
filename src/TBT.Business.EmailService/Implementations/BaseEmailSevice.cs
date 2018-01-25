@@ -12,28 +12,19 @@ namespace TBT.Business.EmailService.Implementations
     {
         #region Fields
 
-        private ILogManager logManager;
-        private SmtpClient smtpClient;
-        private SmtpSettings smtpSettings;
+        private ILogManager _logManager;
+        private SmtpClient _smtpClient;
+        private SmtpSettings _smtpSettings;
 
         #endregion
 
         #region Properties
 
-        protected ILogManager LogManager
-        {
-            get { return logManager; }
-        }
+        protected ILogManager LogManager => _logManager;
 
-        protected SmtpClient SmtpClient
-        {
-            get { return smtpClient; }
-        }
+        protected SmtpClient SmtpClient => _smtpClient;
 
-        protected SmtpSettings SmtpSettings
-        {
-            get { return smtpSettings; }
-        }
+        protected SmtpSettings SmtpSettings => _smtpSettings;
 
         #endregion
 
@@ -41,9 +32,9 @@ namespace TBT.Business.EmailService.Implementations
 
         protected BaseEmailSevice(ILogManager logManager, SmtpSettings smtpSettings)
         {
-            this.logManager = logManager;
-            this.smtpClient = new SmtpClient();
-            this.SetSmtpSettings(smtpSettings);
+            _logManager = logManager;
+            _smtpClient = new SmtpClient();
+            SetSmtpSettings(smtpSettings);
         }
 
         #endregion
@@ -54,14 +45,14 @@ namespace TBT.Business.EmailService.Implementations
         {
             try
             {
-                await this.smtpClient.SendMailAsync(mailMessage);
+                await _smtpClient.SendMailAsync(mailMessage);
 
                 return true;
             }
             catch (Exception ex)
             {
                 var x = MethodBase.GetCurrentMethod();
-                logManager.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {this.GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {mailMessage.ToString()}");
+                _logManager.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\r\nObjectType: {GetType()}\r\nMethod: {x.ReflectedType.Name}\r\nParameter: {mailMessage}");
                 return false;
             }
         }
@@ -77,20 +68,20 @@ namespace TBT.Business.EmailService.Implementations
         {
             if (smtpSettings.IsValid())
             {
-                this.smtpClient.Host = smtpSettings.Server;
-                this.smtpClient.Port = smtpSettings.Port;
-                this.smtpClient.EnableSsl = smtpSettings.UseSsl;
-                this.smtpClient.Credentials = new NetworkCredential(smtpSettings.Username, smtpSettings.Password);
-                this.smtpSettings = smtpSettings;
+                _smtpClient.Host = smtpSettings.Server;
+                _smtpClient.Port = smtpSettings.Port;
+                _smtpClient.EnableSsl = smtpSettings.UseSsl;
+                _smtpClient.Credentials = new NetworkCredential(smtpSettings.Username, smtpSettings.Password);
+                _smtpSettings = smtpSettings;
             }
         }
 
         public void Dispose()
         {
-            if (this.smtpClient != null)
+            if (_smtpClient != null)
             {
-                this.smtpClient.Dispose();
-                this.smtpClient = null;
+                _smtpClient.Dispose();
+                _smtpClient = null;
             }
         }
 

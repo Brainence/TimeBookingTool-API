@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -11,11 +8,9 @@ using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
-using TBT.WebApi.Common.Filters;
 
 namespace TBT.Api.Controllers
 {
-    [CommonActionFilter]
     [RoutePrefix("api/CompanyRegistration")]
     public class CompanyRegistrationController : BaseApiController
     {

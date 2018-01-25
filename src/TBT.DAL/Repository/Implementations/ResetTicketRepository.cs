@@ -59,7 +59,7 @@ namespace TBT.DAL.Repository.Implementations
 
         public async Task<bool> ChangePassword(int userId, string newPassword, string token)
         {
-            var user = Context.Set<User>().FirstOrDefault(u => u.Id == userId) as User;
+            var user = Context.Set<User>().FirstOrDefault(u => u.Id == userId);
             if (user == null) return false;
 
             var resetTicket = DbSet.FirstOrDefault(rt => rt.Username == user.Username && rt.Token == token && !rt.IsUsed);

@@ -3,7 +3,6 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using TBT.Business.Constants;
 using TBT.Business.EmailService.Interfaces;
-using TBT.Business.EmailService.Models;
 using TBT.Components.Implementations.ConfigurationManager;
 using TBT.Components.Implementations.Logger;
 using TBT.Components.Implementations.ObjectMapper;

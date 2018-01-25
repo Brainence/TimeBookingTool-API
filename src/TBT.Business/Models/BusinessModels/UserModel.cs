@@ -23,7 +23,7 @@ namespace TBT.Business.Models.BusinessModels
 
         public override string ToString()
         {
-            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company?.ToString()} }}";
+            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company} }}";
         }
     }
 }

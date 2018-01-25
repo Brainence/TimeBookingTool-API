@@ -1,8 +1,5 @@
-﻿using NLog;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using TBT.Business.Interfaces;
 using TBT.Business.Providers.Interfaces;
@@ -26,129 +23,65 @@ namespace TBT.Business.Implementations
 
         public virtual async Task<List<TModel>> GetAsync()
         {
-            //try
-            //{
-                return ObjectMapper.Map<IQueryable<TEntity>, List<TModel>>(
-                    await Repository.GetAsync());
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}");
-            //    return null;
-            //}
+            return ObjectMapper.Map<IQueryable<TEntity>, List<TModel>>(
+                await Repository.GetAsync());
         }
 
         public virtual async Task<TModel> GetAsync(int id)
         {
-            //try
-            //{
-                return ObjectMapper.Map<TEntity, TModel>(
-                    await Repository.GetAsync(id));
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter:{id}");
-            //    return null;
-            //}
+            return ObjectMapper.Map<TEntity, TModel>(
+                await Repository.GetAsync(id));
         }
 
         public virtual async Task<int> AddAsync(TModel model)
         {
-            //try
-            //{
-                if (model == null) return 0;
+            if (model == null) return 0;
 
-                var dBModel = ObjectMapper.Map<TModel, TEntity>(model);
+            var dBModel = ObjectMapper.Map<TModel, TEntity>(model);
 
-                await Repository.AddAsync(dBModel);
+            await Repository.AddAsync(dBModel);
 
-                await UnitOfWork.SaveChangesAsync();
+            await UnitOfWork.SaveChangesAsync();
 
-                return dBModel.Id;
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
-            //    return -1;
-            //}
+            return dBModel.Id;
         }
 
         public virtual async Task UpdateAsync(TModel model)
         {
-            //try
-            //{
-                if (model == null) return;
+            if (model == null) return;
 
-                await Repository.DetachAsync(
-                    await Repository.GetAsync(model.Id));
+            await Repository.DetachAsync(
+                await Repository.GetAsync(model.Id));
 
-                await Repository.UpdateAsync(
-                    ObjectMapper.Map<TModel, TEntity>(model));
+            await Repository.UpdateAsync(
+                ObjectMapper.Map<TModel, TEntity>(model));
 
-                await UnitOfWork.SaveChangesAsync();
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
-            //}
+            await UnitOfWork.SaveChangesAsync();
         }
 
         public virtual async Task DeleteAsync(TModel model)
         {
-            //try
-            //{
-                if (model == null) return;
+            if (model == null) return;
 
-                await Repository.DeleteAsync(
-                    ObjectMapper.Map<TModel, TEntity>(model));
+            await Repository.DeleteAsync(
+                ObjectMapper.Map<TModel, TEntity>(model));
 
-                await UnitOfWork.SaveChangesAsync();
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {model.ToString()}");
-            //}
+            await UnitOfWork.SaveChangesAsync();
         }
 
         public virtual async Task DeleteAsync(int id)
         {
-            //try
-            //{
-                await Repository.DeleteAsync(id);
+            await Repository.DeleteAsync(id);
 
-                await UnitOfWork.SaveChangesAsync();
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {id}");
-            //}
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
+            await UnitOfWork.SaveChangesAsync();
         }
 
         public virtual async Task BulkInsertAsync(IEnumerable<TModel> entities)
         {
-            //try
-            //{
-                await Repository.BulkInsertAsync(
-                    ObjectMapper.Map<IEnumerable<TModel>, IEnumerable<TEntity>>(entities));
+            await Repository.BulkInsertAsync(
+                ObjectMapper.Map<IEnumerable<TModel>, IEnumerable<TEntity>>(entities));
 
-                await UnitOfWork.SaveChangesAsync();
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {string.Join(";", entities)}");
-            //}
+            await UnitOfWork.SaveChangesAsync();
         }
     }
 }

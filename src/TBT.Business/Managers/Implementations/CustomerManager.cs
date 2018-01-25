@@ -1,7 +1,4 @@
-﻿using NLog;
-using System;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
@@ -33,17 +30,8 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<CustomerModel> GetByNameAsync(string name)
         {
-            //try
-            //{
-                return ObjectMapper.Map<Customer, CustomerModel>(
-                     await UnitOfWork.Customers.GetByNameAsync(name));
-            //}
-            //catch (Exception ex)
-            //{
-            //    var x = MethodBase.GetCurrentMethod();
-            //    Logger.Error(ex, $"{ex.Message} {ex.InnerException?.Message}\nObjectType: {this.GetType()}\nMethod: {x.Name}\nParameter: {name}");
-            //    return null;
-            //}
+            return ObjectMapper.Map<Customer, CustomerModel>(
+                 await UnitOfWork.Customers.GetByNameAsync(name));
         }
 
         public async Task<List<CustomerModel>> GetByCompanyIdAsync(int companyId)
