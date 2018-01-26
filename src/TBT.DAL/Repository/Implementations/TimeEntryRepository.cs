@@ -55,10 +55,9 @@ namespace TBT.DAL.Repository.Implementations
         {
             if (timeEntry.IsRunning && timeEntry.IsActive && timeEntry.LastUpdated.HasValue)
             {
-                var totalDays = (DateTime.UtcNow.Date - timeEntry.Date.Date).Duration().TotalDays;
-                var n = (int)Math.Floor(totalDays);
+                var totalDays = (int)Math.Floor((DateTime.UtcNow.Date - timeEntry.Date.Date).Duration().TotalDays);
 
-                if (n == 0)
+                if (totalDays == 0)
                 {
                     timeEntry.Duration += (DateTime.UtcNow - timeEntry.LastUpdated.Value).Duration();
                     if (timeEntry.Duration >= _dayLimit)
@@ -250,17 +249,17 @@ namespace TBT.DAL.Repository.Implementations
         public async Task<bool> StopAsync(int timeEntryId)
         {
             var timeEntry = DbSet.FirstOrDefault(t => t.Id == timeEntryId);
-            if (timeEntry == null) return await Task.FromResult(false);
+            if (timeEntry == null) return false;
 
-            if (!timeEntry.IsRunning) return await Task.FromResult(false);
-            if (!timeEntry.LastUpdated.HasValue) return await Task.FromResult(false);
+            if (!timeEntry.IsRunning) return false;
+            if (!timeEntry.LastUpdated.HasValue) return false;
 
             timeEntry.IsRunning = false;
             timeEntry.Duration += DateTime.UtcNow - timeEntry.LastUpdated.Value;
             if (timeEntry.Duration >= _dayLimit) timeEntry.Duration = _dayLimit;
 
             await Context.SaveChangesAsync();
-            return await Task.FromResult(true);
+            return true;
         }
 
         public async Task<bool> RemoveAsync(int timeEntryId)
@@ -336,7 +335,7 @@ namespace TBT.DAL.Repository.Implementations
                 .Include(x => x.User.TimeEntries)
                 .OrderBy(t => t.Date);
 
-            foreach (var timeEntry in timeEntries.Where(t => t.IsRunning))
+            foreach (var timeEntry in timeEntries.Where(t => t.IsRunning).ToList())
             {
                 CheckTimeEntry(timeEntry);
             }

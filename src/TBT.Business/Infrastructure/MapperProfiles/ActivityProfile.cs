@@ -8,15 +8,11 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public ActivityProfile()
         {
-            CreateMap<Activity, ActivityModel>()
-                .MaxDepth(0)
-                .PreserveReferences();
+            CreateMap<Activity, ActivityModel>();
 
             CreateMap<ActivityModel, Activity>()
                 .ForMember(dest => dest.ProjectId, opt => opt.Ignore())
-                .ForMember(d => d.Project, opt => opt.Ignore())
-                .MaxDepth(0)
-                .PreserveReferences();
+                .ForMember(d => d.Project, opt => opt.Ignore());
         }
     }
 }

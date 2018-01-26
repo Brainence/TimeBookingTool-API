@@ -39,8 +39,7 @@ namespace TBT.Api.Controllers
         [ProjectControllerValidationFilter]
         public async Task<List<ProjectModel>> GetByCompanyAsync([Validator(ValidationMode.Exist)]int companyId)
         {
-            var result = await ManagerStore.ProjectManager.GetByCompanyIdAsync(companyId);
-            return result;
+            return await ManagerStore.ProjectManager.GetByCompanyIdAsync(companyId);
         }
 
         [HttpGet]

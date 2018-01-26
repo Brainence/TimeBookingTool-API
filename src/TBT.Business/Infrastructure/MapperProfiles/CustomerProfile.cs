@@ -10,14 +10,12 @@ namespace TBT.Business.Infrastructure.MapperProfiles
         public CustomerProfile()
         {
             CreateMap<Customer, CustomerModel>()
-                .ForMember(dest => dest.Projects, opt => opt.MapFrom(src => src.Projects.Where(a => a.IsActive)))
-                .PreserveReferences();
+                .ForMember(dest => dest.Projects, opt => opt.MapFrom(src => src.Projects.Where(a => a.IsActive)));
 
             CreateMap<CustomerModel, Customer>()
                 .ForMember(d => d.Projects, opt => opt.Ignore())
                 .ForMember(d => d.Company, opt => opt.Ignore())
-                .ForMember(d => d.CompanyId, opt => opt.MapFrom(src => src.Company.Id))
-                .PreserveReferences();
+                .ForMember(d => d.CompanyId, opt => opt.MapFrom(src => src.Company.Id));
         }
     }
 }

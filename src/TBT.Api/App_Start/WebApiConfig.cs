@@ -24,7 +24,6 @@ namespace TBT.WebApi
 
             config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
 
-            //config.Filters.Add(new ExceptionFilter());
         }
     }
 

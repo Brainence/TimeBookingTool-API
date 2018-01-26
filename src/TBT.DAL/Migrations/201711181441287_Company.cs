@@ -17,12 +17,16 @@ namespace TBT.DAL.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.CompanyName, unique: true, name: "Company_CompanyName_Index");
             
+            Sql("INSERT INTO dbo.Companies(CompanyName, IsActive) VALUES('Brainence', 1)");
+
             AddColumn("dbo.Customers", "CompanyId", c => c.Int());
             AddColumn("dbo.Users", "CompanyId", c => c.Int());
             CreateIndex("dbo.Customers", "CompanyId");
             CreateIndex("dbo.Users", "CompanyId");
             AddForeignKey("dbo.Users", "CompanyId", "dbo.Companies", "Id");
             AddForeignKey("dbo.Customers", "CompanyId", "dbo.Companies", "Id");
+            Sql("UPDATE Users SET CompanyId = 1");
+            Sql("UPDATE Customers SET CompanyId = 1");
         }
         
         public override void Down()

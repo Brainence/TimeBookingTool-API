@@ -13,7 +13,7 @@ namespace TBT.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201711181405224_Initial"; }
+            get { return "201701111414410_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

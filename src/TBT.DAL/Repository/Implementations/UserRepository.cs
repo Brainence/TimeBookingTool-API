@@ -79,7 +79,6 @@ namespace TBT.DAL.Repository.Implementations
             return Task.FromResult(
                 DbSet
                 .Include(u => u.Projects.Select(p => p.Activities))
-                .Include(u => u.Company)
                 .Where(x => x.IsActive && x.Company.Id == companyId)
                 .OrderBy(u => u.FirstName)
                 .ThenBy(u => u.LastName)

@@ -27,6 +27,7 @@ namespace TBT.DAL.Repository.Implementations
         {
             return Task.FromResult<IQueryable<Activity>>(
                 DbSet
+                .Include(x => x.Project.Customer)
                 .Include(x => x.Project.Users)
                 .Where(x => x.IsActive && x.Project.Customer.CompanyId == companyId)
                 .OrderByDescending(a => a.Name));
