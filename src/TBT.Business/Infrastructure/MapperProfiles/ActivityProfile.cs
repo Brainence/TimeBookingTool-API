@@ -11,7 +11,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
             CreateMap<Activity, ActivityModel>();
 
             CreateMap<ActivityModel, Activity>()
-                .ForMember(dest => dest.ProjectId, opt => opt.Ignore())
+                .ForMember(dest => dest.ProjectId, dest => dest.MapFrom(src => src.Project != null && src.Project.Id > 0 ? src.Project.Id : default(int)))
                 .ForMember(d => d.Project, opt => opt.Ignore());
         }
     }

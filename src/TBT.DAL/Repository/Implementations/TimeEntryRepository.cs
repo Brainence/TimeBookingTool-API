@@ -170,11 +170,6 @@ namespace TBT.DAL.Repository.Implementations
                 .Include(x => x.User.Projects)
                 .Include(x => x.User.TimeEntries)
                 .OrderBy(t => t.Date);
-            foreach (var timeEntry in timeEntries.Where(t => t.IsRunning))
-            {
-                CheckTimeEntry(timeEntry);
-            }
-            await Context.SaveChangesAsync();
 
             return await Task.FromResult(timeEntries);
         }

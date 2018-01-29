@@ -31,6 +31,7 @@ namespace TBT.DAL.Repository.Implementations
         {
             return Task.FromResult(DbSet
                 .Include(x => x.Projects)
+                .Include(x => x.Company)
                 .Where(x => x.IsActive && x.CompanyId == companyId));
         }
     }
