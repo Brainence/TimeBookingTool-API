@@ -11,8 +11,7 @@ namespace TBT.Api.Common.Quartz.Schedulers
             var scheduler = StdSchedulerFactory.GetDefaultScheduler();
             scheduler.Start();
             var trigger = TriggerBuilder.Create()
-                .WithDailyTimeIntervalSchedule(s => s.OnEveryDay()
-                                                     .StartingDailyAt(new TimeOfDay(23, 59, 59)))
+                .WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(0, 0))
                 .Build();
             scheduler.ScheduleJob(JobBuilder.Create<RefreshTimeEntriesJob>().Build(), trigger);
         }

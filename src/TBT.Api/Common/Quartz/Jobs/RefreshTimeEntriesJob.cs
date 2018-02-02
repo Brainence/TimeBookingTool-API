@@ -26,7 +26,7 @@ namespace TBT.Api.Common.Quartz.Jobs
                             Activity = item.Activity,
                             ActivityId = item.ActivityId,
                             Comment = item.Comment,
-                            Date = item.Date.Date.AddDays(1),
+                            Date = DateTime.UtcNow,
                             TimeLimit = item.TimeLimit,
                             User = item.User,
                             UserId = item.UserId,
