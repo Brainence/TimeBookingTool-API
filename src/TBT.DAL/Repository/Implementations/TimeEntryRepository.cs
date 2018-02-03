@@ -78,13 +78,13 @@ namespace TBT.DAL.Repository.Implementations
                 .Include(x => x.Activity.Project.Customer)
                 .OrderBy(t => t.Date);
 
-            foreach (var timeEntry in timeEntries.Where(t => t.IsRunning))
+            foreach (var timeEntry in timeEntries.Where(t => t.IsRunning).ToList())
             {
                 CheckTimeEntry(timeEntry);
             }
             await Context.SaveChangesAsync();
 
-            return await Task.FromResult(timeEntries);
+            return timeEntries;
         }
 
         public async Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, bool isRunning)
@@ -225,7 +225,7 @@ namespace TBT.DAL.Repository.Implementations
                     .ToList();
 
                 var res = timeEntries.Count > 0 ? timeEntries.Select(t => t.Duration).Aggregate((t1, t2) => t1.Add(t2)) : (TimeSpan?)null;
-                var canStart = res.HasValue ? res.Value.TotalHours < timeEntry.User.TimeLimit.Value : true;
+                var canStart = res.HasValue ? res.Value.TotalHours < (timeEntry.User.TimeLimit.HasValue ? timeEntry.User.TimeLimit : 0) : true;
 
                 if (!canStart) await Task.FromResult(false);
             }
@@ -325,23 +325,13 @@ namespace TBT.DAL.Repository.Implementations
             return await Task.FromResult(res);
         }
 
-        public async Task<IQueryable<TimeEntry>> GetByIsRunning(bool isRunning)
+        public Task<IQueryable<TimeEntry>> GetByIsRunning(bool isRunning)
         {
-            var timeEntries = DbSet
+            return Task.FromResult(DbSet
                 .Where(t => t.IsRunning == isRunning
                             && t.IsActive)
-                .Include(x => x.Activity.Project.Customer)
-                .Include(x => x.User.Projects)
-                .Include(x => x.User.TimeEntries)
-                .OrderBy(t => t.Date);
-
-            foreach (var timeEntry in timeEntries.Where(t => t.IsRunning).ToList())
-            {
-                CheckTimeEntry(timeEntry);
-            }
-            await Context.SaveChangesAsync();
-
-            return await Task.FromResult(timeEntries);
+                .Include(x => x.Activity)
+                .Include(x => x.User));
         }
     }
 }

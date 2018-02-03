@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Quartz;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Infrastructure.CastleWindsor;
@@ -18,19 +19,21 @@ namespace TBT.Api.Common.Quartz.Jobs
             {
                 foreach (var item in timeEntries)
                 {
-                    await _manager.StopAsync(item.Id);
-                    var tempTimeEntry = new TimeEntryModel()
+                    if(await _manager.StopAsync(item.Id))
                     {
-                        Activity = item.Activity,
-                        ActivityId = item.ActivityId,
-                        Comment = item.Comment,
-                        Date = item.Date.Date.AddDays(1),
-                        TimeLimit = item.TimeLimit,
-                        User = item.User,
-                        UserId = item.UserId,
-                        IsActive = true
-                    };
-                    await _manager.StartAsync(await _manager.AddAsync(tempTimeEntry));
+                        var tempTimeEntry = new TimeEntryModel()
+                        {
+                            Activity = item.Activity,
+                            ActivityId = item.ActivityId,
+                            Comment = item.Comment,
+                            Date = item.Date.Date.AddDays(1),
+                            TimeLimit = item.TimeLimit,
+                            User = item.User,
+                            UserId = item.UserId,
+                            IsActive = true
+                        };
+                        await _manager.StartAsync(await _manager.AddAsync(tempTimeEntry));
+                    }
                 }
             }
         }
