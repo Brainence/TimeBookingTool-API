@@ -30,8 +30,6 @@ namespace TBT.DAL.Repository.Implementations
         public Task<IQueryable<Customer>> GetByCompanyIdAsync(int companyId)
         {
             return Task.FromResult(DbSet
-                .Include(x => x.Projects)
-                .Include(x => x.Company)
                 .Where(x => x.IsActive && x.CompanyId == companyId));
         }
     }

@@ -54,6 +54,10 @@ namespace TBT.Business.Managers.Implementations
                         Id = user.CompanyId.Value
                     };
                 }
+                foreach (var project in user.Projects)
+                {
+                    project.Activities.Clear();
+                }
             }
             return users;
         }

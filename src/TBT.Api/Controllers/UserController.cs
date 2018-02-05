@@ -42,9 +42,9 @@ namespace TBT.Api.Controllers
             return await ManagerStore.UserManager.GetByCompanyIdAsync(companyId);
         }
 
-        [UserControllerValidationFilter]
         [HttpGet]
         [Route("ChangePassword/{id:int:min(1)}/{oldPassword}/{newPassword}")]
+        [UserControllerValidationFilter]
         public async Task ChangePassword([Validator(ValidationMode.Exist)]int id, string oldPassword, string newPassword)
         {
             await ManagerStore.UserManager.ChangePassword(id, oldPassword, newPassword);
