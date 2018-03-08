@@ -19,6 +19,7 @@ namespace TBT.DAL.Repository.Implementations
                 DbSet
                 .Where(x => x.IsActive)
                 .Include(u => u.Projects.Select(p => p.Activities))
+                .Include(u => u.Company)
                 .OrderBy(u => u.FirstName)
                 .ThenBy(u => u.LastName)
                 .Cast<User>());
@@ -29,6 +30,7 @@ namespace TBT.DAL.Repository.Implementations
                 DbSet
                 .Where(u => u.IsActive && u.Id == id)
                 .Include(u => u.Projects.Select(p => p.Activities))
+                .Include(u => u.Company)
                 .FirstOrDefault());
         }
         public Task<IQueryable<User>> GetByProjectAsync(int projectId)
@@ -36,6 +38,7 @@ namespace TBT.DAL.Repository.Implementations
             return Task.FromResult(
                 DbSet
                 .Include(u => u.Projects.Select(p => p.Activities))
+                .Include(u => u.Company)
                 .Where(u => u.IsActive && u.Projects.Select(x => x.Id)
                 .Contains(projectId)));
         }
@@ -44,8 +47,8 @@ namespace TBT.DAL.Repository.Implementations
         {
             return DbSet
                 .Include(u => u.Projects.Select(p => p.Activities))
-                .Where(u => u.IsActive && u.Username == email)
-                .FirstOrDefault();
+                .Include(u => u.Company)
+                .FirstOrDefault(u => u.IsActive && u.Username == email);
         }
 
         public Task<bool> IsPasswordValid(int userId, string password)
@@ -69,6 +72,16 @@ namespace TBT.DAL.Repository.Implementations
             if (user == null) return;
 
             user.Password = new PasswordHasher().HashPassword(newPassword);
+        }
+
+        public Task<IQueryable<User>> GetByCompanyId(int companyId)
+        {
+            return Task.FromResult(
+                DbSet
+                .Where(x => x.IsActive && x.CompanyId == companyId)
+                .OrderBy(u => u.FirstName)
+                .ThenBy(u => u.LastName)
+                .Cast<User>());
         }
     }
 }

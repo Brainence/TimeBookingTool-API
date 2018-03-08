@@ -20,45 +20,30 @@ namespace TBT.Business.Managers.Implementations
         private IUserManager _userManager;
         private IUserProjectManager _userProjectManager;
         private IResetTicketManager _resetTicketManager;
+        private ICompanyManager _companyManager;
 
         #endregion
 
         #region Properties
 
 
-        public ICustomerManager CustomerManager
-        {
-            get { return _customerManager ?? (_customerManager = _managerFactory.Create<ICustomerManager>(typeof(ICustomerManager).FullName)); }
-        }
-        public IProjectManager ProjectManager
-        {
-            get { return _projectManager ?? (_projectManager = _managerFactory.Create<IProjectManager>(typeof(IProjectManager).FullName)); }
-        }
-        public IActivityManager ActivityManager
-        {
-            get { return _taskManager ?? (_taskManager = _managerFactory.Create<IActivityManager>(typeof(IActivityManager).FullName)); }
-        }
-        public ITimeEntryManager TimeEntryManager
-        {
-            get { return _timeEntryManager ?? (_timeEntryManager = _managerFactory.Create<ITimeEntryManager>(typeof(ITimeEntryManager).FullName)); }
-        }
-        public IUserManager UserManager
-        {
-            get { return _userManager ?? (_userManager = _managerFactory.Create<IUserManager>(typeof(IUserManager).FullName)); }
-        }
-        public IUserProjectManager UserProjectManager
-        {
-            get { return _userProjectManager ?? (_userProjectManager = _managerFactory.Create<IUserProjectManager>(typeof(IUserProjectManager).FullName)); }
-        }
-        public IAccountManager AccountManager
-        {
-            get { return _accountManager ?? (_accountManager = _managerFactory.Create<IAccountManager>(typeof(IAccountManager).FullName)); }
-        }
+        public ICustomerManager CustomerManager => _customerManager ?? (_customerManager = _managerFactory.Create<ICustomerManager>(typeof(ICustomerManager).FullName));
 
-        public IResetTicketManager ResetTicketManager
-        {
-            get { return _resetTicketManager ?? (_resetTicketManager = _managerFactory.Create<IResetTicketManager>(typeof(IResetTicketManager).FullName)); }
-        }
+        public IProjectManager ProjectManager => _projectManager ?? (_projectManager = _managerFactory.Create<IProjectManager>(typeof(IProjectManager).FullName));
+
+        public IActivityManager ActivityManager => _taskManager ?? (_taskManager = _managerFactory.Create<IActivityManager>(typeof(IActivityManager).FullName));
+
+        public ITimeEntryManager TimeEntryManager => _timeEntryManager ?? (_timeEntryManager = _managerFactory.Create<ITimeEntryManager>(typeof(ITimeEntryManager).FullName));
+
+        public IUserManager UserManager => _userManager ?? (_userManager = _managerFactory.Create<IUserManager>(typeof(IUserManager).FullName));
+
+        public IUserProjectManager UserProjectManager => _userProjectManager ?? (_userProjectManager = _managerFactory.Create<IUserProjectManager>(typeof(IUserProjectManager).FullName));
+
+        public IAccountManager AccountManager => _accountManager ?? (_accountManager = _managerFactory.Create<IAccountManager>(typeof(IAccountManager).FullName));
+
+        public IResetTicketManager ResetTicketManager => _resetTicketManager ?? (_resetTicketManager = _managerFactory.Create<IResetTicketManager>(typeof(IResetTicketManager).FullName));
+
+        public ICompanyManager CompanyManager => _companyManager ?? (_companyManager = _managerFactory.Create<ICompanyManager>(typeof(ICompanyManager).FullName));
 
         #endregion
 

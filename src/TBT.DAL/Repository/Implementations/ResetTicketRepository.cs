@@ -24,26 +24,18 @@ namespace TBT.DAL.Repository.Implementations
         {
             var user = Context.Set<User>().FirstOrDefault(u => u.Id == userId);
             if (user == null) return null;
-
-            try
+            var resetTicket = new ResetTicket()
             {
-                var resetTicket = new ResetTicket()
-                {
-                    ExpirationDate = DateTime.UtcNow.AddHours(1),
-                    IsUsed = false,
-                    Username = user.Username,
-                    Token = RandomString(64)
-                };
+                ExpirationDate = DateTime.UtcNow.AddHours(1),
+                IsUsed = false,
+                Username = user.Username,
+                Token = RandomString(64)
+            };
 
-                resetTicket = DbSet.Add(resetTicket);
-                await Context.SaveChangesAsync();
+            resetTicket = DbSet.Add(resetTicket);
+            await Context.SaveChangesAsync();
 
-                return await Task.FromResult(resetTicket);
-            }
-            catch
-            {
-                return null;
-            }
+            return await Task.FromResult(resetTicket);
         }
 
         static string RandomString(int length)
@@ -67,40 +59,33 @@ namespace TBT.DAL.Repository.Implementations
 
         public async Task<bool> ChangePassword(int userId, string newPassword, string token)
         {
-            var user = Context.Set<User>().FirstOrDefault(u => u.Id == userId) as User;
+            var user = Context.Set<User>().FirstOrDefault(u => u.Id == userId);
             if (user == null) return false;
 
             var resetTicket = DbSet.FirstOrDefault(rt => rt.Username == user.Username && rt.Token == token && !rt.IsUsed);
             if (resetTicket == null) return false;
             if (resetTicket.ExpirationDate < DateTime.UtcNow) return false;
 
-            try
+            user.Password = newPassword;
+            resetTicket.IsUsed = true;
+
+            DbEntityEntry entry = Context.Entry(user);
+            if (entry.State == EntityState.Detached)
             {
-                user.Password = newPassword;
-                resetTicket.IsUsed = true;
-
-                DbEntityEntry entry = Context.Entry(user);
-                if (entry.State == EntityState.Detached)
-                {
-                    Context.Set<User>().Attach(user);
-                }
-                entry.State = EntityState.Modified;
-
-                entry = Context.Entry(user);
-                if (entry.State == EntityState.Detached)
-                {
-                    Context.Set<User>().Attach(user);
-                }
-                entry.State = EntityState.Modified;
-
-                await Context.SaveChangesAsync();
-
-                return true;
+                Context.Set<User>().Attach(user);
             }
-            catch
+            entry.State = EntityState.Modified;
+
+            entry = Context.Entry(user);
+            if (entry.State == EntityState.Detached)
             {
-                return false;
+                Context.Set<User>().Attach(user);
             }
+            entry.State = EntityState.Modified;
+
+            await Context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

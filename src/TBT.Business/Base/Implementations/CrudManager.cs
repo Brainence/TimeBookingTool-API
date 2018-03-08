@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TBT.Business.Interfaces;
 using TBT.Business.Providers.Interfaces;
+using TBT.Components.Interfaces.Logger;
 using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Repository.Interfaces;
 
@@ -16,8 +17,8 @@ namespace TBT.Business.Implementations
             IApplicationUnitOfWork unitOfWork,
             IRepository<TEntity> repository,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, repository, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, repository, objectMapper, configurationProvider, logger)
         { }
 
         public virtual async Task<List<TModel>> GetAsync()
@@ -73,11 +74,6 @@ namespace TBT.Business.Implementations
             await Repository.DeleteAsync(id);
 
             await UnitOfWork.SaveChangesAsync();
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
         }
 
         public virtual async Task BulkInsertAsync(IEnumerable<TModel> entities)

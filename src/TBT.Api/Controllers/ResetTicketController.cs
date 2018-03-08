@@ -1,5 +1,8 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using TBT.Api.Common.Filters.Base;
+using TBT.Api.Common.Filters.ControllersFilters;
+using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
@@ -17,7 +20,8 @@ namespace TBT.Api.Controllers
         [HttpGet]
         [Route("CreateResetTicket/{userId:int:min(1)}")]
         [AllowAnonymous]
-        public async Task<bool> CreateResetTicket(int userId)
+        [ResetTicketControllerValidationFilter]
+        public async Task<bool> CreateResetTicket([Validator(ValidationMode.Exist)]int userId)
         {
             return await ManagerStore.ResetTicketManager.CreateResetTicket(userId);
         }
@@ -25,7 +29,8 @@ namespace TBT.Api.Controllers
         [HttpGet]
         [Route("ChangePassword/{userId:int:min(1)}/{newPassword}/{token}")]
         [AllowAnonymous]
-        public async Task<bool> ChangePassword(int userId, string newPassword, string token)
+        [ResetTicketControllerValidationFilter]
+        public async Task<bool> ChangePassword([Validator(ValidationMode.Exist)]int userId, string newPassword, string token)
         {
             return await ManagerStore.ResetTicketManager.ChangePassword(userId, newPassword, token);
         }

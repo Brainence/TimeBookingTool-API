@@ -6,7 +6,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
 {
     public class ResetTicketProfile : Profile
     {
-        protected override void Configure()
+        public ResetTicketProfile()
         {
             CreateMap<ResetTicket, ResetTicketModel>();
             CreateMap<ResetTicketModel, ResetTicket>();

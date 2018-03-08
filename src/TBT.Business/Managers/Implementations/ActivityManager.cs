@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.Business.Implementations;
@@ -7,6 +6,7 @@ using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.ObjectMapper;
+using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
 
@@ -19,17 +19,13 @@ namespace TBT.Business.Managers.Implementations
         public ActivityManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.Activities, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.Activities, objectMapper, configurationProvider, logger)
         { }
 
         #endregion
 
         #region Interface Members
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
 
         public async Task<ActivityModel> GetByName(string name, int projectId)
         {
@@ -43,9 +39,15 @@ namespace TBT.Business.Managers.Implementations
                  await UnitOfWork.Activities.GetByProjectAsync(id));
         }
 
-        public async override Task UpdateAsync(ActivityModel model)
+        public async Task<List<ActivityModel>> GetByCompanyIdAsync(int companyId)
         {
-            if (model.Project == null)
+            return ObjectMapper.Map<IQueryable<Activity>, List<ActivityModel>>(
+                     await UnitOfWork.Activities.GetByCompanyIdAsync(companyId));
+        }
+
+        public override async Task UpdateAsync(ActivityModel model)
+        {
+            if (model.ProjectId == null)
             {
                 var activity = await UnitOfWork.Activities.GetAsync(model.Id);
                 if (activity == null || !activity.ProjectId.HasValue) return;
@@ -53,11 +55,12 @@ namespace TBT.Business.Managers.Implementations
                 var project = await UnitOfWork.Projects.GetAsync(activity.ProjectId.Value);
                 if (project == null) return;
 
-                model.Project = ObjectMapper.Map<Project, ProjectModel>(project);
+                //model.Project = ObjectMapper.Map<Project, ProjectModel>(project);
             }
 
             await base.UpdateAsync(model);
         }
+
         #endregion
     }
 }

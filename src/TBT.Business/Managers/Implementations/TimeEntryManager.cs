@@ -6,6 +6,7 @@ using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
+using TBT.Components.Interfaces.Logger;
 using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
@@ -19,18 +20,14 @@ namespace TBT.Business.Managers.Implementations
         public TimeEntryManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.TimeEntries, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.TimeEntries, objectMapper, configurationProvider, logger)
         {
         }
 
         #endregion
 
         #region Interface Members
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string date)
         {
@@ -70,65 +67,36 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<bool> StartAsync(int timeEntryId)
         {
-            try
-            {
-                var result = await UnitOfWork.TimeEntries.StartAsync(timeEntryId);
-
-                return await Task.FromResult(result);
-            }
-            catch
-            {
-                return await Task.FromResult(false);
-            }
+            return await UnitOfWork.TimeEntries.StartAsync(timeEntryId);
         }
 
         public async Task<bool> StopAsync(int timeEntryId)
         {
-            try
-            {
-                var result = await UnitOfWork.TimeEntries.StopAsync(timeEntryId);
-
-                return await Task.FromResult(result);
-            }
-            catch
-            {
-                return await Task.FromResult(false);
-            }
+            return await UnitOfWork.TimeEntries.StopAsync(timeEntryId);
         }
 
         public async Task<bool> RemoveAsync(int timeEntryId)
         {
-            try
-            {
-                var result = await UnitOfWork.TimeEntries.RemoveAsync(timeEntryId);
-
-                return await Task.FromResult(result);
-            }
-            catch
-            {
-                return await Task.FromResult(false);
-            }
+            return await UnitOfWork.TimeEntries.RemoveAsync(timeEntryId);
         }
 
         public async Task<bool> UpdateAsync(TimeEntryModel model, bool clientDuration = false)
         {
-            try
-            {
-                var result = await (Repository as ITimeEntryRepository).UpdateAsync(
-                    ObjectMapper.Map<TimeEntryModel, TimeEntry>(model), clientDuration);
-
-                return await Task.FromResult(result);
-            }
-            catch
-            {
-                return await Task.FromResult(false);
-            }
+            return await UnitOfWork.TimeEntries.UpdateAsync(
+                ObjectMapper.Map<TimeEntryModel, TimeEntry>(model), clientDuration);
         }
 
         public async Task<TimeSpan?> GetDurationAsync(int userId, string from, string to)
         {
             return await UnitOfWork.TimeEntries.GetDurationAsync(userId, from, to);
         }
+
+        public async Task<List<TimeEntryModel>> GetByIsRunning(bool isRunning)
+        {
+            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
+                await UnitOfWork.TimeEntries.GetByIsRunning(isRunning));
+        }
+
         #endregion
     }
 }

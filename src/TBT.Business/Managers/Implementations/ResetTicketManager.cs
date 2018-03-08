@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Threading.Tasks;
 using TBT.Business.EmailService.Interfaces;
 using TBT.Business.Helpers;
@@ -9,6 +8,7 @@ using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.ObjectMapper;
+using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
 
@@ -19,8 +19,8 @@ namespace TBT.Business.Managers.Implementations
         public ResetTicketManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.ResetTickets, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.ResetTickets, objectMapper, configurationProvider, logger)
         { }
 
         public async Task<bool> ChangePassword(int userId, string newPassword, string token)
@@ -50,7 +50,6 @@ namespace TBT.Business.Managers.Implementations
             emailMessage.IsBodyHtml = true;
 
             var succeed = await emailService.SendMailAsync(emailMessage);
-
             return succeed;
         }
     }

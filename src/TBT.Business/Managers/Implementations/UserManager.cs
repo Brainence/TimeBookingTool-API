@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.Business.Helpers;
@@ -8,6 +7,7 @@ using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.ObjectMapper;
+using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
 
@@ -20,8 +20,8 @@ namespace TBT.Business.Managers.Implementations
         public UserManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.Users, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.Users, objectMapper, configurationProvider, logger)
         {
         }
 
@@ -39,6 +39,27 @@ namespace TBT.Business.Managers.Implementations
         {
             return ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
                  await UnitOfWork.Users.GetByProjectAsync(projectId));
+        }
+
+        public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
+        {
+            var users = ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
+                     await UnitOfWork.Users.GetByCompanyId(companyId));
+            foreach (var user in users)
+            {
+                if (user.CompanyId.HasValue)
+                {
+                    user.Company = new CompanyModel()
+                    {
+                        Id = user.CompanyId.Value
+                    };
+                }
+                foreach (var project in user.Projects)
+                {
+                    project.Activities.Clear();
+                }
+            }
+            return users;
         }
 
         public override Task<int> AddAsync(UserModel model)

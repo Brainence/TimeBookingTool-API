@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using TBT.Business.Interfaces;
 
 namespace TBT.Business.Managers.Interfaces
 {

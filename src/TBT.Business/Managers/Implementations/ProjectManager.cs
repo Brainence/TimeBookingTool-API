@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.Business.Implementations;
@@ -7,6 +6,7 @@ using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.ObjectMapper;
+using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
 
@@ -19,19 +19,14 @@ namespace TBT.Business.Managers.Implementations
         public ProjectManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.Projects, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.Projects, objectMapper, configurationProvider, logger)
         {
         }
 
         #endregion
 
         #region Interface Members
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
-
 
         public async Task<List<ProjectModel>> GetByActivityAsync(int activityId)
         {
@@ -45,6 +40,12 @@ namespace TBT.Business.Managers.Implementations
                  await UnitOfWork.Projects.GetByCustomerAsync(customerId));
         }
 
+        public async Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId)
+        {
+            return ObjectMapper.Map<IEnumerable<Project>, List<ProjectModel>>(
+                     await UnitOfWork.Projects.GetByCompanyIdAsync(companyId));
+        }
+
         public async Task<ProjectModel> GetByName(string name)
         {
             return ObjectMapper.Map<Project, ProjectModel>(
@@ -56,12 +57,13 @@ namespace TBT.Business.Managers.Implementations
             return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
                  await UnitOfWork.Projects.GetByUserAsync(userId));
         }
-        public async override Task UpdateAsync(ProjectModel model)
+
+        public override async Task UpdateAsync(ProjectModel model)
         {
             if (model.Customer == null)
             {
                 var project = await UnitOfWork.Projects.GetAsync(model.Id);
-                if (project == null || !project.CustomerId.HasValue) return;
+                if (project?.CustomerId == null) return;
 
                 var customer = await UnitOfWork.Customers.GetAsync(project.CustomerId.Value);
                 if (customer == null) return;
@@ -71,6 +73,7 @@ namespace TBT.Business.Managers.Implementations
 
             await base.UpdateAsync(model);
         }
+
         #endregion
     }
 }

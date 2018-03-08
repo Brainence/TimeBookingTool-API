@@ -18,9 +18,6 @@ namespace TBT.Components.Implementations.ConfigurationManager
         }
 
 
-        public System.Configuration.ConnectionStringSettingsCollection ConnectionStrings
-        {
-            get { return System.Configuration.ConfigurationManager.ConnectionStrings; }
-        }
+        public System.Configuration.ConnectionStringSettingsCollection ConnectionStrings => System.Configuration.ConfigurationManager.ConnectionStrings;
     }
 }

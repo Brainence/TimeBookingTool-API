@@ -6,19 +6,25 @@ namespace TBT.DAL.Repository
 {
     public class DatabaseInitializer : CreateDatabaseIfNotExists<DataContext>
     {
-        public override void InitializeDatabase(DataContext context)
+        protected override void Seed(DataContext context)
         {
-            context.Users.Add(new User()
+            base.Seed(context);
+            context.Companies.Add(new Company()
             {
-                FirstName = "Vasyl",
-                LastName = "Malanii",
-                Password = new PasswordHasher().HashPassword("brainence!"),
-                Username = "vmalanii@brainence.com",
-                IsAdmin = true,
-                IsActive = true
+                CompanyName = "Brainence",
+                IsActive = true,
             });
 
-            base.InitializeDatabase(context);
+            context.Users.Add(new User()
+            {
+                FirstName = "Sergey",
+                LastName = "Chujko",
+                Password = new PasswordHasher().HashPassword("brainence!"),
+                Username = "schuiko@brainence.com",
+                IsAdmin = true,
+                IsActive = true,
+                CompanyId = 1
+            });
         }
     }
 }

@@ -13,5 +13,10 @@ namespace TBT.Business.Models.BusinessModels
         public CustomerModel Customer { get; set; }
 
         public int? CustomerId { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Customer={Customer} }}";
+        }
     }
 }

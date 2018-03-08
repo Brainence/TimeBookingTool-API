@@ -23,6 +23,15 @@ namespace TBT.DAL.Repository.Implementations
                 .OrderByDescending(a => a.Name));
         }
 
+        public Task<IQueryable<Activity>> GetByCompanyIdAsync(int companyId)
+        {
+            return Task.FromResult<IQueryable<Activity>>(
+                DbSet
+                .Include(x => x.Project.Customer)
+                .Where(x => x.IsActive && x.Project.Customer.CompanyId == companyId)
+                .OrderByDescending(a => a.Name));
+        }
+
         public Task<Activity> GetByName(string name, int projectId)
         {
             return Task.FromResult(

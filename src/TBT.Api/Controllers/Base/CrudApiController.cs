@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using TBT.Business.Interfaces;
 using TBT.Business.Managers.Interfaces;
+using TBT.Api.Common.Filters.Base;
+using TBT.Api.Common.FluentValidation.Attributes;
 
 namespace TBT.Api.Controllers.Base
 {
@@ -29,6 +31,7 @@ namespace TBT.Api.Controllers.Base
 
         [HttpGet]
         [Route("{id:int:min(1)}")]
+        [ModelValidationFilterBase]
         public virtual async Task<HttpResponseMessage> GetAsync(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK,
@@ -37,7 +40,8 @@ namespace TBT.Api.Controllers.Base
 
         [HttpPost]
         [Route("")]
-        public virtual async Task<HttpResponseMessage> CreateAsync(TModel model)
+        [ModelValidationFilterBase]
+        public virtual async Task<HttpResponseMessage> CreateAsync([Validator(ValidationMode.Add)]TModel model)
         {
             model.Id = await Manager.AddAsync(model);
 
@@ -46,7 +50,8 @@ namespace TBT.Api.Controllers.Base
 
         [HttpPut]
         [Route("")]
-        public virtual async Task<HttpResponseMessage> UpdateAsync(TModel model)
+        [ModelValidationFilterBase]
+        public virtual async Task<HttpResponseMessage> UpdateAsync([Validator(ValidationMode.Update)]TModel model)
         {
             await Manager.UpdateAsync(model);
 
@@ -55,7 +60,8 @@ namespace TBT.Api.Controllers.Base
 
         [HttpDelete]
         [Route("{id:int:min(1)}")]
-        public virtual async Task<HttpResponseMessage> DeleteAsync(int id)
+        [ModelValidationFilterBase]
+        public virtual async Task<HttpResponseMessage> DeleteAsync([Validator(ValidationMode.Exist)]int id)
         {
             await Manager.DeleteAsync(id);
 

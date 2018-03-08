@@ -14,10 +14,7 @@ namespace TBT.Api.Controllers.Base
 
         #region Properties
 
-        protected ICrudManager<TModel> Manager
-        {
-            get { return _manager; }
-        }
+        protected ICrudManager<TModel> Manager => _manager;
 
         #endregion
 

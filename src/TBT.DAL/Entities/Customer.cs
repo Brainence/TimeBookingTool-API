@@ -14,5 +14,7 @@ namespace TBT.DAL.Entities
         public string Name { get; set; }
         public virtual ICollection<Project> Projects { get; set; }
         public bool IsActive { get; set; }
+        public int? CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }

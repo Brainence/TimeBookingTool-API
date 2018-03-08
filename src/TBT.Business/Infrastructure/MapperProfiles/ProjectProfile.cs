@@ -7,7 +7,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
 {
     public class ProjectProfile : Profile
     {
-        protected override void Configure()
+        public ProjectProfile()
         {
             CreateMap<Project, ProjectModel>()
                 .ForMember(d => d.Users, opt => opt.Ignore())

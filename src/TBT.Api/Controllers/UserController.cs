@@ -1,11 +1,15 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using TBT.Api.Common.Filters.Base;
+using TBT.Api.Common.Filters.ControllersFilters;
+using TBT.Api.Common.FluentValidation.Attributes;
 using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
+using System.Collections.Generic;
 
 namespace TBT.Api.Controllers
-{
+{    
     [RoutePrefix("api/user")]
     public class UserController : CrudApiController<UserModel>
     {
@@ -16,24 +20,34 @@ namespace TBT.Api.Controllers
         [HttpGet]
         [Route("")]
         [AllowAnonymous]
-        public UserModel GetByEmail(string email)
+        [UserControllerValidationFilter]
+        public UserModel GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
         {
             return ManagerStore.UserManager.GetByEmail(email);
         }
 
         [HttpGet]
-        [Route("ValidatePassword/{userId:int:min(1)}/{password}")]
-        public async Task<bool> IsPasswordValid(int userId, string password)
+        [Route("ValidatePassword/{id:int:min(1)}/{password}")]
+        [UserControllerValidationFilter]
+        public async Task<bool> IsPasswordValid([Validator(ValidationMode.Exist)]int id, string password)
         {
-            return await ManagerStore.UserManager.IsPasswordValid(userId, password);
+            return await ManagerStore.UserManager.IsPasswordValid(id, password);
         }
 
+        [HttpGet]
+        [Route("GetByCompany/{companyId:int:min(1)}")]
+        [UserControllerValidationFilter]
+        public async Task<List<UserModel>> GetByCompanyId([Validator(ValidationMode.Exist)]int companyId)
+        {
+            return await ManagerStore.UserManager.GetByCompanyIdAsync(companyId);
+        }
 
         [HttpGet]
-        [Route("ChangePassword/{userId:int:min(1)}/{oldPassword}/{newPassword}")]
-        public async Task ChangePassword(int userId, string oldPassword, string newPassword)
+        [Route("ChangePassword/{id:int:min(1)}/{oldPassword}/{newPassword}")]
+        [UserControllerValidationFilter]
+        public async Task ChangePassword([Validator(ValidationMode.Exist)]int id, string oldPassword, string newPassword)
         {
-            await ManagerStore.UserManager.ChangePassword(userId, oldPassword, newPassword);
+            await ManagerStore.UserManager.ChangePassword(id, oldPassword, newPassword);
         }
     }
 }

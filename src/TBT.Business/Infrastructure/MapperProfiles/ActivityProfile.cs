@@ -6,17 +6,12 @@ namespace TBT.Business.Infrastructure.MapperProfiles
 {
     public class ActivityProfile : Profile
     {
-        protected override void Configure()
+        public ActivityProfile()
         {
             CreateMap<Activity, ActivityModel>();
 
             CreateMap<ActivityModel, Activity>()
-                .ForMember(dest => dest.ProjectId, opt => opt.Ignore())
-                .AfterMap((src, dest) =>
-                {
-                    if (src.Project != null)
-                        dest.ProjectId = src.Project.Id;
-                })
+                .ForMember(dest => dest.ProjectId, dest => dest.MapFrom(src => src.Project != null && src.Project.Id > 0 ? src.Project.Id : default(int)))
                 .ForMember(d => d.Project, opt => opt.Ignore());
         }
     }

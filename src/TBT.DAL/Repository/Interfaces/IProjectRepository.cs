@@ -1,7 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
-using TBT.DAL.Repository.Interfaces;
 
 namespace TBT.DAL.Repository.Interfaces
 {
@@ -11,5 +11,6 @@ namespace TBT.DAL.Repository.Interfaces
         Task<IQueryable<Project>> GetByCustomerAsync(int customerId);
         Task<IQueryable<Project>> GetByActivityAsync(int activityId);
         Task<Project> GetByName(string name);
+        Task<IEnumerable<Project>> GetByCompanyIdAsync(int companyId);
     }
 }

@@ -7,7 +7,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
 {
     public class UserProfile : Profile
     {
-        protected override void Configure()
+        public UserProfile()
         {
             CreateMap<User, UserModel>()
                 .ForMember(dest => dest.Password, opt => opt.Ignore())
@@ -16,12 +16,13 @@ namespace TBT.Business.Infrastructure.MapperProfiles
 
             CreateMap<UserModel, User>()
                 .ForMember(d => d.Projects, opt => opt.Ignore())
-                .ForMember(d => d.TimeEntries, opt => opt.Ignore());
+                .ForMember(d => d.TimeEntries, opt => opt.Ignore())
+                .ForMember(d => d.Company, opt => opt.Ignore())
+                .ForMember(d => d.CompanyId, opt => opt.MapFrom(src => src.Company.Id));
 
 
             CreateMap<Account, User>();
             CreateMap<User, Account>();
-
         }
     }
 }

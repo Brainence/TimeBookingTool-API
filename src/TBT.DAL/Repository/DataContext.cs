@@ -6,18 +6,12 @@ namespace TBT.DAL.Repository
 {
     public class DataContext : DbContext
     {
-        static DataContext()
+        public DataContext(string connectionString) : base(connectionString)
         {
             Database.SetInitializer(new DatabaseInitializer());
         }
 
-        public DataContext(string connectionString)
-            : base(connectionString)
-        {
-        }
-
-        public DataContext()
-            : this(ConnectionString)
+        public DataContext() : this(ConnectionString)
         {
         }
 
@@ -40,6 +34,7 @@ namespace TBT.DAL.Repository
         public DbSet<Activity> Tasks { get; set; }
         public DbSet<TimeEntry> TimeEntries { get; set; }
         public DbSet<ResetTicket> ResetTickets { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -54,14 +49,12 @@ namespace TBT.DAL.Repository
             modelBuilder.Entity<TimeEntry>()
                 .HasRequired(u => u.User)
                 .WithMany(p => p.TimeEntries)
-                .HasForeignKey(p => p.UserId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.UserId);
 
             modelBuilder.Entity<Activity>()
                 .HasRequired(u => u.Project)
                 .WithMany(p => p.Activities)
-                .HasForeignKey(p => p.ProjectId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.ProjectId);
 
             modelBuilder.Entity<Project>()
                 .HasMany(u => u.Users)
@@ -82,8 +75,7 @@ namespace TBT.DAL.Repository
             modelBuilder.Entity<Project>()
                 .HasRequired(u => u.Customer)
                 .WithMany(p => p.Projects)
-                .HasForeignKey(p => p.CustomerId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.CustomerId);
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Projects)
@@ -98,8 +90,18 @@ namespace TBT.DAL.Repository
             modelBuilder.Entity<User>()
                 .HasMany(u => u.TimeEntries)
                 .WithRequired(p => p.User)
-                .HasForeignKey(p => p.UserId)
-                .WillCascadeOnDelete();
+                .HasForeignKey(p => p.UserId);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(i => i.Company)
+                .WithMany(i => i.Users)
+                .HasForeignKey(i => i.CompanyId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(u => u.Customers)
+                .WithOptional(p => p.Company)
+                .HasForeignKey(p => p.CompanyId);
         }
     }
 }

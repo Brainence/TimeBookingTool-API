@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Routing;
-using TBT.WebApi.Common.Filters;
+using TBT.Api.Common.ExceptionHandlers;
 
 namespace TBT.WebApi
 {
@@ -21,7 +22,8 @@ namespace TBT.WebApi
 
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
-            config.Filters.Add(new ExceptionFilter());
+            config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
+
         }
     }
 

@@ -6,7 +6,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
 {
     public class TimeEntryProfile : Profile
     {
-        protected override void Configure()
+        public TimeEntryProfile()
         {
             CreateMap<TimeEntry, TimeEntryModel>();
 

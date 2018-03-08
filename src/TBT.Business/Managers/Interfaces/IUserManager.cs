@@ -11,5 +11,6 @@ namespace TBT.Business.Managers.Interfaces
         Task<List<UserModel>> GetByProjectAsync(int projectId);
         Task<bool> IsPasswordValid(int userId, string password);
         Task ChangePassword(int userId, string oldPassword, string newPassword);
+        Task<List<UserModel>> GetByCompanyIdAsync(int companyId);
     }
 }

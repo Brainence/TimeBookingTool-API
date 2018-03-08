@@ -17,5 +17,13 @@ namespace TBT.Business.Models.BusinessModels
         public List<TimeEntryModel> TimeEntries { get; set; }
         public int? TimeLimit { get; set; }
         public TimeSpan? CurrentTimeZone { get; set; }
+        public CompanyModel Company { get; set; }
+
+        public int? CompanyId { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company} }}";
+        }
     }
 }

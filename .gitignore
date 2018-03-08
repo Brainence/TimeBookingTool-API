@@ -286,3 +286,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+src/TBT.Api/logs/TimeBookingTool_Exception.txt
+src/TBT.Api/logs/TimeBookingTool_Information.txt
+*.txt

@@ -3,7 +3,6 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using TBT.Business.Constants;
 using TBT.Business.EmailService.Interfaces;
-using TBT.Business.EmailService.Models;
 using TBT.Components.Implementations.ConfigurationManager;
 using TBT.Components.Implementations.Logger;
 using TBT.Components.Implementations.ObjectMapper;
@@ -24,6 +23,8 @@ namespace TBT.Business.Infrastructure.CastleWindsor
             container.Register(Component.For<ILogManager>().ImplementedBy<LogManager>()
                 .DependsOn(Dependency.OnAppSettingsValue("loggerName", StringConstants.LogManager)).LifeStyle.Transient);
 
+            container.Register(Component.For<ILogManager>().ImplementedBy<LogManager>().Named("info")
+                .DependsOn(Dependency.OnAppSettingsValue("loggerName", StringConstants.InformationLogManagerName)).LifeStyle.Transient);
 
             container.Register(Component.For<IEmailService>().ImplementedBy<EmailService.Implementations.EmailService>()
                 .DependsOn(Dependency.OnValue("smtpSettings", SmtpSettingsConstants.DefaultSmtpSettings)).LifeStyle.Transient);

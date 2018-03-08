@@ -4,8 +4,11 @@ using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
 using TBT.Components.Interfaces.ObjectMapper;
+using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TBT.Business.Managers.Implementations
 {
@@ -16,8 +19,8 @@ namespace TBT.Business.Managers.Implementations
         public CustomerManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider)
-            : base(unitOfWork, unitOfWork.Customers, objectMapper, configurationProvider)
+            IConfigurationProvider configurationProvider, ILogManager logger)
+            : base(unitOfWork, unitOfWork.Customers, objectMapper, configurationProvider, logger)
         {
         }
 
@@ -29,6 +32,24 @@ namespace TBT.Business.Managers.Implementations
         {
             return ObjectMapper.Map<Customer, CustomerModel>(
                  await UnitOfWork.Customers.GetByNameAsync(name));
+        }
+
+        public async Task<List<CustomerModel>> GetByCompanyIdAsync(int companyId)
+        {
+            var customers = ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
+                     await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
+            foreach (var customer in customers)
+            {
+                customer.Company = new CompanyModel()
+                {
+                    Id = customer.CompanyId.HasValue ? customer.CompanyId.Value : 0
+                };
+                foreach (var project in customer.Projects)
+                {
+                    project.Activities.Clear();
+                }
+            }
+            return customers;
         }
 
         #endregion
