@@ -12,8 +12,6 @@ namespace TBT.Business.Models.BusinessModels
         public List<UserModel> Users { get; set; }
         public CustomerModel Customer { get; set; }
 
-        public int? CustomerId { get; set; }
-
         public override string ToString()
         {
             return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Customer={Customer} }}";

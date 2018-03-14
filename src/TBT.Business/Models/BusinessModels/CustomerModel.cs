@@ -11,8 +11,6 @@ namespace TBT.Business.Models.BusinessModels
         public bool IsActive { get; set; }
         public CompanyModel Company { get; set; }
 
-        public int? CompanyId { get; set; }
-
         public override string ToString()
         {
             return $"{{ Id={Id}, Name={Name}, IsActive={IsActive}, Company={Company} }}";

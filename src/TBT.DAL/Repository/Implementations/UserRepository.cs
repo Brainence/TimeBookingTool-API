@@ -13,41 +13,17 @@ namespace TBT.DAL.Repository.Implementations
             : base(context)
         { }
 
-        public override Task<IQueryable<User>> GetAsync()
-        {
-            return Task.FromResult(
-                DbSet
-                .Where(x => x.IsActive)
-                .Include(u => u.Projects.Select(p => p.Activities))
-                .Include(u => u.Company)
-                .OrderBy(u => u.FirstName)
-                .ThenBy(u => u.LastName)
-                .Cast<User>());
-        }
         public override Task<User> GetAsync(int id)
         {
             return Task.FromResult(
-                DbSet
-                .Where(u => u.IsActive && u.Id == id)
-                .Include(u => u.Projects.Select(p => p.Activities))
-                .Include(u => u.Company)
-                .FirstOrDefault());
-        }
-        public Task<IQueryable<User>> GetByProjectAsync(int projectId)
-        {
-            return Task.FromResult(
-                DbSet
-                .Include(u => u.Projects.Select(p => p.Activities))
-                .Include(u => u.Company)
-                .Where(u => u.IsActive && u.Projects.Select(x => x.Id)
-                .Contains(projectId)));
+                DbSet.FirstOrDefault(u => u.IsActive && u.Id == id));
         }
 
         public User GetByEmail(string email)
         {
             return DbSet
-                .Include(u => u.Projects.Select(p => p.Activities))
                 .Include(u => u.Company)
+                .Include(u => u.Projects.Select(p => p.Activities))
                 .FirstOrDefault(u => u.IsActive && u.Username == email);
         }
 
@@ -78,6 +54,7 @@ namespace TBT.DAL.Repository.Implementations
         {
             return Task.FromResult(
                 DbSet
+                .Include(x => x.Projects)
                 .Where(x => x.IsActive && x.CompanyId == companyId)
                 .OrderBy(u => u.FirstName)
                 .ThenBy(u => u.LastName)

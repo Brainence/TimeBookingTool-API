@@ -15,21 +15,13 @@ namespace TBT.DAL.Repository.Implementations
         public Task<Customer> GetByNameAsync(string name)
         {
             return Task.FromResult(
-                DbSet.Include(x => x.Projects).Include(u => u.Company).FirstOrDefault(c => c.Name == name && c.IsActive));
-        }
-
-        public override Task<IQueryable<Customer>> GetAsync()
-        {
-            return Task.FromResult(DbSet.Include(u => u.Company).Where(c => c.IsActive));
-        }
-        public override Task<Customer> GetAsync(int id)
-        {
-            return Task.FromResult(DbSet.Include(u => u.Company).Where(c => c.IsActive).FirstOrDefault(c => c.Id == id));
+                DbSet.FirstOrDefault(c => c.Name == name && c.IsActive));
         }
 
         public Task<IQueryable<Customer>> GetByCompanyIdAsync(int companyId)
         {
             return Task.FromResult(DbSet
+                .Include(x => x.Projects)
                 .Where(x => x.IsActive && x.CompanyId == companyId));
         }
     }

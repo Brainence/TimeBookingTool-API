@@ -16,10 +16,6 @@ namespace TBT.Business.Models.BusinessModels
         public DateTime? TimeLimit { get; set; }
         public DateTime? LastUpdated { get; set; }
 
-        
-        public int UserId { get; set; }
-        public int ActivityId { get; set; }
-
         public override string ToString()
         {
             return $"{{ Id={Id}, User={User}, Activity={Activity}, Duration={Duration}, Date={Date}, IsActive={IsActive}, TimeLimit={TimeLimit}, LastUpdated={LastUpdated} }}";

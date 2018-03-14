@@ -24,12 +24,10 @@ namespace TBT.Api.Common.Quartz.Jobs
                         var tempTimeEntry = new TimeEntryModel()
                         {
                             Activity = item.Activity,
-                            ActivityId = item.ActivityId,
                             Comment = item.Comment,
                             Date = DateTime.UtcNow,
                             TimeLimit = item.TimeLimit,
                             User = item.User,
-                            UserId = item.UserId,
                             IsActive = true
                         };
                         await _manager.StartAsync(await _manager.AddAsync(tempTimeEntry));

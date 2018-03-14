@@ -15,5 +15,6 @@ namespace TBT.DAL.Repository.Interfaces
         Task DeleteAsync(TEntity entity);
         Task DeleteAsync(int id);
         Task BulkInsertAsync(IEnumerable<TEntity> entities);
+        Task<bool> ExistAsync(int id);
     }
 }

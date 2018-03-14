@@ -13,7 +13,7 @@ namespace TBT.DAL.Entities
         [Index("Company_CompanyName_Index", IsUnique = true)]
         public string CompanyName { get; set; }
         public bool IsActive { get; set; }
-        public virtual ICollection<User> Users { get; set; }
-        public virtual ICollection<Customer> Customers { get; set; }
+        public ICollection<User> Users { get; set; }
+        public ICollection<Customer> Customers { get; set; }
     }
 }

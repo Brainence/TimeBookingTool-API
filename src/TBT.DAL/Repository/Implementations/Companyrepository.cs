@@ -18,10 +18,7 @@ namespace TBT.DAL.Repository.Implementations
         public Task<Company> GetByName(string name)
         {
             return Task.FromResult(DbSet
-                .Where(x => x.IsActive)
-                .Include(x => x.Users)
-                .Include(x => x.Customers)
-                .FirstOrDefault(x => x.CompanyName == name));
+                .FirstOrDefault(x => x.CompanyName == name && x.IsActive));
         }
 
         #endregion

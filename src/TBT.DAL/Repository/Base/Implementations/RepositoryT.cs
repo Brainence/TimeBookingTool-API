@@ -8,7 +8,7 @@ using TBT.DAL.Repository.Interfaces;
 
 namespace TBT.DAL.Repository.Implementations
 {
-    public abstract class Repository<TEntity> : Repository, IRepository<TEntity> where TEntity : class
+    public abstract class Repository<TEntity> : Repository, IRepository<TEntity> where TEntity : class, IEntity
     {
         #region Properties
 
@@ -107,6 +107,11 @@ namespace TBT.DAL.Repository.Implementations
             Context.BulkInsert(entities);
 
             return Task.FromResult<object>(null);
+        }
+
+        public Task<bool> ExistAsync(int id)
+        {
+            return Task.FromResult(DbSet.Any(i => i.Id == id));
         }
 
         #endregion

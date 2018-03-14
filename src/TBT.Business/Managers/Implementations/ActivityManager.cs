@@ -33,32 +33,10 @@ namespace TBT.Business.Managers.Implementations
                  await UnitOfWork.Activities.GetByName(name, projectId));
         }
 
-        public async Task<List<ActivityModel>> GetByProjectAsync(int id)
-        {
-            return ObjectMapper.Map<IQueryable<Activity>, List<ActivityModel>>(
-                 await UnitOfWork.Activities.GetByProjectAsync(id));
-        }
-
         public async Task<List<ActivityModel>> GetByCompanyIdAsync(int companyId)
         {
             return ObjectMapper.Map<IQueryable<Activity>, List<ActivityModel>>(
                      await UnitOfWork.Activities.GetByCompanyIdAsync(companyId));
-        }
-
-        public override async Task UpdateAsync(ActivityModel model)
-        {
-            if (model.ProjectId == null)
-            {
-                var activity = await UnitOfWork.Activities.GetAsync(model.Id);
-                if (activity == null || !activity.ProjectId.HasValue) return;
-
-                var project = await UnitOfWork.Projects.GetAsync(activity.ProjectId.Value);
-                if (project == null) return;
-
-                //model.Project = ObjectMapper.Map<Project, ProjectModel>(project);
-            }
-
-            await base.UpdateAsync(model);
         }
 
         #endregion

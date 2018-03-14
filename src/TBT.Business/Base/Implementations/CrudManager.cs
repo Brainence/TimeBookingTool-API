@@ -83,5 +83,10 @@ namespace TBT.Business.Implementations
 
             await UnitOfWork.SaveChangesAsync();
         }
+
+        public async Task<bool> ExistAsync(int id)
+        {
+            return await Repository.ExistAsync(id);
+        }
     }
 }

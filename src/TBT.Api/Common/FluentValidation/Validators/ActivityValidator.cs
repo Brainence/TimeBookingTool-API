@@ -18,10 +18,10 @@ namespace TBT.Api.Common.FluentValidation.Validators
             RuleFor(activity => activity.IsActive).Equal(true)
                 .When(x => HasFlag(ValidationMode.Add))
                 .WithMessage("{PropertyName} can't be {PropertyValue}.");
-            //RuleFor(activity => activity.Project).NotNull()
-            //    .MustAsync(async (x, token) => await ExistsAsync(x.Id, ServiceLocator.Current.Get<IProjectManager>()))
-            //    .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
-            //    .WithMessage("{PropertyName} can't be null or doesn't exists.");
+            RuleFor(activity => activity.Project).NotNull()
+                .MustAsync(async (x, token) => await ExistsAsync(x.Id, ServiceLocator.Current.Get<IProjectManager>()))
+                .When(x => HasFlag(ValidationMode.Update))
+                .WithMessage("{PropertyName} can't be null or doesn't exists.");
         }
     }
 }

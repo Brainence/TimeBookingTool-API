@@ -22,38 +22,20 @@ namespace TBT.DAL.Repository.Implementations
             return date;
         }
 
-        public override async Task<TimeEntry> GetAsync(int id)
+        public override Task<TimeEntry> GetAsync(int id)
         {
             var timeEntry = DbSet
-                .Where(x => x.IsActive)
-                .Include(x => x.Activity)
-                .Include(x => x.User)
                 .Include(x => x.Activity.Project.Customer)
-                .FirstOrDefault(x => x.Id == id);
+                .FirstOrDefault(x => x.Id == id && x.IsActive);
 
-            if (timeEntry.IsRunning && timeEntry.IsActive && timeEntry.LastUpdated.HasValue)
-            {
-                var totalDays = (DateTime.UtcNow.Date - timeEntry.Date.Date).Duration().TotalDays;
-                var n = (int)Math.Floor(totalDays);
+            CheckTimeEntry(timeEntry);
 
-                if (n == 0)
-                {
-                    timeEntry.Duration += (DateTime.UtcNow - timeEntry.LastUpdated.Value).Duration();
-                    if (timeEntry.Duration >= _dayLimit)
-                    {
-                        timeEntry.Duration = _dayLimit;
-                        timeEntry.IsRunning = false;
-                    }
-                    timeEntry.LastUpdated = DateTime.UtcNow;
-                }
-            }
-
-            return await Task.FromResult(timeEntry);
+            return Task.FromResult(timeEntry);
         }
 
         private void CheckTimeEntry(TimeEntry timeEntry)
         {
-            if (timeEntry.IsRunning && timeEntry.IsActive && timeEntry.LastUpdated.HasValue)
+            if (timeEntry != null && timeEntry.IsRunning && timeEntry.IsActive && timeEntry.LastUpdated.HasValue)
             {
                 var totalDays = (int)Math.Floor((DateTime.UtcNow.Date - timeEntry.Date.Date).Duration().TotalDays);
 
@@ -73,7 +55,7 @@ namespace TBT.DAL.Repository.Implementations
         public async Task<IQueryable<TimeEntry>> GetByUserAsync(int userId)
         {
             var timeEntries = DbSet
-                .Where(t => t.User.Id == userId
+                .Where(t => t.UserId == userId
                             && t.IsActive)
                 .Include(x => x.Activity.Project.Customer)
                 .OrderBy(t => t.Date);
@@ -90,13 +72,11 @@ namespace TBT.DAL.Repository.Implementations
         public async Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, bool isRunning)
         {
             var timeEntries = DbSet
-                .Where(t => t.User.Id == userId
+                .Where(t => t.UserId == userId
                             && t.IsRunning == isRunning
                             && t.IsActive)
                 .Include(x => x.Activity.Project.Customer)
-                .Include(x => x.User)
-                .OrderBy(t => t.Date)
-                .Cast<TimeEntry>();
+                .OrderBy(t => t.Date);
 
             foreach (var timeEntry in timeEntries.Where(t => t.IsRunning))
             {
@@ -113,13 +93,11 @@ namespace TBT.DAL.Repository.Implementations
             var nextDay = date.AddDays(1);
 
             var timeEntries = DbSet
-                .Where(t => t.User.Id == userId
+                .Where(t => t.UserId == userId
                             && t.Date >= date
                             && t.Date < nextDay
                             && t.IsActive)
                 .Include(x => x.Activity.Project.Customer)
-                .Include(x => x.User.Projects)
-                .Include(x => x.User.TimeEntries)
                 .OrderBy(t => t.Date);
 
             foreach (var timeEntry in timeEntries.Where(t => t.IsRunning))
@@ -140,13 +118,12 @@ namespace TBT.DAL.Repository.Implementations
 
 
             var timeEntries = DbSet
-                .Where(t => t.User.Id == userId
+                .Where(t => t.UserId == userId
                             && t.Date >= from
                             && t.Date < to
                             && t.IsActive)
                 .Include(x => x.Activity.Project.Customer)
-                .Include(x => x.User.Projects)
-                .Include(x => x.User.TimeEntries)
+                .Include(x => x.User)
                 .OrderBy(t => t.Date);
 
             foreach (var timeEntry in timeEntries.Where(t => t.IsRunning))
@@ -167,8 +144,6 @@ namespace TBT.DAL.Repository.Implementations
                             && t.Date >= from
                             && t.IsActive)
                 .Include(x => x.Activity.Project.Customer)
-                .Include(x => x.User.Projects)
-                .Include(x => x.User.TimeEntries)
                 .OrderBy(t => t.Date);
 
             return await Task.FromResult(timeEntries);
@@ -184,8 +159,6 @@ namespace TBT.DAL.Repository.Implementations
                             && t.Date < to
                             && t.IsActive)
                 .Include(x => x.Activity.Project.Customer)
-                .Include(x => x.User.Projects)
-                .Include(x => x.User.TimeEntries)
                 .OrderBy(t => t.Date);
 
             foreach (var timeEntry in timeEntries.Where(t => t.IsRunning))

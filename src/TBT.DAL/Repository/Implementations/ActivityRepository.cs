@@ -36,17 +36,7 @@ namespace TBT.DAL.Repository.Implementations
         {
             return Task.FromResult(
                 DbSet
-                .Where(x => x.IsActive && x.ProjectId == projectId)
-                .Include(x => x.Project)
-                .FirstOrDefault(p => p.Name == name));
-        }
-
-        public Task<IQueryable<Activity>> GetByProjectAsync(int id)
-        {
-            return Task.FromResult<IQueryable<Activity>>(
-                DbSet
-                .Where(x => x.IsActive && x.Project.Id == id)
-                .OrderByDescending(a => a.Name));
+                .FirstOrDefault(x => x.IsActive && x.ProjectId == projectId && x.Name == name));
         }
 
         #endregion
