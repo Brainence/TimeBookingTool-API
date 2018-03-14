@@ -31,9 +31,9 @@ namespace TBT.Api.Common.FluentValidation.Base
             return mode.HasFlag(_mode);
         }
 
-        protected async Task<bool> ExistsAsync<TModel>(int id, ICrudManager<TModel> manager) where TModel : class, IModel
+        protected Task<bool> ExistsAsync<TModel>(int id, ICrudManager<TModel> manager) where TModel : class, IModel
         {
-            return await manager.GetAsync(id) != null;
+            return manager.ExistAsync(id);
         }
 
         public Task<ValidationResult> ValidateAsync(object value)

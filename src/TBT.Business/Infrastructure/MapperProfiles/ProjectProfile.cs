@@ -10,7 +10,6 @@ namespace TBT.Business.Infrastructure.MapperProfiles
         public ProjectProfile()
         {
             CreateMap<Project, ProjectModel>()
-                .ForMember(d => d.Users, opt => opt.Ignore())
                 .ForMember(dest => dest.Activities, opt => opt.MapFrom(src => src.Activities.Where(a => a.IsActive)));
 
             CreateMap<ProjectModel, Project>()

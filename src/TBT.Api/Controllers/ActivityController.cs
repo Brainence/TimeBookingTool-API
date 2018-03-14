@@ -18,14 +18,6 @@ namespace TBT.Api.Controllers
         { }
 
         [HttpGet]
-        [Route("GetByProject/{projectId:int:min(1)}")]
-        [ActivityControllerValidationFilter]
-        public async Task<List<ActivityModel>> GetByProjectAsync([Validator(ValidationMode.Exist)]int projectId)
-        {
-            return await ManagerStore.ActivityManager.GetByProjectAsync(projectId);
-        }
-
-        [HttpGet]
         [Route("GetByCompany/{companyId:int:min(1)}")]
         [ActivityControllerValidationFilter]
         public async Task<List<ActivityModel>> GetByCompanyAsync([Validator(ValidationMode.Exist)]int companyId)

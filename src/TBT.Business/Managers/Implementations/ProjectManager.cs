@@ -28,21 +28,9 @@ namespace TBT.Business.Managers.Implementations
 
         #region Interface Members
 
-        public async Task<List<ProjectModel>> GetByActivityAsync(int activityId)
-        {
-            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
-                 await UnitOfWork.Projects.GetByActivityAsync(activityId));
-        }
-
-        public async Task<List<ProjectModel>> GetByCustomerAsync(int customerId)
-        {
-            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
-                 await UnitOfWork.Projects.GetByCustomerAsync(customerId));
-        }
-
         public async Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId)
         {
-            return ObjectMapper.Map<IEnumerable<Project>, List<ProjectModel>>(
+            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
                      await UnitOfWork.Projects.GetByCompanyIdAsync(companyId));
         }
 
@@ -50,12 +38,6 @@ namespace TBT.Business.Managers.Implementations
         {
             return ObjectMapper.Map<Project, ProjectModel>(
                 await UnitOfWork.Projects.GetByName(name));
-        }
-
-        public async Task<List<ProjectModel>> GetByUserAsync(int userId)
-        {
-            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
-                 await UnitOfWork.Projects.GetByUserAsync(userId));
         }
 
         public override async Task UpdateAsync(ProjectModel model)

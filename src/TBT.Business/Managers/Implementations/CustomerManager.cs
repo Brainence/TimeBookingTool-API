@@ -36,20 +36,22 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<CustomerModel>> GetByCompanyIdAsync(int companyId)
         {
-            var customers = ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
+            return ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
                      await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
-            foreach (var customer in customers)
-            {
-                customer.Company = new CompanyModel()
-                {
-                    Id = customer.CompanyId.HasValue ? customer.CompanyId.Value : 0
-                };
-                foreach (var project in customer.Projects)
-                {
-                    project.Activities.Clear();
-                }
-            }
-            return customers;
+            //var customers = ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
+            //         await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
+            //foreach (var customer in customers)
+            //{
+            //    customer.Company = new CompanyModel()
+            //    {
+            //        Id = customer.CompanyId.HasValue ? customer.CompanyId.Value : 0
+            //    };
+            //    foreach (var project in customer.Projects)
+            //    {
+            //        project.Activities.Clear();
+            //    }
+            //}
+            //return customers;
         }
 
         #endregion

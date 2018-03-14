@@ -14,5 +14,6 @@ namespace TBT.Business.Interfaces
         Task DeleteAsync(TModel model);
         Task DeleteAsync(int id);
         Task BulkInsertAsync(IEnumerable<TModel> entities);
+        Task<bool> ExistAsync(int id);
     }
 }

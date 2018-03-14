@@ -35,31 +35,27 @@ namespace TBT.Business.Managers.Implementations
                  UnitOfWork.Users.GetByEmail(email));
         }
 
-        public async Task<List<UserModel>> GetByProjectAsync(int projectId)
-        {
-            return ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
-                 await UnitOfWork.Users.GetByProjectAsync(projectId));
-        }
-
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
         {
-            var users = ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
+            return ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
                      await UnitOfWork.Users.GetByCompanyId(companyId));
-            foreach (var user in users)
-            {
-                if (user.CompanyId.HasValue)
-                {
-                    user.Company = new CompanyModel()
-                    {
-                        Id = user.CompanyId.Value
-                    };
-                }
-                foreach (var project in user.Projects)
-                {
-                    project.Activities.Clear();
-                }
-            }
-            return users;
+            //var users = ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
+            //         await UnitOfWork.Users.GetByCompanyId(companyId));
+            //foreach (var user in users)
+            //{
+            //    if (user.CompanyId.HasValue)
+            //    {
+            //        user.Company = new CompanyModel()
+            //        {
+            //            Id = user.CompanyId.Value
+            //        };
+            //    }
+            //    foreach (var project in user.Projects)
+            //    {
+            //        project.Activities.Clear();
+            //    }
+            //}
+            //return users;
         }
 
         public override Task<int> AddAsync(UserModel model)
