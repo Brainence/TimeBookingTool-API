@@ -10,6 +10,7 @@ using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using System;
 
 namespace TBT.Business.Managers.Implementations
 {
@@ -31,8 +32,7 @@ namespace TBT.Business.Managers.Implementations
 
         public UserModel GetByEmail(string email)
         {
-            return ObjectMapper.Map<User, UserModel>(
-                 UnitOfWork.Users.GetByEmail(email));
+            return ObjectMapper.Map<User, UserModel>(UnitOfWork.Users.GetByEmail(email));
         }
 
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)

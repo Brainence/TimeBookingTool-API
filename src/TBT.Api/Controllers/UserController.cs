@@ -7,13 +7,15 @@ using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace TBT.Api.Controllers
-{    
+{
     [RoutePrefix("api/user")]
     public class UserController : CrudApiController<UserModel>
     {
-        public UserController(IManagerStore managerStore) 
+        public UserController(IManagerStore managerStore)
             : base(managerStore, managerStore.UserManager)
         { }
 
@@ -21,7 +23,7 @@ namespace TBT.Api.Controllers
         [Route("")]
         [AllowAnonymous]
         [UserControllerValidationFilter]
-        public UserModel GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
+        public async Task<UserModel> GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
         {
             return ManagerStore.UserManager.GetByEmail(email);
         }
@@ -49,5 +51,7 @@ namespace TBT.Api.Controllers
         {
             await ManagerStore.UserManager.ChangePassword(id, oldPassword, newPassword);
         }
+
+
     }
 }

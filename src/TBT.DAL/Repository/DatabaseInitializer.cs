@@ -9,12 +9,6 @@ namespace TBT.DAL.Repository
         protected override void Seed(DataContext context)
         {
             base.Seed(context);
-            context.Companies.Add(new Company()
-            {
-                CompanyName = "Brainence",
-                IsActive = true,
-            });
-
             context.Users.Add(new User()
             {
                 FirstName = "Sergey",
@@ -23,7 +17,13 @@ namespace TBT.DAL.Repository
                 Username = "schuiko@brainence.com",
                 IsAdmin = true,
                 IsActive = true,
-                CompanyId = 1
+                // I
+                Company = new Company()
+                {
+                    CompanyName = "Brainence",
+                    IsActive = true,
+                },
+                MonthlySalary = 1000.00M
             });
         }
     }

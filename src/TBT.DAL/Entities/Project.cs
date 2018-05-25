@@ -17,5 +17,10 @@ namespace TBT.DAL.Entities
         public ICollection<User> Users { get; set; }
         public int? CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public Project()
+        {
+            Activities = new List<Activity>();
+            Users = new List<User>();
+        }
     }
 }
