@@ -128,6 +128,7 @@
     <Compile Include="Models\BusinessModels\Account.cs" />
     <Compile Include="Models\BusinessModels\CompanyModel.cs" />
     <Compile Include="Models\BusinessModels\CustomerModel.cs" />
+    <Compile Include="Models\BusinessModels\EmailData.cs" />
     <Compile Include="Models\BusinessModels\ProjectModel.cs" />
     <Compile Include="Models\BusinessModels\ActivityModel.cs" />
     <Compile Include="Models\BusinessModels\ResetTicketModel.cs" />

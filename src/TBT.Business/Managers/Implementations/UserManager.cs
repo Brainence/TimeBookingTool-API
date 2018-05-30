@@ -10,6 +10,10 @@ using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using System;
+using TBT.Business.Infrastructure.CastleWindsor;
+using System.Net.Mail;
+using TBT.Business.EmailService.Interfaces;
 
 namespace TBT.Business.Managers.Implementations
 {
@@ -31,8 +35,7 @@ namespace TBT.Business.Managers.Implementations
 
         public UserModel GetByEmail(string email)
         {
-            return ObjectMapper.Map<User, UserModel>(
-                 UnitOfWork.Users.GetByEmail(email));
+            return ObjectMapper.Map<User, UserModel>(UnitOfWork.Users.GetByEmail(email));
         }
 
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
@@ -90,6 +93,40 @@ namespace TBT.Business.Managers.Implementations
             await UnitOfWork.Users.ChangePassword(userId, oldPassword, newPassword);
 
             await UnitOfWork.SaveChangesAsync();
+        }
+
+        public async Task<bool> SendEmail(string name, string mesage, string date, string subject)
+        {
+            var sender = UnitOfWork.Users.GetByEmail(name);
+            if (sender is null)
+            {
+                return false;
+            }
+
+            var emailService = ServiceLocator.Current.Get<IEmailService>();
+            var emailMessage = new MailMessage();
+
+
+
+            //(await UnitOfWork.Users. 
+            //    GetAdmins(sender.CompanyId)).
+            //    ToList().
+            //    ForEach(us => emailMessage.To.Add(us.Username));
+
+            
+
+            emailMessage.From = new MailAddress(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
+
+            emailMessage.Subject = $"{subject}     {date}";
+            emailMessage.Body = $"";
+            emailMessage.Priority = MailPriority.Normal;
+            emailMessage.Body =
+                $"<b>{mesage}</b>.";
+            emailMessage.BodyEncoding = System.Text.Encoding.UTF8;
+            emailMessage.IsBodyHtml = true;
+
+
+            return await emailService.SendMailAsync(emailMessage);
         }
 
         #endregion

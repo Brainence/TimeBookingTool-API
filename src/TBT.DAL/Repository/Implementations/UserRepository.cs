@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using System;
 
 namespace TBT.DAL.Repository.Implementations
 {
@@ -59,6 +60,12 @@ namespace TBT.DAL.Repository.Implementations
                 .OrderBy(u => u.FirstName)
                 .ThenBy(u => u.LastName)
                 .Cast<User>());
+        }
+
+        public Task<IQueryable<User>> GetAdmins(int? companyId)
+        {
+            return Task.FromResult(
+                DbSet.Where(u => u.IsActive && u.CompanyId == companyId && u.IsAdmin));
         }
     }
 }
