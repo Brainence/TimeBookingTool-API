@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201711181441287_Company.Designer.cs">
       <DependentUpon>201711181441287_Company.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805291151400_Salary.cs" />
+    <Compile Include="Migrations\201805291151400_Salary.Designer.cs">
+      <DependentUpon>201805291151400_Salary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\Implementations\Repository.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711181441287_Company.resx">
       <DependentUpon>201711181441287_Company.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291151400_Salary.resx">
+      <DependentUpon>201805291151400_Salary.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
