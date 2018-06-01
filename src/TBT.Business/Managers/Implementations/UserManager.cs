@@ -106,6 +106,7 @@ namespace TBT.Business.Managers.Implementations
             var emailService = ServiceLocator.Current.Get<IEmailService>();
             var emailMessage = new MailMessage();
 
+            emailMessage.From = new MailAddress(sender.Username, sender.Username);
 
 
             //(await UnitOfWork.Users. 
@@ -121,7 +122,9 @@ namespace TBT.Business.Managers.Implementations
             emailMessage.Body = $"";
             emailMessage.Priority = MailPriority.Normal;
             emailMessage.Body =
-                $"<b>{mesage}</b>.";
+                $"<p>Employee: {sender.FirstName} {sender.LastName} </p>" +
+                $"<p>Date: {date}</p> " +
+                $"<p>Comment: {mesage}</p>";
             emailMessage.BodyEncoding = System.Text.Encoding.UTF8;
             emailMessage.IsBodyHtml = true;
 

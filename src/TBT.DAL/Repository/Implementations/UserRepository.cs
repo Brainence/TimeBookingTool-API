@@ -61,11 +61,5 @@ namespace TBT.DAL.Repository.Implementations
                 .ThenBy(u => u.LastName)
                 .Cast<User>());
         }
-
-        public Task<IQueryable<User>> GetAdmins(int? companyId)
-        {
-            return Task.FromResult(
-                DbSet.Where(u => u.IsActive && u.CompanyId == companyId && u.IsAdmin));
-        }
     }
 }
