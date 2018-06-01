@@ -31,9 +31,7 @@ namespace TBT.DAL.Entities
         public int? CompanyId { get; set; }
         public Company Company { get; set; }
 
-        // I
-        [Required]
-        public decimal MonthlySalary { get; set; }
+        public decimal? MonthlySalary { get; set; }
 
                 
         public User()

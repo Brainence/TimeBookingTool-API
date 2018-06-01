@@ -20,8 +20,8 @@ namespace TBT.Business.Models.BusinessModels
         public CompanyModel Company { get; set; }
 
         // I
-        public decimal MonthlySalary { get; set; }
-        public decimal HourlySalary { get; set; }
+        public decimal? MonthlySalary { get; set; }
+        public decimal? HourlySalary { get; set; }
         
 
 
