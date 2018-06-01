@@ -17,7 +17,7 @@ namespace TBT.DAL.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.CompanyName, unique: true, name: "Company_CompanyName_Index");
             
-            Sql("INSERT INTO dbo.Companies(CompanyName, IsActive) VALUES('Brainence', 1)");
+           
 
             AddColumn("dbo.Customers", "CompanyId", c => c.Int());
             AddColumn("dbo.Users", "CompanyId", c => c.Int());
