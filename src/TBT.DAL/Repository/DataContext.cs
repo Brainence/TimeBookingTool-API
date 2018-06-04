@@ -35,7 +35,6 @@ namespace TBT.DAL.Repository
                     },
                     MonthlySalary = 1000.00M
                 });
-                SaveChanges();
             }
         }
 
