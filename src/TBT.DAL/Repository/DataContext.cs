@@ -1,8 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Configuration;
-using Microsoft.AspNet.Identity;
 using TBT.DAL.Entities;
-using Configuration = TBT.DAL.Migrations.Configuration;
 
 namespace TBT.DAL.Repository
 {
@@ -10,32 +8,11 @@ namespace TBT.DAL.Repository
     {
         public DataContext(string connectionString) : base(connectionString)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Configuration>());
-           
+            Database.SetInitializer(new DatabaseInitializer());
         }
-    
+
         public DataContext() : this(ConnectionString)
         {
-            if (!Database.Exists())
-            {
-                Database.Create();
-                Users.Add(new User()
-                {
-                    FirstName = "Sergey",
-                    LastName = "Chujko",
-                    Password = new PasswordHasher().HashPassword("brainence!"),
-                    Username = "schuiko@brainence.com",
-                    IsAdmin = true,
-                    IsActive = true,
-                    // I
-                    Company = new Company()
-                    {
-                        CompanyName = "Brainence",
-                        IsActive = true,
-                    },
-                    MonthlySalary = 1000.00M
-                });
-            }
         }
 
         public static string ConnectionString
@@ -59,9 +36,6 @@ namespace TBT.DAL.Repository
         public DbSet<ResetTicket> ResetTickets { get; set; }
         public DbSet<Company> Companies { get; set; }
 
-
-
-        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

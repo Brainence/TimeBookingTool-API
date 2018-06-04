@@ -2,7 +2,7 @@ namespace TBT.DAL.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    public sealed class Configuration : DbMigrationsConfiguration<Repository.DataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Repository.DataContext>
     {
         public Configuration()
         {
