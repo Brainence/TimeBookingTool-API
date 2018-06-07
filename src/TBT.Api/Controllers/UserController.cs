@@ -7,8 +7,7 @@ using TBT.Api.Controllers.Base;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using System.Collections.Generic;
-using System.Linq;
-using System;
+
 
 namespace TBT.Api.Controllers
 {
@@ -23,7 +22,7 @@ namespace TBT.Api.Controllers
         [Route("")]
         [AllowAnonymous]
         [UserControllerValidationFilter]
-        public async Task<UserModel> GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
+        public UserModel GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
         {
             return ManagerStore.UserManager.GetByEmail(email);
         }
@@ -56,8 +55,7 @@ namespace TBT.Api.Controllers
         [Route("SendEmail")]
         public async Task<bool> SendEmail(EmailData data)
         {
-
-            return await ManagerStore.UserManager.SendEmail(data.Email, data.Text, data.Date, data.Type);
+            return await ManagerStore.UserManager.SendEmail(data);
         }
 
     }

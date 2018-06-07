@@ -11,6 +11,6 @@ namespace TBT.Business.Managers.Interfaces
         Task<bool> IsPasswordValid(int userId, string password);
         Task ChangePassword(int userId, string oldPassword, string newPassword);
         Task<List<UserModel>> GetByCompanyIdAsync(int companyId);
-        Task<bool> SendEmail(string name, string message, string date, string type);
+        Task<bool> SendEmail(EmailData data);
     }
 }

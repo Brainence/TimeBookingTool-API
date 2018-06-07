@@ -14,7 +14,6 @@ using System;
 using TBT.Business.Infrastructure.CastleWindsor;
 using System.Net.Mail;
 using TBT.Business.EmailService.Interfaces;
-
 namespace TBT.Business.Managers.Implementations
 {
     public class UserManager : CrudManager<User, UserModel>, IUserManager
@@ -95,39 +94,28 @@ namespace TBT.Business.Managers.Implementations
             await UnitOfWork.SaveChangesAsync();
         }
 
-        public async Task<bool> SendEmail(string name, string mesage, string date, string subject)
+        public async Task<bool> SendEmail(EmailData data)
         {
-            var sender = UnitOfWork.Users.GetByEmail(name);
+            var sender = UnitOfWork.Users.GetByEmail(data.Email);
             if (sender is null)
             {
                 return false;
             }
 
             var emailService = ServiceLocator.Current.Get<IEmailService>();
-            var emailMessage = new MailMessage();
+            var emailMessage = new MailMessage
+            {
+                From = new MailAddress(sender.Username, sender.Username),
+                Subject = $"{data.Type}     {data.Date}",
+                Priority = MailPriority.Normal,
+                Body = $@"<p>Employee: {sender.FirstName} {sender.LastName} </p>
+                       <p>Date: {data.Date}</p> 
+                       <p>Comment: {data.Text}</p>",
+                BodyEncoding = System.Text.Encoding.UTF8,
+                IsBodyHtml = true
+            };
 
-            emailMessage.From = new MailAddress(sender.Username, sender.Username);
-
-
-            //(await UnitOfWork.Users. 
-            //    GetAdmins(sender.CompanyId)).
-            //    ToList().
-            //    ForEach(us => emailMessage.To.Add(us.Username));
-
-            
-
-            emailMessage.From = new MailAddress(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
-
-            emailMessage.Subject = $"{subject}     {date}";
-            emailMessage.Body = $"";
-            emailMessage.Priority = MailPriority.Normal;
-            emailMessage.Body =
-                $"<p>Employee: {sender.FirstName} {sender.LastName} </p>" +
-                $"<p>Date: {date}</p> " +
-                $"<p>Comment: {mesage}</p>";
-            emailMessage.BodyEncoding = System.Text.Encoding.UTF8;
-            emailMessage.IsBodyHtml = true;
-
+            emailMessage.To.Add(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
 
             return await emailService.SendMailAsync(emailMessage);
         }
