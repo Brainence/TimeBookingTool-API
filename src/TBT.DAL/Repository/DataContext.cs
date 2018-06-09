@@ -27,7 +27,6 @@ namespace TBT.DAL.Repository
                     Username = "schuiko@brainence.com",
                     IsAdmin = true,
                     IsActive = true,
-                    // I
                     Company = new Company()
                     {
                         CompanyName = "Brainence",

@@ -100,7 +100,6 @@
     <Compile Include="Repository\Base\Interfaces\IRepository.cs" />
     <Compile Include="Repository\Base\Interfaces\IRepositoryT.cs" />
     <Compile Include="Repository\Base\Interfaces\IRepositoryFactory.cs" />
-    <Compile Include="Repository\DatabaseInitializer.cs" />
     <Compile Include="Repository\Base\Interfaces\IEntity.cs" />
     <Compile Include="Repository\DataContext.cs" />
     <Compile Include="Repository\Implementations\ApplicationUnitOfWork.cs" />
