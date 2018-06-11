@@ -40,5 +40,12 @@ namespace TBT.Business.Constants
         public static string SmtpServer => "SmtpServer";
         public static string SmtpUseSsl => "SmtpUseSsl";
     }
-
+    public class MailConstants
+    {
+        public static string FirstName => "FirstName";
+        public static string LastName => "LastName";
+        public static string Time => "Time";
+        public static string Mesage => "Mesage";
+    }
 }
+

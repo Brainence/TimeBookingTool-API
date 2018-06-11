@@ -14,6 +14,10 @@ using System;
 using TBT.Business.Infrastructure.CastleWindsor;
 using System.Net.Mail;
 using TBT.Business.EmailService.Interfaces;
+using System.Text;
+using System.Web.Hosting;
+using System.IO;
+
 namespace TBT.Business.Managers.Implementations
 {
     public class UserManager : CrudManager<User, UserModel>, IUserManager
@@ -102,15 +106,18 @@ namespace TBT.Business.Managers.Implementations
                 return false;
             }
 
+            var builder = new StringBuilder(File.ReadAllText(HostingEnvironment.MapPath(@"~/Email_template.html")));
+            builder.Replace(Constants.MailConstants.FirstName, sender.FirstName);
+            builder.Replace(Constants.MailConstants.LastName, sender.LastName);
+            builder.Replace(Constants.MailConstants.Time, data.Date);
+            builder.Replace(Constants.MailConstants.Mesage, data.Text);
             var emailService = ServiceLocator.Current.Get<IEmailService>();
             var emailMessage = new MailMessage
             {
                 From = new MailAddress(sender.Username, sender.Username),
                 Subject = $"{data.Type}     {data.Date}",
                 Priority = MailPriority.Normal,
-                Body = $@"<p>Employee: {sender.FirstName} {sender.LastName} </p>
-                       <p>Date: {data.Date}</p> 
-                       <p>Comment: {data.Text}</p>",
+                Body = builder.ToString(),
                 BodyEncoding = System.Text.Encoding.UTF8,
                 IsBodyHtml = true
             };
