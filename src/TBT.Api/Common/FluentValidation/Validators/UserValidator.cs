@@ -25,8 +25,8 @@ namespace TBT.Api.Common.FluentValidation.Validators
                 .WithMessage("User with this login already exists.");
 
             RuleFor(user => user.MonthlySalary).
-                MustAsync((x, token) => Task.FromResult(x.HasValue && x >= 0)).
-                When(x => HasFlag(ValidationMode.Update))
+                MustAsync((x, token) => Task.FromResult(!x.HasValue || x >= 0)).
+                When(x => HasFlag(ValidationMode.Update | ValidationMode.Add))
                 .WithMessage("Salary must be above 0");
         }
     }
