@@ -1,22 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web.Hosting;
+using TBT.Business.EmailService.Interfaces;
 using TBT.Business.Helpers;
 using TBT.Business.Implementations;
+using TBT.Business.Infrastructure.CastleWindsor;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
-using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
+using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
-using System;
-using TBT.Business.Infrastructure.CastleWindsor;
-using System.Net.Mail;
-using TBT.Business.EmailService.Interfaces;
-using System.Text;
-using System.Web.Hosting;
-using System.IO;
 
 namespace TBT.Business.Managers.Implementations
 {
@@ -101,12 +100,12 @@ namespace TBT.Business.Managers.Implementations
         public async Task<bool> SendEmail(EmailData data)
         {
             var sender = UnitOfWork.Users.GetByEmail(data.Email);
-            if (sender is null)
+            if (sender == null)
             {
                 return false;
             }
 
-            var builder = new StringBuilder(File.ReadAllText(HostingEnvironment.MapPath(@"~/Email_template.html")));
+            var builder = new StringBuilder(File.ReadAllText(HostingEnvironment.MapPath(@"~/Templates/EmailTemplates/AbsenceTemplate.html")));
             builder.Replace(Constants.MailConstants.FirstName, sender.FirstName);
             builder.Replace(Constants.MailConstants.LastName, sender.LastName);
             builder.Replace(Constants.MailConstants.Time, data.Date);
@@ -118,7 +117,7 @@ namespace TBT.Business.Managers.Implementations
                 Subject = $"{data.Type}     {data.Date}",
                 Priority = MailPriority.Normal,
                 Body = builder.ToString(),
-                BodyEncoding = System.Text.Encoding.UTF8,
+                BodyEncoding = Encoding.UTF8,
                 IsBodyHtml = true
             };
 

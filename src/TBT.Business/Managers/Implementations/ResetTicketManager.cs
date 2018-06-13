@@ -41,11 +41,10 @@ namespace TBT.Business.Managers.Implementations
             emailMessage.From = new MailAddress(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
             emailMessage.To.Add(new MailAddress(resetTicket.Username));
             emailMessage.Subject = "Password restore";
-            emailMessage.Body = $"";
             emailMessage.Priority = MailPriority.Normal;
             emailMessage.Body =
                 $"Your token is: <b>{resetTicket.Token}</b><br><br>" +
-                $"Expiration date <b>{resetTicket.ExpirationDate.ToString()} UTC</b>.";
+                $"Expiration date <b>{resetTicket.ExpirationDate} UTC</b>.";
             emailMessage.BodyEncoding = System.Text.Encoding.UTF8;
             emailMessage.IsBodyHtml = true;
 

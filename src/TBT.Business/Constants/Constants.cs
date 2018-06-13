@@ -42,10 +42,10 @@ namespace TBT.Business.Constants
     }
     public class MailConstants
     {
-        public static string FirstName => "FirstName";
-        public static string LastName => "LastName";
-        public static string Time => "Time";
-        public static string Mesage => "Mesage";
+        public static string FirstName => "[FirstName]";
+        public static string LastName => "[LastName]";
+        public static string Time => "[Time]";
+        public static string Mesage => "[Message]";
     }
 }
 
