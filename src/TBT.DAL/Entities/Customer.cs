@@ -16,5 +16,9 @@ namespace TBT.DAL.Entities
         public bool IsActive { get; set; }
         public int? CompanyId { get; set; }
         public Company Company { get; set; }
+        public Customer()
+        {
+            Projects = new List<Project>();
+        }
     }
 }
