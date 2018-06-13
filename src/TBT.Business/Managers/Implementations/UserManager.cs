@@ -1,13 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web.Hosting;
+using TBT.Business.EmailService.Interfaces;
 using TBT.Business.Helpers;
 using TBT.Business.Implementations;
+using TBT.Business.Infrastructure.CastleWindsor;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
-using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
+using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
 
@@ -31,8 +37,7 @@ namespace TBT.Business.Managers.Implementations
 
         public UserModel GetByEmail(string email)
         {
-            return ObjectMapper.Map<User, UserModel>(
-                 UnitOfWork.Users.GetByEmail(email));
+            return ObjectMapper.Map<User, UserModel>(UnitOfWork.Users.GetByEmail(email));
         }
 
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
@@ -90,6 +95,35 @@ namespace TBT.Business.Managers.Implementations
             await UnitOfWork.Users.ChangePassword(userId, oldPassword, newPassword);
 
             await UnitOfWork.SaveChangesAsync();
+        }
+
+        public async Task<bool> SendEmail(EmailData data)
+        {
+            var sender = UnitOfWork.Users.GetByEmail(data.Email);
+            if (sender == null)
+            {
+                return false;
+            }
+
+            var builder = new StringBuilder(File.ReadAllText(HostingEnvironment.MapPath(@"~/Templates/EmailTemplates/AbsenceTemplate.html")));
+            builder.Replace(Constants.MailConstants.FirstName, sender.FirstName);
+            builder.Replace(Constants.MailConstants.LastName, sender.LastName);
+            builder.Replace(Constants.MailConstants.Time, data.Date);
+            builder.Replace(Constants.MailConstants.Mesage, data.Text);
+            var emailService = ServiceLocator.Current.Get<IEmailService>();
+            var emailMessage = new MailMessage
+            {
+                From = new MailAddress(sender.Username, sender.Username),
+                Subject = $"{data.Type}     {data.Date}",
+                Priority = MailPriority.Normal,
+                Body = builder.ToString(),
+                BodyEncoding = Encoding.UTF8,
+                IsBodyHtml = true
+            };
+
+            emailMessage.To.Add(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
+
+            return await emailService.SendMailAsync(emailMessage);
         }
 
         #endregion

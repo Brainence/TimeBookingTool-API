@@ -8,12 +8,13 @@ using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using System.Collections.Generic;
 
+
 namespace TBT.Api.Controllers
-{    
+{
     [RoutePrefix("api/user")]
     public class UserController : CrudApiController<UserModel>
     {
-        public UserController(IManagerStore managerStore) 
+        public UserController(IManagerStore managerStore)
             : base(managerStore, managerStore.UserManager)
         { }
 
@@ -49,5 +50,13 @@ namespace TBT.Api.Controllers
         {
             await ManagerStore.UserManager.ChangePassword(id, oldPassword, newPassword);
         }
+
+        [HttpPost]
+        [Route("SendEmail")]
+        public async Task<bool> SendEmail(EmailData data)
+        {
+            return await ManagerStore.UserManager.SendEmail(data);
+        }
+
     }
 }
