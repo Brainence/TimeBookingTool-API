@@ -9,10 +9,8 @@ namespace TBT.DAL.Repository.Interfaces
     {
         Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, bool isRunning);
         Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, string dateString);
-        Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, string fromString, string toString);
-        Task<TimeSpan?> GetDurationAsync(int userId, string from, string to);
-        Task<IQueryable<TimeEntry>> GetByUserFromAsync(int userId, string fromString);
-        Task<IQueryable<TimeEntry>> GetByUserToAsync(int userId, string toString);
+        Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, string fromString, string toString, bool running);
+        Task<TimeSpan> GetDurationAsync(int userId, string from, string to);
         Task<IQueryable<TimeEntry>> GetByUserAsync(int userId);
         Task<bool> StartAsync(int timeEntryId);
         Task<bool> StopAsync(int timeEntryId);

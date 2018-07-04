@@ -37,36 +37,21 @@ namespace TBT.Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetByUser/{userId:int:min(1)}/{from}/{to}")]
+        [Route("GetByUser/{userId:int:min(1)}/{from}/{to}/{running:bool=true}")]
         [TimeEntryControllerValidationFilter]
-        public async Task<List<TimeEntryModel>> GetByUserAsync([Validator(ValidationMode.Exist)]int userId, string from, string to)
+        public async Task<List<TimeEntryModel>> GetByUserAsync([Validator(ValidationMode.Exist)]int userId, string from, string to,bool running = true)
         {
-            return await ManagerStore.TimeEntryManager.GetByUserAsync(userId, from, to);
+            return await ManagerStore.TimeEntryManager.GetByUserAsync(userId, from, to,running);
         }
 
         [HttpGet]
         [Route("GetDuration/{userId:int:min(1)}/{from}/{to}")]
         [TimeEntryControllerValidationFilter]
-        public async Task<TimeSpan?> GetDurationAsync([Validator(ValidationMode.Exist)]int userId, string from, string to)
+        public async Task<TimeSpan> GetDurationAsync([Validator(ValidationMode.Exist)]int userId, string from, string to)
         {
             return await ManagerStore.TimeEntryManager.GetDurationAsync(userId, from, to);
         }
 
-        [HttpGet]
-        [Route("GetByUserTo/{userId:int:min(1)}/{to}")]
-        [TimeEntryControllerValidationFilter]
-        public async Task<List<TimeEntryModel>> GetByUserToAsync([Validator(ValidationMode.Exist)]int userId, string to)
-        {
-            return await ManagerStore.TimeEntryManager.GetByUserToAsync(userId, to);
-        }
-
-        [HttpGet]
-        [Route("GetByUserFrom/{userId:int:min(1)}/{from}")]
-        [TimeEntryControllerValidationFilter]
-        public async Task<List<TimeEntryModel>> GetByActivityFromAsync([Validator(ValidationMode.Exist)]int userId, string from)
-        {
-            return await ManagerStore.TimeEntryManager.GetByUserFromAsync(userId, from);
-        }
 
         [HttpGet]
         [Route("GetByUser/{userId:int:min(1)}")]

@@ -10,10 +10,12 @@ using TBT.DAL.Repository.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace TBT.Business.Managers.Implementations
 {
     public class CustomerManager : CrudManager<Customer, CustomerModel>, ICustomerManager
     {
+
         #region Constructors
 
         public CustomerManager(
@@ -22,11 +24,34 @@ namespace TBT.Business.Managers.Implementations
             IConfigurationProvider configurationProvider, ILogManager logger)
             : base(unitOfWork, unitOfWork.Customers, objectMapper, configurationProvider, logger)
         {
+
         }
 
         #endregion
 
         #region Interface Members
+
+        public override async Task UpdateAsync(CustomerModel model)
+        {
+            if (!model.IsActive)
+            {
+                var projects = ObjectMapper.Map<List<ProjectModel>, List<Project>>(model.Projects);
+                foreach (var project in projects)
+                {
+                    var activities = await UnitOfWork.Activities.GetByProjectIdAsync(project.Id);
+                    project.IsActive = false;
+                    project.CustomerId = model.Id;
+                    foreach (var activity in activities)
+                    {
+                        activity.IsActive = false;
+                        activity.ProjectId = project.Id;
+                        await UnitOfWork.Activities.UpdateAsync(activity);
+                    }
+                    await UnitOfWork.Projects.UpdateAsync(project);
+                }
+            }
+            await base.UpdateAsync(model);
+        }
 
         public async Task<CustomerModel> GetByNameAsync(string name)
         {
@@ -38,22 +63,7 @@ namespace TBT.Business.Managers.Implementations
         {
             return ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
                      await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
-            //var customers = ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
-            //         await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
-            //foreach (var customer in customers)
-            //{
-            //    customer.Company = new CompanyModel()
-            //    {
-            //        Id = customer.CompanyId.HasValue ? customer.CompanyId.Value : 0
-            //    };
-            //    foreach (var project in customer.Projects)
-            //    {
-            //        project.Activities.Clear();
-            //    }
-            //}
-            //return customers;
         }
-
         #endregion
 
 

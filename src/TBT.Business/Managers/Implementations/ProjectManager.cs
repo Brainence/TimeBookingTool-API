@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
-using TBT.Business.Providers.Interfaces;
-using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using IConfigurationProvider = TBT.Business.Providers.Interfaces.IConfigurationProvider;
+using IObjectMapper = TBT.Components.Interfaces.ObjectMapper.IObjectMapper;
 
 namespace TBT.Business.Managers.Implementations
 {
@@ -30,8 +32,8 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId)
         {
-            return ObjectMapper.Map<IQueryable<Project>, List<ProjectModel>>(
-                     await UnitOfWork.Projects.GetByCompanyIdAsync(companyId));
+            var temp = await UnitOfWork.Projects.GetByCompanyIdAsync(companyId);
+            return ObjectMapper.Map<List<Project>, List<ProjectModel>>(temp.ToList());  
         }
 
         public async Task<ProjectModel> GetByName(string name)
@@ -42,17 +44,16 @@ namespace TBT.Business.Managers.Implementations
 
         public override async Task UpdateAsync(ProjectModel model)
         {
-            if (model.Customer == null)
+            if (!model.IsActive)
             {
-                var project = await UnitOfWork.Projects.GetAsync(model.Id);
-                if (project?.CustomerId == null) return;
-
-                var customer = await UnitOfWork.Customers.GetAsync(project.CustomerId.Value);
-                if (customer == null) return;
-
-                model.Customer = ObjectMapper.Map<Customer, CustomerModel>(customer);
+                var activities = ObjectMapper.Map<List<ActivityModel>, List<Activity>>(model.Activities);
+                foreach (var activity in activities)
+                {
+                    activity.IsActive = false;
+                    activity.ProjectId = model.Id;
+                    await UnitOfWork.Activities.UpdateAsync(activity);
+                }
             }
-
             await base.UpdateAsync(model);
         }
 
