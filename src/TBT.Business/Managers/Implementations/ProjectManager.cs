@@ -45,11 +45,9 @@ namespace TBT.Business.Managers.Implementations
             if (model.Customer == null)
             {
                 var project = await UnitOfWork.Projects.GetAsync(model.Id);
-                if (project?.CustomerId == null) return;
-
-                var customer = await UnitOfWork.Customers.GetAsync(project.CustomerId.Value);
-                if (customer == null) return;
-
+                
+                var customer = await UnitOfWork.Customers.GetAsync(project.CustomerId);
+                
                 model.Customer = ObjectMapper.Map<Customer, CustomerModel>(customer);
             }
 

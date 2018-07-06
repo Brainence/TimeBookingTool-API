@@ -24,6 +24,7 @@ namespace TBT.DAL.Repository.Implementations
         {
             return DbSet
                 .Include(u => u.Company)
+                .Include(u => u.Projects.Select(i => i.Customer))
                 .Include(u => u.Projects.Select(p => p.Activities))
                 .FirstOrDefault(u => u.IsActive && u.Username == email);
         }
