@@ -35,28 +35,16 @@ namespace TBT.Business.Managers.Implementations
                  await UnitOfWork.TimeEntries.GetByUserAsync(userId, date));
         }
 
-        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string from, string to)
+        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string from, string to, bool running)
         {
             return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                 await UnitOfWork.TimeEntries.GetByUserAsync(userId, from, to));
+                 await UnitOfWork.TimeEntries.GetByUserAsync(userId, from, to,running));
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, bool isRunning)
         {
             return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                 await UnitOfWork.TimeEntries.GetByUserAsync(userId, isRunning));
-        }
-
-        public async Task<List<TimeEntryModel>> GetByUserFromAsync(int userId, string from)
-        {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                await UnitOfWork.TimeEntries.GetByUserFromAsync(userId, from));
-        }
-
-        public async Task<List<TimeEntryModel>> GetByUserToAsync(int userId, string to)
-        {
-            return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
-                await UnitOfWork.TimeEntries.GetByUserToAsync(userId, to));
         }
 
         public async Task<List<TimeEntryModel>> GetByUserAsync(int userId)
@@ -86,7 +74,7 @@ namespace TBT.Business.Managers.Implementations
                 ObjectMapper.Map<TimeEntryModel, TimeEntry>(model), clientDuration);
         }
 
-        public async Task<TimeSpan?> GetDurationAsync(int userId, string from, string to)
+        public async Task<TimeSpan> GetDurationAsync(int userId, string from, string to)
         {
             return await UnitOfWork.TimeEntries.GetDurationAsync(userId, from, to);
         }

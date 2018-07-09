@@ -32,6 +32,11 @@ namespace TBT.DAL.Repository.Implementations
                 .OrderByDescending(a => a.Name));
         }
 
+        public Task<IQueryable<Activity>> GetByProjectIdAsync(int projectId)
+        {
+            return Task.FromResult(DbSet.Where(x => x.IsActive && x.ProjectId == projectId));
+        }
+
         public Task<Activity> GetByName(string name, int projectId)
         {
             return Task.FromResult(

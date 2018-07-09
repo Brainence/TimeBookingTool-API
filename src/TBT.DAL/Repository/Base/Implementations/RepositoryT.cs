@@ -1,9 +1,10 @@
-﻿using EntityFramework.BulkInsert.Extensions;
+﻿using EntityFramework.BulkInsert;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
+using EntityFramework.BulkInsert.Extensions;
 using TBT.DAL.Repository.Interfaces;
 
 namespace TBT.DAL.Repository.Implementations
@@ -105,10 +106,8 @@ namespace TBT.DAL.Repository.Implementations
         public virtual Task BulkInsertAsync(IEnumerable<TEntity> entities)
         {
             Context.BulkInsert(entities);
-
             return Task.FromResult<object>(null);
         }
-
         public Task<bool> ExistAsync(int id)
         {
             return Task.FromResult(DbSet.Any(i => i.Id == id));

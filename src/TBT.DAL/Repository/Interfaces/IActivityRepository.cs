@@ -8,5 +8,7 @@ namespace TBT.DAL.Repository.Interfaces
     {
         Task<Activity> GetByName(string name, int projectId);
         Task<IQueryable<Activity>> GetByCompanyIdAsync(int companyId);
+        Task<IQueryable<Activity>> GetByProjectIdAsync(int projectId);
+
     }
 }
