@@ -19,9 +19,11 @@ namespace TBT.Business.Models.BusinessModels
         public TimeSpan? CurrentTimeZone { get; set; }
         public CompanyModel Company { get; set; }
 
+        public decimal? MonthlySalary { get; set; }
+
         public override string ToString()
         {
-            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company} }}";
+            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company}, MonthlySalary={MonthlySalary}}}";
         }
     }
 }

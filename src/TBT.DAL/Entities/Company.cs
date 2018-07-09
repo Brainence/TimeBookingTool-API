@@ -15,5 +15,11 @@ namespace TBT.DAL.Entities
         public bool IsActive { get; set; }
         public ICollection<User> Users { get; set; }
         public ICollection<Customer> Customers { get; set; }
+
+        public Company()
+        {
+            Users = new List<User>();
+            Customers = new List<Customer>();
+        }
     }
 }
