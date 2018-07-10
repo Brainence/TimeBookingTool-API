@@ -11,7 +11,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
         public CompanyValidator(ICompanyManager manager, ValidationMode mode) : base(manager, mode)
         {
             RuleFor(company => company.CompanyName)
-                .MustAsync(async (x, token) => await ((ICompanyManager)_manager).GetByName(x) == null)
+                .MustAsync(async (x, token) => await manager.GetByName(x) == null)
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update | ValidationMode.DataRelevance))
                 .WithMessage("Company with name {PropertyValue} is already exists.");
         }

@@ -22,6 +22,14 @@ namespace TBT.Api.Common.FluentValidation.Validators
                 .MustAsync(async (x, token) => await ExistsAsync(x.Id, ServiceLocator.Current.Get<IProjectManager>()))
                 .When(x => HasFlag(ValidationMode.Update))
                 .WithMessage("{PropertyName} can't be null or doesn't exists.");
+            RuleFor(activity => activity)
+                .MustAsync(async (x, token) =>
+                {
+                    var tempActivity = await manager.GetByName(x.Name, x.Project.Id);
+                    return tempActivity == null || x.Id == tempActivity.Id;
+                })
+                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
+                .WithMessage("Activity with this name already exists.");
         }
     }
 }
