@@ -266,8 +266,7 @@ namespace TBT.DAL.Repository.Implementations
             timeEntry.LastUpdated = DateTime.UtcNow;
             timeEntry.Comment = entity.Comment;
             timeEntry.IsActive = entity.IsActive;
-            timeEntry.TimeLimit = entity.TimeLimit;
-
+            
             await Context.SaveChangesAsync();
 
             return await Task.FromResult(true);
