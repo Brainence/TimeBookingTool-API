@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201806011053384_Salary.Designer.cs">
       <DependentUpon>201806011053384_Salary.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807101340369_RemoveTimeLimit.cs" />
+    <Compile Include="Migrations\201807101340369_RemoveTimeLimit.Designer.cs">
+      <DependentUpon>201807101340369_RemoveTimeLimit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\Implementations\Repository.cs" />
@@ -140,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806011053384_Salary.resx">
       <DependentUpon>201806011053384_Salary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807101340369_RemoveTimeLimit.resx">
+      <DependentUpon>201807101340369_RemoveTimeLimit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

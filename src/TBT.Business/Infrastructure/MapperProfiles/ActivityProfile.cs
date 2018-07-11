@@ -8,7 +8,8 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public ActivityProfile()
         {
-            CreateMap<Activity, ActivityModel>();
+            CreateMap<Activity, ActivityModel>()
+                 .ForMember(dest => dest.Project, opt => opt.MapFrom(src => src.Project ?? new Project { Id = src.ProjectId }));
 
             CreateMap<ActivityModel, Activity>()
                 .ForMember(dest => dest.ProjectId, dest => dest.MapFrom(src => src.Project != null && src.Project.Id > 0 ? src.Project.Id : default(int)))

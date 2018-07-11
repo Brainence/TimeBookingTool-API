@@ -13,12 +13,11 @@ namespace TBT.Business.Models.BusinessModels
         public bool IsActive { get; set; }
         public bool IsRunning { get; set; }
         public string Comment { get; set; }
-        public DateTime? TimeLimit { get; set; }
         public DateTime? LastUpdated { get; set; }
 
         public override string ToString()
         {
-            return $"{{ Id={Id}, User={User}, Activity={Activity}, Duration={Duration}, Date={Date}, IsActive={IsActive}, TimeLimit={TimeLimit}, LastUpdated={LastUpdated} }}";
+            return $"{{ Id={Id}, User={User}, Activity={Activity}, Duration={Duration}, Date={Date}, IsActive={IsActive}, LastUpdated={LastUpdated} }}";
         }
     }
 }

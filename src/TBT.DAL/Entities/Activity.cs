@@ -12,7 +12,7 @@ namespace TBT.DAL.Entities
         [Index("Activity_Name_Index", IsUnique = false)]
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public int? ProjectId { get; set; }
+        public int ProjectId { get; set; }
         public Project Project { get; set; }
     }
 }
