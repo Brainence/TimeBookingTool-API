@@ -8,9 +8,9 @@ namespace TBT.DAL.Repository.Interfaces
     public interface ITimeEntryRepository : IRepository, IRepository<TimeEntry>
     {
         Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, bool isRunning);
-        Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, string dateString);
-        Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, string fromString, string toString, bool running);
-        Task<TimeSpan> GetDurationAsync(int userId, string from, string to);
+        Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, DateTime date);
+        Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, DateTime from, DateTime to, bool running);
+        Task<TimeSpan> GetDurationAsync(int userId, DateTime from, DateTime to);
         Task<IQueryable<TimeEntry>> GetByUserAsync(int userId);
         Task<bool> StartAsync(int timeEntryId);
         Task<bool> StopAsync(int timeEntryId);

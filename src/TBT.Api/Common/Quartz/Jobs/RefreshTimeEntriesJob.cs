@@ -26,7 +26,6 @@ namespace TBT.Api.Common.Quartz.Jobs
                             Activity = item.Activity,
                             Comment = item.Comment,
                             Date = DateTime.UtcNow,
-                            TimeLimit = item.TimeLimit,
                             User = item.User,
                             IsActive = true
                         };

@@ -30,20 +30,18 @@ namespace TBT.DAL.Repository.Implementations
 
         public Task<bool> IsPasswordValid(int userId, string password)
         {
-            var hasher = new PasswordHasher();
             var user = DbSet.FirstOrDefault(u => u.IsActive && u.Id == userId);
 
             if (user == null) return Task.FromResult(false);
 
-            var result = hasher.VerifyHashedPassword(user.Password, password);
+            var result = new PasswordHasher().VerifyHashedPassword(user.Password, password);
 
             return Task.FromResult(result == PasswordVerificationResult.Success);
         }
 
         public async Task ChangePassword(int userId, string oldPassword, string newPassword)
         {
-            var isValid = await IsPasswordValid(userId, oldPassword);
-            if (!isValid) return;
+            if (!await IsPasswordValid(userId, oldPassword)) return;
 
             var user = DbSet.FirstOrDefault(u => u.IsActive && u.Id == userId);
             if (user == null) return;

@@ -16,20 +16,19 @@ namespace TBT.DAL.Repository.Implementations
 
         public override Task<IQueryable<Activity>> GetAsync()
         {
-            return Task.FromResult<IQueryable<Activity>>(
+            return Task.FromResult(
                 DbSet
                 .Where(x => x.IsActive)
-                .Include(x => x.Project.Users)
-                .OrderByDescending(a => a.Name));
+                .Include(x => x.Project.Users));
         }
 
         public Task<IQueryable<Activity>> GetByCompanyIdAsync(int companyId)
         {
-            return Task.FromResult<IQueryable<Activity>>(
+            return Task.FromResult(
                 DbSet
-                .Include(x => x.Project.Customer)
-                .Where(x => x.IsActive && x.Project.Customer.CompanyId == companyId)
-                .OrderByDescending(a => a.Name));
+                    .Include(x => x.Project.Customer)
+                    .Where(x => x.IsActive && x.Project.Customer.CompanyId == companyId));
+
         }
 
         public Task<IQueryable<Activity>> GetByProjectIdAsync(int projectId)

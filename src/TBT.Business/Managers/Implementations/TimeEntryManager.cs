@@ -29,13 +29,13 @@ namespace TBT.Business.Managers.Implementations
 
         #region Interface Members
 
-        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string date)
+        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, DateTime date)
         {
             return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                  await UnitOfWork.TimeEntries.GetByUserAsync(userId, date));
         }
 
-        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, string from, string to, bool running)
+        public async Task<List<TimeEntryModel>> GetByUserAsync(int userId, DateTime from, DateTime to, bool running)
         {
             return ObjectMapper.Map<IQueryable<TimeEntry>, List<TimeEntryModel>>(
                  await UnitOfWork.TimeEntries.GetByUserAsync(userId, from, to,running));
@@ -74,7 +74,7 @@ namespace TBT.Business.Managers.Implementations
                 ObjectMapper.Map<TimeEntryModel, TimeEntry>(model), clientDuration);
         }
 
-        public async Task<TimeSpan> GetDurationAsync(int userId, string from, string to)
+        public async Task<TimeSpan> GetDurationAsync(int userId, DateTime from, DateTime to)
         {
             return await UnitOfWork.TimeEntries.GetDurationAsync(userId, from, to);
         }
