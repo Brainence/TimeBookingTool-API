@@ -11,7 +11,6 @@ namespace TBT.Business.Infrastructure.MapperProfiles
         {
             CreateMap<Customer, CustomerModel>()
                 .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company ?? new Company() { Id = src.CompanyId.Value }))
-                .ForMember(dest => dest.Projects, opt => opt.MapFrom(src => src.Projects.Where(a => a.IsActive)))
                 .PreserveReferences();
 
             CreateMap<CustomerModel, Customer>()
