@@ -43,11 +43,7 @@ namespace TBT.DAL.Repository
             get
             {
                 var temp = ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"];
-                if (temp != null)
-                {
-                    return ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"].ConnectionString;
-                }
-                return "TimeBookingToolConnectionString";
+                return temp != null ? temp.ConnectionString : "TimeBookingToolConnectionString";
             }
         }
 

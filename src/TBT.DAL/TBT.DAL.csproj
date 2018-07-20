@@ -96,6 +96,10 @@
     <Compile Include="Migrations\201807111335205_RemoveUserTimeLimit.Designer.cs">
       <DependentUpon>201807111335205_RemoveUserTimeLimit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807161121058_FixMigration.cs" />
+    <Compile Include="Migrations\201807161121058_FixMigration.Designer.cs">
+      <DependentUpon>201807161121058_FixMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\Implementations\Repository.cs" />
@@ -121,7 +125,6 @@
     <Compile Include="Repository\Interfaces\ITimeEntryRepository.cs" />
     <Compile Include="Repository\Interfaces\IProjectRepository.cs" />
     <Compile Include="Repository\Interfaces\IUserProjectRepository.cs" />
-    <Compile Include="Repository\Interfaces\IAccountRepository.cs" />
     <Compile Include="Repository\Interfaces\IResetTicketRepository.cs" />
     <Compile Include="Repository\Interfaces\IUserRepository.cs" />
   </ItemGroup>
@@ -147,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807111335205_RemoveUserTimeLimit.resx">
       <DependentUpon>201807111335205_RemoveUserTimeLimit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807161121058_FixMigration.resx">
+      <DependentUpon>201807161121058_FixMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

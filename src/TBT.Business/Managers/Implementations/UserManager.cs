@@ -43,32 +43,15 @@ namespace TBT.Business.Managers.Implementations
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
         {
             return ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
-                     await UnitOfWork.Users.GetByCompanyId(companyId));
-            //var users = ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
-            //         await UnitOfWork.Users.GetByCompanyId(companyId));
-            //foreach (var user in users)
-            //{
-            //    if (user.CompanyId.HasValue)
-            //    {
-            //        user.Company = new CompanyModel()
-            //        {
-            //            Id = user.CompanyId.Value
-            //        };
-            //    }
-            //    foreach (var project in user.Projects)
-            //    {
-            //        project.Activities.Clear();
-            //    }
-            //}
-            //return users;
+                await UnitOfWork.Users.GetByCompanyId(companyId));
         }
 
         public override Task<int> AddAsync(UserModel model)
         {
             model.Password = PasswordHelpers.HashPassword(model.Password);
-            var result = base.AddAsync(model);
-            model.Password = string.Empty;
-            return result;
+            var resultId = base.AddAsync(model);
+            model.Password = "";
+            return resultId;
         }
 
         public override async Task UpdateAsync(UserModel model)
@@ -93,7 +76,6 @@ namespace TBT.Business.Managers.Implementations
         public async Task ChangePassword(int userId, string oldPassword, string newPassword)
         {
             await UnitOfWork.Users.ChangePassword(userId, oldPassword, newPassword);
-
             await UnitOfWork.SaveChangesAsync();
         }
 
@@ -104,13 +86,11 @@ namespace TBT.Business.Managers.Implementations
             {
                 return false;
             }
-
             var builder = new StringBuilder(File.ReadAllText(HostingEnvironment.MapPath(@"~/Templates/EmailTemplates/AbsenceTemplate.html")));
             builder.Replace(Constants.MailConstants.FirstName, sender.FirstName);
             builder.Replace(Constants.MailConstants.LastName, sender.LastName);
             builder.Replace(Constants.MailConstants.Time, data.Date);
             builder.Replace(Constants.MailConstants.Mesage, data.Text);
-            var emailService = ServiceLocator.Current.Get<IEmailService>();
             var emailMessage = new MailMessage
             {
                 From = new MailAddress(sender.Username, sender.Username),
@@ -120,10 +100,8 @@ namespace TBT.Business.Managers.Implementations
                 BodyEncoding = Encoding.UTF8,
                 IsBodyHtml = true
             };
-
             emailMessage.To.Add(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
-
-            return await emailService.SendMailAsync(emailMessage);
+            return await ServiceLocator.Current.Get<IEmailService>().SendMailAsync(emailMessage);
         }
 
         #endregion

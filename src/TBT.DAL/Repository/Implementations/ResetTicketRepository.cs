@@ -31,11 +31,9 @@ namespace TBT.DAL.Repository.Implementations
                 Username = user.Username,
                 Token = RandomString(64)
             };
-
             resetTicket = DbSet.Add(resetTicket);
             await Context.SaveChangesAsync();
-
-            return await Task.FromResult(resetTicket);
+            return resetTicket;
         }
 
         static string RandomString(int length)
@@ -45,7 +43,6 @@ namespace TBT.DAL.Repository.Implementations
             using (_cryptoService = new RNGCryptoServiceProvider())
             {
                 byte[] uintBuffer = new byte[sizeof(uint)];
-
                 while (length-- > 0)
                 {
                     _cryptoService.GetBytes(uintBuffer);
@@ -53,7 +50,6 @@ namespace TBT.DAL.Repository.Implementations
                     res.Append(valid[(int)(num % (uint)valid.Length)]);
                 }
             }
-
             return res.ToString();
         }
 
@@ -75,16 +71,13 @@ namespace TBT.DAL.Repository.Implementations
                 Context.Set<User>().Attach(user);
             }
             entry.State = EntityState.Modified;
-
             entry = Context.Entry(user);
             if (entry.State == EntityState.Detached)
             {
                 Context.Set<User>().Attach(user);
             }
             entry.State = EntityState.Modified;
-
             await Context.SaveChangesAsync();
-
             return true;
         }
     }

@@ -26,8 +26,7 @@ namespace TBT.Business.Managers.Implementations
 
         public Account GetByEmail(string email)
         {
-            var x = UnitOfWork.Users.GetByEmail(email);
-            return ObjectMapper.Map<User, Account>(x);
+            return ObjectMapper.Map<User, Account>(UnitOfWork.Users.GetByEmail(email));
         }
 
         #endregion

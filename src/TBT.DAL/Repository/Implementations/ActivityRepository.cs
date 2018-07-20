@@ -28,7 +28,6 @@ namespace TBT.DAL.Repository.Implementations
                 DbSet
                     .Include(x => x.Project.Customer)
                     .Where(x => x.IsActive && x.Project.Customer.CompanyId == companyId));
-
         }
 
         public Task<IQueryable<Activity>> GetByProjectIdAsync(int projectId)

@@ -24,7 +24,6 @@ namespace TBT.Business.Managers.Implementations
             IConfigurationProvider configurationProvider, ILogManager logger)
             : base(unitOfWork, unitOfWork.Customers, objectMapper, configurationProvider, logger)
         {
-
         }
 
         #endregion
@@ -35,18 +34,11 @@ namespace TBT.Business.Managers.Implementations
         {
             if (!model.IsActive)
             {
-                var projects = ObjectMapper.Map<List<ProjectModel>, List<Project>>(model.Projects);
-                foreach (var project in projects)
+                foreach (var project in ObjectMapper.Map<List<ProjectModel>, List<Project>>(model.Projects))
                 {
-                    var activities = await UnitOfWork.Activities.GetByProjectIdAsync(project.Id);
                     project.IsActive = false;
                     project.CustomerId = model.Id;
-                    foreach (var activity in activities)
-                    {
-                        activity.IsActive = false;
-                        activity.ProjectId = project.Id;
-                        await UnitOfWork.Activities.UpdateAsync(activity);
-                    }
+                    project.Activities = (await UnitOfWork.Activities.GetByProjectIdAsync(project.Id)).ToList();
                     await UnitOfWork.Projects.UpdateAsync(project);
                 }
             }

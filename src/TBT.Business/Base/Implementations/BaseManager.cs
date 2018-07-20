@@ -60,10 +60,7 @@ namespace TBT.Business.Implementations
 
         public virtual void Dispose()
         {
-            if (unitOfWork != null)
-            {
-                unitOfWork.Dispose();
-            }
+            unitOfWork?.Dispose();
         }
 
         #endregion

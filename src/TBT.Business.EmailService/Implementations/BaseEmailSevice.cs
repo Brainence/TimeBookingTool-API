@@ -46,7 +46,6 @@ namespace TBT.Business.EmailService.Implementations
             try
             {
                 await _smtpClient.SendMailAsync(mailMessage);
-
                 return true;
             }
             catch (Exception ex)
@@ -60,7 +59,6 @@ namespace TBT.Business.EmailService.Implementations
         public virtual Task<bool> SendMailAsync(MailMessage mailMessage, SmtpSettings smtpSettings)
         {
             SetSmtpSettings(smtpSettings);
-
             return SendMailAsync(mailMessage);
         }
 

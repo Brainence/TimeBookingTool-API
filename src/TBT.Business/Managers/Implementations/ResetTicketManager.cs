@@ -33,23 +33,18 @@ namespace TBT.Business.Managers.Implementations
         {
             var resetTicket = await UnitOfWork.ResetTickets.CreateResetTicket(userId);
             if (resetTicket == null) return false;
-
-            var emailService = ServiceLocator.Current.Get<IEmailService>();
-
-            var emailMessage = new MailMessage();
-
-            emailMessage.From = new MailAddress(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
+            var emailMessage = new MailMessage
+            {
+                From = new MailAddress(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username),
+                Subject = "Password restore",
+                Priority = MailPriority.Normal,
+                Body = $"Your token is: <b>{resetTicket.Token}</b><br><br>" +
+                       $"Expiration date <b>{resetTicket.ExpirationDate} UTC</b>.",
+                BodyEncoding = System.Text.Encoding.UTF8,
+                IsBodyHtml = true
+            };
             emailMessage.To.Add(new MailAddress(resetTicket.Username));
-            emailMessage.Subject = "Password restore";
-            emailMessage.Priority = MailPriority.Normal;
-            emailMessage.Body =
-                $"Your token is: <b>{resetTicket.Token}</b><br><br>" +
-                $"Expiration date <b>{resetTicket.ExpirationDate} UTC</b>.";
-            emailMessage.BodyEncoding = System.Text.Encoding.UTF8;
-            emailMessage.IsBodyHtml = true;
-
-            var succeed = await emailService.SendMailAsync(emailMessage);
-            return succeed;
+            return await ServiceLocator.Current.Get<IEmailService>().SendMailAsync(emailMessage);
         }
     }
 }

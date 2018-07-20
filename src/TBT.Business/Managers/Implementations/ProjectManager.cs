@@ -32,6 +32,7 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId)
         {
+            //TODO strange iqueryable  maping
             var temp = await UnitOfWork.Projects.GetByCompanyIdAsync(companyId);
             return ObjectMapper.Map<List<Project>, List<ProjectModel>>(temp.ToList());  
         }
