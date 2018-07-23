@@ -17,6 +17,14 @@ namespace TBT.Api.Common.FluentValidation.Validators
             RuleFor(customer => customer.IsActive).Equal(true)
                 .When(x => HasFlag(ValidationMode.Add))
                 .WithMessage("{PropertyName} can't be {PropertyValue}.");
+            RuleFor(customer => customer)
+                .MustAsync(async (x, token) =>
+                {
+                    var tempCustomer = await manager.GetByNameAsync(x.Name);
+                    return tempCustomer == null || x.Id == tempCustomer.Id;
+                })
+                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
+                .WithMessage("Customer with this name already exists.");
         }
     }
 }

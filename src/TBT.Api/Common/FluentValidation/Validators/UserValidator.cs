@@ -18,7 +18,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
             RuleFor(user => user)
                 .MustAsync((x, token) =>
                 {
-                    var tempUser = ((IUserManager)_manager).GetByEmail(x.Username);
+                    var tempUser = manager.GetByEmail(x.Username);
                     return Task.FromResult(tempUser == null || x.Id == tempUser.Id);
                 })
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
