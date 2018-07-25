@@ -26,6 +26,14 @@ namespace TBT.Api.Controllers
         {
             return ManagerStore.UserManager.GetByEmail(email);
         }
+        [HttpGet]
+        [Route("GetUserProject")]
+        [AllowAnonymous]
+        [UserControllerValidationFilter]
+        public UserModel GetUserProject([Validator(ValidationMode.DataRelevance)]string email)
+        {
+            return ManagerStore.UserManager.GetUserProject(email);
+        }
 
         [HttpGet]
         [Route("ValidatePassword/{id:int:min(1)}/{password}")]

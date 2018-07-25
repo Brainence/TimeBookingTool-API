@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using Z.EntityFramework.Plus;
 
 namespace TBT.DAL.Repository.Implementations
 {
@@ -17,7 +18,7 @@ namespace TBT.DAL.Repository.Implementations
             return Task.FromResult(
                 DbSet
                     .Include(x => x.Customer)
-                    .Include(x => x.Activities)
+                    .IncludeFilter(x=>x.Activities.Where(y=>y.IsActive))
                     .Where(p => p.IsActive && p.Customer.CompanyId == companyId));
         }
 

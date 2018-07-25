@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Hosting;
+using Castle.Core.Internal;
 using TBT.Business.EmailService.Interfaces;
 using TBT.Business.Helpers;
 using TBT.Business.Implementations;
@@ -37,7 +38,20 @@ namespace TBT.Business.Managers.Implementations
 
         public UserModel GetByEmail(string email)
         {
-            return ObjectMapper.Map<User, UserModel>(UnitOfWork.Users.GetByEmail(email));
+            return ObjectMapper.Map<User, UserModel>(UnitOfWork.Users.GetByEmail(email) ?? new User());
+        }
+
+        public UserModel GetUserProject(string email)
+        {
+            var user = UnitOfWork.Users.GetUserProject(email) ?? new User();
+            user.Projects =
+                user.Projects.Where(x => x.IsActive)
+                    .Select(proj =>
+                    {
+                        proj.Activities = proj.Activities.Where(x => x.IsActive).ToList();
+                        return proj;
+                    }).ToList();
+            return ObjectMapper.Map<User, UserModel>(user);
         }
 
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)

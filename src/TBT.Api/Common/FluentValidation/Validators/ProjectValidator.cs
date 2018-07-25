@@ -25,7 +25,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
             RuleFor(project => project)
                 .MustAsync(async (x, token) =>
                 {
-                    var tempProject = await manager .GetByName(x.Name);
+                    var tempProject = await manager.GetByName(x.Name);
                     return tempProject == null || x.Id == tempProject.Id;
                 })
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))

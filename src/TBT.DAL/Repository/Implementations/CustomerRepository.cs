@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using Z.EntityFramework.Plus;
 
 namespace TBT.DAL.Repository.Implementations
 {
@@ -21,7 +22,8 @@ namespace TBT.DAL.Repository.Implementations
         public Task<IQueryable<Customer>> GetByCompanyIdAsync(int companyId)
         {
             return Task.FromResult(DbSet
-                .Include(x => x.Projects.Select(p=>p.Activities))
+                .IncludeFilter(x => x.Projects.Where(y => y.IsActive))
+                .IncludeFilter(x => x.Projects.Select(y => y.Activities.Where(z => z.IsActive)))             
                 .Where(x => x.IsActive && x.CompanyId == companyId));
         }
     }

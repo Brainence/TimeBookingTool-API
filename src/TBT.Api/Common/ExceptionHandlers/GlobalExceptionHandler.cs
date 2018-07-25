@@ -35,7 +35,7 @@ namespace TBT.Api.Common.ExceptionHandlers
             }
             else if (context.Exception is ApiValidationException)
             {
-                result = new CustomHandleResult(HttpStatusCode.BadRequest, context);
+                result = new CustomHandleResult(HttpStatusCode.BadGateway, context);
             }
             else if (context.Exception is ApiSecurityException)
             {
