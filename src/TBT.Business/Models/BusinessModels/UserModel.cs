@@ -15,7 +15,7 @@ namespace TBT.Business.Models.BusinessModels
         public bool IsActive { get; set; }
         public List<ProjectModel> Projects { get; set; }
         public List<TimeEntryModel> TimeEntries { get; set; }
-        public int? TimeLimit { get; set; }
+        public int TimeLimit { get; set; }
         public TimeSpan? CurrentTimeZone { get; set; }
         public CompanyModel Company { get; set; }
 

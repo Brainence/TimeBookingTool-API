@@ -21,7 +21,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
             RuleFor(project => project.Customer).NotNull()
                 .MustAsync(async (x, token) => await ExistsAsync(x.Id, ServiceLocator.Current.Get<ICustomerManager>()))
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
-                .WithMessage("{PropertyName} can't be null or doesn't exist.");
+                .WithMessage("{PropertyName} can't be null or doesn't exist");
             RuleFor(project => project)
                 .MustAsync(async (x, token) =>
                 {
@@ -29,7 +29,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
                     return tempProject == null || x.Id == tempProject.Id;
                 })
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
-                .WithMessage("Project with this name already exists.");
+                .WithMessage("Project with this name already exists");
         }
     }
 }

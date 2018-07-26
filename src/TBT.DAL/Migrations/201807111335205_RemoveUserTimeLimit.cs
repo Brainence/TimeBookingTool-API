@@ -7,6 +7,7 @@ namespace TBT.DAL.Migrations
     {
         public override void Up()
         {
+            Sql("UPDATE dbo.Users SET TimeLimit = 0 WHERE TimeLimit IS NULL");
             AlterColumn("dbo.Users", "TimeLimit", c => c.Int(nullable: false));
         }
         
