@@ -15,15 +15,16 @@ namespace TBT.Business.Managers.Implementations
 {
     public class CustomerManager : CrudManager<Customer, CustomerModel>, ICustomerManager
     {
-
+        private readonly IManagerStore _store;
         #region Constructors
 
         public CustomerManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider, ILogManager logger)
+            IConfigurationProvider configurationProvider, ILogManager logger, IManagerStore store)
             : base(unitOfWork, unitOfWork.Customers, objectMapper, configurationProvider, logger)
         {
+            _store = store;
         }
 
         #endregion
@@ -34,12 +35,11 @@ namespace TBT.Business.Managers.Implementations
         {
             if (!model.IsActive)
             {
-                foreach (var project in ObjectMapper.Map<List<ProjectModel>, List<Project>>(model.Projects))
+                foreach (var project in model.Projects)
                 {
                     project.IsActive = false;
-                    project.CustomerId = model.Id;
-                    project.Activities = (await UnitOfWork.Activities.GetByProjectIdAsync(project.Id)).ToList();
-                    await UnitOfWork.Projects.UpdateAsync(project);
+                    project.Customer = model;
+                    await _store.ProjectManager.UpdateAsync(project);
                 }
             }
             await base.UpdateAsync(model);

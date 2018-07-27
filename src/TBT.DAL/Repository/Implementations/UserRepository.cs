@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
-using System;
-using Z.EntityFramework.Plus;
 
 namespace TBT.DAL.Repository.Implementations
 {
@@ -27,11 +25,11 @@ namespace TBT.DAL.Repository.Implementations
                 .FirstOrDefault(u => u.IsActive && u.Username == email);
         }
 
-        public User GetUserProject(string email)
+        public User GetUserWithProject(string email)
         {
             return DbSet
-                 .Include(x=>x.Projects.Select(y=>y.Activities))
-                .FirstOrDefault(u=>u.IsActive && u.Username == email);
+                 .Include(x => x.Projects.Select(y => y.Activities))
+                .FirstOrDefault(u => u.IsActive && u.Username == email);
         }
 
         public Task<bool> IsPasswordValid(int userId, string password)

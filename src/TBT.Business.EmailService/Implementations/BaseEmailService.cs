@@ -8,7 +8,7 @@ using TBT.Components.Interfaces.Logger;
 
 namespace TBT.Business.EmailService.Implementations
 {
-    public abstract class BaseEmailSevice : IDisposable
+    public abstract class BaseEmailService : IDisposable
     {
         #region Fields
 
@@ -30,7 +30,7 @@ namespace TBT.Business.EmailService.Implementations
 
         #region Constructors
 
-        protected BaseEmailSevice(ILogManager logManager, SmtpSettings smtpSettings)
+        protected BaseEmailService(ILogManager logManager, SmtpSettings smtpSettings)
         {
             _logManager = logManager;
             _smtpClient = new SmtpClient();

@@ -22,17 +22,17 @@ namespace TBT.Api.Controllers
         [Route("")]
         [AllowAnonymous]
         [UserControllerValidationFilter]
-        public UserModel GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
+        public async Task<UserModel> GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
         {
-            return ManagerStore.UserManager.GetByEmail(email);
+            return await ManagerStore.UserManager.GetByEmail(email);
         }
         [HttpGet]
         [Route("GetUserProject")]
         [AllowAnonymous]
         [UserControllerValidationFilter]
-        public UserModel GetUserProject([Validator(ValidationMode.DataRelevance)]string email)
+        public async Task<UserModel> GetUserProject([Validator(ValidationMode.DataRelevance)]string email)
         {
-            return ManagerStore.UserManager.GetUserProject(email);
+            return await ManagerStore.UserManager.GetUserWithProject(email);
         }
 
         [HttpGet]

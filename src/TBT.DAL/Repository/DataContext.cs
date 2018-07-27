@@ -38,14 +38,7 @@ namespace TBT.DAL.Repository
             }
         }
 
-        public static string ConnectionString
-        {
-            get
-            {
-                var temp = ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"];
-                return temp != null ? temp.ConnectionString : "TimeBookingToolConnectionString";
-            }
-        }
+        public static string ConnectionString => ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"]?.ConnectionString ?? "TimeBookingToolConnectionString";
 
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }

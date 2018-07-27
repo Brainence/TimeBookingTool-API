@@ -8,36 +8,15 @@ namespace TBT.Business.Implementations
 {
     public abstract class BaseManager : IDisposable
     {
-        #region Fields
-
-        private readonly IApplicationUnitOfWork unitOfWork;
-        private readonly IObjectMapper objectMapper;
-        private readonly IConfigurationProvider configurationProvider;
-        private readonly ILogManager logger;
-
-        #endregion
-
         #region Properties
 
-        protected IApplicationUnitOfWork UnitOfWork
-        {
-            get { return unitOfWork; }
-        }
+        protected IApplicationUnitOfWork UnitOfWork { get; }
 
-        protected IObjectMapper ObjectMapper
-        {
-            get { return objectMapper; }
-        }
+        protected IObjectMapper ObjectMapper { get; }
 
-        protected IConfigurationProvider ConfigurationProvider
-        {
-            get { return configurationProvider; }
-        }
+        protected IConfigurationProvider ConfigurationProvider { get; }
 
-        protected ILogManager Logger
-        {
-            get { return logger; }
-        }
+        protected ILogManager Logger { get; }
 
         #endregion
 
@@ -48,10 +27,10 @@ namespace TBT.Business.Implementations
             IObjectMapper objectMapper,
             IConfigurationProvider configurationProvider, ILogManager logger)
         {
-            this.unitOfWork = unitOfWork;
-            this.objectMapper = objectMapper;
-            this.configurationProvider = configurationProvider;
-            this.logger = logger;
+            UnitOfWork = unitOfWork;
+            ObjectMapper = objectMapper;
+            ConfigurationProvider = configurationProvider;
+            Logger = logger;
         }
 
         #endregion
@@ -60,7 +39,7 @@ namespace TBT.Business.Implementations
 
         public virtual void Dispose()
         {
-            unitOfWork?.Dispose();
+            UnitOfWork?.Dispose();
         }
 
         #endregion

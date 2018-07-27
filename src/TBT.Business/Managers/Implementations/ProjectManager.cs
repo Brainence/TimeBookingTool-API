@@ -16,14 +16,16 @@ namespace TBT.Business.Managers.Implementations
 {
     public class ProjectManager : CrudManager<Project, ProjectModel>, IProjectManager
     {
+        private readonly IManagerStore _store;
         #region Constructors
 
         public ProjectManager(
             IApplicationUnitOfWork unitOfWork,
             IObjectMapper objectMapper,
-            IConfigurationProvider configurationProvider, ILogManager logger)
+            IConfigurationProvider configurationProvider, ILogManager logger,IManagerStore store)
             : base(unitOfWork, unitOfWork.Projects, objectMapper, configurationProvider, logger)
         {
+            _store = store;
         }
 
         #endregion
@@ -32,9 +34,7 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId)
         {
-            //TODO strange iqueryable  maping
-            var temp = await UnitOfWork.Projects.GetByCompanyIdAsync(companyId);
-            return ObjectMapper.Map<List<Project>, List<ProjectModel>>(temp.ToList());  
+            return ObjectMapper.Map<List<Project>, List<ProjectModel>>((await UnitOfWork.Projects.GetByCompanyIdAsync(companyId)).ToList());  
         }
 
         public async Task<ProjectModel> GetByName(string name)
@@ -47,12 +47,11 @@ namespace TBT.Business.Managers.Implementations
         {
             if (!model.IsActive)
             {
-                var activities = ObjectMapper.Map<List<ActivityModel>, List<Activity>>(model.Activities);
-                foreach (var activity in activities)
+                foreach (var activity in model.Activities)
                 {
                     activity.IsActive = false;
-                    activity.ProjectId = model.Id;
-                    await UnitOfWork.Activities.UpdateAsync(activity);
+                    activity.Project = model;
+                    await _store.ActivityManager.UpdateAsync(activity);
                 }
             }
             await base.UpdateAsync(model);

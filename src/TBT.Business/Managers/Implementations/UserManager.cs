@@ -5,7 +5,6 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Hosting;
-using Castle.Core.Internal;
 using TBT.Business.EmailService.Interfaces;
 using TBT.Business.Helpers;
 using TBT.Business.Implementations;
@@ -36,14 +35,14 @@ namespace TBT.Business.Managers.Implementations
 
         #region Interface Members
 
-        public UserModel GetByEmail(string email)
+        public  Task<UserModel> GetByEmail(string email)
         {
-            return ObjectMapper.Map<User, UserModel>(UnitOfWork.Users.GetByEmail(email) ?? new User());
+            return Task.FromResult(ObjectMapper.Map<User, UserModel>( UnitOfWork.Users.GetByEmail(email) ?? new User()));
         }
 
-        public UserModel GetUserProject(string email)
+        public  Task<UserModel> GetUserWithProject(string email)
         {
-            var user = UnitOfWork.Users.GetUserProject(email) ?? new User();
+            var user =  UnitOfWork.Users.GetUserProject(email) ?? new User();
             user.Projects =
                 user.Projects.Where(x => x.IsActive)
                     .Select(proj =>
@@ -51,7 +50,7 @@ namespace TBT.Business.Managers.Implementations
                         proj.Activities = proj.Activities.Where(x => x.IsActive).ToList();
                         return proj;
                     }).ToList();
-            return ObjectMapper.Map<User, UserModel>(user);
+            return Task.FromResult(ObjectMapper.Map<User, UserModel>(user));
         }
 
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
@@ -64,7 +63,7 @@ namespace TBT.Business.Managers.Implementations
         {
             model.Password = PasswordHelpers.HashPassword(model.Password);
             var resultId = base.AddAsync(model);
-            model.Password = "";
+            model.Password = string.Empty;
             return resultId;
         }
 
