@@ -22,7 +22,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
                     return Task.FromResult(tempUser == null || x.Id == tempUser.Id);
                 })
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
-                .WithMessage("User with this login already exists.");
+                .WithMessage("User with this login already exists");
 
             RuleFor(user => user.MonthlySalary).
                 MustAsync((x, token) => Task.FromResult(!x.HasValue || x >= 0)).
