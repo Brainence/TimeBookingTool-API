@@ -95,10 +95,6 @@
     <Compile Include="Migrations\201806011053384_Salary.Designer.cs">
       <DependentUpon>201806011053384_Salary.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807101340369_RemoveTimeLimit.cs" />
-    <Compile Include="Migrations\201807101340369_RemoveTimeLimit.Designer.cs">
-      <DependentUpon>201807101340369_RemoveTimeLimit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807111335205_RemoveUserTimeLimit.cs" />
     <Compile Include="Migrations\201807111335205_RemoveUserTimeLimit.Designer.cs">
       <DependentUpon>201807111335205_RemoveUserTimeLimit.cs</DependentUpon>
@@ -106,6 +102,10 @@
     <Compile Include="Migrations\201807161121058_FixMigration.cs" />
     <Compile Include="Migrations\201807161121058_FixMigration.Designer.cs">
       <DependentUpon>201807161121058_FixMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807301348568_RemoveTimeLimit.cs" />
+    <Compile Include="Migrations\201807301348568_RemoveTimeLimit.Designer.cs">
+      <DependentUpon>201807301348568_RemoveTimeLimit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,14 +155,14 @@
     <EmbeddedResource Include="Migrations\201806011053384_Salary.resx">
       <DependentUpon>201806011053384_Salary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807101340369_RemoveTimeLimit.resx">
-      <DependentUpon>201807101340369_RemoveTimeLimit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807111335205_RemoveUserTimeLimit.resx">
       <DependentUpon>201807111335205_RemoveUserTimeLimit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807161121058_FixMigration.resx">
       <DependentUpon>201807161121058_FixMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301348568_RemoveTimeLimit.resx">
+      <DependentUpon>201807301348568_RemoveTimeLimit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

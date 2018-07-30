@@ -13,12 +13,12 @@ namespace TBT.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201807101340369_RemoveTimeLimit"; }
+            get { return "201807301348568_RemoveTimeLimit"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target
