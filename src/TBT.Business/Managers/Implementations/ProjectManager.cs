@@ -34,15 +34,13 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId)
         {
-            return ObjectMapper.Map<List<Project>, List<ProjectModel>>((await UnitOfWork.Projects.GetByCompanyIdAsync(companyId)).ToList());  
+            return ObjectMapper.Map<List<Project>, List<ProjectModel>>(await UnitOfWork.Projects.GetByCompanyIdAsync(companyId));  
         }
 
-        public async Task<ProjectModel> GetByName(string name)
+        public async Task<ProjectModel> GetByNameAsync(string name)
         {
-            return ObjectMapper.Map<Project, ProjectModel>(
-                await UnitOfWork.Projects.GetByName(name));
+            return ObjectMapper.Map<Project, ProjectModel>(await UnitOfWork.Projects.GetByNameAsync(name));
         }
-
         public override async Task UpdateAsync(ProjectModel model)
         {
             if (!model.IsActive)

@@ -7,7 +7,7 @@ namespace TBT.DAL.Repository.Interfaces
 {
     public interface IProjectRepository : IRepository, IRepository<Project>
     {
-        Task<Project> GetByName(string name);
-        Task<IQueryable<Project>> GetByCompanyIdAsync(int companyId);
+        Task<Project> GetByNameAsync(string name);
+        Task<List<Project>> GetByCompanyIdAsync(int companyId);
     }
 }

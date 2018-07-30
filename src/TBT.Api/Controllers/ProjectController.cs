@@ -30,7 +30,7 @@ namespace TBT.Api.Controllers
         [ProjectControllerValidationFilter]
         public async Task<ProjectModel> GetByName([Validator(ValidationMode.DataRelevance)]string name)
         {
-            return await ManagerStore.ProjectManager.GetByName(name);
+            return await ManagerStore.ProjectManager.GetByNameAsync(name);
         }
     }
 }

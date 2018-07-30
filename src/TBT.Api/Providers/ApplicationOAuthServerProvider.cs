@@ -41,51 +41,42 @@ namespace TBT.WebApi.Providers
             return Task.FromResult<object>(null);
         }
 
-        public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
+        public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             try
             {
-                var accountManager = ServiceLocator.Current.Get<IAccountManager>();
+                var account = await ServiceLocator.Current.Get<IAccountManager>().GetByEmail(context.UserName);
 
-                var account = accountManager.GetByEmail(context.UserName);
-
-                if (account == null
-                    || !PasswordHelpers.VerifyPassword(account.Password, context.Password)
-                    || !account.IsActive)
+                if (account == null ||  !account.IsActive || !PasswordHelpers.VerifyPassword(account.Password, context.Password))
                 {
-                    context.Response.Headers.Add("BadRequestHeader",
-                        new[] { "Incorrect username or password." });
-
-                    return Task.FromResult<object>(null);
+                    context.Response.Headers.Add("BadRequestHeader",new[] { "Incorrect username or password." });
+                    return;
                 }
 
                 var identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, account.Id.ToString(CultureInfo.InvariantCulture)));
 
-                var properties = new AuthenticationProperties(GenerateAuthentiocationProperties(account));
-                var ticket = new AuthenticationTicket(identity, properties);
+                var properties = new AuthenticationProperties(GenerateClaims(account));
 
-                context.Validated(ticket);
+                context.Validated(new AuthenticationTicket(identity, properties));
                 context.Request.Context.Authentication.SignIn(properties, identity);
             }
             catch (Exception ex)
             {
                 context.SetError(ex.Message);
             }
-
-            return Task.FromResult<object>(null);
         }
 
-        private Dictionary<string, string> GenerateAuthentiocationProperties(Account account)
+        private Dictionary<string, string> GenerateClaims(Account account)
         {
-            var result = new Dictionary<string, string>
+            return  new Dictionary<string, string>
                 {
                     { "UserId", account.Id.ToString() },
                     { "UserName", account.Username }
                 };
 
-            return result;
+      
         }
     }
 }

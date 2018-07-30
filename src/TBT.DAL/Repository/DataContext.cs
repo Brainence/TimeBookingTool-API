@@ -1,7 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Configuration;
+using System.Linq;
 using Microsoft.AspNet.Identity;
 using TBT.DAL.Entities;
+using Z.EntityFramework.Plus;
 using Configuration = TBT.DAL.Migrations.Configuration;
 
 namespace TBT.DAL.Repository
@@ -16,6 +18,13 @@ namespace TBT.DAL.Repository
     
         public DataContext() : this(ConnectionString)
         {
+            this.Filter<User>(x => x.Where(y => y.IsActive));
+            this.Filter<Customer>(x => x.Where(y => y.IsActive));
+            this.Filter<Project>(x => x.Where(y => y.IsActive));
+            this.Filter<Activity>(x => x.Where(y => y.IsActive));
+            this.Filter<TimeEntry>(x => x.Where(y => y.IsActive));
+            this.Filter<Company>(x => x.Where(y => y.IsActive));
+
             if (!Database.Exists())
             {
                 Database.Create();

@@ -20,7 +20,7 @@ namespace TBT.DAL.Repository.Implementations
             _cryptoService = new RNGCryptoServiceProvider();
         }
 
-        public async Task<ResetTicket> CreateResetTicket(int userId)
+        public async Task<ResetTicket> CreateResetTicketAsync(int userId)
         {
             var user = Context.Set<User>().FirstOrDefault(u => u.Id == userId);
             if (user == null) return null;
@@ -53,7 +53,7 @@ namespace TBT.DAL.Repository.Implementations
             return res.ToString();
         }
 
-        public async Task<bool> ChangePassword(int userId, string newPassword, string token)
+        public async Task<bool> ChangePasswordAsync(int userId, string newPassword, string token)
         {
             var user = Context.Set<User>().FirstOrDefault(u => u.Id == userId);
             if (user == null) return false;

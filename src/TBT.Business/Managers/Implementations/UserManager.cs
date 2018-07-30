@@ -35,28 +35,19 @@ namespace TBT.Business.Managers.Implementations
 
         #region Interface Members
 
-        public  Task<UserModel> GetByEmail(string email)
+        public async Task<UserModel> GetByEmail(string email)
         {
-            return Task.FromResult(ObjectMapper.Map<User, UserModel>( UnitOfWork.Users.GetByEmail(email) ?? new User()));
+            return ObjectMapper.Map<User, UserModel>(await UnitOfWork.Users.GetByEmailAsync(email));
         }
 
-        public  Task<UserModel> GetUserWithProject(string email)
+        public async Task<UserModel> GetUserWithProject(string email)
         {
-            var user =  UnitOfWork.Users.GetUserProject(email) ?? new User();
-            user.Projects =
-                user.Projects.Where(x => x.IsActive)
-                    .Select(proj =>
-                    {
-                        proj.Activities = proj.Activities.Where(x => x.IsActive).ToList();
-                        return proj;
-                    }).ToList();
-            return Task.FromResult(ObjectMapper.Map<User, UserModel>(user));
+            return ObjectMapper.Map<User, UserModel>(await UnitOfWork.Users.GetUserWithProjectAsync(email));
         }
 
         public async Task<List<UserModel>> GetByCompanyIdAsync(int companyId)
         {
-            return ObjectMapper.Map<IQueryable<User>, List<UserModel>>(
-                await UnitOfWork.Users.GetByCompanyId(companyId));
+            return ObjectMapper.Map<List<User>, List<UserModel>>(await UnitOfWork.Users.GetByCompanyIdAsync(companyId));
         }
 
         public override Task<int> AddAsync(UserModel model)
@@ -83,18 +74,18 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<bool> IsPasswordValid(int userId, string password)
         {
-            return await UnitOfWork.Users.IsPasswordValid(userId, password);
+            return await UnitOfWork.Users.IsPasswordValidAsync(userId, password);
         }
 
         public async Task ChangePassword(int userId, string oldPassword, string newPassword)
         {
-            await UnitOfWork.Users.ChangePassword(userId, oldPassword, newPassword);
+            await UnitOfWork.Users.ChangePasswordAsync(userId, oldPassword, newPassword);
             await UnitOfWork.SaveChangesAsync();
         }
 
         public async Task<bool> SendEmail(EmailData data)
         {
-            var sender = UnitOfWork.Users.GetByEmail(data.Email);
+            var sender = await UnitOfWork.Users.GetByEmailAsync(data.Email);
             if (sender == null)
             {
                 return false;

@@ -29,8 +29,7 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<CompanyModel> GetByName(string name)
         {
-            return ObjectMapper.Map<Company, CompanyModel>(
-                     await UnitOfWork.Companies.GetByName(name));
+            return ObjectMapper.Map<Company, CompanyModel>(await UnitOfWork.Companies.GetByNameAsync(name));
         }
 
         public async Task<int> RegisterCompany(UserModel superAdmin)

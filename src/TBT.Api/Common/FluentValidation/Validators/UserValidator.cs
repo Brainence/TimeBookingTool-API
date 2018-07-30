@@ -16,10 +16,10 @@ namespace TBT.Api.Common.FluentValidation.Validators
                 .When(x => HasFlag(ValidationMode.DataRelevance | ValidationMode.Add | ValidationMode.Update))
                 .WithMessage("{PropertyName} must be an email");
             RuleFor(user => user)
-                .MustAsync((x, token) =>
+                .MustAsync(async  (x, token) =>
                 {
-                    var tempUser = manager.GetByEmail(x.Username);
-                    return Task.FromResult(tempUser == null || x.Id == tempUser.Id);
+                    var tempUser = await manager.GetByEmail(x.Username);
+                    return tempUser == null || x.Id == tempUser.Id;
                 })
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
                 .WithMessage("User with this login already exists");

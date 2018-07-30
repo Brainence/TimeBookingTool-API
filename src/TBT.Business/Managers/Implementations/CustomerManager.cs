@@ -9,6 +9,7 @@ using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 
 namespace TBT.Business.Managers.Implementations
@@ -53,9 +54,9 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<List<CustomerModel>> GetByCompanyIdAsync(int companyId)
         {
-            return ObjectMapper.Map<IQueryable<Customer>, List<CustomerModel>>(
-                     await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
+            return ObjectMapper.Map<List<Customer>, List<CustomerModel>>(await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
         }
+
         #endregion
 
 

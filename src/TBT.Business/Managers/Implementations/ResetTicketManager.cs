@@ -26,12 +26,12 @@ namespace TBT.Business.Managers.Implementations
         public async Task<bool> ChangePassword(int userId, string newPassword, string token)
         {
             newPassword = PasswordHelpers.HashPassword(newPassword);
-            return await UnitOfWork.ResetTickets.ChangePassword(userId, newPassword, token);
+            return await UnitOfWork.ResetTickets.ChangePasswordAsync(userId, newPassword, token);
         }
 
         public async Task<bool> CreateResetTicket(int userId)
         {
-            var resetTicket = await UnitOfWork.ResetTickets.CreateResetTicket(userId);
+            var resetTicket = await UnitOfWork.ResetTickets.CreateResetTicketAsync(userId);
             if (resetTicket == null) return false;
             var emailMessage = new MailMessage
             {

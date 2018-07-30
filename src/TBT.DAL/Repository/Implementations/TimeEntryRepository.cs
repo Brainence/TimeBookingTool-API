@@ -11,16 +11,13 @@ namespace TBT.DAL.Repository.Implementations
 {
     public class TimeEntryRepository : Repository<TimeEntry>, ITimeEntryRepository
     {
-        private TimeSpan _dayLimit;
+        private readonly TimeSpan _dayLimit = new TimeSpan(23, 59, 59);
 
-        public TimeEntryRepository(DbContext context)
-            : base(context)
-        {
-            _dayLimit = new TimeSpan(23, 59, 59);
-        }
+        public TimeEntryRepository(DbContext context) : base(context) { }
+
         private async Task CheckTimeEntryAsync(TimeEntry timeEntry, bool needSave = true)
         {
-            if (timeEntry != null && timeEntry.IsRunning && timeEntry.IsActive && timeEntry.LastUpdated.HasValue)
+            if (timeEntry != null && timeEntry.IsRunning && timeEntry.LastUpdated.HasValue)
             {
                 if ((int)Math.Floor((DateTime.UtcNow.Date - timeEntry.Date.Date).Duration().TotalDays) == 0)
                 {
@@ -41,7 +38,7 @@ namespace TBT.DAL.Repository.Implementations
 
         private async Task CheckTimeEntryAsync(IEnumerable<TimeEntry> timeEntries)
         {
-            foreach (var timeEntry in timeEntries.Where(x => x.IsActive))
+            foreach (var timeEntry in timeEntries.Where(x => x.IsRunning))
             {
                 await CheckTimeEntryAsync(timeEntry, false);
             }
@@ -52,65 +49,66 @@ namespace TBT.DAL.Repository.Implementations
         {
             var timeEntry = DbSet
                 .Include(x => x.Activity.Project.Customer)
-                .FirstOrDefault(x => x.Id == id && x.IsActive);
+                .FirstOrDefault(x => x.Id == id);
             await CheckTimeEntryAsync(timeEntry);
             return timeEntry;
         }
 
-        public async Task<IQueryable<TimeEntry>> GetByUserAsync(int userId)
+        public async Task<List<TimeEntry>> GetByUserAsync(int userId)
         {
-            var timeEntries = DbSet
-                .Where(t => t.UserId == userId && t.IsActive)
-                .Include(x => x.Activity.Project.Customer);
+            var timeEntries = await DbSet
+                    .Include(x => x.Activity.Project.Customer)
+                    .Where(t => t.UserId == userId)
+                    .ToListAsync();
             await CheckTimeEntryAsync(timeEntries);
             return timeEntries;
         }
 
-        public async Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, bool isRunning)
+        public async Task<List<TimeEntry>> GetByUserAsync(int userId, bool isRunning)
         {
-            var timeEntries = DbSet
-                .Where(t => t.UserId == userId
-                            && t.IsRunning == isRunning
-                            && t.IsActive)
-                .Include(x => x.Activity.Project.Customer);
+            var timeEntries = await DbSet
+                    .Include(x => x.Activity.Project.Customer)
+                    .Where(t => t.UserId == userId && t.IsRunning == isRunning)
+                    .ToListAsync();
             await CheckTimeEntryAsync(timeEntries);
             return timeEntries;
         }
 
-        public async Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, DateTime date)
+        public async Task<List<TimeEntry>> GetByUserAsync(int userId, DateTime date)
         {
             var nextDay = date.AddDays(1);
-            var timeEntries = DbSet
-                .Where(t => t.UserId == userId
-                            && t.Date >= date
-                            && t.Date < nextDay
-                            && t.IsActive)
-                .Include(x => x.Activity.Project.Customer);
+            var timeEntries = await DbSet
+                    .Include(x => x.Activity.Project.Customer)
+                    .Where(t => t.UserId == userId && t.Date >= date && t.Date < nextDay)
+                    .ToListAsync();
             await CheckTimeEntryAsync(timeEntries);
             return timeEntries;
         }
 
-        public async Task<IQueryable<TimeEntry>> GetByUserAsync(int userId, DateTime from, DateTime to, bool needRunning)
+        public async Task<List<TimeEntry>> GetByUserAsync(int userId, DateTime from, DateTime to, bool needRunning)
         {
             from = from.ToUniversalTime();
             to = to.ToUniversalTime().AddDays(1);
-            var timeEntries = DbSet
-                .Where(t => t.UserId == userId
-                            && t.Date >= from
-                            && t.Date < to
-                            && t.IsActive)
-                .Include(x => x.Activity.Project.Customer)
-                .Include(x => x.User);
+            var query =  DbSet
+                    .Include(x => x.Activity.Project.Customer)
+                    .Include(x => x.User)
+                    .Where(t => t.UserId == userId && t.Date >= from && t.Date < to);
 
+            if (needRunning)
+            {
+                query.Where(x => !x.IsRunning);
+            }
+
+            var timeEntries = await query.ToListAsync();
             await CheckTimeEntryAsync(timeEntries);
-            return needRunning ? timeEntries : timeEntries.Where(x => !x.IsRunning);
+            return timeEntries;
         }
 
         public async Task<bool> StartAsync(int timeEntryId)
         {
             var timeEntry = DbSet.Include(x => x.User).FirstOrDefault(x => x.Id == timeEntryId);
             if (timeEntry == null) return false;
-            var timeEntries = DbSet.Where(x => x.UserId == timeEntry.UserId && x.IsActive);
+            var timeEntries = DbSet.Where(x => x.UserId == timeEntry.UserId);
 
             var running = timeEntries.Where(x => x.IsRunning);
             if (running.Any())
@@ -194,14 +192,11 @@ namespace TBT.DAL.Repository.Implementations
             {
                 timeEntry.IsRunning = entity.IsRunning;
             }
-
-
             timeEntry.LastUpdated = DateTime.UtcNow;
             timeEntry.Comment = entity.Comment;
             timeEntry.IsActive = entity.IsActive;
 
             await Context.SaveChangesAsync();
-
             return true;
         }
 
@@ -210,20 +205,18 @@ namespace TBT.DAL.Repository.Implementations
             from = from.ToUniversalTime();
             to = to.ToUniversalTime().AddDays(1);
             var timeEntries = await DbSet
-                .Where(t => t.UserId == userId
-                            && t.Date >= from
-                            && t.Date < to
-                            && t.IsActive
-                            && !t.IsRunning).ToListAsync();
+                .Where(t => t.UserId == userId && t.Date >= from && t.Date < to && !t.IsRunning)
+                .ToListAsync();
             return timeEntries.Aggregate(TimeSpan.Zero, (t1, t2) => t1.Add(t2.Duration));
         }
 
-        public Task<IQueryable<TimeEntry>> GetByIsRunning(bool isRunning)
+        public Task<List<TimeEntry>> GetByIsRunningAsync(bool isRunning)
         {
-            return Task.FromResult(DbSet
-                .Where(t => t.IsRunning == isRunning && t.IsActive)
+            return DbSet
                 .Include(x => x.Activity)
-                .Include(x => x.User));
+                .Include(x => x.User)
+                .Where(t => t.IsRunning == isRunning)
+                .ToListAsync();
         }
     }
 }

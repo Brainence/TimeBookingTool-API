@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
@@ -13,20 +14,18 @@ namespace TBT.DAL.Repository.Implementations
         public ProjectRepository(DbContext context) : base(context)
         { }
 
-        public Task<IQueryable<Project>> GetByCompanyIdAsync(int companyId)
+        public Task<List<Project>> GetByCompanyIdAsync(int companyId)
         {
-            return Task.FromResult(
+            return
                 DbSet
-                    .Include(x => x.Customer)
-                    .IncludeFilter(x=>x.Activities.Where(y=>y.IsActive))
-                    .Where(p => p.IsActive && p.Customer.CompanyId == companyId));
+                .Include(x => x.Customer)
+                .Include(x => x.Activities)
+                .Where(p => p.Customer.CompanyId == companyId).ToListAsync();
         }
 
-        public Task<Project> GetByName(string name)
+        public Task<Project> GetByNameAsync(string name)
         {
-            return Task.FromResult(
-                DbSet
-                .FirstOrDefault(p => p.IsActive && p.Name == name));
+            return DbSet.FirstOrDefaultAsync(p => p.Name == name);
         }
     }
 }
