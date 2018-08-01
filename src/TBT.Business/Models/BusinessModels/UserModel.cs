@@ -20,10 +20,10 @@ namespace TBT.Business.Models.BusinessModels
         public CompanyModel Company { get; set; }
 
         public decimal? MonthlySalary { get; set; }
-
+        public bool IsBlocked { get; set; }
         public override string ToString()
         {
-            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company}, MonthlySalary={MonthlySalary}}}";
+            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company}, MonthlySalary={MonthlySalary}, IsBlocked={IsBlocked}}}";
         }
     }
 }

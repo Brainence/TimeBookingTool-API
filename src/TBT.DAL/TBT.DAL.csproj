@@ -107,6 +107,10 @@
     <Compile Include="Migrations\201807301348568_RemoveTimeLimit.Designer.cs">
       <DependentUpon>201807301348568_RemoveTimeLimit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808011730098_AddUserIsBlocked.cs" />
+    <Compile Include="Migrations\201808011730098_AddUserIsBlocked.Designer.cs">
+      <DependentUpon>201808011730098_AddUserIsBlocked.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\Implementations\Repository.cs" />
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807301348568_RemoveTimeLimit.resx">
       <DependentUpon>201807301348568_RemoveTimeLimit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011730098_AddUserIsBlocked.resx">
+      <DependentUpon>201808011730098_AddUserIsBlocked.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

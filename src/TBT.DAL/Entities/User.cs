@@ -30,7 +30,8 @@ namespace TBT.DAL.Entities
         public TimeSpan? CurrentTimeZone { get; set; }
         public int? CompanyId { get; set; }
         public Company Company { get; set; }
-        public decimal? MonthlySalary { get; set; } 
+        public decimal? MonthlySalary { get; set; }
+        public bool IsBlocked { get; set; }
         public User()
         {
             Projects = new List<Project>();
