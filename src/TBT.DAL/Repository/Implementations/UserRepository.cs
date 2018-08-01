@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using Z.EntityFramework.Plus;
 
 namespace TBT.DAL.Repository.Implementations
 {

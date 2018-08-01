@@ -18,13 +18,6 @@ namespace TBT.DAL.Repository
     
         public DataContext() : this(ConnectionString)
         {
-            this.Filter<User>(x => x.Where(y => y.IsActive));
-            this.Filter<Customer>(x => x.Where(y => y.IsActive));
-            this.Filter<Project>(x => x.Where(y => y.IsActive));
-            this.Filter<Activity>(x => x.Where(y => y.IsActive));
-            this.Filter<TimeEntry>(x => x.Where(y => y.IsActive));
-            this.Filter<Company>(x => x.Where(y => y.IsActive));
-
             if (!Database.Exists())
             {
                 Database.Create();
@@ -45,6 +38,12 @@ namespace TBT.DAL.Repository
                 });
                 SaveChanges();
             }
+            this.Filter<User>(x => x.Where(y => y.IsActive));
+            this.Filter<Customer>(x => x.Where(y => y.IsActive));
+            this.Filter<Project>(x => x.Where(y => y.IsActive));
+            this.Filter<Activity>(x => x.Where(y => y.IsActive));
+            this.Filter<TimeEntry>(x => x.Where(y => y.IsActive));
+            this.Filter<Company>(x => x.Where(y => y.IsActive));
         }
 
         public static string ConnectionString => ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"]?.ConnectionString ?? "TimeBookingToolConnectionString";

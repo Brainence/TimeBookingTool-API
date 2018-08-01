@@ -9,7 +9,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public ProjectProfile()
         {
-            CreateMap<Project, ProjectModel>();
+            CreateMap<Project, ProjectModel>().MaxDepth(1);
               
             CreateMap<ProjectModel, Project>()
                 .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.Customer.Id))

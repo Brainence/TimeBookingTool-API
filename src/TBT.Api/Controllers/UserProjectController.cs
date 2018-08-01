@@ -15,14 +15,14 @@ namespace TBT.Api.Controllers
         [Route("Add/{userId:int:min(1)}/{projectId:int:min(1)}")]
         public async void AddProject(int userId, int projectId)
         {
-            await ManagerStore.UserProjectManager.AddProject(userId, projectId);
+            await ManagerStore.UserProjectManager.AddProjectAsync(userId, projectId);
         }
 
         [HttpDelete]
         [Route("Remove/{userId:int:min(1)}/{projectId:int:min(1)}")]
         public async void RemoveProject(int userId, int projectId)
         {
-            await ManagerStore.UserProjectManager.RemoveProject(userId, projectId);
+            await ManagerStore.UserProjectManager.RemoveProjectAsync(userId, projectId);
         }
     }
 }

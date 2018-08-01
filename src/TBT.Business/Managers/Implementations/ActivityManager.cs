@@ -37,6 +37,11 @@ namespace TBT.Business.Managers.Implementations
             return ObjectMapper.Map<List<Activity>, List<ActivityModel>>(await UnitOfWork.Activities.GetByCompanyIdAsync(companyId));
         }
 
+        public async Task<List<ActivityModel>> GetByProjectIdAsync(int companyId)
+        {
+            return ObjectMapper.Map<List<Activity>, List<ActivityModel>>(await UnitOfWork.Activities.GetByProjectIdAsync(companyId));
+        }
+
         #endregion
     }
 }

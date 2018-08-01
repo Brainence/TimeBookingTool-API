@@ -1,15 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
-using TBT.Components.Interfaces.ObjectMapper;
 using TBT.Components.Interfaces.Logger;
+using TBT.Components.Interfaces.ObjectMapper;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.UI.WebControls;
 
 
 namespace TBT.Business.Managers.Implementations
@@ -55,6 +53,11 @@ namespace TBT.Business.Managers.Implementations
         public async Task<List<CustomerModel>> GetByCompanyIdAsync(int companyId)
         {
             return ObjectMapper.Map<List<Customer>, List<CustomerModel>>(await UnitOfWork.Customers.GetByCompanyIdAsync(companyId));
+        }
+
+        public async Task<List<CustomerModel>> GetByCompanyIdWithActivitiesAsync(int companyId)
+        {
+            return ObjectMapper.Map<List<Customer>, List<CustomerModel>>(await UnitOfWork.Customers.GetByCompanyIdWithActivitiesAsync(companyId));
         }
 
         #endregion

@@ -9,5 +9,6 @@ namespace TBT.DAL.Repository.Interfaces
     {
         Task<Customer> GetByNameAsync(string name);
         Task<List<Customer>> GetByCompanyIdAsync(int companyId);
+        Task<List<Customer>> GetByCompanyIdWithActivitiesAsync(int companyId);
     }
 }

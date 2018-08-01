@@ -36,6 +36,10 @@ namespace TBT.Business.Managers.Implementations
         {
             return ObjectMapper.Map<List<Project>, List<ProjectModel>>(await UnitOfWork.Projects.GetByCompanyIdAsync(companyId));  
         }
+        public async Task<List<ProjectModel>> GetByCompanyIdWithActivityAsync(int companyId)
+        {
+            return ObjectMapper.Map<List<Project>, List<ProjectModel>>(await UnitOfWork.Projects.GetByCompanyIdWhithActivityAsync(companyId));
+        }
 
         public async Task<ProjectModel> GetByNameAsync(string name)
         {
@@ -45,7 +49,7 @@ namespace TBT.Business.Managers.Implementations
         {
             if (!model.IsActive)
             {
-                foreach (var activity in model.Activities)
+                foreach (var activity in await _store.ActivityManager.GetByProjectIdAsync(model.Id))
                 {
                     activity.IsActive = false;
                     activity.Project = model;

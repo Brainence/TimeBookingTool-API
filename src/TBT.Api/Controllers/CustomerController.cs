@@ -31,5 +31,12 @@ namespace TBT.Api.Controllers
         {
             return await ManagerStore.CustomerManager.GetByCompanyIdAsync(companyId);
         }
+        [HttpGet]
+        [Route("GetByCompanyWithActivities/{companyId:int:min(1)}")]
+        [CustomerControllerValidationFilter]
+        public async Task<List<CustomerModel>> GetByCompanyWithActivitiesAsync([Validator(ValidationMode.Exist)]int companyId)
+        {
+            return await ManagerStore.CustomerManager.GetByCompanyIdWithActivitiesAsync(companyId);
+        }
     }
 }

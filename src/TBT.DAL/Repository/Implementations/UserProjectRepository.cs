@@ -15,9 +15,11 @@ namespace TBT.DAL.Repository.Implementations
         public async Task AddUserProjectAsync(int userId, int projectId)
         {
             var project = new Project() { Id = projectId };
+
             Context.Set<Project>().Attach(project);
-            var user = await Context.Set<User>().Include(u => u.Projects).FirstOrDefaultAsync(u => u.Id == userId);
-            user?.Projects.Add(project);
+            var user = Context.Set<User>().Find(userId);
+
+            user.Projects.Add(project);
         }
 
         public async Task RemoveUserProjectAsync(int userId, int projectId)
@@ -25,8 +27,7 @@ namespace TBT.DAL.Repository.Implementations
             var project = new Project() { Id = projectId };
 
             Context.Set<Project>().Attach(project);
-            var user =await  Context.Set<User>().Include(u=>u.Projects).FirstOrDefaultAsync(u=>u.Id == userId);
-
+            var user = Context.Set<User>().Include(u => u.Projects).FirstOrDefault(x => x.Id == userId);
             user?.Projects.Remove(project);
         }
     }

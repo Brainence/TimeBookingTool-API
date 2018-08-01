@@ -17,13 +17,13 @@ namespace TBT.Business.Managers.Implementations
             : base(unitOfWork, objectMapper, configurationProvider, logger)
         { }
 
-        public async Task AddProject(int userId, int projectId)
+        public async Task AddProjectAsync(int userId, int projectId)
         {
             await UnitOfWork.UserProjects.AddUserProjectAsync(userId, projectId);
             UnitOfWork.SaveChanges();
         }
 
-        public async Task RemoveProject(int userId, int projectId)
+        public async Task RemoveProjectAsync(int userId, int projectId)
         {
             await UnitOfWork.UserProjects.RemoveUserProjectAsync(userId, projectId);
             UnitOfWork.SaveChanges();

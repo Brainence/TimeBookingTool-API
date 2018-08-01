@@ -25,8 +25,15 @@ namespace TBT.DAL.Repository.Implementations
         {
             return 
                 DbSet
-                .Include(x => x.Projects.Select(y => y.Activities))
+                .Include(x => x.Projects)
                 .Where(x => x.CompanyId == companyId).ToListAsync();
+        }
+        public Task<List<Customer>> GetByCompanyIdWithActivitiesAsync(int companyId)
+        {
+            return
+                DbSet
+                    .Include(x => x.Projects.Select(y => y.Activities))
+                    .Where(x => x.CompanyId == companyId).ToListAsync();
         }
     }
 }

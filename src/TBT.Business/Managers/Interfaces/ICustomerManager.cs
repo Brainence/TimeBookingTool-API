@@ -9,5 +9,6 @@ namespace TBT.Business.Managers.Interfaces
     {
         Task<CustomerModel> GetByNameAsync(string name);
         Task<List<CustomerModel>> GetByCompanyIdAsync(int companyId);
+        Task<List<CustomerModel>> GetByCompanyIdWithActivitiesAsync(int companyId);
     }
 }

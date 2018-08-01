@@ -8,7 +8,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public TimeEntryProfile()
         {
-            CreateMap<TimeEntry, TimeEntryModel>();
+            CreateMap<TimeEntry, TimeEntryModel>().MaxDepth(1);
 
             CreateMap<TimeEntryModel, TimeEntry>()
                 .ForMember(d => d.Activity, opt => opt.Ignore())
