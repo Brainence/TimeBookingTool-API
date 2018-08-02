@@ -53,6 +53,11 @@ namespace TBT.WebApi.Providers
                     return;
                 }
 
+                if (account.IsBlocked)
+                {
+                    context.Response.Headers.Add("BadRequestHeader", new[] { "User blocked" });
+                    return;
+                }
                 var identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, account.Id.ToString(CultureInfo.InvariantCulture)));
