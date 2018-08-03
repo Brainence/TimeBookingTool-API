@@ -67,6 +67,15 @@ namespace TBT.Business.Managers.Implementations
             await Repository.DetachAsync(
                 await Repository.GetAsync(model.Id));
 
+
+            if (!model.IsActive || model.IsBlocked)
+            {
+                foreach (var timeEntry in await UnitOfWork.TimeEntries.GetByUserAsync(model.Id, true))
+                {
+                    await UnitOfWork.TimeEntries.StopAsync(timeEntry.Id);
+                }
+            }
+
             await Repository.UpdateAsync(ObjectMapper.Map<UserModel, User>(model));
 
             await UnitOfWork.SaveChangesAsync();

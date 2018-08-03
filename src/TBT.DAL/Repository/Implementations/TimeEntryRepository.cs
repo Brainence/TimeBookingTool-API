@@ -94,9 +94,9 @@ namespace TBT.DAL.Repository.Implementations
                     .Include(x => x.User)
                     .Where(t => t.UserId == userId && t.Date >= from && t.Date < to);
 
-            if (needRunning)
+            if (!needRunning)
             {
-                query.Where(x => !x.IsRunning);
+                query = query.Where(x => !x.IsRunning);
             }
 
             var timeEntries = await query.ToListAsync();
