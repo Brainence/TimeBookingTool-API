@@ -9,9 +9,9 @@ namespace TBT.Business.Managers.Interfaces
     public interface ITimeEntryManager : ICrudManager<TimeEntryModel>
     {
         Task<List<TimeEntryModel>> GetByUserAsync(int userId, bool isRunning);
-        Task<List<TimeEntryModel>> GetByUserAsync(int userId, string date);
-        Task<List<TimeEntryModel>> GetByUserAsync(int userId, string from, string to,bool running);
-        Task<TimeSpan> GetDurationAsync(int userId, string from, string to);
+        Task<List<TimeEntryModel>> GetByUserAsync(int userId, DateTime date);
+        Task<List<TimeEntryModel>> GetByUserAsync(int userId, DateTime from, DateTime to,bool running);
+        Task<TimeSpan> GetDurationAsync(int userId, DateTime from, DateTime to);
         Task<List<TimeEntryModel>> GetByUserAsync(int userId);
         Task<bool> StartAsync(int timeEntryId);
         Task<bool> StopAsync(int timeEntryId);

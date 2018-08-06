@@ -71,6 +71,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.8.5.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Plus.EF6.1.8.5\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Company.cs" />
@@ -92,9 +95,21 @@
     <Compile Include="Migrations\201806011053384_Salary.Designer.cs">
       <DependentUpon>201806011053384_Salary.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807101340369_RemoveTimeLimit.cs" />
-    <Compile Include="Migrations\201807101340369_RemoveTimeLimit.Designer.cs">
-      <DependentUpon>201807101340369_RemoveTimeLimit.cs</DependentUpon>
+    <Compile Include="Migrations\201807111335205_RemoveUserTimeLimit.cs" />
+    <Compile Include="Migrations\201807111335205_RemoveUserTimeLimit.Designer.cs">
+      <DependentUpon>201807111335205_RemoveUserTimeLimit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807161121058_FixMigration.cs" />
+    <Compile Include="Migrations\201807161121058_FixMigration.Designer.cs">
+      <DependentUpon>201807161121058_FixMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807301348568_RemoveTimeLimit.cs" />
+    <Compile Include="Migrations\201807301348568_RemoveTimeLimit.Designer.cs">
+      <DependentUpon>201807301348568_RemoveTimeLimit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808011730098_AddUserIsBlocked.cs" />
+    <Compile Include="Migrations\201808011730098_AddUserIsBlocked.Designer.cs">
+      <DependentUpon>201808011730098_AddUserIsBlocked.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,7 +136,6 @@
     <Compile Include="Repository\Interfaces\ITimeEntryRepository.cs" />
     <Compile Include="Repository\Interfaces\IProjectRepository.cs" />
     <Compile Include="Repository\Interfaces\IUserProjectRepository.cs" />
-    <Compile Include="Repository\Interfaces\IAccountRepository.cs" />
     <Compile Include="Repository\Interfaces\IResetTicketRepository.cs" />
     <Compile Include="Repository\Interfaces\IUserRepository.cs" />
   </ItemGroup>
@@ -145,8 +159,17 @@
     <EmbeddedResource Include="Migrations\201806011053384_Salary.resx">
       <DependentUpon>201806011053384_Salary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807101340369_RemoveTimeLimit.resx">
-      <DependentUpon>201807101340369_RemoveTimeLimit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807111335205_RemoveUserTimeLimit.resx">
+      <DependentUpon>201807111335205_RemoveUserTimeLimit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807161121058_FixMigration.resx">
+      <DependentUpon>201807161121058_FixMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301348568_RemoveTimeLimit.resx">
+      <DependentUpon>201807301348568_RemoveTimeLimit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011730098_AddUserIsBlocked.resx">
+      <DependentUpon>201808011730098_AddUserIsBlocked.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

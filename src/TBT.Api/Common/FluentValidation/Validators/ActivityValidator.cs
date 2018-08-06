@@ -14,14 +14,14 @@ namespace TBT.Api.Common.FluentValidation.Validators
         {
             RuleFor(activity => activity.Name).NotEmpty()
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update | ValidationMode.DataRelevance))
-                .WithMessage("{PropertyName} can't be empty.");
+                .WithMessage("{PropertyName} can't be empty");
             RuleFor(activity => activity.IsActive).Equal(true)
                 .When(x => HasFlag(ValidationMode.Add))
-                .WithMessage("{PropertyName} can't be {PropertyValue}.");
+                .WithMessage("{PropertyName} can't be {PropertyValue}");
             RuleFor(activity => activity.Project).NotNull()
                 .MustAsync(async (x, token) => await ExistsAsync(x.Id, ServiceLocator.Current.Get<IProjectManager>()))
                 .When(x => HasFlag(ValidationMode.Update))
-                .WithMessage("{PropertyName} can't be null or doesn't exists.");
+                .WithMessage("{PropertyName} can't be null or doesn't exists");
             RuleFor(activity => activity)
                 .MustAsync(async (x, token) =>
                 {
@@ -29,7 +29,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
                     return tempActivity == null || x.Id == tempActivity.Id;
                 })
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
-                .WithMessage("Activity with this name already exists.");
+                .WithMessage("Activity with this name already exists");
         }
     }
 }

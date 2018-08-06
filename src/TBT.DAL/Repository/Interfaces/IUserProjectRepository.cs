@@ -4,7 +4,7 @@ namespace TBT.DAL.Repository.Interfaces
 {
     public interface IUserProjectRepository : IRepository
     {
-        Task AddUserProject(int userId, int projectId);
-        Task RemoveUserProject(int userId, int projectId);
+        Task AddUserProjectAsync(int userId, int projectId);
+        Task RemoveUserProjectAsync(int userId, int projectId);
     }
 }

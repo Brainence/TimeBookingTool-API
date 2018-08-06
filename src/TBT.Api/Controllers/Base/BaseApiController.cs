@@ -18,8 +18,7 @@ namespace TBT.Api.Controllers.Base
 
         #region Constructors
 
-        public BaseApiController(
-            IManagerStore managerStore)
+        public BaseApiController(IManagerStore managerStore)
         {
             ManagerStore = managerStore;
         }

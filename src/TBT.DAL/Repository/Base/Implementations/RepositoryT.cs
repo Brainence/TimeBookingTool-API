@@ -28,9 +28,9 @@ namespace TBT.DAL.Repository.Implementations
 
         #region Interface Members
 
-        public virtual Task<IQueryable<TEntity>> GetAsync()
+        public virtual Task<List<TEntity>> GetAsync()
         {
-            return Task.FromResult<IQueryable<TEntity>>(DbSet);
+            return DbSet.ToListAsync();
         }
 
         public virtual Task<TEntity> GetAsync(int id)

@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
-using System;
+using Z.EntityFramework.Plus;
 
 namespace TBT.DAL.Repository.Implementations
 {
@@ -16,51 +17,46 @@ namespace TBT.DAL.Repository.Implementations
 
         public override Task<User> GetAsync(int id)
         {
-            return Task.FromResult(
-                DbSet.FirstOrDefault(u => u.IsActive && u.Id == id));
+            return DbSet.FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public User GetByEmail(string email)
+        public Task<User> GetByEmailAsync(string email)
         {
             return DbSet
                 .Include(u => u.Company)
-                .Include(u => u.Projects.Select(i => i.Customer))
-                .Include(u => u.Projects.Select(p => p.Activities))
-                .FirstOrDefault(u => u.IsActive && u.Username == email);
+                .FirstOrDefaultAsync(u => u.Username == email);
         }
 
-        public Task<bool> IsPasswordValid(int userId, string password)
+        public Task<User> GetUserWithProjectAsync(string email)
         {
-            var hasher = new PasswordHasher();
-            var user = DbSet.FirstOrDefault(u => u.IsActive && u.Id == userId);
-
-            if (user == null) return Task.FromResult(false);
-
-            var result = hasher.VerifyHashedPassword(user.Password, password);
-
-            return Task.FromResult(result == PasswordVerificationResult.Success);
+            return DbSet
+                 .Include(x => x.Projects.Select(y => y.Activities))
+                .FirstOrDefaultAsync(u => u.Username == email);
         }
 
-        public async Task ChangePassword(int userId, string oldPassword, string newPassword)
+        public async Task<bool> IsPasswordValidAsync(int userId, string password)
         {
-            var isValid = await IsPasswordValid(userId, oldPassword);
-            if (!isValid) return;
+            var user = await DbSet.FirstOrDefaultAsync(u => u.Id == userId);
+            if (user == null) return false;
+            return new PasswordHasher().VerifyHashedPassword(user.Password, password) == PasswordVerificationResult.Success;
+        }
 
-            var user = DbSet.FirstOrDefault(u => u.IsActive && u.Id == userId);
+        public async Task ChangePasswordAsync(int userId, string oldPassword, string newPassword)
+        {
+            if (!await IsPasswordValidAsync(userId, oldPassword)) return;
+
+            var user = DbSet.FirstOrDefault(u => u.Id == userId);
             if (user == null) return;
 
             user.Password = new PasswordHasher().HashPassword(newPassword);
         }
 
-        public Task<IQueryable<User>> GetByCompanyId(int companyId)
+        public Task<List<User>> GetByCompanyIdAsync(int companyId)
         {
-            return Task.FromResult(
-                DbSet
-                .Include(x => x.Projects)
-                .Where(x => x.IsActive && x.CompanyId == companyId)
-                .OrderBy(u => u.FirstName)
-                .ThenBy(u => u.LastName)
-                .Cast<User>());
+            return DbSet
+                    .Include(x => x.Projects)
+                    .Where(x => x.CompanyId == companyId)
+                    .ToListAsync();
         }
     }
 }

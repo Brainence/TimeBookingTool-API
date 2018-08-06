@@ -13,7 +13,7 @@ namespace TBT.Api.Common.FluentValidation.Validators
             RuleFor(company => company.CompanyName)
                 .MustAsync(async (x, token) => await manager.GetByName(x) == null)
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update | ValidationMode.DataRelevance))
-                .WithMessage("Company with name {PropertyValue} is already exists.");
+                .WithMessage("Company with name {PropertyValue} is already exists");
         }
     }
 }

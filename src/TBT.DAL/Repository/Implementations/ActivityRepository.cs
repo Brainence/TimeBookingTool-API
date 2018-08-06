@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
@@ -14,34 +15,27 @@ namespace TBT.DAL.Repository.Implementations
 
         #region Interface Members
 
-        public override Task<IQueryable<Activity>> GetAsync()
+        public override Task<List<Activity>> GetAsync()
         {
-            return Task.FromResult<IQueryable<Activity>>(
-                DbSet
-                .Where(x => x.IsActive)
-                .Include(x => x.Project.Users)
-                .OrderByDescending(a => a.Name));
+            return DbSet.Include(x => x.Project.Users).ToListAsync();
         }
 
-        public Task<IQueryable<Activity>> GetByCompanyIdAsync(int companyId)
+        public Task<List<Activity>> GetByCompanyIdAsync(int companyId)
         {
-            return Task.FromResult<IQueryable<Activity>>(
+            return
                 DbSet
                 .Include(x => x.Project.Customer)
-                .Where(x => x.IsActive && x.Project.Customer.CompanyId == companyId)
-                .OrderByDescending(a => a.Name));
+                .Where(x => x.Project.Customer.CompanyId == companyId).ToListAsync();
         }
 
-        public Task<IQueryable<Activity>> GetByProjectIdAsync(int projectId)
+        public Task<List<Activity>> GetByProjectIdAsync(int projectId)
         {
-            return Task.FromResult(DbSet.Where(x => x.IsActive && x.ProjectId == projectId));
+            return DbSet.Where(x => x.ProjectId == projectId).ToListAsync();
         }
 
-        public Task<Activity> GetByName(string name, int projectId)
+        public Task<Activity> GetByNameAsync(string name, int projectId)
         {
-            return Task.FromResult(
-                DbSet
-                .FirstOrDefault(x => x.IsActive && x.ProjectId == projectId && x.Name == name));
+            return DbSet.FirstOrDefaultAsync(x => x.ProjectId == projectId && x.Name == name);
         }
 
         #endregion

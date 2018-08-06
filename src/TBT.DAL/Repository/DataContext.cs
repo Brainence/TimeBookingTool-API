@@ -1,7 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Configuration;
+using System.Linq;
 using Microsoft.AspNet.Identity;
 using TBT.DAL.Entities;
+using Z.EntityFramework.Plus;
 using Configuration = TBT.DAL.Migrations.Configuration;
 
 namespace TBT.DAL.Repository
@@ -36,20 +38,15 @@ namespace TBT.DAL.Repository
                 });
                 SaveChanges();
             }
+            this.Filter<User>(x => x.Where(y => y.IsActive));
+            this.Filter<Customer>(x => x.Where(y => y.IsActive));
+            this.Filter<Project>(x => x.Where(y => y.IsActive));
+            this.Filter<Activity>(x => x.Where(y => y.IsActive));
+            this.Filter<TimeEntry>(x => x.Where(y => y.IsActive));
+            this.Filter<Company>(x => x.Where(y => y.IsActive));
         }
 
-        public static string ConnectionString
-        {
-            get
-            {
-                var temp = ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"];
-                if (temp != null)
-                {
-                    return ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"].ConnectionString;
-                }
-                return "TimeBookingToolConnectionString";
-            }
-        }
+        public static string ConnectionString => ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"]?.ConnectionString ?? "TimeBookingToolConnectionString";
 
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }

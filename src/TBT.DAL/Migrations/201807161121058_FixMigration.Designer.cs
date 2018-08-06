@@ -7,18 +7,18 @@ namespace TBT.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RemoveTimeLimit : IMigrationMetadata
+    public sealed partial class FixMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveTimeLimit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807101340369_RemoveTimeLimit"; }
+            get { return "201807161121058_FixMigration"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

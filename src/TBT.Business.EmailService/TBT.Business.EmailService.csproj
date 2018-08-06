@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementations\BaseEmailSevice.cs" />
+    <Compile Include="Implementations\BaseEmailService.cs" />
     <Compile Include="Implementations\EmailService.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
     <Compile Include="Models\SmtpSettings.cs" />

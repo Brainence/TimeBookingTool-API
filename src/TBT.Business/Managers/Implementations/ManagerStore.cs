@@ -62,9 +62,7 @@ namespace TBT.Business.Managers.Implementations
         {
             foreach (var field in GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(m => m.FieldType != typeof(IManagerFactory)))
             {
-                var value = field.GetValue(this) as IDisposable;
-
-                if (value != null)
+                if (field.GetValue(this) is IDisposable value)
                 {
                     value.Dispose();
                     field.SetValue(this, null);

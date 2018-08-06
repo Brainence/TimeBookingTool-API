@@ -16,12 +16,7 @@ namespace TBT.DAL.Repository.Implementations
 
         protected Repository(DbContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
-            }
-
-            Context = context;
+            Context = context ?? throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
         }
 
         #endregion

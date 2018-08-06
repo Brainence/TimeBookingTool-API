@@ -15,15 +15,15 @@ namespace TBT.Business.Models.BusinessModels
         public bool IsActive { get; set; }
         public List<ProjectModel> Projects { get; set; }
         public List<TimeEntryModel> TimeEntries { get; set; }
-        public int? TimeLimit { get; set; }
+        public int TimeLimit { get; set; }
         public TimeSpan? CurrentTimeZone { get; set; }
         public CompanyModel Company { get; set; }
 
         public decimal? MonthlySalary { get; set; }
-
+        public bool IsBlocked { get; set; }
         public override string ToString()
         {
-            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company}, MonthlySalary={MonthlySalary}}}";
+            return $"{{ Id={Id}, Username={Username}, Password={Password}, IsAdmin={IsAdmin}, IsActive={IsActive}, Projects=[ {string.Join(";", Projects ?? new List<ProjectModel>())} ], Company={Company}, MonthlySalary={MonthlySalary}, IsBlocked={IsBlocked}}}";
         }
     }
 }

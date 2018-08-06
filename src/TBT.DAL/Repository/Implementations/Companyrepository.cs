@@ -15,10 +15,9 @@ namespace TBT.DAL.Repository.Implementations
 
         #region Interface members
 
-        public Task<Company> GetByName(string name)
+        public Task<Company> GetByNameAsync(string name)
         {
-            return Task.FromResult(DbSet
-                .FirstOrDefault(x => x.CompanyName == name && x.IsActive));
+            return DbSet.FirstOrDefaultAsync(x => x.CompanyName == name);
         }
 
         #endregion

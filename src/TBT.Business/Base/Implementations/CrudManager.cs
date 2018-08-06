@@ -23,8 +23,7 @@ namespace TBT.Business.Implementations
 
         public virtual async Task<List<TModel>> GetAsync()
         {
-            return ObjectMapper.Map<IQueryable<TEntity>, List<TModel>>(
-                await Repository.GetAsync());
+            return ObjectMapper.Map<List<TEntity>, List<TModel>>(await Repository.GetAsync());
         }
 
         public virtual async Task<TModel> GetAsync(int id)

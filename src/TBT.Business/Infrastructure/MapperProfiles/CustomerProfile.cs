@@ -9,7 +9,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public CustomerProfile()
         {
-            CreateMap<Customer, CustomerModel>()
+            CreateMap<Customer, CustomerModel>().MaxDepth(1)
                 .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company ?? new Company() { Id = src.CompanyId.Value }))
                 .PreserveReferences();
 

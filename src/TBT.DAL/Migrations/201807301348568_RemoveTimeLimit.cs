@@ -1,8 +1,7 @@
 namespace TBT.DAL.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class RemoveTimeLimit : DbMigration
     {
         public override void Up()

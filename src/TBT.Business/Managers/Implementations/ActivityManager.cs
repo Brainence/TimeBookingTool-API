@@ -29,14 +29,17 @@ namespace TBT.Business.Managers.Implementations
 
         public async Task<ActivityModel> GetByName(string name, int projectId)
         {
-            return ObjectMapper.Map<Activity, ActivityModel>(
-                 await UnitOfWork.Activities.GetByName(name, projectId));
+            return ObjectMapper.Map<Activity, ActivityModel>(await UnitOfWork.Activities.GetByNameAsync(name, projectId));
         }
 
         public async Task<List<ActivityModel>> GetByCompanyIdAsync(int companyId)
         {
-            return ObjectMapper.Map<IQueryable<Activity>, List<ActivityModel>>(
-                     await UnitOfWork.Activities.GetByCompanyIdAsync(companyId));
+            return ObjectMapper.Map<List<Activity>, List<ActivityModel>>(await UnitOfWork.Activities.GetByCompanyIdAsync(companyId));
+        }
+
+        public async Task<List<ActivityModel>> GetByProjectIdAsync(int companyId)
+        {
+            return ObjectMapper.Map<List<Activity>, List<ActivityModel>>(await UnitOfWork.Activities.GetByProjectIdAsync(companyId));
         }
 
         #endregion
