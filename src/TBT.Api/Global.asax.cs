@@ -1,17 +1,17 @@
-﻿using Castle.Windsor;
+﻿using AutoMapper;
+using Castle.Windsor;
 using System;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
+using Hangfire;
+using TBT.Api.Common.FluentValidation.Installers;
+using TBT.Api.Common.Quartz.Jobs;
+using TBT.Business.Infrastructure.CastleWindsor;
 using TBT.WebApi.Common.CastleWindsor.Infrastructure;
 using TBT.WebApi.Common.CastleWindsor.Installers;
-using TBT.Business.Infrastructure.CastleWindsor;
-using TBT.Api.Common.FluentValidation.Installers;
-using TBT.Api.Common.Quartz.Schedulers;
-using TBT.Business.Infrastructure.MapperProfiles;
-using AutoMapper;
+using GlobalConfiguration = System.Web.Http.GlobalConfiguration;
 
 namespace TBT.WebApi
 {
@@ -43,8 +43,7 @@ namespace TBT.WebApi
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            InitializeAutoMapper();
-            GlobalSchedular.Start();
+            InitializeAutoMapper();          
         }
 
         private void InitializeAutoMapper()
