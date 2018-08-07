@@ -1,40 +1,32 @@
 ﻿using System;
 using System.Linq;
-using Quartz;
+using System.Threading.Tasks;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Infrastructure.CastleWindsor;
 using TBT.Business.Models.BusinessModels;
 
 namespace TBT.Api.Common.Quartz.Jobs
 {
-    public class RefreshTimeEntriesJob: IJob
+    public class RefreshTimeEntriesJob
     {
-        #region Interface members
-
-        public async void Execute(IJobExecutionContext context)
+        public async Task Check()
         {
-            var _manager = ServiceLocator.Current.Get<ITimeEntryManager>();
-            var timeEntries = await _manager.GetByIsRunning(true);
-            if (timeEntries.Any())
+            var manager = ServiceLocator.Current.Get<ITimeEntryManager>();
+            foreach (var item in await manager.GetByIsRunning(true))
             {
-                foreach (var item in timeEntries)
+                if (await manager.StopAsync(item.Id))
                 {
-                    if(await _manager.StopAsync(item.Id))
+                    var tempTimeEntry = new TimeEntryModel()
                     {
-                        var tempTimeEntry = new TimeEntryModel()
-                        {
-                            Activity = item.Activity,
-                            Comment = item.Comment,
-                            Date = DateTime.UtcNow,
-                            User = item.User,
-                            IsActive = true
-                        };
-                        await _manager.StartAsync(await _manager.AddAsync(tempTimeEntry));
-                    }
+                        Activity = item.Activity,
+                        Comment = item.Comment,
+                        Date = DateTime.UtcNow,
+                        User = item.User,
+                        IsActive = true
+                    };
+                    await manager.StartAsync(await manager.AddAsync(tempTimeEntry));
                 }
             }
         }
-
-        #endregion
     }
 }
