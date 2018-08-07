@@ -14,7 +14,7 @@ namespace TBT.WebApi
         {
             ConfigureAuth(app);
             GlobalConfiguration.Configuration.UseSqlServerStorage("TimeBookingToolConnectionString");
-            app.UseHangfireDashboard();
+            //app.UseHangfireDashboard();
             app.UseHangfireServer();
             RecurringJob.AddOrUpdate(() => new RefreshTimeEntriesJob().Check(), Cron.Daily, TimeZoneInfo.Local);
         }
