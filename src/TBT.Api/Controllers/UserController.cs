@@ -8,12 +8,13 @@ using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using System.Collections.Generic;
 
+
 namespace TBT.Api.Controllers
-{    
+{
     [RoutePrefix("api/user")]
     public class UserController : CrudApiController<UserModel>
     {
-        public UserController(IManagerStore managerStore) 
+        public UserController(IManagerStore managerStore)
             : base(managerStore, managerStore.UserManager)
         { }
 
@@ -21,9 +22,17 @@ namespace TBT.Api.Controllers
         [Route("")]
         [AllowAnonymous]
         [UserControllerValidationFilter]
-        public UserModel GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
+        public async Task<UserModel> GetByEmail([Validator(ValidationMode.DataRelevance)]string email)
         {
-            return ManagerStore.UserManager.GetByEmail(email);
+            return await ManagerStore.UserManager.GetByEmail(email);
+        }
+        [HttpGet]
+        [Route("GetUserWithProject")]
+        [AllowAnonymous]
+        [UserControllerValidationFilter]
+        public async Task<UserModel> GetUserWithProject([Validator(ValidationMode.DataRelevance)]string email)
+        {
+            return await ManagerStore.UserManager.GetUserWithProject(email);
         }
 
         [HttpGet]
@@ -49,5 +58,13 @@ namespace TBT.Api.Controllers
         {
             await ManagerStore.UserManager.ChangePassword(id, oldPassword, newPassword);
         }
+
+        [HttpPost]
+        [Route("SendEmail")]
+        public async Task<bool> SendEmail(EmailData data)
+        {
+            return await ManagerStore.UserManager.SendEmail(data);
+        }
+
     }
 }

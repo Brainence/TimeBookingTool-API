@@ -17,14 +17,7 @@ namespace TBT.Business.Providers.Implementations
 
         public string ConnectionString(string name)
         {
-            var value = _configurationManager.ConnectionStrings[name];
-
-            if (value == null)
-            {
-                throw new NullReferenceException("Connection string can't be found.");
-            }
-
-            return value.ConnectionString;
+            return _configurationManager.ConnectionStrings[name]?.ConnectionString ?? throw new NullReferenceException("Connection string can't be found.");
         }
 
         public T Get<T>(string key)

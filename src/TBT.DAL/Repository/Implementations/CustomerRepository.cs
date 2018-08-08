@@ -1,8 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using TBT.DAL.Entities;
 using TBT.DAL.Repository.Interfaces;
+using Z.EntityFramework.Plus;
 
 namespace TBT.DAL.Repository.Implementations
 {
@@ -14,15 +17,23 @@ namespace TBT.DAL.Repository.Implementations
 
         public Task<Customer> GetByNameAsync(string name)
         {
-            return Task.FromResult(
-                DbSet.FirstOrDefault(c => c.Name == name && c.IsActive));
+            return DbSet.FirstOrDefaultAsync(c => c.Name == name);
         }
 
-        public Task<IQueryable<Customer>> GetByCompanyIdAsync(int companyId)
+
+        public Task<List<Customer>> GetByCompanyIdAsync(int companyId)
         {
-            return Task.FromResult(DbSet
+            return 
+                DbSet
                 .Include(x => x.Projects)
-                .Where(x => x.IsActive && x.CompanyId == companyId));
+                .Where(x => x.CompanyId == companyId).ToListAsync();
+        }
+        public Task<List<Customer>> GetByCompanyIdWithActivitiesAsync(int companyId)
+        {
+            return
+                DbSet
+                    .Include(x => x.Projects.Select(y => y.Activities))
+                    .Where(x => x.CompanyId == companyId).ToListAsync();
         }
     }
 }

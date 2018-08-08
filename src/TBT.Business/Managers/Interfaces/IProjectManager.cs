@@ -7,7 +7,8 @@ namespace TBT.Business.Managers.Interfaces
 {
     public interface IProjectManager : ICrudManager<ProjectModel>
     {
-        Task<ProjectModel> GetByName(string name);
+        Task<ProjectModel> GetByNameAsync(string name);
         Task<List<ProjectModel>> GetByCompanyIdAsync(int companyId);
+        Task<List<ProjectModel>> GetByCompanyIdWithActivityAsync(int companyId);
     }
 }

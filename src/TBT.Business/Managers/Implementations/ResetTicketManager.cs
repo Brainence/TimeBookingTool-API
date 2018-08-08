@@ -26,31 +26,25 @@ namespace TBT.Business.Managers.Implementations
         public async Task<bool> ChangePassword(int userId, string newPassword, string token)
         {
             newPassword = PasswordHelpers.HashPassword(newPassword);
-            return await UnitOfWork.ResetTickets.ChangePassword(userId, newPassword, token);
+            return await UnitOfWork.ResetTickets.ChangePasswordAsync(userId, newPassword, token);
         }
 
         public async Task<bool> CreateResetTicket(int userId)
         {
-            var resetTicket = await UnitOfWork.ResetTickets.CreateResetTicket(userId);
+            var resetTicket = await UnitOfWork.ResetTickets.CreateResetTicketAsync(userId);
             if (resetTicket == null) return false;
-
-            var emailService = ServiceLocator.Current.Get<IEmailService>();
-
-            var emailMessage = new MailMessage();
-
-            emailMessage.From = new MailAddress(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username);
+            var emailMessage = new MailMessage
+            {
+                From = new MailAddress(Constants.SmtpSettingsConstants.DefaultSmtpSettings.Username),
+                Subject = "Password restore",
+                Priority = MailPriority.Normal,
+                Body = $"Your token is: <b>{resetTicket.Token}</b><br><br>" +
+                       $"Expiration date <b>{resetTicket.ExpirationDate} UTC</b>.",
+                BodyEncoding = System.Text.Encoding.UTF8,
+                IsBodyHtml = true
+            };
             emailMessage.To.Add(new MailAddress(resetTicket.Username));
-            emailMessage.Subject = "Password restore";
-            emailMessage.Body = $"";
-            emailMessage.Priority = MailPriority.Normal;
-            emailMessage.Body =
-                $"Your token is: <b>{resetTicket.Token}</b><br><br>" +
-                $"Expiration date <b>{resetTicket.ExpirationDate.ToString()} UTC</b>.";
-            emailMessage.BodyEncoding = System.Text.Encoding.UTF8;
-            emailMessage.IsBodyHtml = true;
-
-            var succeed = await emailService.SendMailAsync(emailMessage);
-            return succeed;
+            return await ServiceLocator.Current.Get<IEmailService>().SendMailAsync(emailMessage);
         }
     }
 }

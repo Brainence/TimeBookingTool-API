@@ -13,10 +13,18 @@ namespace TBT.Api.Common.FluentValidation.Validators
         {
             RuleFor(customer => customer.Name).NotEmpty()
                 .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
-                .WithMessage("{PropertyName} can't be null or empty.");
+                .WithMessage("{PropertyName} can't be null or empty");
             RuleFor(customer => customer.IsActive).Equal(true)
                 .When(x => HasFlag(ValidationMode.Add))
-                .WithMessage("{PropertyName} can't be {PropertyValue}.");
+                .WithMessage("{PropertyName} can't be {PropertyValue}");
+            RuleFor(customer => customer)
+                .MustAsync(async (x, token) =>
+                {
+                    var tempCustomer = await manager.GetByNameAsync(x.Name);
+                    return tempCustomer == null || x.Id == tempCustomer.Id;
+                })
+                .When(x => HasFlag(ValidationMode.Add | ValidationMode.Update))
+                .WithMessage("Customer with this name already exists");
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using System.Linq;
 using TBT.Business.Models.BusinessModels;
 using TBT.DAL.Entities;
 
@@ -9,9 +8,9 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserModel>()
+            CreateMap<User, UserModel>().MaxDepth(1)
                 .ForMember(dest => dest.Password, opt => opt.Ignore())
-                .ForMember(dest => dest.Projects, opt => opt.MapFrom(src => src.Projects.Where(a => a.IsActive)))
+                .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company ?? new Company() { Id = src.CompanyId ?? 0 }))
                 .ForMember(d => d.TimeEntries, opt => opt.Ignore());
 
             CreateMap<UserModel, User>()

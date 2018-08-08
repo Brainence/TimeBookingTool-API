@@ -14,16 +14,12 @@ namespace TBT.Business.Helpers
                 RequireUppercase = true,
                 RequiredLength = 8
             };
-
             var validationResult = validator.ValidateAsync(password);
-
             validationResult.Wait();
-
             if (validationResult.Result != IdentityResult.Success)
             {
                 throw new Exception("Password must at least 8 characters and contains at least one uppercase character one lowercase character and one number");
             }
-
             return true;
         }
 
@@ -34,11 +30,7 @@ namespace TBT.Business.Helpers
 
         public static bool VerifyPassword(string hashedPassword, string password)
         {
-            var hasher = new PasswordHasher();
-
-            var result = hasher.VerifyHashedPassword(hashedPassword, password);
-
-            return result == PasswordVerificationResult.Success;
+            return new PasswordHasher().VerifyHashedPassword(hashedPassword, password) == PasswordVerificationResult.Success;
         }
     }
 }

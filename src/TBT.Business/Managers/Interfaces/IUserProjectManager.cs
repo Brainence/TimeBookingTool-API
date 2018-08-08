@@ -4,7 +4,7 @@ namespace TBT.Business.Managers.Interfaces
 {
     public interface IUserProjectManager
     {
-        Task AddProject(int userId, int projectId);
-        Task RemoveProject(int userId, int projectId);
+        Task AddProjectAsync(int userId, int projectId);
+        Task RemoveProjectAsync(int userId, int projectId);
     }
 }

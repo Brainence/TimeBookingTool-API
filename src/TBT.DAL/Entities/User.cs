@@ -26,9 +26,16 @@ namespace TBT.DAL.Entities
         public bool IsActive { get; set; }
         public ICollection<Project> Projects { get; set; }
         public ICollection<TimeEntry> TimeEntries { get; set; }
-        public int? TimeLimit { get; set; }
+        public int TimeLimit { get; set; }
         public TimeSpan? CurrentTimeZone { get; set; }
         public int? CompanyId { get; set; }
         public Company Company { get; set; }
+        public decimal? MonthlySalary { get; set; }
+        public bool IsBlocked { get; set; }
+        public User()
+        {
+            Projects = new List<Project>();
+            TimeEntries = new List<TimeEntry>();
+        }
     }
 }

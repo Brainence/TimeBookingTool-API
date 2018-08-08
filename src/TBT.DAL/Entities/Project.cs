@@ -15,7 +15,12 @@ namespace TBT.DAL.Entities
         public bool IsActive { get; set; }
         public ICollection<Activity> Activities { get; set; }
         public ICollection<User> Users { get; set; }
-        public int? CustomerId { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public Project()
+        {
+            Activities = new List<Activity>();
+            Users = new List<User>();
+        }
     }
 }

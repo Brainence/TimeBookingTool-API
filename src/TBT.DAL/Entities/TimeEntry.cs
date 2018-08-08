@@ -17,7 +17,6 @@ namespace TBT.DAL.Entities
         public bool IsRunning { get; set; }
         [StringLength(2048)]
         public string Comment { get; set; }
-        public DateTime? TimeLimit { get; set; }
         public DateTime? LastUpdated { get; set; }
     }
 }

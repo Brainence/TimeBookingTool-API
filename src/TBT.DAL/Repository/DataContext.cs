@@ -1,6 +1,10 @@
 ﻿using System.Data.Entity;
 using System.Configuration;
+using System.Linq;
+using Microsoft.AspNet.Identity;
 using TBT.DAL.Entities;
+using Z.EntityFramework.Plus;
+using Configuration = TBT.DAL.Migrations.Configuration;
 
 namespace TBT.DAL.Repository
 {
@@ -8,25 +12,41 @@ namespace TBT.DAL.Repository
     {
         public DataContext(string connectionString) : base(connectionString)
         {
-            Database.SetInitializer(new DatabaseInitializer());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Configuration>());
+           
         }
-
+    
         public DataContext() : this(ConnectionString)
         {
+            if (!Database.Exists())
+            {
+                Database.Create();
+                Users.Add(new User()
+                {
+                    FirstName = "Sergey",
+                    LastName = "Chujko",
+                    Password = new PasswordHasher().HashPassword("brainence!"),
+                    Username = "schuiko@brainence.com",
+                    IsAdmin = true,
+                    IsActive = true,
+                    Company = new Company()
+                    {
+                        CompanyName = "Brainence",
+                        IsActive = true,
+                    },
+                    MonthlySalary = 1000.00M
+                });
+                SaveChanges();
+            }
+            this.Filter<User>(x => x.Where(y => y.IsActive));
+            this.Filter<Customer>(x => x.Where(y => y.IsActive));
+            this.Filter<Project>(x => x.Where(y => y.IsActive));
+            this.Filter<Activity>(x => x.Where(y => y.IsActive));
+            this.Filter<TimeEntry>(x => x.Where(y => y.IsActive));
+            this.Filter<Company>(x => x.Where(y => y.IsActive));
         }
 
-        public static string ConnectionString
-        {
-            get
-            {
-                var temp = ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"];
-                if (temp != null)
-                {
-                    return ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"].ConnectionString;
-                }
-                return "TimeBookingToolConnectionString";
-            }
-        }
+        public static string ConnectionString => ConfigurationManager.ConnectionStrings["TimeBookingToolConnectionString"]?.ConnectionString ?? "TimeBookingToolConnectionString";
 
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -36,6 +56,9 @@ namespace TBT.DAL.Repository
         public DbSet<ResetTicket> ResetTickets { get; set; }
         public DbSet<Company> Companies { get; set; }
 
+
+
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

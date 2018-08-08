@@ -9,9 +9,8 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public ProjectProfile()
         {
-            CreateMap<Project, ProjectModel>()
-                .ForMember(dest => dest.Activities, opt => opt.MapFrom(src => src.Activities.Where(a => a.IsActive)));
-
+            CreateMap<Project, ProjectModel>().MaxDepth(1);
+              
             CreateMap<ProjectModel, Project>()
                 .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.Customer.Id))
                 .ForMember(d => d.Customer, opt => opt.Ignore())

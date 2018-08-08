@@ -9,9 +9,8 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public CustomerProfile()
         {
-            CreateMap<Customer, CustomerModel>()
+            CreateMap<Customer, CustomerModel>().MaxDepth(1)
                 .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company ?? new Company() { Id = src.CompanyId.Value }))
-                .ForMember(dest => dest.Projects, opt => opt.MapFrom(src => src.Projects.Where(a => a.IsActive)))
                 .PreserveReferences();
 
             CreateMap<CustomerModel, Customer>()

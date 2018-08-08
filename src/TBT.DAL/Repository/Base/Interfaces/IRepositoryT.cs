@@ -7,7 +7,7 @@ namespace TBT.DAL.Repository.Interfaces
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : class
     {
-        Task<IQueryable<TEntity>> GetAsync();
+        Task<List<TEntity>> GetAsync();
         Task<TEntity> GetAsync(int id);
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);

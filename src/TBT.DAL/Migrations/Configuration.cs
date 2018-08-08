@@ -7,6 +7,7 @@ namespace TBT.DAL.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "TBT.DAL.Repository.DataContext";
         }
     }

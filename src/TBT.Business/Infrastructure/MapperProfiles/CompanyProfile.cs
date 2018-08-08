@@ -9,9 +9,7 @@ namespace TBT.Business.Infrastructure.MapperProfiles
     {
         public CompanyProfile()
         {
-            CreateMap<Company, CompanyModel>()
-                .ForMember(dest => dest.Customers, opt => opt.MapFrom(src => src.Customers.Where(x => x.IsActive)))
-                .ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.Users.Where(x => x.IsActive)));
+            CreateMap<Company, CompanyModel>().MaxDepth(1);
 
             CreateMap<CompanyModel, Company>()
                 .ForMember(dest => dest.Customers, opt => opt.Ignore())

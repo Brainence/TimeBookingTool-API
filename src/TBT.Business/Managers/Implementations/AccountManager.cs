@@ -1,4 +1,5 @@
-﻿using TBT.Business.Implementations;
+﻿using System.Threading.Tasks;
+using TBT.Business.Implementations;
 using TBT.Business.Managers.Interfaces;
 using TBT.Business.Models.BusinessModels;
 using TBT.Business.Providers.Interfaces;
@@ -24,10 +25,9 @@ namespace TBT.Business.Managers.Implementations
 
         #region Interface Members
 
-        public Account GetByEmail(string email)
+        public async Task<Account> GetByEmail(string email)
         {
-            var x = UnitOfWork.Users.GetByEmail(email);
-            return ObjectMapper.Map<User, Account>(x);
+            return ObjectMapper.Map<User, Account>(await UnitOfWork.Users.GetByEmailAsync(email));
         }
 
         #endregion
